@@ -23,7 +23,7 @@ export default function LoginForm() {
     <h2>Connectez vous</h2>
     <input
       type="text"
-      Placeholder="Entrez votre prénom..."
+      placeholder="Entrez votre prénom..."
       value={inputValue}
       onChange={handleChange}
       required
