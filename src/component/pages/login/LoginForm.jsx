@@ -3,19 +3,20 @@ import { useNavigate } from 'react-router-dom'
 
 export default function LoginForm() {
 
-      // State
-      const [username, setUsername] = useState("")
-      const navigate = useNavigate()
+  // State
+  const [username, setUsername] = useState("")
+  const navigate = useNavigate()
 
-      // Comportement
-      const handleSubmit = (event) => {
-        event.preventDefault()
-        navigate(`/order/${username}`)
-      }
-  
-      const handleChange = (event) => { 
-        setUsername(event.target.value)
-       }
+  // Comportement
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    navigate(`/order/${username}`)
+  }
+
+  const handleChange = (event) => { 
+    setUsername(event.target.value)
+    }
+
 
   return (
     <form action="submit" onSubmit={handleSubmit}>
@@ -24,12 +25,12 @@ export default function LoginForm() {
     <h2>Connectez vous</h2>
     <input
       type="text"
-      placeholder="Entrez votre prénom..."
+      placeholder="Entrez votre prénom"
       value={username}
       onChange={handleChange}
       required
     />
-    <button>Accéder à votre espace</button>
+    <button>Accéder à mon espace</button>
   </form>
   )
 }
