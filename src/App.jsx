@@ -1,20 +1,20 @@
-import { useState } from "react"
+import { Route, Routes } from "react-router-dom"
+import "./App.css"
 import LoginPage from "./component/pages/login/LoginPage"
+import ErrorPage from "./component/pages/error/ErrorPage"
+import OrderPage from "./component/pages/order/OrderPage"
 
 function App(){
-  // state (états, données)
-  const [prenom, setPrenom] = useState("Cyril")
-  const [count, setCount] = useState(1)
-
-  // comportements
-  const handleClick = () => {
-    setCount(count+1)
-  }
 
 
   // affichage (render)
   return  (
-    <LoginPage/>
+    <Routes>
+      <Route path="/" element={<LoginPage/>} />
+      <Route path="/order/:username" element={<OrderPage />} />
+      <Route path="*" element={<ErrorPage />} />
+
+    </Routes>
   )
 }
 
