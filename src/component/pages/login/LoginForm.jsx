@@ -43,6 +43,8 @@ export default function LoginForm() {
 }
 
 const LoginFormStyled = styled.form`
+  /*
+  
   background: green;
   text-align: center; 
   display: flex;
@@ -77,12 +79,12 @@ const LoginFormStyled = styled.form`
   }
 
   input{
-    items-align: center;
+    align-items: center;
 
   }
 
   button {
-    margin-top: 18px;    
+    /*margin-top: 18px;    
     border: 1px solid ${theme.colors.primary};
     border-radius: ${theme.borderRadius.round};
     display: flex;
@@ -98,7 +100,8 @@ const LoginFormStyled = styled.form`
     font-weight: ${theme.weights.bold};
     line-height: 15px;
     text-align: center;
-    font-family: Arial;
+    font-family: Arial; 
+    
   }
-
+ */
 `;
