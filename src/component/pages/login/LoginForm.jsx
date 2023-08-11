@@ -1,9 +1,13 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import styled from "styled-components"
-import { theme } from '../../../theme'
-import {BsPersonCircle} from "react-icons/bs";
-import {IoChevronForward} from "react-icons/io5";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import styled from "styled-components";
+import { theme } from '../../../theme';
+import { IoChevronForward } from "react-icons/io5";
+import Input from './Input';
+
+
+
+
 export default function LoginForm() {
 
   // State
@@ -20,23 +24,16 @@ export default function LoginForm() {
     setUsername(event.target.value)
     }
     
-
-
+  
+  // Affichage
   return (
     <LoginFormStyled action="submit" onSubmit={handleSubmit}>
-    <h1>Bienvenue chez nous !</h1>
-    <hr />
-    <h2>Connectez vous</h2>
-    <div className="input-container">
-      <BsPersonCircle className="icon" />
-      <input
-        type="text"
-        placeholder="Entrez votre prénom"
-        value={username}
-        onChange={handleChange}
-        required
-      />
+    <div>
+      <h1>Bienvenue chez nous !</h1>
+      <hr />
+      <h2>Connectez vous</h2>
     </div>
+    <Input value={username} placeholder={"test"} onChange={handleChange} />
     <button className="button-container">
     <span>Accéder à mon espace </span>
     <IoChevronForward className="icon"/>
