@@ -25,10 +25,10 @@ export default function LoginForm() {
   return (
     <LoginFormStyled action="submit" onSubmit={handleSubmit}>
     <h1>Bienvenue chez nous !</h1>
-    <div className="hr"></div>
+    <hr />
     <h2>Connectez vous</h2>
-    <div className="input">
-      <BsPersonCircle />
+    <div className="input-container">
+      <BsPersonCircle className="icon" />
       <input
         type="text"
         placeholder="Entrez votre prénom"
@@ -43,48 +43,59 @@ export default function LoginForm() {
 }
 
 const LoginFormStyled = styled.form`
-  /*
+  
   
   background: green;
-  text-align: center; 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  max-width: 500px;
+  min-width: 400px;
+  margin: 0px auto;
+  padding: 2.5rem 2rem;
+  border-radius: 5px;
+  font-family: "Amatic SC", cursive;
+
+
+  hr{
+    border: 1.5px solid ${theme.colors.primary};
+    margin-bottom: 40px;
+  }
 
   h1{
     font-size: ${theme.fonts.P5};
     color: ${theme.colors.white};
-    font-family: Amatic SC; 
   }
 
-  .hr{
-    width: 400px;
-    border: 1px solid ${theme.colors.primary}
-  }
+
 
   h2{
     font-size: ${theme.fonts.P4};
     color: ${theme.colors.white};
-    font-family: Amatic SC; 
 
   }
 
-  .input{
+  .input-container{
     border-radius: ${theme.borderRadius.round};
-    padding: 18 18 24 24;
-    width: 400px;
-    height: 53px;
-    background-color: ${theme.colors.white}
-    
+    padding: 18px 24px;;
+    display: flex;
+    align-items: center;
+    margin: 18px 0;
+    background-color: ${theme.colors.white};
+
+    .icon {
+      font-size: 15px;
+      margin-right: 8px; 
+      min-width: 1em;  
+    }
+
   }
 
   input{
     align-items: center;
+    width: 100%; 
 
   }
 
   button {
-    /*margin-top: 18px;    
+    margin-top: 18px;    
     border: 1px solid ${theme.colors.primary};
     border-radius: ${theme.borderRadius.round};
     display: flex;
@@ -103,5 +114,5 @@ const LoginFormStyled = styled.form`
     font-family: Arial; 
     
   }
- */
+ 
 `;
