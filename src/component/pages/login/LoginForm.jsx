@@ -116,6 +116,12 @@ const LoginFormStyled = styled.form`
       transition: all 200ms ease-out;
     }
 
+    &:active {
+      color: ${theme.colors.white};
+      background-color: ${theme.colors.primary};
+      border: 1px solid ${theme.colors.primary};
+    }
+
     .icon {
       color: ${theme.colors.white};
     }
