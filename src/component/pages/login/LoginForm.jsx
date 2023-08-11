@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import styled from "styled-components"
 import { theme } from '../../../theme'
 import {BsPersonCircle} from "react-icons/bs";
-
+import {IoChevronForward} from "react-icons/io5";
 export default function LoginForm() {
 
   // State
@@ -37,22 +37,22 @@ export default function LoginForm() {
         required
       />
     </div>
-    <button>Accéder à mon espace</button>
+    <button className="button-container">
+    <span>Accéder à mon espace </span>
+    <IoChevronForward className="icon"/>
+    </button>
   </LoginFormStyled>
   )
 }
 
 const LoginFormStyled = styled.form`
-  
-  
-  background: green;
+
   max-width: 500px;
   min-width: 400px;
   margin: 0px auto;
   padding: 2.5rem 2rem;
   border-radius: 5px;
   font-family: "Amatic SC", cursive;
-
 
   hr{
     border: 1.5px solid ${theme.colors.primary};
@@ -63,8 +63,6 @@ const LoginFormStyled = styled.form`
     font-size: ${theme.fonts.P5};
     color: ${theme.colors.white};
   }
-
-
 
   h2{
     font-size: ${theme.fonts.P4};
@@ -94,17 +92,15 @@ const LoginFormStyled = styled.form`
 
   }
 
-  button {
-    margin-top: 18px;    
+  .button-container {
+    width: 100%;
     border: 1px solid ${theme.colors.primary};
     border-radius: ${theme.borderRadius.round};
-    display: flex;
-    width: 400px;
-    height: 53px;
-    padding: 18px;
+    display: inline-flex;
+    padding: 18px 24px;
+    align-items: center;
     justify-content: center;
-    align-items: flex-start;
-    flex-shrink: 0; 
+    text-decoration: none;
     background-color: ${theme.colors.primary};
     color: ${theme.colors.white};
     font-size: ${theme.fonts.P0};
@@ -112,7 +108,18 @@ const LoginFormStyled = styled.form`
     line-height: 15px;
     text-align: center;
     font-family: Arial; 
-    
+
+    &:hover {
+      background-color: ${theme.colors.white};
+      color: ${theme.colors.primary};
+      border: 1px solid ${theme.colors.primary};
+      transition: all 200ms ease-out;
+    }
+
+    .icon {
+      color: ${theme.colors.white};
+    }
   }
+
  
 `;
