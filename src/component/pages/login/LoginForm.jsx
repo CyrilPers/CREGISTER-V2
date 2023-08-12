@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { theme } from '../../../theme';
 import { IoChevronForward } from "react-icons/io5";
 import Input from './Input';
-
+import { BsPersonCircle } from "react-icons/bs"
 
 
 
@@ -33,7 +33,14 @@ export default function LoginForm() {
       <hr />
       <h2>Connectez vous</h2>
     </div>
-    <Input value={username} placeholder={"test"} onChange={handleChange} />
+    <Input 
+      value={username} 
+      onChange={handleChange} 
+      placeholder={"Entrez votre prénom"} 
+      required
+      Icon={<BsPersonCircle className="icon" />}
+    />
+    
     <button className="button-container">
     <span>Accéder à mon espace </span>
     <IoChevronForward className="icon"/>
@@ -68,12 +75,13 @@ const LoginFormStyled = styled.form`
   }
 
   .input-container{
+    
+    background-color: ${theme.colors.white};
     border-radius: ${theme.borderRadius.round};
-    padding: 18px 24px;;
     display: flex;
     align-items: center;
+    padding: 18px 24px;
     margin: 18px 0;
-    background-color: ${theme.colors.white};
 
     .icon {
       font-size: 15px;
@@ -81,13 +89,21 @@ const LoginFormStyled = styled.form`
       min-width: 1em;  
     }
 
-  }
-
-  input{
+    
+    input{
+    border: none;
     align-items: center;
     width: 100%; 
+    color: black;
+    }
+
+    &::placeholder {
+      background: ${theme.colors.white};
+      color: ${theme.colors.greyLight};
+    }
 
   }
+
 
   .button-container {
     width: 100%;
@@ -105,6 +121,8 @@ const LoginFormStyled = styled.form`
     line-height: 15px;
     text-align: center;
     font-family: Arial; 
+
+
 
     &:hover {
       background-color: ${theme.colors.white};
