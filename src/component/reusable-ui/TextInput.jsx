@@ -38,12 +38,13 @@ const InputStyled = styled.div`
     align-items: center;
     width: 100%; 
     color: black;
-    }
+
 
     &::placeholder {
       background: ${theme.colors.white};
-      color: ${theme.colors.greyLight};
+      color: ${theme.colors.greyMedium};
     }
+  }
 `;
 
 
