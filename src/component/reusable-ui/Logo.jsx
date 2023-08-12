@@ -5,9 +5,9 @@ import { theme } from '../../theme';
 export default function Logo() {
   return (
     <LogoStyled>
-        <h1>CRAZY</h1>
+        <h1>ONLINE</h1>
         <img src='/images/logo-orange.png' alt="logo" />
-        <h1>BURGER</h1>
+        <h1>BOUTIK</h1>
     </LogoStyled>
   )
 }

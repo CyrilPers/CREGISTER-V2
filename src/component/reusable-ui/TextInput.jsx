@@ -29,6 +29,7 @@ const InputStyled = styled.div`
       font-size: 15px;
       margin-right: 8px; 
       min-width: 1em;  
+      color: ${theme.colors.greyMedium}
     }
 
     
