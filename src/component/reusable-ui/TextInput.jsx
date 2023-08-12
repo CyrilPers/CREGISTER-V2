@@ -1,6 +1,6 @@
 import React from 'react'
 import { styled } from 'styled-components';
-import { theme } from '../../../theme';
+import { theme } from '../../theme';
 
 export default function TextInput({value, onChange, Icon, className, ...extraProps}) {
   return (
