@@ -29,11 +29,11 @@ const OrderPageStyled = styled.div`
   align-items: center;
 
   .container {
-    background: red;
     height: 95vh;
     width: 1400px;
     display: flex;
     flex-direction: column;
-    /* Utiliser min-width 1400px et width:100% */
+    padding: 0 20px;
+    border-radius: ${theme.borderRadius.extraRound}
   }  
 `;

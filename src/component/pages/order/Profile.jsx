@@ -61,7 +61,6 @@ const ProfileStyled = styled.div`
   }
 
   .picture {
-    /* border: 1px solid red; */
     height: auto;
     display: flex;
     height: 100%;
