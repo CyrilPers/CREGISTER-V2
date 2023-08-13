@@ -9,7 +9,7 @@ export default function LoginPage() {
     
   return (
     <LoginPageStyled>
-      <Logo/>
+      <Logo className={"logo-login-page"} />
     <LoginForm/>
     </LoginPageStyled>
 
@@ -26,4 +26,9 @@ const LoginPageStyled = styled.div`
     background: 
         linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
         url('/images/burger-background.jpg') fixed center/cover;
+    
+    .logo-login-page {
+      transform: scale(2.5);
+    }
+
 `;
