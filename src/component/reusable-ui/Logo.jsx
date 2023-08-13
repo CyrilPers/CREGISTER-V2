@@ -5,9 +5,9 @@ import { theme } from '../../theme';
 export default function Logo() {
   return (
     <LogoStyled>
-        <h1>ONLINE</h1>
+        <h1>MY</h1>
         <img src='/images/logo-orange.png' alt="logo" />
-        <h1>BOUTIK</h1>
+        <h1>POS</h1>
     </LogoStyled>
   )
 }
@@ -15,7 +15,7 @@ export default function Logo() {
 const LogoStyled = styled.div`
     display: flex;
     align-items: center;
-    transform: scale(2.5);
+    transform: scale(2.5)
     
     h1{
     display: inline;
