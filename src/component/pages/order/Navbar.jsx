@@ -2,20 +2,14 @@ import React from 'react'
 import Logo from '../../reusable-ui/Logo';
 import { styled } from 'styled-components';
 import { theme } from '../../../theme';
-import { Link } from 'react-router-dom';
+import NavbarAccount from './NavbarAccount';
 
 export default function Navbar({username}) {
 
-
   return (
     <NavbarStyled>
-    <Logo className="logo"/>   
-    <div className="account"> 
-        Hey,{username}
-        <Link to="/">
-        <button>Déconnexion</button>
-        </Link>
-    </div>
+    <Logo />   
+    <NavbarAccount username={username} /> 
     </NavbarStyled>
 
   )
@@ -24,13 +18,15 @@ export default function Navbar({username}) {
 const NavbarStyled = styled.div`
     background-color: ${theme.colors.blue};
     height: 10vh;
-    display: inline-flex;
+    display: flex;
+    justify-content: space-between;
   
   .logo {
-
+    background: yellow;
   }
 
   .account {
+    background: purple;
 
   } 
 `;

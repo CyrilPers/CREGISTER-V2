@@ -1,9 +1,9 @@
 import React from 'react'
-import { Link, useParams } from 'react-router-dom'
 import Navbar from './Navbar'
 import { styled } from 'styled-components'
 import { theme } from '../../../theme'
 import Main from './Main'
+import { useParams } from 'react-router'
 
 export default function OrderPage() {
   // State
@@ -14,11 +14,9 @@ export default function OrderPage() {
   return (
     <OrderPageStyled>
     <div className='container'>
-      <Navbar 
-        username={username}
-      />
+      <Navbar username={username} />
       <Main />
-      </div>
+    </div>
     </OrderPageStyled>
   )
 }
