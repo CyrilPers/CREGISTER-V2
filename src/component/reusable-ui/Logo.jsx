@@ -6,7 +6,7 @@ export default function Logo({className}) {
   return (
     <LogoStyled className={className}>
         <h1>MY</h1>
-        <img src='/images/logo-orange.png' alt="logo" />
+        <img src='/images/logo.png' alt="logo" />
         <h1>POS</h1>
     </LogoStyled>
   )
@@ -33,8 +33,8 @@ const LogoStyled = styled.div`
         object-fit: contain;
         object-position: center;
         width: 80px;
-        height: 60px;
-        margin: 0 5px;
+        height: 80px;
+        margin: 0;
     }
 `;
 

@@ -22,12 +22,4 @@ const NavbarStyled = styled.div`
     justify-content: space-between;
     padding: 0 20px;
   
-  .logo {
-    background: yellow;
-  }
-
-  .account {
-    background: purple;
-
-  } 
 `;
