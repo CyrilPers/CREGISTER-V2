@@ -15,13 +15,14 @@ export default function Main() {
 const MainStyled = styled.div`
     background-color: ${theme.colors.background_white};
     flex: 1;
-    display: flex;
-    justify-content: space-between;
 
     box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset ;
     border-radius: 0px 0px 15px 15px;
+
     display: grid;
-    grid-template-columns: 25% 1fr;
+    grid-template-columns: 1fr;
+
+    overflow-y: scroll;
     
     .basket {
       background-color: red;
