@@ -5,7 +5,7 @@ import { theme } from '../../../theme';
 import { IoChevronForward } from "react-icons/io5";
 import { BsPersonCircle } from "react-icons/bs"
 import TextInput from '../../reusable-ui/TextInput';
-import PrimaryButton from './PrimaryButton';
+import PrimaryButton from '../../reusable-ui/PrimaryButton';
 
 
 
