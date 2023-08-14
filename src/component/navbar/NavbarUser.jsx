@@ -3,16 +3,16 @@ import { styled } from 'styled-components';
 import Profil from './Profile';
 
 
-export default function NavbarAccount({username}) {
+export default function NavbarUser({username}) {
   return (
-    <NavbarAccountStyled> 
+    <NavbarUserStyled> 
         <div className='admin-button'>Admin button </div>
         <Profil username={username} />
-    </NavbarAccountStyled>
+    </NavbarUserStyled>
   )
 }
 
-const NavbarAccountStyled = styled.div`
+const NavbarUserStyled = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;

@@ -3,8 +3,7 @@ import { styled } from 'styled-components'
 import { theme } from '../../../theme'
 import Main from './Main'
 import { useParams } from 'react-router'
-import Navbar from '../../Navbar/Navbar'
-
+import Navbar from '../../navbar/Navbar'
 
 export default function OrderPage() {
   // State
