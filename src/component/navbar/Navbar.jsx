@@ -1,16 +1,14 @@
 import React from 'react'
-import Logo from '../../reusable-ui/Logo';
-import { styled } from 'styled-components';
-import { theme } from '../../../theme';
-import NavbarAccount from './NavbarAccount';
-import { refreshPage } from '../../../utils/window';
+import Logo from '../reusable-ui/Logo';
+import { theme } from '../../theme';
+import { refreshPage } from '../../utils/window';
 
 export default function Navbar({username}) {
 
   return (
     <NavbarStyled>
     <Logo onClick={refreshPage} className={"logo-order-page"} />   
-    <NavbarAccount username={username} /> 
+    <NavbarAccount username={username} />
     </NavbarStyled>
 
   )
@@ -29,5 +27,5 @@ const NavbarStyled = styled.div`
     .logo-order-page {
       cursor: pointer;
     }
-
+  
 `;
