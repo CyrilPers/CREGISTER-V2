@@ -22,8 +22,8 @@ const PrimaryButtonStyled = styled.button`
     text-decoration: none;
     background-color: ${theme.colors.primary};
     color: ${theme.colors.white};
-    font-size: ${theme.fonts.P0};
-    font-weight: ${theme.weights.bold};
+    font-size: ${theme.fonts.size.P0};
+    font-weight: ${theme.fonts.weights.bold};
     line-height: 15px;
     text-align: center;
     font-family: Arial; 
