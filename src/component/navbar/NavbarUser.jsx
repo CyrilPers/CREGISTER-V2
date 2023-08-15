@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import { styled } from 'styled-components';
 import Profil from './Profile';
 import ToggleButton from '../reusable-ui/ToggleButton';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { theme } from '../../theme';
-import { FaUserSecret} from 'react-icons/fa6'
+import { FaUserSecret} from 'react-icons/fa'
+import Toast from '../reusable-ui/Toast';
 
 
 
@@ -39,7 +39,7 @@ export default function NavbarUser({username}) {
           onToggle={notifyAdminMode}
         />
         <Profil username={username} />
-        <ToastContainer className="toaster" bodyClassName="body-toast" />
+        <Toast />
     </NavbarUserStyled>
   )
 }
@@ -48,23 +48,5 @@ const NavbarUserStyled = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-
-  .toaster {
-    max-width: 300px;
-  }
-
-  .Toastify__toast.Toastify__toast-theme--dark.Toastify__toast--info {
-    background: ${theme.colors.background_dark};
-  }
-
-  .body-toast {
-    .Toastify__toast-icon.Toastify--animate-icon.Toastify__zoom-enter {
-      margin-right: 20px;
-      margin-left: 5px;
-    }
-    div {
-      line-height: 1.3em;
-    }
-  }
   
 `;
