@@ -5,6 +5,7 @@ import ToggleButton from '../reusable-ui/ToggleButton';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { theme } from '../../theme';
+import { FaUserSecret} from 'react-icons/fa6'
 
 
 
@@ -15,7 +16,7 @@ export default function NavbarUser({username}) {
   const notifyAdminMode = () => {
     if (!isModeAdmin) {
       toast.info("Mode admin activé", {
-        // icon: <FaUserSecret size={30} />,
+        icon: <FaUserSecret size={30} />,
         theme: "dark",
         position: "top-right",
         autoClose: 3000,
