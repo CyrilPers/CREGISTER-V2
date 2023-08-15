@@ -2,9 +2,9 @@ import styled from "styled-components"
 import { theme } from "../../theme"
 import PrimaryButton from "./PrimaryButton"
 
-export default function ProductCard({ title, imageSource, leftDescription }) {
+export default function Card({ title, imageSource, leftDescription }) {
   return (
-    <ProductCardStyled className="product">
+    <CardStyled className="product">
       <div className="image">
         <img src={imageSource} alt={title} />
       </div>
@@ -17,11 +17,11 @@ export default function ProductCard({ title, imageSource, leftDescription }) {
           </div>
         </div>
       </div>
-    </ProductCardStyled>
+    </CardStyled>
   )
 }
 
-const ProductCardStyled = styled.div`
+const CardStyled = styled.div`
   background: ${theme.colors.white};
   width: 200px;
   height: 300px;

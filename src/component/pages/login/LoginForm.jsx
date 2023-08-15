@@ -49,13 +49,14 @@ export default function LoginForm() {
 }
 
 const LoginFormStyled = styled.form`
-
+  text-align: center;
   max-width: 500px;
   min-width: 400px;
   margin: 0px auto;
   padding: 40px 32px;
   border-radius: ${theme.borderRadius.round};
   font-family: "Amatic SC", cursive;
+
 
   hr{
     border: 1.5px solid ${theme.colors.loginLine};
