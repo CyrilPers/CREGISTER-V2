@@ -7,12 +7,26 @@ import AdminContext from "../../../context/AdminContext"
 
 export default function OrderPage() {
   // State
+
   const [isModeAdmin, setIsModeAdmin] = useState(true)
+  const [isCollapsed, setIsCollapsed] = useState(false)
+  const [isEditSelected, setIsEditSelected] = useState(false)
+  const [isAddSelected, setIsAddSelected] = useState(true)
+
+
 
   // Comportements
   const adminContextValue = {
     isModeAdmin,
     setIsModeAdmin,
+    isModeAdmin,
+    setIsModeAdmin,
+    isCollapsed,
+    setIsCollapsed,
+    isEditSelected,
+    setIsEditSelected,
+    isAddSelected,
+    setIsAddSelected,
   }
 
   return (
