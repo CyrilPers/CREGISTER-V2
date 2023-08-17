@@ -2,19 +2,17 @@ import React, { useState } from 'react'
 import { styled } from 'styled-components'
 import { theme } from '../../../theme'
 import Main from './Main'
-import { useParams } from 'react-router'
 import Navbar from '../../navbar/Navbar'
-import AdminContext from "../../../context/AdminContext.jsx"
+import AdminContext from "../../../context/AdminContext"
 
 export default function OrderPage() {
   // State
-  const { username } = useParams()
   const [isModeAdmin, setIsModeAdmin] = useState(true)
 
   // Comportements
   const adminContextValue = {
     isModeAdmin,
-    setIsModeAdmin
+    setIsModeAdmin,
   }
 
   return (

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { styled } from 'styled-components';
 import Profil from './Profile';
 import ToggleButton from '../reusable-ui/ToggleButton';
@@ -8,11 +8,9 @@ import { FaUserSecret} from 'react-icons/fa'
 import Toast from '../reusable-ui/Toast';
 import AdminContext from '../../context/AdminContext';
 
-
-
 export default function NavbarUser() {
 
-  const {isModeAdmin, setIsModeAdmin} = useContext(AdminContext)
+  const {isModeAdmin, setIsModeAdmin} = useContext(AdminContext);
 
   const notifyAdminMode = () => {
     if (!isModeAdmin) {
