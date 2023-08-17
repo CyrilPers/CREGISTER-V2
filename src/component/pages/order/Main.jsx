@@ -2,6 +2,7 @@ import React from 'react'
 import { styled } from 'styled-components';
 import { theme } from '../../../theme';
 import Menu from "./Menu"
+import Admin from './Admin';
 
 
 export default function Main() {
@@ -10,7 +11,7 @@ export default function Main() {
         {/* <div className='basket'>basket</div> */}
         <div className='menu-and-admin'>
           <Menu />
-          <div className='admin'>Admin</div>
+          <Admin />
         </div>
     </MainStyled>
   )
@@ -18,7 +19,6 @@ export default function Main() {
 
 const MainStyled = styled.div`
     background-color: ${theme.colors.background_white};
-    border: 1px solid blue;
     height: 85vh;
 
 
@@ -40,16 +40,6 @@ const MainStyled = styled.div`
       display: grid;
       border-bottom-left-radius: ${theme.borderRadius.extraRound};
       border-bottom-right-radius: ${theme.borderRadius.extraRound};
-
-      .admin {
-      background: green;  
-      height: 250px;
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      left: 0;
-      }
     }
 
-
-    `;
+  `;
