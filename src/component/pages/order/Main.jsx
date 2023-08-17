@@ -2,7 +2,7 @@ import React from 'react'
 import { styled } from 'styled-components';
 import { theme } from '../../../theme';
 import Menu from "./Menu"
-import Admin from './Admin';
+import Admin from './admin/Admin';
 
 
 export default function Main() {

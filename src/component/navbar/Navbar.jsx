@@ -8,12 +8,12 @@ import { styled } from 'styled-components';
 
 
 
-export default function Navbar({username}) {
+export default function Navbar() {
 
   return (
     <NavbarStyled>
     <Logo onClick={refreshPage} className={"logo-order-page"} />   
-    <NavbarUser username={username} />
+    <NavbarUser />
     </NavbarStyled>
 
   )
