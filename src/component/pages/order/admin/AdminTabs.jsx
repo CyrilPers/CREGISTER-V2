@@ -4,6 +4,7 @@ import Tab from '../../../reusable-ui/Tab';
 import {FiChevronDown, FiChevronUp} from 'react-icons/fi'
 import { theme } from '../../../../theme';
 import AdminContext from '../../../../context/AdminContext';
+import { getTabsConfig } from './getTabsConfig';
 
 
 
@@ -22,6 +23,7 @@ export default function AdminTabs() {
     setCurrentTabSelected(tabSelected)
   }
 
+  const tabs = getTabsConfig(currentTabSelected)
 
   return (
     <AdminTabsStyled>
@@ -30,7 +32,7 @@ export default function AdminTabs() {
         onClick = {() => setIsCollapsed(!isCollapsed)}
         className = {isCollapsed ? "is-active" : ""}
       />
-      {tabsConfig.map((tab) =>
+      {tabs.map((tab) =>
           <Tab 
           label={tab.label} 
           Icon={tab.Icon} 
