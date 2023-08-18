@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
 import { styled } from 'styled-components';
-import { theme } from '../../../../theme';
-import AdminContext from '../../../../context/AdminContext';
-import { tabsConfig } from './tabsConfig';
+import AdminContext from '../../../../../context/AdminContext';
+import { tabsConfig } from '../tabsConfig';
+import { theme } from '../../../../../theme';
 
 export default function AdminPanel() {
 
