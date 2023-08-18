@@ -2,7 +2,7 @@ import {MdModeEditOutline} from 'react-icons/md'
 import { AiOutlinePlus } from "react-icons/ai"
 
 
-export const getTabsConfig = (currentTabSelected) => [
+export const getTabsConfig = () => [
 
     {
       index: "add",
