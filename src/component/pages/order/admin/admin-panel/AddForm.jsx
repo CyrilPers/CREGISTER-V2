@@ -10,7 +10,7 @@ export default function AddForm() {
             <input type="text" placeholder='Image URL' />
             <input type="text" placeholder='Prix' />
         </div>
-        <div className='submit-button'>Submit button</div>
+        <button className='submit-button'>Submit button</button>
     </AddFormStyled>
   )
 }
@@ -37,5 +37,6 @@ const AddFormStyled = styled.form`
     .submit-button {
         background: green;
         grid-area: 4 / 2 / 5 / 5;
+        width: 50%;
     }
 `;
