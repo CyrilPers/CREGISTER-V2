@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
 import { styled } from 'styled-components';
 import Tab from '../../../reusable-ui/Tab';
-import {FiChevronDown, FiChevronUp} from 'react-icons/fi'
 import { theme } from '../../../../theme';
+import {FiChevronDown, FiChevronUp} from 'react-icons/fi'
 import AdminContext from '../../../../context/AdminContext';
 import { getTabsConfig } from './getTabsConfig';
 
@@ -37,7 +37,7 @@ export default function AdminTabs() {
           label={tab.label} 
           Icon={tab.Icon} 
           onClick={() => selectTab(tab.index)} 
-          className={tab.className} 
+          className={currentTabSelected === tab.index ? "is-active" : ""} 
           />
       )}
     </AdminTabsStyled>
