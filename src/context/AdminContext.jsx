@@ -9,4 +9,9 @@ export default createContext({
  
     currentTabSelected: true,
     setCurrentTabSelected: () => {},
+
+    products: [],
+    setProducts: () => {},
+    addProduct: () => {},
+
 });

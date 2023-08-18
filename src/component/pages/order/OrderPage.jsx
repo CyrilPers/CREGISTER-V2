@@ -4,13 +4,21 @@ import { theme } from '../../../theme'
 import Main from './Main'
 import Navbar from '../../navbar/Navbar'
 import AdminContext from "../../../context/AdminContext"
+import { fakeMenu } from '../../../fakeData/fakeMenu'
 
 export default function OrderPage() {
 
   const [isModeAdmin, setIsModeAdmin] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [currentTabSelected, setCurrentTabSelected] = useState("add")
+  const [products, setProducts] = useState(fakeMenu.MEDIUM)
 
+  
+  const addProduct = (newProduct) => {
+    const productsCopy = [...products]
+    const productsUpdated = [newProduct, ...productsCopy]
+    setProducts(productsUpdated)
+  }
 
   const adminContextValue = {
     isModeAdmin,
@@ -19,6 +27,9 @@ export default function OrderPage() {
     setIsCollapsed,
     currentTabSelected,
     setCurrentTabSelected,
+    products,
+    setProducts,
+    addProduct,
   }
 
   return (
