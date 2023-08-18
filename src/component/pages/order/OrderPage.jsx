@@ -12,7 +12,7 @@ export default function OrderPage() {
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [isEditSelected, setIsEditSelected] = useState(false)
   const [isAddSelected, setIsAddSelected] = useState(true)
-
+  const [currentTabSelected, setCurrentTabSelected] = useState("add")
 
 
   // Comportements
@@ -23,10 +23,8 @@ export default function OrderPage() {
     setIsModeAdmin,
     isCollapsed,
     setIsCollapsed,
-    isEditSelected,
-    setIsEditSelected,
-    isAddSelected,
-    setIsAddSelected,
+    currentTabSelected,
+    setCurrentTabSelected,
   }
 
   return (
