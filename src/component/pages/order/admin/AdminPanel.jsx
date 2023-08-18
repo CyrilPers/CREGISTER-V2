@@ -1,18 +1,18 @@
 import React, { useContext } from 'react'
 import { styled } from 'styled-components';
 import { theme } from '../../../../theme';
-import { getTabsConfig } from './getTabsConfig';
 import AdminContext from '../../../../context/AdminContext';
+import { tabsConfig } from './tabsConfig';
 
 export default function AdminPanel() {
 
   const { currentTabSelected } = useContext(AdminContext)
-  const tabs = getTabsConfig(currentTabSelected)
+  const tabs = tabsConfig
   const tabSelected = tabs.find((tab) => tab.index === currentTabSelected)
 
   return (
-    <AdminPanelStyled className='admin-panel'>
-      {currentTabSelected === tabSelected.index && tabSelected.label}
+    <AdminPanelStyled>
+      {tabSelected.label}
     </AdminPanelStyled>
   )
 }

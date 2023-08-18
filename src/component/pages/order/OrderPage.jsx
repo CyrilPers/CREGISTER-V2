@@ -6,14 +6,12 @@ import Navbar from '../../navbar/Navbar'
 import AdminContext from "../../../context/AdminContext"
 
 export default function OrderPage() {
-  // State
 
-  const [isModeAdmin, setIsModeAdmin] = useState(true)
+  const [isModeAdmin, setIsModeAdmin] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [currentTabSelected, setCurrentTabSelected] = useState("add")
 
 
-  // Comportements
   const adminContextValue = {
     isModeAdmin,
     setIsModeAdmin,

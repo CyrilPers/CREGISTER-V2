@@ -14,7 +14,7 @@ export default function Main() {
 
     <MainStyled>
         {/* <div className='basket'>basket</div> */}
-        <div className='menu-and-admin'>
+        <div className='page-and-admin'>
           <Menu />
           {isModeAdmin && <Admin />}
         </div>
@@ -39,7 +39,7 @@ const MainStyled = styled.div`
       background-color: red;
     } */
 
-    .menu-and-admin {
+    .page-and-admin {
       position: relative;
       overflow-y: hidden;
       display: grid;
