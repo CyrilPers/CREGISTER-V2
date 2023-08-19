@@ -36,8 +36,10 @@ export default function AddForm() {
 
   return (
     <AddFormStyled  onSubmit={handleSubmit}>
-        <div className='image-preview'>Aucune image</div>
-        <div className='input-fields'>
+            <div className='image-preview' >
+                {newProduct.imageSource ? (<img src={newProduct.imageSource} alt={newProduct.title} /> ) : (<div>Aucune image</div> )}
+            </div>       
+            <div className='input-fields'>
             <input name="title" value={newProduct.title} onChange={handleChange} type="text" placeholder='Nom' />
             <input name="imageSource" value={newProduct.imageSource} onChange={handleChange} type="text" placeholder='Image URL' />
             <input name="price" value={newProduct.price ? newProduct.price : ""} onChange={handleChange} type="text" placeholder='Prix' />
@@ -48,7 +50,6 @@ export default function AddForm() {
 }
 
 const AddFormStyled = styled.form`
-    border: 2px solid black;
     display: grid;
     grid-template-columns: 1fr 3fr;
     grid-template-rows: repeat(4, 1fr);
@@ -56,17 +57,25 @@ const AddFormStyled = styled.form`
     width: 70%;
 
     .image-preview {
-        background: yellow;  
-        grid-area: 1 / 1 / 4 / 2;   
+        grid-area: 1 / 1 / 4 / 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+        }
     }
     .input-fields {
-        background: blue;
         grid-area: 1 / 2 / 4 / 5;
 
         display: grid;
     }
     .submit-button {
-        background: green;
         grid-area: 4 / 2 / 5 / 5;
         width: 50%;
     }
