@@ -13,8 +13,8 @@ const EMPTY_PRODUCT = {
 export default function AddForm() {
 
     const {addProduct} = useContext(AdminContext)
-
     const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
+    const [isSubmitted, setIsSubmitted] = useState(false)
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -25,7 +25,14 @@ export default function AddForm() {
         }
         addProduct(newProductToAdd)
         setNewProduct(EMPTY_PRODUCT)
+        displaySubmittedMessage()
     }
+
+    const displaySubmittedMessage = () => {
+        setIsSubmitted(true)
+        setTimeout(() => { setIsSubmitted(false)}, 2000)
+    }
+
 
     const handleChange = (event) => {
         const newValue = event.target.value
@@ -44,7 +51,10 @@ export default function AddForm() {
             <input name="imageSource" value={newProduct.imageSource} onChange={handleChange} type="text" placeholder="Lien URL d'une image" />
             <input name="price" value={newProduct.price ? newProduct.price : ""} onChange={handleChange} type="text" placeholder='Prix' />
         </div>
-        <button className='submit-button'>Submit button</button>
+        <div className='submit-button'>
+            <button>Submit button</button>
+            {isSubmitted && <span>Ajouté avec succés</span>}
+        </div>
     </AddFormStyled>
   )
 }
@@ -77,6 +87,9 @@ const AddFormStyled = styled.form`
     }
     .submit-button {
         grid-area: 4 / 2 / 5 / 5;
-        width: 50%;
+
+        button{
+            width: 50%;
+        }
     }
 `;
