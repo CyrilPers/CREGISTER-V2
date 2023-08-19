@@ -18,9 +18,10 @@ export default function AddForm() {
 
     const handleSubmit = (event) => {
         event.preventDefault()
+        const id = crypto.randomUUID()
         const newProductToAdd = {
-            id: new Date().getTime(),
-            ...newProduct
+            ...newProduct,
+            id
         }
         addProduct(newProductToAdd)
         setNewProduct(EMPTY_PRODUCT)

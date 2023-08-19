@@ -5,10 +5,12 @@ import Card from '../../reusable-ui/Card.jsx';
 import { formatPrice } from '../../../utils/maths';
 import AdminContext from '../../../context/AdminContext';
 
+const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
 
 export default function Menu() {
 
   const {products} = useContext(AdminContext)
+
 
   return (
 
@@ -18,7 +20,7 @@ export default function Menu() {
           <Card 
           key={id}
           title={title}
-          imageSource={imageSource}
+          imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT }
           leftDescription={formatPrice(price)}
         />
           )
@@ -37,4 +39,4 @@ const MenuStyled = styled.div`
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
   overflow-y: scroll;
 
-  `;
+  `
