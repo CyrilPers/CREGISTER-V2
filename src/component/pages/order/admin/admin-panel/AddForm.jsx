@@ -5,17 +5,9 @@ import AdminContext from '../../../../../context/AdminContext';
 export default function AddForm() {
 
     const {addProduct} = useContext(AdminContext)
-    const [title, setTitle] = useState("Nouveau produit")
+    const [title, setTitle] = useState("")
     const [imageSource, setImageSource] = useState("")
     const [price, setPrice] = useState(0)
-
-    
-    // const newProduct = {
-    //     id: new Date().getTime(),
-    //     title: "New product",
-    //     imageSource: " https://la-photo-de-mon-produit.png",
-    //     price: 2.5,
-    //   }
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -43,11 +35,11 @@ export default function AddForm() {
 
   return (
     <AddFormStyled  onSubmit={handleSubmit}>
-        <div className='image-preview'>Image Preview</div>
+        <div className='image-preview'>Aucune image</div>
         <div className='input-fields'>
             <input value={title} onChange={titleChange} type="text" placeholder='Nom' />
-            <input value={imageSource} onChange={imageChange} type="text" placeholder='Image URL' />
-            <input value={price} onChange={priceChange} type="text" placeholder='Prix' />
+            <input value={"imageSource"} onChange={imageChange} type="text" placeholder='Image URL' />
+            <input value={price ? price : ""} onChange={priceChange} type="text" placeholder='Prix' />
         </div>
         <button className='submit-button'>Submit button</button>
     </AddFormStyled>
