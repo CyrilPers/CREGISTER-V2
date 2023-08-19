@@ -2,34 +2,34 @@ import React, { useContext, useState } from 'react'
 import { styled } from 'styled-components';
 import AdminContext from '../../../../../context/AdminContext';
 
+const EMPTY_PRODUCT = {
+    id:"",
+    title: "",
+    imageSource: "",
+    price: 0,
+}
+
+
 export default function AddForm() {
 
     const {addProduct} = useContext(AdminContext)
-    const [title, setTitle] = useState("")
-    const [imageSource, setImageSource] = useState("")
-    const [price, setPrice] = useState(0)
+
+    const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        const newProduct = {
+        const newProductToAdd = {
             id: new Date().getTime(),
-            title: title,
-            imageSource: imageSource,
-            price: price, 
+            ...newProduct
         }
-        addProduct(newProduct)
+        addProduct(newProductToAdd)
+        setNewProduct(EMPTY_PRODUCT)
     }
 
-    const titleChange = (event) => {
-        setTitle(event.target.value)
-    }
-
-    const imageChange = (event) => {
-        setImageSource(event.target.value)
-    }
-
-    const priceChange = (event) => {
-        setPrice(event.target.value)
+    const handleChange = (event) => {
+        const newValue = event.target.value
+        const name = event.target.name
+        setNewProduct({ ...newProduct, [name] : newValue })  // Dynamic property name
     }
 
 
@@ -37,9 +37,9 @@ export default function AddForm() {
     <AddFormStyled  onSubmit={handleSubmit}>
         <div className='image-preview'>Aucune image</div>
         <div className='input-fields'>
-            <input value={title} onChange={titleChange} type="text" placeholder='Nom' />
-            <input value={"imageSource"} onChange={imageChange} type="text" placeholder='Image URL' />
-            <input value={price ? price : ""} onChange={priceChange} type="text" placeholder='Prix' />
+            <input name="title" value={newProduct.title} onChange={handleChange} type="text" placeholder='Nom' />
+            <input name="imageSource" value={newProduct.imageSource} onChange={handleChange} type="text" placeholder='Image URL' />
+            <input name="price" value={newProduct.price ? newProduct.price : ""} onChange={handleChange} type="text" placeholder='Prix' />
         </div>
         <button className='submit-button'>Submit button</button>
     </AddFormStyled>
