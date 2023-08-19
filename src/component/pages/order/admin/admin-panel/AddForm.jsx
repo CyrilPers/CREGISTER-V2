@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { styled } from 'styled-components';
 import AdminContext from '../../../../../context/AdminContext';
+import { FiCheck } from 'react-icons/fi'
 
 const EMPTY_PRODUCT = {
     id:"",
@@ -51,9 +52,14 @@ export default function AddForm() {
             <input name="imageSource" value={newProduct.imageSource} onChange={handleChange} type="text" placeholder="Lien URL d'une image" />
             <input name="price" value={newProduct.price ? newProduct.price : ""} onChange={handleChange} type="text" placeholder='Prix' />
         </div>
-        <div className='submit-button'>
-            <button>Submit button</button>
-            {isSubmitted && <span>Ajouté avec succés</span>}
+        <div className='submit'>
+            <button className='submit-button'>Submit button</button>
+            {isSubmitted && (
+            <div className='submit-message'>
+                <FiCheck />
+                <span>Ajouté avec succès !</span>
+            </div>
+            )}
         </div>
     </AddFormStyled>
   )
@@ -82,14 +88,18 @@ const AddFormStyled = styled.form`
     }
     .input-fields {
         grid-area: 1 / 2 / 4 / 5;
-
         display: grid;
     }
-    .submit-button {
-        grid-area: 4 / 2 / 5 / 5;
 
-        button{
-            width: 50%;
+    .submit {
+        grid-area: 4 / 2 / 5 / 5; 
+        display: flex; 
+        align-items: center;
+    
+        .submit-button {
+            width:50%        
+        }
+        submit-message {
         }
     }
 `;
