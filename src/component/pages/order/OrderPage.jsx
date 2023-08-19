@@ -28,7 +28,6 @@ export default function OrderPage() {
     currentTabSelected,
     setCurrentTabSelected,
     products,
-    setProducts,
     addProduct,
   }
 
