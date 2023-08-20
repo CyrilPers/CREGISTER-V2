@@ -20,6 +20,12 @@ export default function OrderPage() {
     setProducts(productsUpdated)
   }
 
+  const deleteProduct = (productId) => { 
+    const productsCopy = [...products]
+    const productsUpdated = productsCopy.filter((product) => product.id !== productId) // filter-in, garder tous sauf le produit à supprimer
+    setProducts(productsUpdated)
+   }
+
   const adminContextValue = {
     isModeAdmin,
     setIsModeAdmin,
@@ -29,6 +35,7 @@ export default function OrderPage() {
     setCurrentTabSelected,
     products,
     addProduct,
+    deleteProduct,
   }
 
   return (
