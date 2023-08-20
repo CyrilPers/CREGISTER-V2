@@ -15,16 +15,12 @@ export default function OrderPage() {
 
   
   const addProduct = (newProduct) => {
-    const productsCopy = [...products]
-    const productsUpdated = [newProduct, ...productsCopy]
-    setProducts(productsUpdated)
+    setProducts((prevProducts) => [newProduct, ...prevProducts]);
   }
-
-  const deleteProduct = (productId) => { 
-    const productsCopy = [...products]
-    const productsUpdated = productsCopy.filter((product) => product.id !== productId) // filter-in, garder tous sauf le produit à supprimer
-    setProducts(productsUpdated)
-   }
+  
+  const deleteProduct = (productId) => {
+    setProducts((prevProducts) => prevProducts.filter((product) => product.id !== productId));
+  }
 
   const adminContextValue = {
     isModeAdmin,
