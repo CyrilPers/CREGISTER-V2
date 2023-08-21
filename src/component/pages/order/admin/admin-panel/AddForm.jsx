@@ -3,12 +3,12 @@ import { styled } from 'styled-components';
 import AdminContext from '../../../../../context/AdminContext';
 import { FiCheck } from 'react-icons/fi'
 import { theme } from '../../../../../theme';
+import Button from '../../../../reusable-ui/Button';
+import ImagePreview from './ImagePreview';
 import TextInput from '../../../../reusable-ui/TextInput';
 import {FaHamburger} from 'react-icons/fa';
 import {BsFillCameraFill} from 'react-icons/bs';
 import {MdOutlineEuro} from 'react-icons/md';
-import Button from '../../../../reusable-ui/Button';
-
 
 
 
@@ -45,17 +45,11 @@ export default function AddForm() {
 
   return (
     <AddFormStyled  onSubmit={handleSubmit}>
-            <div className='image-preview' >
-                {newProduct.imageSource ? (
-                <img src={newProduct.imageSource} alt={newProduct.title} /> 
-                ) : (
-                <div className='empty-img'>Aucune image</div> 
-                )}
-            </div>       
-            <div className='input-fields'>
-            <TextInput name="title" value={newProduct.title} onChange={handleChange} type="text" placeholder='Nom du produit' Icon={<FaHamburger />} version="minimalist" />
-            <TextInput name="imageSource" value={newProduct.imageSource} onChange={handleChange} type="text" placeholder="Lien URL d'une image" Icon={<BsFillCameraFill />} version="minimalist" />
-            <TextInput name="price" value={newProduct.price ? newProduct.price : ""} onChange={handleChange} type="text" placeholder='Prix' Icon={<MdOutlineEuro />} version="minimalist" />
+    <ImagePreview imageSource={newProduct.imageSource} title={newProduct.title} handleChange={handleChange} />  
+        <div className='input-fields'>
+              <TextInput name="title" value={newProduct.title} onChange={handleChange} type="text" placeholder='Nom du produit' Icon={<FaHamburger />} version="minimalist" />
+              <TextInput name="imageSource" value={newProduct.imageSource} onChange={handleChange} type="text" placeholder="Lien URL d'une image" Icon={<BsFillCameraFill />} version="minimalist" />
+              <TextInput name="price" value={newProduct.price ? newProduct.price : ""} onChange={handleChange} type="text" placeholder='Prix' Icon={<MdOutlineEuro />} version="minimalist" />
         </div>
         <div className='submit'>
             <Button className='submit-button' label="Ajouter le produit" version="success" />           
@@ -78,33 +72,6 @@ const AddFormStyled = styled.form`
     row-gap: 20px;
     height: 100%;
     width: 70%;
-
-
-    .image-preview {
-        grid-area: 1 / 1 / 4 / 2;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        img{
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            object-position: center;
-        }
-
-        .empty-img {
-            height: 100%;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: 1px solid ${theme.colors.greyLight};
-            line-height: 1.5;
-            color: ${theme.colors.greySemiDark};
-            border-radius: ${theme.borderRadius.round};
-        }
-    }
 
     .input-fields {
         grid-area: 1 / 2 / 4 / 5;
