@@ -5,14 +5,8 @@ import Main from './Main'
 import Navbar from '../../navbar/Navbar'
 import AdminContext from "../../../context/AdminContext"
 import { fakeMenu } from '../../../fakeData/fakeMenu'
+import { EMPTY_PRODUCT } from './admin/admin-panel/AddForm'
 
-
-const EMPTY_PRODUCT = {
-  id:"",
-  title: "",
-  imageSource: "",
-  price: 0,
-}
 
 export default function OrderPage() {
 
