@@ -17,7 +17,7 @@ export default function Card({ title, imageSource, leftDescription, showDeleteBu
         <div className="description">
           <div className="left-description">{leftDescription}</div>
           <div className="right-description">
-            <Primary className="primary-button" label={"Ajouter"} />
+            <Primary className="add-button" label={"Ajouter"} />
           </div>
         </div>
       </div>
@@ -114,7 +114,7 @@ const CardStyled = styled.div`
         align-items: center;
         font-size: ${theme.fonts.size.P1};
 
-        .primary-button {
+        .add-button {
           font-size: ${theme.fonts.size.XS};
           cursor: pointer;
           padding: 12px;
