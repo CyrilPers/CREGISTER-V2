@@ -2,7 +2,7 @@ import React from 'react'
 import { css, styled } from 'styled-components';
 import { theme } from '../../theme';
 
-export default function TextInput({value, onChange, Icon, className, version = {version}, ...extraProps}) {
+export default function TextInput({value, onChange, Icon, className, version = "normal", ...extraProps}) {
   return (
     <TextInputStyled className={className} version={version} >
       <div className='icon'>{Icon && Icon}</div> 
@@ -47,11 +47,10 @@ const TextInputStyled = styled.div`
       color: ${theme.colors.greyMedium};
     }
   }
-  ${(props) => {
-    if (props.version === "normal") return extraNormalStyle
-    if (props.version === "minimalist") return extraMinimalistStyle
-  }}
+
+  ${({version}) => extraStyle[version]}
 `
+
 
 const extraNormalStyle = css`
   background-color: ${theme.colors.white};
@@ -73,11 +72,16 @@ const extraMinimalistStyle = css`
   color: ${theme.colors.greyBlue};
 
   input {
-    background: ${theme.colors.background_white}; ////+
+    background: ${theme.colors.background_white}; 
     color: ${theme.colors.dark};
 
     &:focus {
-      outline: 0; //// add outline
+      outline: 0; 
     }
   }
 `
+
+const extraStyle = {
+  normal: extraNormalStyle,
+  minimalist: extraMinimalistStyle,
+ }
