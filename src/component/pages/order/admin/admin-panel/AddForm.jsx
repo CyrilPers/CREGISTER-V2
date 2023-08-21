@@ -10,18 +10,12 @@ import {MdOutlineEuro} from 'react-icons/md';
 import Button from '../../../../reusable-ui/Button';
 
 
-const EMPTY_PRODUCT = {
-    id:"",
-    title: "",
-    imageSource: "",
-    price: 0,
-}
+
 
 
 export default function AddForm() {
 
-    const {addProduct} = useContext(AdminContext)
-    const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
+    const {addProduct, setNewProduct, newProduct} = useContext(AdminContext)
     const [isSubmitted, setIsSubmitted] = useState(false)
 
     const handleSubmit = (event) => {

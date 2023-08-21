@@ -6,13 +6,21 @@ import Navbar from '../../navbar/Navbar'
 import AdminContext from "../../../context/AdminContext"
 import { fakeMenu } from '../../../fakeData/fakeMenu'
 
+
+const EMPTY_PRODUCT = {
+  id:"",
+  title: "",
+  imageSource: "",
+  price: 0,
+}
+
 export default function OrderPage() {
 
   const [isModeAdmin, setIsModeAdmin] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [currentTabSelected, setCurrentTabSelected] = useState("add")
   const [products, setProducts] = useState(fakeMenu.SMALL)
-
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
   
   const resetProducts = () => {
     setProducts(fakeMenu.LARGE)
@@ -37,6 +45,8 @@ export default function OrderPage() {
     addProduct,
     deleteProduct,
     resetProducts,
+    newProduct,
+    setNewProduct,
   }
 
   return (
