@@ -7,7 +7,7 @@ import TextInput from '../../../../reusable-ui/TextInput';
 import {FaHamburger} from 'react-icons/fa';
 import {BsFillCameraFill} from 'react-icons/bs';
 import {MdOutlineEuro} from 'react-icons/md';
-import Primary from '../../../../reusable-ui/Primary';
+import Button from '../../../../reusable-ui/Button';
 
 
 const EMPTY_PRODUCT = {
@@ -64,7 +64,7 @@ export default function AddForm() {
             <TextInput name="price" value={newProduct.price ? newProduct.price : ""} onChange={handleChange} type="text" placeholder='Prix' Icon={<MdOutlineEuro />} version="minimalist" />
         </div>
         <div className='submit'>
-            <Primary className='submit-button' label="Ajouter le produit" version="success" />           
+            <Button className='submit-button' label="Ajouter le produit" version="success" />           
             {isSubmitted && (
             <div className='submit-message'>
                 <FiCheck />
