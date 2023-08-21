@@ -5,7 +5,7 @@ export default function PrimaryButton({ label, Icon, className }) {
   return (
     <PrimaryButtonStyled className={className}>
       <span>{label}</span>
-      {Icon && Icon}
+      <div className="icon">{Icon && Icon}</div>
     </PrimaryButtonStyled>
   )
 }
@@ -60,4 +60,12 @@ const PrimaryButtonStyled = styled.button`
       color: ${theme.colors.primary};
     }
   }
+
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+  }
+
 `

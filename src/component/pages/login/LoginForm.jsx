@@ -38,11 +38,11 @@ export default function LoginForm() {
       onChange={handleChange} 
       placeholder={"Entrez votre prénom"}
       required
-      Icon={<BsPersonCircle className="icon" />}
+      Icon={<BsPersonCircle />}
     />
     <PrimaryButton
       label={"Accéder à mon espace"}
-      Icon={<IoChevronForward className="icon"/>}
+      Icon={<IoChevronForward />}
     />
   </LoginFormStyled>
   )
@@ -72,13 +72,5 @@ const LoginFormStyled = styled.form`
     font-size: ${theme.fonts.size.P4};
     color: ${theme.colors.white};
 
-  }
-
-  .icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: ${theme.fonts.size.SM};
-  }
-  
+  }  
 `;
