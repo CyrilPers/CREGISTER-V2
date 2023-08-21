@@ -4,6 +4,8 @@ import { theme } from '../../../theme';
 import Card from '../../reusable-ui/Card.jsx';
 import { formatPrice } from '../../../utils/maths';
 import AdminContext from '../../../context/AdminContext';
+import EmptyMenuAdmin from './EmptyMenuAdmin';
+import EmptyMenuClient from './EmptyMenuClient';
 
 const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
 
@@ -11,14 +13,10 @@ export default function Menu() {
 
   const {products, isModeAdmin, deleteProduct, resetProducts} = useContext(AdminContext)
   
-  if (products.length === 0) 
-    
-  return (
-        <div className='no-prodducts'>
-        <span>Pas de produit</span>
-        <button onClick={resetProducts}>Reset Menu</button>
-        </div>
-        )
+  if (products.length === 0) {
+    if (!isModeAdmin) return <EmptyMenuClient /> 
+    return <EmptyMenuAdmin onClick={resetProducts} />
+  }
 
   return (
 
