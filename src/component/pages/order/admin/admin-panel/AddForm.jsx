@@ -54,6 +54,7 @@ export default function AddForm() {
             {inputsAdd.map((input) => 
             <TextInput 
             {...input}
+            key={input.id}
             onChange={handleChange}
             version="minimalist"
             />
