@@ -1,33 +1,35 @@
 import React from 'react'
-import { styled } from 'styled-components';
+import { css, styled } from 'styled-components';
 import { theme } from '../../theme';
 
-export default function TextInput({value, onChange, Icon, className, ...extraProps}) {
+export default function TextInput({value, onChange, Icon, className, version = "default", ...extraProps}) {
   return (
-    <InputStyled>
-      {Icon} 
+    <TextInputStyled className={className} version={version} >
+      <div className='icon'>{Icon && Icon}</div> 
       <input
         type="text"
         value={value}
         onChange={onChange}
         {...extraProps}
       />
-    </InputStyled>
+    </TextInputStyled>
   )
 };
 
-const InputStyled = styled.div`
+const TextInputStyled = styled.div`
 
-    background-color: ${theme.colors.white};
     border-radius: ${theme.borderRadius.round};
     display: flex;
     align-items: center;
     padding: 18px 24px;
-    margin: 18px 0;
+    
 
     .icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       font-size: 15px;
-      margin-right: 8px; 
+      margin: 0 8px 0 10px; 
       min-width: 1em;  
       color: ${theme.colors.greyMedium}
     }
@@ -45,6 +47,40 @@ const InputStyled = styled.div`
       color: ${theme.colors.greyMedium};
     }
   }
-`;
 
+  ${({version}) => extraStyle[version]}
+`
 
+const extraNormalStyle = css`
+  background-color: ${theme.colors.white};
+  padding: 18px 28px;
+  color: ${theme.colors.greySemiDark};
+
+  input {
+    color: ${theme.colors.dark};
+
+    &::placeholder {
+      background: ${theme.colors.white};
+    }
+  }
+`
+
+const extraMinimalistStyle = css`
+  background-color: ${theme.colors.background_white};
+  padding: 8px 16px;
+  color: ${theme.colors.greyBlue};
+
+  input {
+    background: ${theme.colors.background_white}; 
+    color: ${theme.colors.dark};
+
+    &:focus {
+      outline: 0; 
+    }
+  }
+`
+
+const extraStyle = {
+  default: extraNormalStyle,
+  minimalist: extraMinimalistStyle,
+ }

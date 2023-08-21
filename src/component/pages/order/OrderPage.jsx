@@ -4,13 +4,29 @@ import { theme } from '../../../theme'
 import Main from './Main'
 import Navbar from '../../navbar/Navbar'
 import AdminContext from "../../../context/AdminContext"
+import { fakeMenu } from '../../../fakeData/fakeMenu'
+import { EMPTY_PRODUCT } from './admin/admin-panel/AddForm'
+
 
 export default function OrderPage() {
 
   const [isModeAdmin, setIsModeAdmin] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [currentTabSelected, setCurrentTabSelected] = useState("add")
+  const [products, setProducts] = useState(fakeMenu.SMALL)
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
+  
+  const resetProducts = () => {
+    setProducts(fakeMenu.LARGE)
+  }
 
+  const addProduct = (newProduct) => {
+    setProducts((prevProducts) => [newProduct, ...prevProducts]);
+  }
+  
+  const deleteProduct = (productId) => {
+    setProducts((prevProducts) => prevProducts.filter((product) => product.id !== productId));
+  }
 
   const adminContextValue = {
     isModeAdmin,
@@ -19,6 +35,12 @@ export default function OrderPage() {
     setIsCollapsed,
     currentTabSelected,
     setCurrentTabSelected,
+    products,
+    addProduct,
+    deleteProduct,
+    resetProducts,
+    newProduct,
+    setNewProduct,
   }
 
   return (

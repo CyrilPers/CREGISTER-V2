@@ -1,24 +1,35 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import { styled } from 'styled-components';
-import { fakeMenu2 } from '../../../fakeData/fakeMenu';
 import { theme } from '../../../theme';
 import Card from '../../reusable-ui/Card.jsx';
 import { formatPrice } from '../../../utils/maths';
+import AdminContext from '../../../context/AdminContext';
+import EmptyMenuAdmin from './EmptyMenuAdmin';
+import EmptyMenuClient from './EmptyMenuClient';
 
+const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
 
 export default function Menu() {
 
-  const [products, setProducts] = useState(fakeMenu2)
+  const {products, isModeAdmin, deleteProduct, resetProducts} = useContext(AdminContext)
+  
+  if (products.length === 0) {
+    if (!isModeAdmin) return <EmptyMenuClient /> 
+    return <EmptyMenuAdmin onClick={resetProducts} />
+  }
 
   return (
-    <MenuStyled className='menu'>
+
+      <MenuStyled className='menu'>
       {products.map(({id, title, imageSource, price}) => {
         return (
           <Card 
           key={id}
           title={title}
-          imageSource={imageSource}
+          imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT }
           leftDescription={formatPrice(price)}
+          showDeleteButton={isModeAdmin}
+          onDelete={() => deleteProduct(id)}
         />
           )
           })}
@@ -36,4 +47,4 @@ const MenuStyled = styled.div`
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
   overflow-y: scroll;
 
-  `;
+  `
