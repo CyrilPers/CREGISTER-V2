@@ -14,5 +14,5 @@ export default createContext({
     setProducts: () => {},
     addProduct: () => {},
     deleteProduct: () => {},
-
+    resetProducts: () => {},
 });

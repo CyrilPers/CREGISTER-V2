@@ -9,7 +9,16 @@ const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
 
 export default function Menu() {
 
-  const {products, isModeAdmin, deleteProduct} = useContext(AdminContext)
+  const {products, isModeAdmin, deleteProduct, resetProducts} = useContext(AdminContext)
+  
+  if (products.length === 0) 
+    
+  return (
+        <div className='no-prodducts'>
+        <span>Pas de produit</span>
+        <button onClick={resetProducts}>Reset Menu</button>
+        </div>
+        )
 
   return (
 

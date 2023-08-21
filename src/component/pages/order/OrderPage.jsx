@@ -11,9 +11,13 @@ export default function OrderPage() {
   const [isModeAdmin, setIsModeAdmin] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [currentTabSelected, setCurrentTabSelected] = useState("add")
-  const [products, setProducts] = useState(fakeMenu.MEDIUM)
+  const [products, setProducts] = useState(fakeMenu.SMALL)
 
   
+  const resetProducts = () => {
+    setProducts(fakeMenu.LARGE)
+  }
+
   const addProduct = (newProduct) => {
     setProducts((prevProducts) => [newProduct, ...prevProducts]);
   }
@@ -32,6 +36,7 @@ export default function OrderPage() {
     products,
     addProduct,
     deleteProduct,
+    resetProducts,
   }
 
   return (
