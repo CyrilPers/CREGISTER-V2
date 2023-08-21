@@ -1,24 +1,29 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { theme } from "../../theme"
 
-export default function PrimaryButton({ label, Icon, className }) {
+export default function Button({ label, Icon, className, version="default", onClick }) {
   return (
-    <PrimaryButtonStyled className={className}>
+    <ButtonStyled className={className} version={version} onClick={onClick}>
       <span>{label}</span>
       <div className="icon">{Icon && Icon}</div>
-    </PrimaryButtonStyled>
+    </ButtonStyled>
   )
 }
 
-const PrimaryButtonStyled = styled.button`
+const ButtonStyled = styled.button`
+
+  ${({version}) => extraStyle[version]}
+`
+
+ const extraPrimaryStyle = css`
   width: 100%;
   border: 1px solid red;
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  position: relative; //is used in case you want to create interactive icons where an icon replaces the text label.
-  white-space: nowrap; //prevents the text label from wrapping to the next line.
-  text-decoration: none; //removes the text decoration in case you’re applying the .btn class to a link.
+  position: relative; 
+  white-space: nowrap; 
+  text-decoration: none;
   line-height: 1;
 
   padding: 18px 24px;
@@ -29,13 +34,13 @@ const PrimaryButtonStyled = styled.button`
   background-color: #ff9f1b;
   border: 1px solid #ff9f1b;
 
-  :hover {
+  &:hover {
     color: ${theme.colors.primary};
     background-color: ${theme.colors.white};
     border: 1px solid ${theme.colors.primary};
     transition: all 200ms ease-out;
   }
-  :active {
+  &:active {
     background-color: ${theme.colors.primary};
     color: ${theme.colors.white};
   }
@@ -55,7 +60,7 @@ const PrimaryButtonStyled = styled.button`
       background-color: ${theme.colors.primary};
       border: 1px solid ${theme.colors.white};
     }
-    :active {
+    &:active {
       background-color: ${theme.colors.white};
       color: ${theme.colors.primary};
     }
@@ -65,7 +70,33 @@ const PrimaryButtonStyled = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 10px;
   }
+ `
 
+
+const extraSuccessStyle = css`
+  cursor: pointer;
+  color: ${theme.colors.white};
+  background: ${theme.colors.success};
+  border: 1px solid ${theme.colors.success};
+  border-radius: ${theme.borderRadius.round};
+  height: 35px;
+  padding: 0 1.5em;
+  font-weight: ${theme.fonts.weights.semiBold};
+  &:hover {
+    background: ${theme.colors.white};
+    color: ${theme.colors.success};
+    border: 1px solid ${theme.colors.success};
+  }
+  &:active {
+    color: ${theme.colors.white};
+    background: ${theme.colors.success};
+    border: 1px solid ${theme.colors.success};
+  }
 `
+
+
+const extraStyle = {
+  default: extraPrimaryStyle,
+  success: extraSuccessStyle,
+}
