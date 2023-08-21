@@ -4,10 +4,8 @@ import AdminContext from '../../../../../context/AdminContext';
 import Button from '../../../../reusable-ui/Button';
 import ImagePreview from './ImagePreview';
 import TextInput from '../../../../reusable-ui/TextInput';
-import {FaHamburger} from 'react-icons/fa';
-import {BsFillCameraFill} from 'react-icons/bs';
-import {MdOutlineEuro} from 'react-icons/md';
 import SubmitMessage from './SubmitMessage';
+import { getInputsAddConfig } from './inputsAddConfig';
 
 export const EMPTY_PRODUCT = {
     id: "",
@@ -43,18 +41,24 @@ export default function AddForm() {
     const handleChange = (event) => {
         const newValue = event.target.value
         const name = event.target.name
-        setNewProduct({ ...newProduct, [name] : newValue })  // Dynamic property name
+        setNewProduct({ ...newProduct, [name] : newValue })  
     }
+
+    const inputsAdd = getInputsAddConfig(newProduct)
 
 
   return (
     <AddFormStyled  onSubmit={handleSubmit}>
-    <ImagePreview imageSource={newProduct.imageSource} title={newProduct.title} handleChange={handleChange} />  
+        <ImagePreview imageSource={newProduct.imageSource} title={newProduct.title} handleChange={handleChange} />  
         <div className='input-fields'>
-              <TextInput name="title" value={newProduct.title} onChange={handleChange} type="text" placeholder='Nom du produit' Icon={<FaHamburger />} version="minimalist" />
-              <TextInput name="imageSource" value={newProduct.imageSource} onChange={handleChange} type="text" placeholder="Lien URL d'une image" Icon={<BsFillCameraFill />} version="minimalist" />
-              <TextInput name="price" value={newProduct.price ? newProduct.price : ""} onChange={handleChange} type="text" placeholder='Prix' Icon={<MdOutlineEuro />} version="minimalist" />
-        </div>
+            {inputsAdd.map((input) => 
+            <TextInput 
+            {...input}
+            onChange={handleChange}
+            version="minimalist"
+            />
+            )}
+        </div> 
         <div className='submit'>
             <Button className='submit-button' label="Ajouter le produit" version="success" />           
             {isSubmitted && <SubmitMessage /> }
