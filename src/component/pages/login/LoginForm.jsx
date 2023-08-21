@@ -39,6 +39,7 @@ export default function LoginForm() {
       placeholder={"Entrez votre prénom"}
       required
       Icon={<BsPersonCircle />}
+      className="input-login"
     />
     <PrimaryButton
       label={"Accéder à mon espace"}
@@ -73,4 +74,8 @@ const LoginFormStyled = styled.form`
     color: ${theme.colors.white};
 
   }  
+
+  .input-login {
+    margin: 18px 0;
+  }
 `;
