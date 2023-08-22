@@ -5,7 +5,7 @@ import Button from '../../../../reusable-ui/Button';
 import ImagePreview from './ImagePreview';
 import TextInput from '../../../../reusable-ui/TextInput';
 import SubmitMessage from './SubmitMessage';
-import { getInputsAddConfig } from './inputsAddConfig';
+import { getInputsConfig } from './inputsConfig';
 import { EMPTY_PRODUCT } from '../../../../../enum/product.jsx';
 
 export default function AddForm() {
@@ -32,12 +32,11 @@ export default function AddForm() {
 
 
     const handleChange = (event) => {
-        const newValue = event.target.value
-        const name = event.target.name
-        setNewProduct({ ...newProduct, [name] : newValue })  
+        const{name, value} = event.target
+        setNewProduct({ ...newProduct, [name] : value })  
     }
 
-    const inputsAdd = getInputsAddConfig(newProduct)
+    const inputsAdd = getInputsConfig(newProduct)
 
 
   return (

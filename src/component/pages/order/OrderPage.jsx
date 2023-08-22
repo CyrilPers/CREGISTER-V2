@@ -22,11 +22,22 @@ export default function OrderPage() {
   }
 
   const addProduct = (newProduct) => {
-    setProducts((prevProducts) => [newProduct, ...prevProducts]);
+    const productsCopy = JSON.parse(JSON.stringify(products))
+    const productsUpdated = [newProduct, ...productsCopy]
+    setProducts(productsUpdated)
   }
   
   const deleteProduct = (productId) => {
-    setProducts((prevProducts) => prevProducts.filter((product) => product.id !== productId));
+    const productsCopy = JSON.parse(JSON.stringify(products))
+    const productsUpdated = productsCopy.filter((product) => product.id !== productId) 
+    setProducts(productsUpdated)
+  }
+
+  const editProduct = (productBeingEdited) => {
+    const productsCopy = JSON.parse(JSON.stringify(products))
+    const indexOfProducToEdit = products.findIndex((product) => product.id === productBeingEdited.id)
+    productsCopy[indexOfProducToEdit] = productBeingEdited
+    setProducts(productsCopy)
   }
 
   const adminContextValue = {
@@ -44,6 +55,7 @@ export default function OrderPage() {
     setNewProduct,
     selectedProduct,
     setSelectedProduct,
+    editProduct,
   }
 
   return (

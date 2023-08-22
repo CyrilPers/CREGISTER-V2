@@ -2,7 +2,7 @@ import {FaHamburger} from 'react-icons/fa';
 import {BsFillCameraFill} from 'react-icons/bs';
 import {MdOutlineEuro} from 'react-icons/md';
 
-export const getInputsAddConfig = (newProduct) =>  [
+export const getInputsConfig = (newProduct) =>  [
 {
     id : "0",
     name: "title", 
