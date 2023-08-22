@@ -1,17 +1,14 @@
-import React, { useContext, useState } from 'react'
+import { useContext } from 'react'
 import { styled } from 'styled-components';
 import AdminContext from '../../../../../context/AdminContext';
 import ImagePreview from './ImagePreview';
 import { getInputsConfig } from './inputsConfig';
-import { EMPTY_PRODUCT } from '../../../../../enum/product';
 import TextInput from '../../../../reusable-ui/TextInput';
 
 
 export default function EditForm() {
 
-  const {selectedProduct, editProduct} = useContext(AdminContext)
-  const [productBeingEdited, setProductBeingEdited] = useState(EMPTY_PRODUCT)
-
+  const {selectedProduct, setSelectedProduct, editProduct} = useContext(AdminContext)
   const inputsEdit = getInputsConfig(selectedProduct)
 
 
@@ -21,8 +18,8 @@ export default function EditForm() {
       ...selectedProduct, 
       [name] : value 
     }
-    setProductBeingEdited(productBeingEdited)
-    editProduct(productBeingEdited, event)
+    setSelectedProduct(productBeingEdited) // update formulaire
+    editProduct(productBeingEdited) // update menu
   }
 
   

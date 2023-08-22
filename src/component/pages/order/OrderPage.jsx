@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { styled } from 'styled-components'
 import { theme } from '../../../theme'
 import Main from './Main'
@@ -35,7 +35,7 @@ export default function OrderPage() {
 
   const editProduct = (productBeingEdited) => {
     const productsCopy = JSON.parse(JSON.stringify(products))
-    const indexOfProducToEdit = products.findIndex((product) => product.id === productBeingEdited.id)
+    const indexOfProducToEdit = products.indexOf(selectedProduct)
     productsCopy[indexOfProducToEdit] = productBeingEdited
     setProducts(productsCopy)
   }
