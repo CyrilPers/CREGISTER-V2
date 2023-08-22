@@ -11,11 +11,16 @@ const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
 
 export default function Menu() {
 
-  const {products, isModeAdmin, deleteProduct, resetProducts} = useContext(AdminContext)
+  const {products, isModeAdmin, deleteProduct, resetProducts, setSelectedProduct} = useContext(AdminContext)
   
   if (products.length === 0) {
     if (!isModeAdmin) return <EmptyMenuClient /> 
     return <EmptyMenuAdmin onClick={resetProducts} />
+  }
+
+  const selectProduct = (productIdSelected) => { 
+    const selectedProduct = products.find((product) => product.id === productIdSelected)
+    setSelectedProduct(selectedProduct)
   }
 
   return (
@@ -30,6 +35,7 @@ export default function Menu() {
           leftDescription={formatPrice(price)}
           showDeleteButton={isModeAdmin}
           onDelete={() => deleteProduct(id)}
+          onClick={() => selectProduct(id)}
         />
           )
           })}

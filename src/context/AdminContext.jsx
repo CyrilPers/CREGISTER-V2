@@ -11,11 +11,17 @@ export default createContext({
     setCurrentTabSelected: () => {},
 
     products: [],
+    productSelected: [],
+    setProductSelect: () => {},
+
     setProducts: () => {},
     addProduct: () => {},
     deleteProduct: () => {},
     resetProducts: () => {},
+
+    selectedProduct: {},
+    setSelectedProduct: () => {},
     
-    newProduct: [],
-    setNewProduct: () => {},
+    newProduct: {},
+    setNewProduct: () => {},    
 });

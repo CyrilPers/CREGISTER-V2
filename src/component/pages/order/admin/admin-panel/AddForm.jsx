@@ -6,14 +6,7 @@ import ImagePreview from './ImagePreview';
 import TextInput from '../../../../reusable-ui/TextInput';
 import SubmitMessage from './SubmitMessage';
 import { getInputsAddConfig } from './inputsAddConfig';
-
-export const EMPTY_PRODUCT = {
-    id: "",
-    title: "",
-    imageSource: "",
-    price: 0,
-  }
-  
+import { EMPTY_PRODUCT } from '../../../../../enum/product.jsx';
 
 export default function AddForm() {
 

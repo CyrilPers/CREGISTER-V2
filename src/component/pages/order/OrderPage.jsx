@@ -5,7 +5,7 @@ import Main from './Main'
 import Navbar from '../../navbar/Navbar'
 import AdminContext from "../../../context/AdminContext"
 import { fakeMenu } from '../../../fakeData/fakeMenu'
-import { EMPTY_PRODUCT } from './admin/admin-panel/AddForm'
+import { EMPTY_PRODUCT } from '../../../enum/product.jsx'
 
 
 export default function OrderPage() {
@@ -15,7 +15,8 @@ export default function OrderPage() {
   const [currentTabSelected, setCurrentTabSelected] = useState("add")
   const [products, setProducts] = useState(fakeMenu.SMALL)
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
-  
+  const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT)
+    
   const resetProducts = () => {
     setProducts(fakeMenu.LARGE)
   }
@@ -41,6 +42,8 @@ export default function OrderPage() {
     resetProducts,
     newProduct,
     setNewProduct,
+    selectedProduct,
+    setSelectedProduct,
   }
 
   return (
