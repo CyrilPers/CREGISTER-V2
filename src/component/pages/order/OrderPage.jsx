@@ -6,6 +6,7 @@ import Navbar from '../../navbar/Navbar'
 import AdminContext from "../../../context/AdminContext"
 import { fakeMenu } from '../../../fakeData/fakeMenu'
 import { EMPTY_PRODUCT } from '../../../enum/product.jsx'
+import { deepClone } from '../../../utils/arrays'
 
 
 export default function OrderPage() {
@@ -22,19 +23,19 @@ export default function OrderPage() {
   }
 
   const addProduct = (newProduct) => {
-    const productsCopy = JSON.parse(JSON.stringify(products))
+    const productsCopy = deepClone(products)
     const productsUpdated = [newProduct, ...productsCopy]
     setProducts(productsUpdated)
   }
   
   const deleteProduct = (productId) => {
-    const productsCopy = JSON.parse(JSON.stringify(products))
+    const productsCopy = deepClone(products)
     const productsUpdated = productsCopy.filter((product) => product.id !== productId) 
     setProducts(productsUpdated)
   }
 
   const editProduct = (productBeingEdited) => {
-    const productsCopy = JSON.parse(JSON.stringify(products))
+    const productsCopy = deepClone(products)
     const indexOfProducToEdit = products.indexOf(selectedProduct)
     productsCopy[indexOfProducToEdit] = productBeingEdited
     setProducts(productsCopy)
