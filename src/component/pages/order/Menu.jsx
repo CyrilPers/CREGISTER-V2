@@ -19,8 +19,8 @@ export default function Menu() {
   }
 
   const selectProduct = (productIdSelected) => { 
-    const selectedProduct = products.find((product) => product.id === productIdSelected)
-    setSelectedProduct(selectedProduct)
+    const productClickedOn = products.find((product) => product.id === productIdSelected)
+    setSelectedProduct(productClickedOn)
   }
 
   return (
