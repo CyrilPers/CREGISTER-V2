@@ -11,10 +11,11 @@ export default function Card({
   onDelete, 
   onClick,
   isHoverable,
+  isSelected,
 }) {
   return (
-    <CardStyled className="product" onClick={onClick} isHoverable={isHoverable}>
-      <div className="card">
+    <CardStyled className="product" onClick={onClick} isHoverable={isHoverable} isSelected={isSelected}>
+      <div className="card" style={isSelected ? {background: "orange"} : {}}>
         {showDeleteButton && <button className="delete-button" aria-label="delete-button" onClick={onDelete}>
           <TiDelete className="delete-icon"/>
         </button>}
