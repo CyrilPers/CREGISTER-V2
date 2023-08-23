@@ -24,5 +24,7 @@ export default createContext({
     setSelectedProduct: () => {},
     
     newProduct: {},
-    setNewProduct: () => {},    
+    setNewProduct: () => {}, 
+    
+    isHoverable: false,
 });
