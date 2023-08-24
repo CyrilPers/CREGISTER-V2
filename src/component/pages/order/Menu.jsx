@@ -19,7 +19,8 @@ export default function Menu() {
     setSelectedProduct, 
     selectedProduct, 
     setIsCollapsed, 
-    setCurrentTabSelected
+    setCurrentTabSelected,
+    titleEditRef,
   } = useContext(AdminContext)
   
   if (products.length === 0) {
@@ -27,12 +28,13 @@ export default function Menu() {
     return <EmptyMenuAdmin onClick={resetProducts} />
   }
 
-  const selectProduct = (productIdSelected) => { 
+  const selectProduct = async(productIdSelected) => { 
     if(!isModeAdmin) return
-    setIsCollapsed(false)
-    setCurrentTabSelected("edit")
+    await setIsCollapsed(false)
+    await setCurrentTabSelected("edit")
     const productClickedOn = products.find((product) => product.id === productIdSelected)
-    setSelectedProduct(productClickedOn)
+    await setSelectedProduct(productClickedOn)
+    titleEditRef.current.focus()
   }
 
   const checkIfProductIsClicked = (idProductInMenu, idProductClicked) => {
@@ -43,7 +45,7 @@ export default function Menu() {
     event.stopPropagation()
     deleteProduct(idProductToDelete)
     idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT)
-    titleEditRef.current.focus()
+
   }
 
   return (

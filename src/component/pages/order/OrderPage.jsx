@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { styled } from 'styled-components'
 import { theme } from '../../../theme'
 import Main from './Main'
@@ -17,7 +17,10 @@ export default function OrderPage() {
   const [products, setProducts] = useState(fakeMenu.SMALL)
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
   const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT)
-    
+  const titleEditRef = useRef()
+  
+  
+
   const resetProducts = () => {
     setProducts(fakeMenu.LARGE)
   }
@@ -57,6 +60,7 @@ export default function OrderPage() {
     selectedProduct,
     setSelectedProduct,
     editProduct,
+    titleEditRef,
   }
 
   return (

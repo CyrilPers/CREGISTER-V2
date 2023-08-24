@@ -2,19 +2,27 @@ import React from 'react'
 import { css, styled } from 'styled-components';
 import { theme } from '../../theme';
 
-export default function TextInput({value, onChange, Icon, className, version = "default", ...extraProps}) {
+const TextInput = React.forwardRef(
+  ({ onChange,
+  Icon, 
+  className, 
+  version = "default",
+  ...extraProps }, ref) => {
   return (
     <TextInputStyled className={className} version={version} >
       <div className='icon'>{Icon && Icon}</div> 
       <input
+        ref={ref}
         type="text"
-        value={value}
         onChange={onChange}
         {...extraProps}
       />
     </TextInputStyled>
-  )
-};
+    )
+  }
+)
+
+export default TextInput
 
 const TextInputStyled = styled.div`
 
