@@ -4,7 +4,7 @@ import Tab from '../../../reusable-ui/Tab';
 import { theme } from '../../../../theme';
 import {FiChevronDown, FiChevronUp} from 'react-icons/fi'
 import AdminContext from '../../../../context/AdminContext';
-import { tabsConfig } from './tabsConfig';
+import { getTabsConfig } from './getTabsConfig';
 
 
 export default function AdminTabs() {
@@ -22,7 +22,7 @@ export default function AdminTabs() {
     setCurrentTabSelected(tabSelected)
   }
 
-  const tabs = tabsConfig
+  const tabs = getTabsConfig()
 
   return (
     <AdminTabsStyled>

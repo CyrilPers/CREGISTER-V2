@@ -7,7 +7,7 @@ export default createContext({
     isCollapsed: false,
     setIsCollapsed: () => {},
  
-    currentTabSelected: true,
+    currentTabSelected: false,
     setCurrentTabSelected: () => {},
 
     products: [],
