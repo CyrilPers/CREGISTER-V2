@@ -4,6 +4,7 @@ import AdminContext from '../../../../../context/AdminContext';
 import ImagePreview from './ImagePreview';
 import { getInputsConfig } from './inputsConfig';
 import TextInput from '../../../../reusable-ui/TextInput';
+import { theme } from '../../../../../theme';
 
 
 export default function EditForm() {
@@ -37,7 +38,12 @@ export default function EditForm() {
             ref={input.name === "title" ? titleEditRef : null}
             />
             )}
-        </div> 
+        </div>
+        <div className='submit'> 
+        <span className='sentence'> Cliquer sur un produit pour le modifier{" "}  
+        <span className='live-update'>en temps réél</span>
+        </span>
+        </div>
     </EditFormStyled>
   )
 }
@@ -51,22 +57,27 @@ const EditFormStyled = styled.div`
     height: 100%;
     width: 70%;
 
-    .input-fields {
-        grid-area: 1 / 2 / 4 / 5;
-        display: grid;
-        row-gap: 8px;
-    }
+  .input-fields {
+      grid-area: 1 / 2 / 4 / 5;
+      display: grid;
+      row-gap: 8px;
+  }
 
-    .submit {
-        grid-area: 4 / 2 / 5 / 5; 
-        display: flex; 
-        align-items: center;
-        position: relative;
-        top: 3px;
+  .submit {
+    grid-area: 4 / 2 / 5 / 5; 
+    display: flex; 
+    align-items: center;
+    position: relative;
+    top: 3px;
+
+    .sentence {
+      color : ${theme.colors.primary};
+      font-size: ${theme.fonts.size.SM};
     
-        .submit-button {
-            height: 100%;
-        }
+      .live-update {
+          text-decoration: underline;
+      }  
     }
+  }
 
 `;
