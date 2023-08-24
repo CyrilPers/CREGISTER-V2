@@ -11,7 +11,16 @@ const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
 
 export default function Menu() {
 
-  const {products, isModeAdmin, deleteProduct, resetProducts, setSelectedProduct, selectedProduct} = useContext(AdminContext)
+  const {
+    products, 
+    isModeAdmin, 
+    deleteProduct, 
+    resetProducts, 
+    setSelectedProduct, 
+    selectedProduct, 
+    setIsCollapsed, 
+    setCurrentTabSelected
+  } = useContext(AdminContext)
   
   if (products.length === 0) {
     if (!isModeAdmin) return <EmptyMenuClient /> 
@@ -20,6 +29,8 @@ export default function Menu() {
 
   const selectProduct = (productIdSelected) => { 
     if(!isModeAdmin) return
+    setIsCollapsed(false)
+    setCurrentTabSelected("edit")
     const productClickedOn = products.find((product) => product.id === productIdSelected)
     setSelectedProduct(productClickedOn)
   }
