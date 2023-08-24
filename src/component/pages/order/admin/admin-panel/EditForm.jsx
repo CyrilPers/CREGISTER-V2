@@ -1,16 +1,13 @@
 import { useContext } from 'react'
 import { styled } from 'styled-components';
 import AdminContext from '../../../../../context/AdminContext';
-import ImagePreview from './ImagePreview';
-import { getInputsConfig } from './inputsConfig';
-import TextInput from '../../../../reusable-ui/TextInput';
 import EditInfoMessage from './EditInfoMessage.jsx';
+import Form from './Form';
 
 
-export default function EditForm() {
+export default function EditForm(inputTexts, ) {
 
   const {selectedProduct, setSelectedProduct, editProduct, titleEditRef} = useContext(AdminContext)
-  const inputsEdit = getInputsConfig(selectedProduct)
 
 
 
@@ -26,23 +23,13 @@ export default function EditForm() {
 
   
   return (
-    <EditFormStyled>
-        <ImagePreview imageSource={selectedProduct.imageSource} title={selectedProduct.title} handleChange={handleChange} />  
-        <div className='input-fields'>
-            {inputsEdit.map((input) => 
-            <TextInput 
-            {...input}
-            key={input.id}
-            onChange={handleChange}
-            version="minimalist"
-            ref={input.name === "title" ? titleEditRef : null}
-            />
-            )}
-        </div>
-        <div className='submit'> 
-          <EditInfoMessage />
-        </div>
-    </EditFormStyled>
+    <Form 
+    inputTexts={inputTexts}  
+    product={selectedProduct}
+    onChange={handleChange}
+    ref={titleEditRef}
+    
+    />
   )
 }
 

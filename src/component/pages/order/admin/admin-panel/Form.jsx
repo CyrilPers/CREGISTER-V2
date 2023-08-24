@@ -7,7 +7,7 @@ import SubmitMessage from './SubmitMessage';
 import { getInputsConfig } from './inputsConfig';
 
 
-export default function Form({onSubmit, onChange, product, isSubmitted}) {
+const Form = React.forwardRef(({onSubmit, onChange, product, isSubmitted}, ref) => {
 
     const inputTexts = getInputsConfig(product)
 
@@ -21,16 +21,20 @@ export default function Form({onSubmit, onChange, product, isSubmitted}) {
             key={input.id}
             onChange={onChange}
             version="minimalist"
+            ref={ref && input.name === "title" ? ref : null}
             />
             )}
         </div> 
+        {onSubmit && (
         <div className='submit'>
             <Button className='submit-button' label="Ajouter le produit" version="success" />           
             {isSubmitted && <SubmitMessage /> }
-        </div>
+        </div>)}
     </FormStyled>
   )
-}
+})
+
+export default Form
 
 const FormStyled = styled.form`
 display: grid;
