@@ -19,12 +19,20 @@ export default function Menu() {
   }
 
   const selectProduct = (productIdSelected) => { 
+    if(!isModeAdmin) return
     const productClickedOn = products.find((product) => product.id === productIdSelected)
     setSelectedProduct(productClickedOn)
   }
 
   const checkIfProductIsClicked = (idProductInMenu, idProductClicked) => {
     return idProductInMenu === idProductClicked
+  }
+
+  const handleCardDelete = (event, idProductToDelete) => {
+    event.stopPropagation()
+    deleteProduct(idProductToDelete)
+    idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT)
+    titleEditRef.current.focus()
   }
 
   return (
@@ -38,7 +46,7 @@ export default function Menu() {
           imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT }
           leftDescription={formatPrice(price)}
           showDeleteButton={isModeAdmin}
-          onDelete={() => deleteProduct(id)}
+          onDelete={(event) => handleCardDelete(event, id)}
           onClick={() => selectProduct(id)}
           isHoverable={isModeAdmin}
           isSelected={checkIfProductIsClicked(id, selectedProduct.id)}
