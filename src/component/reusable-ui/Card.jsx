@@ -13,9 +13,15 @@ export default function Card({
   isHoverable,
   isSelected,
 }) {
+
   return (
-    <CardStyled className="product" onClick={onClick} isHoverable={isHoverable} isSelected={isSelected}>
-      <div className="card" style={isSelected ? {background: "orange"} : {}}>
+    <CardStyled
+      className="produit"
+      onClick={onClick}
+      $isHoverable={isHoverable}
+      $isSelected={isSelected}
+    >
+      <div className="card">
         {showDeleteButton && <button className="delete-button" aria-label="delete-button" onClick={onDelete}>
           <TiDelete className="delete-icon"/>
         </button>}
@@ -37,7 +43,7 @@ export default function Card({
 }
 
 const CardStyled = styled.div`
-  ${({isHoverable}) => isHoverable && hoverableStyle}
+  ${({ $isHoverable }) => $isHoverable && hoverableStyle}
   border-radius: ${theme.borderRadius.extraRound};
   height: 330px;
   
@@ -54,91 +60,92 @@ const CardStyled = styled.div`
   border-radius: ${theme.borderRadius.extraRound};
   position: relative;
 
-  .delete-button {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    color: ${theme.colors.primary};
-    padding: 0;
-    border: none;
-    background: none;
+    .delete-button {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      color: ${theme.colors.primary};
+      padding: 0;
+      border: none;
+      background: none;
 
-    .delete-icon{
-      width: 30px;
-      height: 30px;
-      cursor: pointer;
+      .delete-icon{
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+      }
+      :hover {
+        color: ${theme.colors.red}
+      }
+      :active{
+        color: ${theme.colors.primary}
+      }
     }
-    :hover {
-      color: ${theme.colors.red}
-    }
-    :active{
-      color: ${theme.colors.primary}
-    }
-  }
 
-  .image {
-    width: 100%;
-    height: auto;
-    margin-top: 30px;
-    margin-bottom: 20px;
-
-    img {
+    .image {
       width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-  }
+      height: auto;
+      margin-top: 30px;
+      margin-bottom: 20px;
 
-  .text-info {
-    display: grid;
-    grid-template-rows: 30% 70%;
-    padding: 5px;
-
-    .title {
-      margin: auto 0;
-      font-size: ${theme.fonts.size.P4};
-      position: relative;
-      bottom: 10px;
-      font-weight: ${theme.fonts.weights.bold};
-      color: ${theme.colors.dark};
-      text-align: left;
-      white-space: nowrap;
-      overflow: hidden;
-      width: 100%;
-      text-overflow: ellipsis;
-      font-family: "Amatic SC", cursive;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
     }
 
-    .description {
+    .text-info {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 30% 70%;
+      padding: 5px;
 
-      .left-description {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        font-weight: ${theme.fonts.weights.medium};
+      .title {
+        margin: auto 0;
+        font-size: ${theme.fonts.size.P4};
+        position: relative;
+        bottom: 10px;
+        font-weight: ${theme.fonts.weights.bold};
+        color: ${theme.colors.dark};
+        text-align: left;
         white-space: nowrap;
         overflow: hidden;
+        width: 100%;
         text-overflow: ellipsis;
-        font-weight: ${theme.fonts.weights.medium};
-        color: ${theme.colors.primary};
+        font-family: "Amatic SC", cursive;
       }
 
-      .right-description {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        font-size: ${theme.fonts.size.P1};
+      .description {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
 
-        .add-button {
-          font-size: ${theme.fonts.size.XS};
-          cursor: pointer;
-          padding: 12px;
+        .left-description {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          font-weight: ${theme.fonts.weights.medium};
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          font-weight: ${theme.fonts.weights.medium};
+          color: ${theme.colors.primary};
+        }
+
+        .right-description {
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          font-size: ${theme.fonts.size.P1};
+
+          .add-button {
+            font-size: ${theme.fonts.size.XS};
+            cursor: pointer;
+            padding: 12px;
+          }
         }
       }
     }
-  }
+    ${({ $isHoverable, $isSelected }) => $isHoverable && $isSelected && selectedStyle}  
   }
 `
 const hoverableStyle = css`
@@ -147,5 +154,61 @@ const hoverableStyle = css`
     transition: ease-in-out 0.4s;
     box-shadow: ${theme.shadows.orangeHighlight};
     cursor: pointer;
+  }
+`
+const selectedStyle = css`
+  background: ${theme.colors.primary};
+  .primary-button {
+    color: ${theme.colors.primary};
+    background-color: ${theme.colors.white};
+    border: 1px solid ${theme.colors.white};
+    transition: all 200ms ease-out;
+    :hover {
+      color: ${theme.colors.white};
+      background-color: ${theme.colors.primary};
+      border: 1px solid ${theme.colors.white};
+      transition: all 200ms ease-out;
+    }
+    :active {
+      background-color: ${theme.colors.white};
+      color: ${theme.colors.primary};
+    }
+
+    &.is-disabled {
+      opacity: 50%;
+      cursor: not-allowed;
+      z-index: 2;
+    }
+
+    &.with-focus {
+      border: 1px solid white;
+      background-color: ${theme.colors.white};
+      color: ${theme.colors.primary};
+      :hover {
+        color: ${theme.colors.white};
+        background-color: ${theme.colors.primary};
+        border: 1px solid ${theme.colors.white};
+      }
+      :active {
+        background-color: ${theme.colors.white};
+        color: ${theme.colors.primary};
+      }
+    }
+  }
+
+  .delete-button {
+    color: ${theme.colors.white};
+
+    :active {
+      color: ${theme.colors.white};
+    }
+  }
+
+  .text-info {
+    .description {
+      .left-description {
+        color: ${theme.colors.white};
+      }
+    }
   }
 `

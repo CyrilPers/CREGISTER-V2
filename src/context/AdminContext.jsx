@@ -25,6 +25,5 @@ export default createContext({
     
     newProduct: {},
     setNewProduct: () => {}, 
-    
-    isHoverable: false,
+
 });

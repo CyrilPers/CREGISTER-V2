@@ -11,7 +11,7 @@ const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
 
 export default function Menu() {
 
-  const {products, isModeAdmin, deleteProduct, resetProducts, setSelectedProduct} = useContext(AdminContext)
+  const {products, isModeAdmin, deleteProduct, resetProducts, setSelectedProduct, selectedProduct} = useContext(AdminContext)
   
   if (products.length === 0) {
     if (!isModeAdmin) return <EmptyMenuClient /> 
@@ -23,10 +23,14 @@ export default function Menu() {
     setSelectedProduct(productClickedOn)
   }
 
+  const checkIfProductIsClicked = (idProductInMenu, idProductClicked) => {
+    return idProductInMenu === idProductClicked
+  }
+
   return (
 
       <MenuStyled className='menu'>
-      {products.map(({id, title, imageSource, price}) => {
+      {products.map(({id, title, imageSource, price }) => {
         return (
           <Card 
           key={id}
@@ -37,7 +41,7 @@ export default function Menu() {
           onDelete={() => deleteProduct(id)}
           onClick={() => selectProduct(id)}
           isHoverable={isModeAdmin}
-          isSelected={false}
+          isSelected={checkIfProductIsClicked(id, selectedProduct.id)}
         />
           )
           })}
