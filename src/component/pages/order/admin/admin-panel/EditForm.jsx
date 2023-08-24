@@ -4,7 +4,7 @@ import AdminContext from '../../../../../context/AdminContext';
 import ImagePreview from './ImagePreview';
 import { getInputsConfig } from './inputsConfig';
 import TextInput from '../../../../reusable-ui/TextInput';
-import { theme } from '../../../../../theme';
+import EditInfoMessage from './EditInfoMessage.jsx';
 
 
 export default function EditForm() {
@@ -40,9 +40,7 @@ export default function EditForm() {
             )}
         </div>
         <div className='submit'> 
-        <span className='sentence'> Cliquer sur un produit pour le modifier{" "}  
-        <span className='live-update'>en temps réél</span>
-        </span>
+          <EditInfoMessage />
         </div>
     </EditFormStyled>
   )
@@ -69,15 +67,6 @@ const EditFormStyled = styled.div`
     align-items: center;
     position: relative;
     top: 3px;
-
-    .sentence {
-      color : ${theme.colors.primary};
-      font-size: ${theme.fonts.size.SM};
-    
-      .live-update {
-          text-decoration: underline;
-      }  
-    }
   }
 
 `;
