@@ -16,6 +16,7 @@ const LeftColumnBodyStyled = styled.div`
         box-shadow: ${theme.shadows.leftColumn};
 
     .empty-message {
+        padding : 0 16px;
         display: flex;
         height: calc(85vh - 70px - 70px);
         text-align: center;

@@ -3,12 +3,12 @@ import { theme } from "../../theme"
 import Primary from "./Button"
 import { TiDelete } from "react-icons/ti"
 
-export default function Card({ 
-  title, 
-  imageSource, 
-  leftDescription, 
-  showDeleteButton, 
-  onDelete, 
+export default function Card({
+  title,
+  imageSource,
+  leftDescription,
+  showDeleteButton,
+  onDelete,
   onClick,
   isHoverable,
   isSelected,
@@ -23,7 +23,7 @@ export default function Card({
     >
       <div className="card">
         {showDeleteButton && <button className="delete-button" aria-label="delete-button" onClick={onDelete}>
-          <TiDelete className="delete-icon"/>
+          <TiDelete className="delete-icon" />
         </button>}
         <div className="image">
           <img src={imageSource} alt={title} />
@@ -112,7 +112,7 @@ const CardStyled = styled.div`
         overflow: hidden;
         width: 100%;
         text-overflow: ellipsis;
-        font-family: "Amatic SC", cursive;
+        font-family: ${theme.fonts.family.stylish};
       }
 
       .description {

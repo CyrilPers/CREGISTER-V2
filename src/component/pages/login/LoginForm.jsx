@@ -21,33 +21,33 @@ export default function LoginForm() {
     navigate(`/order/${username}`)
   }
 
-  const handleChange = (event) => { 
+  const handleChange = (event) => {
     setUsername(event.target.value)
-    }
-    
+  }
+
   // Affichage
   return (
     <LoginFormStyled action="submit" onSubmit={handleSubmit}>
-    <div>
-      <h1>GEREZ VOS COMMANDES !</h1>
-      <hr />
-      <h2>Connectez vous</h2>
-    </div>
-    <TextInput 
-      value={username} 
-      onChange={handleChange} 
-      placeholder={"Entrez votre prénom"}
-      required
-      Icon={<BsPersonCircle />}
-      className="input-login"
-      version="default"
-    />
-    <Button
-      label={"Accéder à mon espace"}
-      Icon={<IoChevronForward />}
-      version="default"
-    />
-  </LoginFormStyled>
+      <div>
+        <h1>GEREZ VOS COMMANDES !</h1>
+        <hr />
+        <h2>Connectez vous</h2>
+      </div>
+      <TextInput
+        value={username}
+        onChange={handleChange}
+        placeholder={"Entrez votre prénom"}
+        required
+        Icon={<BsPersonCircle />}
+        className="input-login"
+        version="default"
+      />
+      <Button
+        label={"Accéder à mon espace"}
+        Icon={<IoChevronForward />}
+        version="default"
+      />
+    </LoginFormStyled>
   )
 }
 
@@ -58,7 +58,7 @@ const LoginFormStyled = styled.form`
   margin: 0px auto;
   padding: 40px 32px;
   border-radius: ${theme.borderRadius.round};
-  font-family: "Amatic SC", cursive;
+  font-family: ${theme.fonts.family.stylish};
 
 
   hr{
