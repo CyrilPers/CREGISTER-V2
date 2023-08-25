@@ -1,9 +1,9 @@
-import { useContext } from "react"
+import Menu from '../order/Menu.jsx'
 import styled from "styled-components"
-import { theme } from "../../../../../theme"
-import Menu from "./Menu/Menu"
 import AdminContext from "../../../context/AdminContext"
 import Admin from '../order/admin/Admin.jsx'
+import theme from "../../../theme"
+import { useContext } from 'react'
 
 export default function MainRightSide() {
   const { isModeAdmin } = useContext(AdminContext)
