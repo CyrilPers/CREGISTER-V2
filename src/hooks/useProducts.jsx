@@ -28,12 +28,5 @@ export const useProducts = (second) => {
         productsCopy[indexOfProducToEdit] = productBeingEdited
         setProducts(productsCopy)
     }
-    return {
-        products,
-        setProducts,
-        resetProducts,
-        addProduct,
-        deleteProduct,
-        editProduct,
-    }
+    return { products, setProducts, resetProducts, addProduct, deleteProduct, editProduct }
 }

@@ -18,15 +18,7 @@ export default function OrderPage() {
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
   const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT)
   const titleEditRef = useRef()
-
-  const {
-    products,
-    resetProducts,
-    addProduct,
-    deleteProduct,
-    editProduct,
-  } = useProducts()
-
+  const { products, resetProducts, addProduct, deleteProduct, editProduct } = useProducts()
 
   const adminContextValue = {
     isModeAdmin,
