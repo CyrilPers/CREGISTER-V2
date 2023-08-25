@@ -1,24 +1,24 @@
 import React from 'react'
 import { styled } from 'styled-components';
-import Header from './Header';
-import Button from './Button.jsx'
+import Header from '../../../../reusable-ui/Header';
+import Button from '../../../../reusable-ui/Button.jsx'
 import { FaReceipt } from 'react-icons/fa'
 
-export default function Footer() {
+export default function LeftColumnFooter() {
     return (
         <Header>
-            <FooterStyled>
+            <LeftColumnFooterStyled>
                 <Button
                     className="invoice-button"
                     label="Ticket"
                     Icon={<FaReceipt />}
                 />
-            </FooterStyled>
+            </LeftColumnFooterStyled>
         </Header>
     )
 }
 
-const FooterStyled = styled.div`
+const LeftColumnFooterStyled = styled.div`
     height: 70px;
     display: flex;
     justify-content: center;
