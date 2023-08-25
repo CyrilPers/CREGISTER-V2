@@ -4,6 +4,7 @@ import { theme } from '../../../theme';
 import Menu from "./Menu"
 import Admin from './admin/Admin';
 import AdminContext from '../../../context/AdminContext';
+import Basket from '../basket/Basket';
 
 
 export default function Main() {
@@ -13,7 +14,7 @@ export default function Main() {
   return (
 
     <MainStyled>
-      <div className='basket'>basket</div>
+      <Basket />
       <div className='page-and-admin'>
         <Menu />
         {isModeAdmin && <Admin />}
@@ -34,10 +35,7 @@ const MainStyled = styled.div`
     display: grid;
     grid-template-columns: 25% 1fr;
 
-    
-    .basket {
-      background-color: red;
-    } 
+
 
     .page-and-admin {
       position: relative;
