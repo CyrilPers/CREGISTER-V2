@@ -1,14 +1,15 @@
 import React from 'react'
 import { styled } from 'styled-components';
 import { theme } from '../../../../theme/index.jsx'
-import Header from '../../../reusable-ui/Header.jsx';
 import Footer from '../../../reusable-ui/Footer.jsx';
+import Total from './basket/Total.jsx';
+import { formatPrice } from '../../../../utils/maths'
 
 export default function LeftColumn() {
+
     return (
         <LeftColumnStyled>
-            <Header
-            />
+            <Total amountToPay={formatPrice(0)} />
             <div className='body'>body</div>
             <Footer
             />
