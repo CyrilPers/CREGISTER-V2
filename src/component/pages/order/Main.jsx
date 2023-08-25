@@ -8,16 +8,16 @@ import AdminContext from '../../../context/AdminContext';
 
 export default function Main() {
 
-  const {isModeAdmin, setIsModeAdmin} = useContext(AdminContext);
+  const { isModeAdmin, setIsModeAdmin } = useContext(AdminContext);
 
   return (
 
     <MainStyled>
-        {/* <div className='basket'>basket</div> */}
-        <div className='page-and-admin'>
-          <Menu />
-          {isModeAdmin && <Admin />}
-        </div>
+      <div className='basket'>basket</div>
+      <div className='page-and-admin'>
+        <Menu />
+        {isModeAdmin && <Admin />}
+      </div>
     </MainStyled>
   )
 }
@@ -32,12 +32,12 @@ const MainStyled = styled.div`
     box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
 
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 25% 1fr;
 
     
-    /* .basket {
+    .basket {
       background-color: red;
-    } */
+    } 
 
     .page-and-admin {
       position: relative;

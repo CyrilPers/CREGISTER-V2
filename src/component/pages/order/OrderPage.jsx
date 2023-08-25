@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import { useRef, useState } from 'react'
 import { styled } from 'styled-components'
 import { theme } from '../../../theme'
 import Main from './Main'
 import Navbar from '../../navbar/Navbar'
 import AdminContext from "../../../context/AdminContext"
 import { fakeMenu } from '../../../fakeData/fakeMenu'
-import { EMPTY_PRODUCT } from './admin/admin-panel/AddForm'
+import { EMPTY_PRODUCT } from '../../../enum/product.jsx'
+import { deepClone } from '../../../utils/arrays'
 
 
 export default function OrderPage() {
@@ -15,17 +16,32 @@ export default function OrderPage() {
   const [currentTabSelected, setCurrentTabSelected] = useState("add")
   const [products, setProducts] = useState(fakeMenu.SMALL)
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
+  const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT)
+  const titleEditRef = useRef()
   
+  
+
   const resetProducts = () => {
     setProducts(fakeMenu.LARGE)
   }
 
   const addProduct = (newProduct) => {
-    setProducts((prevProducts) => [newProduct, ...prevProducts]);
+    const productsCopy = deepClone(products)
+    const productsUpdated = [newProduct, ...productsCopy]
+    setProducts(productsUpdated)
   }
   
   const deleteProduct = (productId) => {
-    setProducts((prevProducts) => prevProducts.filter((product) => product.id !== productId));
+    const productsCopy = deepClone(products)
+    const productsUpdated = productsCopy.filter((product) => product.id !== productId) 
+    setProducts(productsUpdated)
+  }
+
+  const editProduct = (productBeingEdited) => {
+    const productsCopy = deepClone(products)
+    const indexOfProducToEdit = products.indexOf(selectedProduct)
+    productsCopy[indexOfProducToEdit] = productBeingEdited
+    setProducts(productsCopy)
   }
 
   const adminContextValue = {
@@ -41,6 +57,10 @@ export default function OrderPage() {
     resetProducts,
     newProduct,
     setNewProduct,
+    selectedProduct,
+    setSelectedProduct,
+    editProduct,
+    titleEditRef,
   }
 
   return (

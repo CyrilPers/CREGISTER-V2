@@ -1,14 +1,30 @@
-import React from 'react'
-import { styled } from 'styled-components';
+import { useContext } from 'react'
+import AdminContext from '../../../../../context/AdminContext';
+import Form from './Form';
+import EditInfoMessage from './EditInfoMessage.jsx'
 
-export default function EditForm() {
+export default function EditForm(inputTexts,) {
+
+  const { selectedProduct, setSelectedProduct, editProduct, titleEditRef } = useContext(AdminContext)
+
+  const handleChange = (event) => {
+    const { name, value } = event.target
+    const productBeingEdited = {
+      ...selectedProduct,
+      [name]: value
+    }
+    setSelectedProduct(productBeingEdited) // update formulaire
+    editProduct(productBeingEdited) // update menu
+  }
+
   return (
-    <EditFormStyled>
-        EditForm
-    </EditFormStyled>
+    <Form
+      product={selectedProduct}
+      onChange={handleChange}
+      ref={titleEditRef}
+    >
+      <EditInfoMessage />
+    </Form>
   )
-}
+};
 
-const EditFormStyled = styled.form`
-  
-`;

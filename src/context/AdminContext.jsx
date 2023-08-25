@@ -7,15 +7,25 @@ export default createContext({
     isCollapsed: false,
     setIsCollapsed: () => {},
  
-    currentTabSelected: true,
+    currentTabSelected: false,
     setCurrentTabSelected: () => {},
 
     products: [],
+    productSelected: [],
+    setProductSelect: () => {},
+
     setProducts: () => {},
     addProduct: () => {},
     deleteProduct: () => {},
     resetProducts: () => {},
+    editProduct: () => {},
+
+    selectedProduct: {},
+    setSelectedProduct: () => {},
     
-    newProduct: [],
-    setNewProduct: () => {},
+    newProduct: {},
+    setNewProduct: () => {}, 
+    
+    titleEditRef: {},
+
 });
