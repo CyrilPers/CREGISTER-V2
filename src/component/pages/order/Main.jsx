@@ -1,11 +1,9 @@
 import React, { useContext } from 'react'
 import { styled } from 'styled-components';
 import { theme } from '../../../theme';
-import Menu from "./Menu"
-import Admin from './admin/Admin';
 import AdminContext from '../../../context/AdminContext';
 import Basket from '../basket/Basket';
-
+import { MainRightSide } from '../MainRightSide/MainRightSide.jsx'
 
 export default function Main() {
 
@@ -15,11 +13,8 @@ export default function Main() {
 
     <MainStyled>
       <Basket />
-      <div className='page-and-admin'>
-        <Menu />
-        {isModeAdmin && <Admin />}
-      </div>
-    </MainStyled>
+      <MainRightSide />
+    </MainStyled >
   )
 }
 
@@ -34,15 +29,5 @@ const MainStyled = styled.div`
 
     display: grid;
     grid-template-columns: 25% 1fr;
-
-
-
-    .page-and-admin {
-      position: relative;
-      overflow-y: hidden;
-      display: grid;
-      border-bottom-left-radius: ${theme.borderRadius.extraRound};
-      border-bottom-right-radius: ${theme.borderRadius.extraRound};
-    }
-
+    overflow: hidden;
   `;
