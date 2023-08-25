@@ -5,27 +5,27 @@ import TextInput from '../../../../reusable-ui/TextInput';
 import { getInputsConfig } from './inputsConfig';
 
 
-const Form = React.forwardRef(({onSubmit, onChange, product, children}, ref) => {
+const Form = React.forwardRef(({ onSubmit, onChange, product, children }, ref) => {
 
     const inputTexts = getInputsConfig(product)
 
-  return (
-    <FormStyled onSubmit={onSubmit}>
-        <ImagePreview imageSource={product.imageSource} title={product.title} handleChange={onChange} />  
-        <div className='input-fields'>
-            {inputTexts.map((input) => 
-            <TextInput 
-            {...input}
-            key={input.id}
-            onChange={onChange}
-            version="minimalist"
-            ref={ref && input.name === "title" ? ref : null}
-            />
-            )}
-        </div> 
-        <div className='submit'>{children}</div>
-    </FormStyled>
-  )
+    return (
+        <FormStyled onSubmit={onSubmit}>
+            <ImagePreview imageSource={product.imageSource} title={product.title} handleChange={onChange} />
+            <div className='input-fields'>
+                {inputTexts.map((input) =>
+                    <TextInput
+                        {...input}
+                        key={input.id}
+                        onChange={onChange}
+                        version="minimalist"
+                        ref={ref && input.name === "title" ? ref : null}
+                    />
+                )}
+            </div>
+            <div className='submit'>{children}</div>
+        </FormStyled>
+    )
 })
 
 export default Form

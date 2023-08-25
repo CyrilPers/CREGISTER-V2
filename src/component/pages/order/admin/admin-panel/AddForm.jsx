@@ -2,12 +2,11 @@ import React, { useContext, useState } from 'react'
 import AdminContext from '../../../../../context/AdminContext';
 import { EMPTY_PRODUCT } from '../../../../../enum/product.jsx';
 import Form from './Form';
-import Button from '../../../../reusable-ui/Button';
-import SubmitMessage from './SubmitMessage';
+import AddFormButton from './AddFormButton';
 
 export default function AddForm() {
 
-    const {addProduct, setNewProduct, newProduct } = useContext(AdminContext)
+    const { addProduct, setNewProduct, newProduct } = useContext(AdminContext)
     const [isSubmitted, setIsSubmitted] = useState(false)
 
     const handleSubmit = (event) => {
@@ -25,28 +24,24 @@ export default function AddForm() {
 
 
     const handleChange = (event) => {
-        const{name, value} = event.target
-        setNewProduct({ ...newProduct, [name] : value })  
+        const { name, value } = event.target
+        setNewProduct({ ...newProduct, [name]: value })
     }
 
     const displaySubmittedMessage = () => {
         setIsSubmitted(true)
-        setTimeout(() => { setIsSubmitted(false)}, 2000)
+        setTimeout(() => { setIsSubmitted(false) }, 2000)
     }
 
 
-  return (
-    <Form 
-    onSubmit={handleSubmit}
-    onChange={handleChange}
-    product={newProduct}
-    isSubmitted={isSubmitted}
-    children={
-    <>
-    <Button className='submit-button' label="Ajouter le produit" version="success" />           
-    {isSubmitted && <SubmitMessage /> }
-    </>
-    }
-    />
-  )
+    return (
+        <Form
+            onSubmit={handleSubmit}
+            onChange={handleChange}
+            product={newProduct}
+            isSubmitted={isSubmitted}
+        >
+            <AddFormButton isSubmitted={isSubmitted} />
+        </Form>
+    )
 };
