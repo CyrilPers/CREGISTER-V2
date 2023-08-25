@@ -11,8 +11,7 @@ export default function LeftColumn() {
         <LeftColumnStyled>
             <Total amountToPay={formatPrice(0)} />
             <div className='body'>body</div>
-            <Footer
-            />
+            <Footer />
         </LeftColumnStyled>
     )
 }
