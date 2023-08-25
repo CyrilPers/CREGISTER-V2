@@ -5,7 +5,7 @@ import TextInput from '../../../../reusable-ui/TextInput';
 import { getInputsConfig } from './inputsConfig';
 
 
-const Form = React.forwardRef(({onSubmit, onChange, product, isSubmitted, children}, ref) => {
+const Form = React.forwardRef(({onSubmit, onChange, product, children}, ref) => {
 
     const inputTexts = getInputsConfig(product)
 
