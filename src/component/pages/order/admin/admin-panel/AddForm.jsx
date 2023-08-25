@@ -3,7 +3,7 @@ import AdminContext from '../../../../../context/AdminContext';
 import { EMPTY_PRODUCT } from '../../../../../enum/product.jsx';
 import Form from './Form';
 import AddFormButton from './AddFormButton';
-import { useSuccessMessage } from '../../../../../hooks/useDisplaySuccessMessage';
+import { useSuccessMessage } from '../../../../../hooks/useSuccessMessage';
 
 export default function AddForm() {
 
