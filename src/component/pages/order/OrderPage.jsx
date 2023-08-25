@@ -7,6 +7,7 @@ import AdminContext from "../../../context/AdminContext"
 import { fakeMenu } from '../../../fakeData/fakeMenu'
 import { EMPTY_PRODUCT } from '../../../enum/product.jsx'
 import { deepClone } from '../../../utils/arrays'
+import { useProducts } from '../../../hooks/useProducts'
 
 
 export default function OrderPage() {
@@ -14,35 +15,18 @@ export default function OrderPage() {
   const [isModeAdmin, setIsModeAdmin] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [currentTabSelected, setCurrentTabSelected] = useState("add")
-  const [products, setProducts] = useState(fakeMenu.SMALL)
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
   const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT)
   const titleEditRef = useRef()
-  
-  
 
-  const resetProducts = () => {
-    setProducts(fakeMenu.LARGE)
-  }
+  const {
+    products,
+    resetProducts,
+    addProduct,
+    deleteProduct,
+    editProduct,
+  } = useProducts()
 
-  const addProduct = (newProduct) => {
-    const productsCopy = deepClone(products)
-    const productsUpdated = [newProduct, ...productsCopy]
-    setProducts(productsUpdated)
-  }
-  
-  const deleteProduct = (productId) => {
-    const productsCopy = deepClone(products)
-    const productsUpdated = productsCopy.filter((product) => product.id !== productId) 
-    setProducts(productsUpdated)
-  }
-
-  const editProduct = (productBeingEdited) => {
-    const productsCopy = deepClone(products)
-    const indexOfProducToEdit = products.indexOf(selectedProduct)
-    productsCopy[indexOfProducToEdit] = productBeingEdited
-    setProducts(productsCopy)
-  }
 
   const adminContextValue = {
     isModeAdmin,
@@ -66,10 +50,10 @@ export default function OrderPage() {
   return (
     <AdminContext.Provider value={adminContextValue}>
       <OrderPageStyled>
-      <div className='container'>
-        <Navbar />
-        <Main />
-      </div>
+        <div className='container'>
+          <Navbar />
+          <Main />
+        </div>
       </OrderPageStyled>
     </AdminContext.Provider>
   )
