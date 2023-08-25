@@ -1,24 +1,26 @@
-import Menu from '../order/Menu.jsx'
-import styled from "styled-components"
-import AdminContext from "../../../context/AdminContext"
-import Admin from '../order/admin/Admin.jsx'
-import theme from "../../../theme"
-import { useContext } from 'react'
+import React, { useContext } from 'react'
+import Menu from '../order/Menu';
+import Admin from '../order/admin/Admin';
+import { styled } from 'styled-components';
+import { theme } from '../../../theme';
+import AdminContext from '../../../context/AdminContext';
 
 export default function MainRightSide() {
-  const { isModeAdmin } = useContext(AdminContext)
 
-  return (
-    <MainRightSideStyled>
-      <Menu />
-      {isModeAdmin && <Admin />}
-    </MainRightSideStyled>
-  )
+    const { isModeAdmin } = useContext(AdminContext)
+
+
+    return (
+        <MainRightSideStyled>
+            <Menu />
+            {isModeAdmin && <Admin />}
+        </MainRightSideStyled>
+    )
 }
 
 const MainRightSideStyled = styled.div`
-  position: relative;
-  overflow-y: hidden;
-  display: grid;
-  border-bottom-right-radius: ${theme.borderRadius.extraRound};
-`
+    position: relative;
+    overflow-y: hidden;
+    display: grid;
+    border-bottom-right-radius: ${theme.borderRadius.extraRound};
+`;
