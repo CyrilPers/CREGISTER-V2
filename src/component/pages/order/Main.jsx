@@ -2,13 +2,11 @@ import React, { useContext } from 'react'
 import { styled } from 'styled-components';
 import { theme } from '../../../theme';
 import AdminContext from '../../../context/AdminContext';
-import MainRightSide from '../MainRightSide/MainRightSide';
-import LeftColumn from '../left-column/LeftColumn';
+import LeftColumn from '../Main/left-column/LeftColumn';
+import MainRightSide from '../Main/main-right-side/MainRightSide';
 
 
 export default function Main() {
-
-  const { isModeAdmin, setIsModeAdmin } = useContext(AdminContext);
 
   return (
 

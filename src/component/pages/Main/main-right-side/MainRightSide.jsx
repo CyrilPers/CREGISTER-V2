@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
-import Menu from '../order/Menu';
-import Admin from '../order/admin/Admin';
+import Menu from '../../order/Menu';
+import Admin from '../../order/admin/Admin';
 import { styled } from 'styled-components';
-import { theme } from '../../../theme';
-import AdminContext from '../../../context/AdminContext';
+import { theme } from '../../../../theme';
+import AdminContext from '../../../../context/AdminContext';
 
 export default function MainRightSide() {
 

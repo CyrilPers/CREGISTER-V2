@@ -1,13 +1,17 @@
 import React from 'react'
 import { styled } from 'styled-components';
-import { theme } from '../../../theme/index.jsx'
+import { theme } from '../../../../theme/index.jsx'
+import Header from '../../../reusable-ui/Header.jsx';
+import Footer from '../../../reusable-ui/Footer.jsx';
 
 export default function LeftColumn() {
     return (
         <LeftColumnStyled>
-            <div className='header'>Header</div>
+            <Header
+            />
             <div className='body'>body</div>
-            <div className='footer'>footer</div>
+            <Footer
+            />
         </LeftColumnStyled>
     )
 }
@@ -17,11 +21,6 @@ const LeftColumnStyled = styled.div`
     display: flex;
     flex-direction: column;
     
-
-    .header {
-        height: 70px;
-        background: ${theme.colors.background_dark};
-    }
     .body {
         background: ${theme.colors.background_white};
         flex: 1;
