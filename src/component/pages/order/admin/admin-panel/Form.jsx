@@ -1,13 +1,11 @@
 import React from 'react'
 import { styled } from 'styled-components';
-import Button from '../../../../reusable-ui/Button';
 import ImagePreview from './ImagePreview';
 import TextInput from '../../../../reusable-ui/TextInput';
-import SubmitMessage from './SubmitMessage';
 import { getInputsConfig } from './inputsConfig';
 
 
-const Form = React.forwardRef(({onSubmit, onChange, product, isSubmitted}, ref) => {
+const Form = React.forwardRef(({onSubmit, onChange, product, isSubmitted, children}, ref) => {
 
     const inputTexts = getInputsConfig(product)
 
@@ -25,11 +23,7 @@ const Form = React.forwardRef(({onSubmit, onChange, product, isSubmitted}, ref) 
             />
             )}
         </div> 
-        {onSubmit && (
-        <div className='submit'>
-            <Button className='submit-button' label="Ajouter le produit" version="success" />           
-            {isSubmitted && <SubmitMessage /> }
-        </div>)}
+        <div className='submit'>{children}</div>
     </FormStyled>
   )
 })

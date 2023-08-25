@@ -2,6 +2,8 @@ import React, { useContext, useState } from 'react'
 import AdminContext from '../../../../../context/AdminContext';
 import { EMPTY_PRODUCT } from '../../../../../enum/product.jsx';
 import Form from './Form';
+import Button from '../../../../reusable-ui/Button';
+import SubmitMessage from './SubmitMessage';
 
 export default function AddForm() {
 
@@ -39,7 +41,12 @@ export default function AddForm() {
     onChange={handleChange}
     product={newProduct}
     isSubmitted={isSubmitted}
-    
+    children={
+    <>
+    <Button className='submit-button' label="Ajouter le produit" version="success" />           
+    {isSubmitted && <SubmitMessage /> }
+    </>
+    }
     />
   )
 };
