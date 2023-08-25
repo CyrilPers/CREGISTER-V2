@@ -1,11 +1,9 @@
 import React, { useContext } from 'react'
 import { styled } from 'styled-components';
 import { theme } from '../../../theme';
-import Menu from "./Menu"
-import Admin from './admin/Admin';
 import AdminContext from '../../../context/AdminContext';
-import Basket from '../basket/Basket';
 import MainRightSide from '../MainRightSide/MainRightSide';
+import LeftColumn from '../left-column/LeftColumn';
 
 
 export default function Main() {
@@ -15,7 +13,7 @@ export default function Main() {
   return (
 
     <MainStyled>
-      <Basket />
+      <LeftColumn />
       <MainRightSide />
     </MainStyled>
   )

@@ -2,20 +2,21 @@ import React from 'react'
 import { styled } from 'styled-components';
 import { theme } from '../../../theme/index.jsx'
 
-export default function Basket() {
+export default function LeftColumn() {
     return (
-        <BasketStyled>
+        <LeftColumnStyled>
             <div className='header'>Header</div>
             <div className='body'>body</div>
             <div className='footer'>footer</div>
-        </BasketStyled>
+        </LeftColumnStyled>
     )
 }
 
-const BasketStyled = styled.div`
+const LeftColumnStyled = styled.div`
     background: pink;
     display: flex;
     flex-direction: column;
+    
 
     .header {
         height: 70px;
@@ -24,6 +25,7 @@ const BasketStyled = styled.div`
     .body {
         background: ${theme.colors.background_white};
         flex: 1;
+        box-shadow: ${theme.shadows.leftColumn};
     }
     .footer {
         height: 70px;
