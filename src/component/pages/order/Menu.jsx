@@ -81,4 +81,8 @@ const MenuStyled = styled.div`
   justify-items: center;
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
   overflow-y: scroll;
+  scrollbar-color: transparent transparent;
+  &:hover {
+        scrollbar-color: initial;
+    }
 `;

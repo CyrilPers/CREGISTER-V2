@@ -6,6 +6,7 @@ import AdminContext from '../../../../context/AdminContext.jsx';
 import BasketFooter from './basket/BasketFooter.jsx';
 import BasketProducts from './basket/BasketProducts.jsx';
 import EmptyBasket from './basket/EmptyBasket.jsx'
+import { theme } from '../../../../theme/index.jsx';
 
 export default function LeftColumn() {
 
@@ -23,8 +24,22 @@ export default function LeftColumn() {
 }
 
 const LeftColumnStyled = styled.div`
-    background: pink;
+    background: ${theme.colors.background_white};
+    box-shadow: ${theme.shadows.leftColumn};
+    border-bottom-left-radius: ${theme.borderRadius.extraRound};
     display: flex;
     flex-direction: column;
+    height: 85vh;
 
+    .head{ 
+        position: sticky;
+        top: 0;
+    }
+
+    .footer {
+        border-bottom-left-radius: ${theme.borderRadius.extraRound};
+        position: sticky;
+        bottom: 0;
+    }
+   
 `;
