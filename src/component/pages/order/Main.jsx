@@ -1,23 +1,18 @@
 import React, { useContext } from 'react'
 import { styled } from 'styled-components';
 import { theme } from '../../../theme';
-import Menu from "./Menu"
-import Admin from './admin/Admin';
 import AdminContext from '../../../context/AdminContext';
+import LeftColumn from '../Main/left-column/LeftColumn';
+import MainRightSide from '../Main/main-right-side/MainRightSide';
 
 
 export default function Main() {
 
-  const { isModeAdmin, setIsModeAdmin } = useContext(AdminContext);
-
   return (
 
     <MainStyled>
-      <div className='basket'>basket</div>
-      <div className='page-and-admin'>
-        <Menu />
-        {isModeAdmin && <Admin />}
-      </div>
+      <LeftColumn />
+      <MainRightSide />
     </MainStyled>
   )
 }
@@ -33,18 +28,5 @@ const MainStyled = styled.div`
 
     display: grid;
     grid-template-columns: 25% 1fr;
-
-    
-    .basket {
-      background-color: red;
-    } 
-
-    .page-and-admin {
-      position: relative;
-      overflow-y: hidden;
-      display: grid;
-      border-bottom-left-radius: ${theme.borderRadius.extraRound};
-      border-bottom-right-radius: ${theme.borderRadius.extraRound};
-    }
-
+    overflow: hidden;
   `;

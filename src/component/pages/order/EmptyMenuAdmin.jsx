@@ -3,7 +3,7 @@ import { styled } from 'styled-components';
 import { theme } from '../../../theme';
 import Button from '../../reusable-ui/Button';
 
-export default function EmptyMenuAdmin({onClick}) {
+export default function EmptyMenuAdmin({ onClick }) {
   return (
     <EmptyMenuAdminStyled className='no-prodducts'>
       <span className='title'>Le menu est vide</span>
@@ -25,7 +25,7 @@ const EmptyMenuAdminStyled = styled.div`
   .title,
   .description {
     text-align: center;
-    font-family: "Amatic SC", cursive;
+    font-family: ${theme.fonts.family.stylish};
     color: ${theme.colors.greyBlue};
   }
 

@@ -3,12 +3,12 @@ import { styled } from 'styled-components';
 import { theme } from '../../theme';
 
 
-export default function Logo({className, onClick}) {
+export default function Logo({ className, onClick }) {
   return (
     <LogoStyled className={className} onClick={onClick}>
-        <h1>MY</h1>
-        <img src='/images/logo.png' alt="logo" />
-        <h1>POS</h1>
+      <h1>MY</h1>
+      <img src='/images/logo.png' alt="logo" />
+      <h1>POS</h1>
     </LogoStyled>
   )
 }
@@ -26,7 +26,7 @@ const LogoStyled = styled.div`
     font-weight: ${theme.fonts.weights.bold};
     text-transform: uppercase; 
     letter-spacing: 1.5px;
-    font-family: Amatic SC, cursive;
+    font-family:  ${theme.fonts.family.stylish};
     }
 
 
