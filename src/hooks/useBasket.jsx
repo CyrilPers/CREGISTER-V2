@@ -22,12 +22,10 @@ export const useBasket = () => {
             return
         }
 
-        const indexOfbasketProduct = basketCopy.getIndex(products, productToAdd.id)
-
+        const indexOfbasketProduct = getIndex(productToAdd.id, basketCopy)
         basketCopy[indexOfbasketProduct].quantity += 1
         setBasket(basketCopy)
     }
-
     return { basket, addToBasket }
 }
 

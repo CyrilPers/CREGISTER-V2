@@ -7,7 +7,5 @@ export const findInArray = (id, array) => {
 }
 
 export const getIndex = (id, array) => {
-    return array.findIndex(
-        (item) => item.id === id
-    )
+    return array.findIndex((item) => item.id === id)
 }
