@@ -1,17 +1,16 @@
 import React from 'react'
 import { styled } from 'styled-components';
 import { theme } from '../../../../../theme';
-import EmptyBasket from './EmptyBasket';
 
-export default function BasketBody() {
+export default function BasketProducts() {
     return (
-        <BasketBodyStyled>
-
-        </BasketBodyStyled>
+        <BasketProductsStyled>
+            Products
+        </BasketProductsStyled>
     )
 }
 
-const BasketBodyStyled = styled.div`
+const BasketProductsStyled = styled.div`
         background: ${theme.colors.background_white};
         flex: 1;
         box-shadow: ${theme.shadows.leftColumn};
