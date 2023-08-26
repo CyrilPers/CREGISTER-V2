@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { fakeBasket } from '../fakeData/fakeBasket'
-import { deepClone, findInArray } from '../utils/arrays'
+import { deepClone, findInArray, getIndex } from '../utils/arrays'
 
 export const useBasket = () => {
     const [basket, setBasket] = useState(fakeBasket.EMPTY)
@@ -19,14 +19,15 @@ export const useBasket = () => {
             }
             const updatedBasket = [newBasketProduct, ...basketCopy]
             setBasket(updatedBasket)
-        } else {
-            const indexOfbasketProduct = basketCopy.findIndex(
-                (product) => product.id === productToAdd.id)
-
-            basketCopy[indexOfbasketProduct].quantity += 1
-            setBasket(basketCopy)
+            return
         }
+
+        const indexOfbasketProduct = basketCopy.getIndex(products, productToAdd.id)
+
+        basketCopy[indexOfbasketProduct].quantity += 1
+        setBasket(basketCopy)
     }
+
     return { basket, addToBasket }
 }
 
