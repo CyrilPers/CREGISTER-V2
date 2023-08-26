@@ -2,6 +2,7 @@ import React from 'react'
 import { styled } from 'styled-components';
 import { theme } from '../../../../../theme';
 import BasketCard from './BasketCard';
+import { IMAGE_COMING_SOON } from '../../../../../enum/product.jsx'
 
 export default function BasketProducts({ basket }) {
     return (
@@ -9,7 +10,7 @@ export default function BasketProducts({ basket }) {
             {basket.map((basketProduct) =>
                 <div className='basket-card'>
                     <BasketCard {...basketProduct}
-                        key={basketProduct.id}
+                        imageSource={basketProduct.imageSource ? basketProduct.imageSource : IMAGE_COMING_SOON}
                     />
                 </div>
             )}
@@ -25,9 +26,11 @@ const BasketProductsStyled = styled.div`
     box-shadow: ${theme.shadows.leftColumn};
     overflow-y: scroll;
     scrollbar-color: transparent transparent;
+    scrollbar-width: thin;
 
     &:hover {
         scrollbar-color: initial;
+        scrollbar-width: thin;
     }
 
     .basket-card {

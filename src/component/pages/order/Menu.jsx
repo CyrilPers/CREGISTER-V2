@@ -6,9 +6,7 @@ import { formatPrice } from '../../../utils/maths';
 import AdminContext from '../../../context/AdminContext';
 import EmptyMenuAdmin from './EmptyMenuAdmin';
 import EmptyMenuClient from './EmptyMenuClient';
-import { EMPTY_PRODUCT } from '../../../enum/product';
-
-const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
+import { EMPTY_PRODUCT, IMAGE_COMING_SOON } from '../../../enum/product';
 
 export default function Menu() {
 
@@ -57,7 +55,7 @@ export default function Menu() {
           <Card
             key={id}
             title={title}
-            imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
+            imageSource={imageSource ? imageSource : IMAGE_COMING_SOON}
             leftDescription={formatPrice(price)}
             showDeleteButton={isModeAdmin}
             onDelete={(event) => handleCardDelete(event, id)}
@@ -82,6 +80,7 @@ const MenuStyled = styled.div`
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
   overflow-y: scroll;
   scrollbar-color: transparent transparent;
+  scrollbar-width: thin;
   &:hover {
         scrollbar-color: initial;
     }
