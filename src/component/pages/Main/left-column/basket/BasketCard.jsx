@@ -41,13 +41,17 @@ const BasketCardStyled = styled.div`
 
   box-sizing: border-box;
   height: 86px;
-  padding: 8px 16px;
+  padding: 5px 16px;
   display: grid;
   grid-template-columns: 30% 1fr;
 
   border-radius: ${theme.borderRadius.round};
   background: ${theme.colors.white};
   box-shadow: ${theme.shadows.cardBasket};
+
+  margin: 10px 15px;
+  height: 85px;
+  box-sizing: border-box;
 
   position: relative;
 

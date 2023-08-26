@@ -32,16 +32,4 @@ const BasketProductsStyled = styled.div`
         scrollbar-color: initial;
         scrollbar-width: thin;
     }
-
-    .basket-card {
-        margin: 10px 16px;
-        height: 85px;
-        box-sizing: border-box;
-        &:first-child {
-            margin-top: 20px;
-        }
-        &:last-child {
-            margin-bottom: 20px;
-        }
-    }
 `;
