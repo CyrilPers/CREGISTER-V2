@@ -34,7 +34,7 @@ export default function Menu() {
     if (!isModeAdmin) return
     await setIsCollapsed(false)
     await setCurrentTabSelected("edit")
-    const productClickedOn = findInArray(products, productIdSelected)
+    const productClickedOn = findInArray(productIdSelected, products)
     await setSelectedProduct(productClickedOn)
     titleEditRef.current.focus()
   }
@@ -52,7 +52,7 @@ export default function Menu() {
 
   const handleAddButton = (event, idProductToAdd) => {
     event.stopPropagation()
-    const productToAdd = findInArray(products, idProductToAdd)
+    const productToAdd = findInArray(idProductToAdd, products)
     console.log(productToAdd)
     addToBasket(productToAdd)
   }
