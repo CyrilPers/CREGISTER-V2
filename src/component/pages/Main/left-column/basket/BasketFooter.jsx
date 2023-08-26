@@ -4,21 +4,21 @@ import Header from '../../../../reusable-ui/Header';
 import Button from '../../../../reusable-ui/Button.jsx'
 import { FaReceipt } from 'react-icons/fa'
 
-export default function LeftColumnFooter() {
+export default function BasketFooter() {
     return (
         <Header>
-            <LeftColumnFooterStyled>
+            <BasketFooterStyled>
                 <Button
                     className="invoice-button"
                     label="Ticket"
                     Icon={<FaReceipt />}
                 />
-            </LeftColumnFooterStyled>
+            </BasketFooterStyled>
         </Header>
     )
 }
 
-const LeftColumnFooterStyled = styled.div`
+const BasketFooterStyled = styled.div`
     height: 70px;
     display: flex;
     justify-content: center;

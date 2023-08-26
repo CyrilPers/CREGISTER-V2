@@ -4,10 +4,9 @@ import { theme } from '../../../theme'
 import Main from './Main'
 import Navbar from '../../navbar/Navbar'
 import AdminContext from "../../../context/AdminContext"
-import { fakeMenu } from '../../../fakeData/fakeMenu'
 import { EMPTY_PRODUCT } from '../../../enum/product.jsx'
-import { deepClone } from '../../../utils/arrays'
 import { useProducts } from '../../../hooks/useProducts'
+import { useBasket } from '../../../hooks/useBasket'
 
 
 export default function OrderPage() {
@@ -19,6 +18,9 @@ export default function OrderPage() {
   const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT)
   const titleEditRef = useRef()
   const { products, resetProducts, addProduct, deleteProduct, editProduct } = useProducts()
+  const { basket } = useBasket()
+
+
 
   const adminContextValue = {
     isModeAdmin,
@@ -37,6 +39,7 @@ export default function OrderPage() {
     setSelectedProduct,
     editProduct,
     titleEditRef,
+    basket,
   }
 
   return (

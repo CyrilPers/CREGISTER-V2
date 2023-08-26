@@ -1,18 +1,20 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { styled } from 'styled-components';
-import { theme } from '../../../../theme/index.jsx'
-import LeftColumnFooter from './basket/LeftColumnFooter.jsx';
 import Total from './basket/Total.jsx';
-import { formatPrice } from '../../../../utils/maths'
-import LeftColumnBody from './basket/LeftColumnBody.jsx';
+import { formatPrice } from '../../../../utils/maths.jsx'
+import AdminContext from '../../../../context/AdminContext.jsx';
+import BasketFooter from './basket/BasketFooter.jsx';
+import EmptyBasket from './basket/EmptyBasket.jsx';
 
 export default function LeftColumn() {
+
+    const { basket } = useContext(AdminContext)
 
     return (
         <LeftColumnStyled>
             <Total amountToPay={formatPrice(0)} />
-            <LeftColumnBody />
-            <LeftColumnFooter />
+            <EmptyBasket basket={basket} />
+            <BasketFooter />
         </LeftColumnStyled>
     )
 }
