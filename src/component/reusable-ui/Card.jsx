@@ -12,6 +12,7 @@ export default function Card({
   onClick,
   isHoverable,
   isSelected,
+  onAdd,
 }) {
 
   return (
@@ -33,7 +34,7 @@ export default function Card({
           <div className="description">
             <div className="left-description">{leftDescription}</div>
             <div className="right-description">
-              <Primary className="add-button" label={"Ajouter"} />
+              <Primary className="add-button" label={"Ajouter"} onClick={onAdd} />
             </div>
           </div>
         </div>

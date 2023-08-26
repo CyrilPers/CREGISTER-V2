@@ -18,8 +18,7 @@ export default function OrderPage() {
   const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT)
   const titleEditRef = useRef()
   const { products, resetProducts, addProduct, deleteProduct, editProduct } = useProducts()
-  const { basket } = useBasket()
-
+  const { basket, addToBasket } = useBasket()
 
 
   const adminContextValue = {
@@ -40,6 +39,7 @@ export default function OrderPage() {
     editProduct,
     titleEditRef,
     basket,
+    addToBasket,
   }
 
   return (

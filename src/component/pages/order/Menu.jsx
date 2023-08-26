@@ -7,8 +7,10 @@ import AdminContext from '../../../context/AdminContext';
 import EmptyMenuAdmin from './EmptyMenuAdmin';
 import EmptyMenuClient from './EmptyMenuClient';
 import { EMPTY_PRODUCT, IMAGE_COMING_SOON } from '../../../enum/product';
+import { findInArray } from '../../../utils/arrays';
 
 export default function Menu() {
+
 
   const {
     products,
@@ -20,6 +22,7 @@ export default function Menu() {
     setIsCollapsed,
     setCurrentTabSelected,
     titleEditRef,
+    addToBasket,
   } = useContext(AdminContext)
 
   if (products.length === 0) {
@@ -31,7 +34,7 @@ export default function Menu() {
     if (!isModeAdmin) return
     await setIsCollapsed(false)
     await setCurrentTabSelected("edit")
-    const productClickedOn = products.find((product) => product.id === productIdSelected)
+    const productClickedOn = findInArray(products, productIdSelected)
     await setSelectedProduct(productClickedOn)
     titleEditRef.current.focus()
   }
@@ -45,6 +48,13 @@ export default function Menu() {
     deleteProduct(idProductToDelete)
     idProductToDelete === selectedProduct.id && setSelectedProduct(EMPTY_PRODUCT)
     titleEditRef.current.focus()
+  }
+
+  const handleAddButton = (event, idProductToAdd) => {
+    event.stopPropagation()
+    const productToAdd = findInArray(products, idProductToAdd)
+    console.log(productToAdd)
+    addToBasket(productToAdd)
   }
 
   return (
@@ -61,6 +71,7 @@ export default function Menu() {
             onDelete={(event) => handleCardDelete(event, id)}
             onClick={() => selectProduct(id)}
             isHoverable={isModeAdmin}
+            onAdd={(event) => handleAddButton(event, id)}
             isSelected={checkIfProductIsClicked(id, selectedProduct.id)}
           />
         )
@@ -78,7 +89,7 @@ const MenuStyled = styled.div`
   padding: 50px 50px 150px;
   justify-items: center;
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
-  overflow-y: scroll;
+  
   scrollbar-color: transparent transparent;
   scrollbar-width: thin;
   &:hover {

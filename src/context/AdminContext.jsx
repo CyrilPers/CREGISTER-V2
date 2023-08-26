@@ -29,5 +29,6 @@ export default createContext({
     titleEditRef: {},
 
     basket: [],
+    addToBasket: () => { },
 
 });
