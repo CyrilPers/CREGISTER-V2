@@ -29,17 +29,5 @@ const LeftColumnStyled = styled.div`
     border-bottom-left-radius: ${theme.borderRadius.extraRound};
     display: flex;
     flex-direction: column;
-    height: 85vh;
-
-    .head{ 
-        position: sticky;
-        top: 0;
-    }
-
-    .footer {
-        border-bottom-left-radius: ${theme.borderRadius.extraRound};
-        position: sticky;
-        bottom: 0;
-    }
-   
+    height: 85vh;   
 `;

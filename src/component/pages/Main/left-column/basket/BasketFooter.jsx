@@ -19,7 +19,7 @@ export default function BasketFooter() {
 }
 
 const BasketFooterStyled = styled.div`
-    height: 70px;
+    height: 65px;
     display: flex;
     justify-content: center;
     align-items: center;
