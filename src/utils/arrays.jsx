@@ -9,3 +9,7 @@ export const findInArray = (id, array) => {
 export const getIndex = (id, array) => {
     return array.findIndex((item) => item.id === id)
 }
+
+export const removeItemFromArray = (id, array) => {
+    return array.filter((item) => item.id !== id)
+}

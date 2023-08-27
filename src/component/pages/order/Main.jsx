@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import { styled } from 'styled-components';
 import { theme } from '../../../theme';
-import AdminContext from '../../../context/AdminContext';
 import LeftColumn from '../Main/left-column/LeftColumn';
 import MainRightSide from '../Main/main-right-side/MainRightSide';
 

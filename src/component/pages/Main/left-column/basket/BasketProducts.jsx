@@ -4,7 +4,9 @@ import { theme } from '../../../../../theme';
 import BasketCard from './BasketCard';
 import { IMAGE_COMING_SOON } from '../../../../../enum/product.jsx'
 
-export default function BasketProducts({ basket }) {
+export default function BasketProducts({ basket, deleteBasketProduct }) {
+
+
     return (
         <BasketProductsStyled>
             {basket.map((basketProduct) =>
@@ -12,6 +14,7 @@ export default function BasketProducts({ basket }) {
                     <BasketCard
                         {...basketProduct}
                         imageSource={basketProduct.imageSource ? basketProduct.imageSource : IMAGE_COMING_SOON}
+                        onDelete={() => deleteBasketProduct(basketProduct.id)}
                     />
                 </div>
             )
