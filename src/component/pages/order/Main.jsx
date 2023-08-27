@@ -18,6 +18,8 @@ export default function Main() {
 }
 
 const MainStyled = styled.div`
+    border: solid 2px ${theme.colors.primary} ;
+    border-top: none;
     background-color: ${theme.colors.background_white};
     height: 85vh;
 

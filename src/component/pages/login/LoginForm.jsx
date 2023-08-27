@@ -29,7 +29,7 @@ export default function LoginForm() {
   return (
     <LoginFormStyled action="submit" onSubmit={handleSubmit}>
       <div>
-        <h1>GEREZ VOS COMMANDES !</h1>
+        <h1>GÉREZ VOS COMMANDES !</h1>
         <hr />
         <h2>Connectez vous</h2>
       </div>
@@ -79,5 +79,6 @@ const LoginFormStyled = styled.form`
 
   .input-login {
     margin: 18px 0;
+
   }
 `;
