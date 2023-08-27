@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components"
 import { theme } from "../../theme"
 
-export default function Button({ label, Icon, className, version="default", onClick}) {
+export default function Button({ label, Icon, className, version = "default", onClick }) {
   return (
     <ButtonStyled className={className} version={version} onClick={onClick}>
       <span>{label}</span>
@@ -12,10 +12,10 @@ export default function Button({ label, Icon, className, version="default", onCl
 
 const ButtonStyled = styled.button`
 
-  ${({version}) => extraStyle[version]}
+  ${({ version }) => extraStyle[version]}
 `
 
- const extraPrimaryStyle = css`
+const extraPrimaryStyle = css`
   width: 100%;
   border: 1px solid red;
   display: inline-flex;
@@ -31,8 +31,8 @@ const ButtonStyled = styled.button`
   font-size: 15px;
   font-weight: 800;
   color: white;
-  background-color: #ff9f1b;
-  border: 1px solid #ff9f1b;
+  background-color: ${theme.colors.primary};
+  border: 1px solid ${theme.colors.primary};
 
   &:hover {
     color: ${theme.colors.primary};
@@ -95,8 +95,12 @@ const extraSuccessStyle = css`
   }
 `
 
+const extraMinimalistStyle = css`
+
+`
 
 const extraStyle = {
   default: extraPrimaryStyle,
   success: extraSuccessStyle,
+  minimalist: extraMinimalistStyle,
 }

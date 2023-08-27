@@ -4,10 +4,9 @@ import { theme } from '../../../theme'
 import Main from './Main'
 import Navbar from '../../navbar/Navbar'
 import AdminContext from "../../../context/AdminContext"
-import { fakeMenu } from '../../../fakeData/fakeMenu'
 import { EMPTY_PRODUCT } from '../../../enum/product.jsx'
-import { deepClone } from '../../../utils/arrays'
 import { useProducts } from '../../../hooks/useProducts'
+import { useBasket } from '../../../hooks/useBasket'
 
 
 export default function OrderPage() {
@@ -19,6 +18,8 @@ export default function OrderPage() {
   const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT)
   const titleEditRef = useRef()
   const { products, resetProducts, addProduct, deleteProduct, editProduct } = useProducts()
+  const { basket, addToBasket, deleteBasketProduct } = useBasket()
+
 
   const adminContextValue = {
     isModeAdmin,
@@ -37,6 +38,9 @@ export default function OrderPage() {
     setSelectedProduct,
     editProduct,
     titleEditRef,
+    basket,
+    addToBasket,
+    deleteBasketProduct,
   }
 
   return (
@@ -52,7 +56,9 @@ export default function OrderPage() {
 }
 
 const OrderPageStyled = styled.div`  
-  background-color: ${theme.colors.primary};
+  background: 
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url('/images/background.png') fixed center/cover;
   height: 100vh;
   display: flex;
   justify-content: center;

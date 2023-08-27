@@ -12,14 +12,15 @@ export default function Navbar() {
 
   return (
     <NavbarStyled>
-    <Logo onClick={refreshPage} className={"logo-order-page"} />   
-    <NavbarUser />
+      <Logo onClick={refreshPage} className={"logo-order-page"} />
+      <NavbarUser />
     </NavbarStyled>
 
   )
 }
 
 const NavbarStyled = styled.div`
+    border: solid 2px ${theme.colors.primary} ;
     background-color: ${theme.colors.white};
     height: 10vh;
     display: flex;

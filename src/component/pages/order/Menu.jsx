@@ -6,11 +6,11 @@ import { formatPrice } from '../../../utils/maths';
 import AdminContext from '../../../context/AdminContext';
 import EmptyMenuAdmin from './EmptyMenuAdmin';
 import EmptyMenuClient from './EmptyMenuClient';
-import { EMPTY_PRODUCT } from '../../../enum/product';
-
-const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
+import { EMPTY_PRODUCT, IMAGE_COMING_SOON } from '../../../enum/product';
+import { findInArray } from '../../../utils/arrays';
 
 export default function Menu() {
+
 
   const {
     products,
@@ -22,6 +22,7 @@ export default function Menu() {
     setIsCollapsed,
     setCurrentTabSelected,
     titleEditRef,
+    addToBasket,
   } = useContext(AdminContext)
 
   if (products.length === 0) {
@@ -33,7 +34,7 @@ export default function Menu() {
     if (!isModeAdmin) return
     await setIsCollapsed(false)
     await setCurrentTabSelected("edit")
-    const productClickedOn = products.find((product) => product.id === productIdSelected)
+    const productClickedOn = findInArray(productIdSelected, products)
     await setSelectedProduct(productClickedOn)
     titleEditRef.current.focus()
   }
@@ -49,6 +50,12 @@ export default function Menu() {
     titleEditRef.current.focus()
   }
 
+  const handleAddButton = (event, idProductToAdd) => {
+    event.stopPropagation()
+    const productToAdd = findInArray(idProductToAdd, products)
+    addToBasket(productToAdd)
+  }
+
   return (
 
     <MenuStyled className='menu'>
@@ -57,12 +64,13 @@ export default function Menu() {
           <Card
             key={id}
             title={title}
-            imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
+            imageSource={imageSource ? imageSource : IMAGE_COMING_SOON}
             leftDescription={formatPrice(price)}
             showDeleteButton={isModeAdmin}
             onDelete={(event) => handleCardDelete(event, id)}
             onClick={() => selectProduct(id)}
             isHoverable={isModeAdmin}
+            onAdd={(event) => handleAddButton(event, id)}
             isSelected={checkIfProductIsClicked(id, selectedProduct.id)}
           />
         )
@@ -80,5 +88,10 @@ const MenuStyled = styled.div`
   padding: 50px 50px 150px;
   justify-items: center;
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
-  overflow-y: scroll;
+  
+  scrollbar-color: transparent transparent;
+  scrollbar-width: thin;
+  &:hover {
+        scrollbar-color: initial;
+    }
 `;

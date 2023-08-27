@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import { styled } from 'styled-components';
 import { theme } from '../../../theme';
-import AdminContext from '../../../context/AdminContext';
 import LeftColumn from '../Main/left-column/LeftColumn';
 import MainRightSide from '../Main/main-right-side/MainRightSide';
 
@@ -18,6 +17,8 @@ export default function Main() {
 }
 
 const MainStyled = styled.div`
+    border: solid 2px ${theme.colors.primary} ;
+    border-top: none;
     background-color: ${theme.colors.background_white};
     height: 85vh;
 
