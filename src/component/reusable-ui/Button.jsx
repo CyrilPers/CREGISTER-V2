@@ -71,6 +71,8 @@ const extraPrimaryStyle = css`
     justify-content: center;
     align-items: center;
   }
+
+  
  `
 
 
@@ -95,12 +97,7 @@ const extraSuccessStyle = css`
   }
 `
 
-const extraMinimalistStyle = css`
-
-`
-
 const extraStyle = {
   default: extraPrimaryStyle,
   success: extraSuccessStyle,
-  minimalist: extraMinimalistStyle,
 }
