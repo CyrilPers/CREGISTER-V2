@@ -14,7 +14,7 @@ export default function LeftColumn() {
     const isBasketEmpty = basket.length === 0
 
     const basketTotal = basket.reduce((total, basketProduct) => {
-        if (isNaN(basketProduct.price)) return total
+
         return total += basketProduct.price * basketProduct.quantity
     }, 0)
 

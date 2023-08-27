@@ -52,6 +52,7 @@ const BasketCardStyled = styled.div`
   margin: 10px 15px;
   height: 85px;
   box-sizing: border-box;
+  
 
   position: relative;
 
@@ -121,7 +122,7 @@ const BasketCardStyled = styled.div`
     z-index: 1;
   }
 
-  :hover {
+  &:hover {
     .delete-button {
       border: none;
       box-sizing: border-box;
@@ -145,11 +146,11 @@ const BasketCardStyled = styled.div`
         height: ${theme.fonts.size.P3};
       }
 
-      :hover {
+      &:hover {
         .icon {
           color: ${theme.colors.dark};
         }
-        :active {
+        &:active {
           .icon {
             color: ${theme.colors.white};
           }
