@@ -4,7 +4,7 @@ import { deepClone, removeItemFromArray } from "../utils/arrays"
 
 export const useProducts = (second) => {
 
-    const [products, setProducts] = useState(fakeMenu.SMALL)
+    const [products, setProducts] = useState(fakeMenu.LARGE)
 
     const resetProducts = () => {
         setProducts(fakeMenu.LARGE)

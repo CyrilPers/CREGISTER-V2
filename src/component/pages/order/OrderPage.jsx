@@ -58,7 +58,7 @@ export default function OrderPage() {
 const OrderPageStyled = styled.div`  
   background: 
         linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-        url('/images/background.jpg') fixed center/cover;
+        url('/images/background.png') fixed center/cover;
   height: 100vh;
   display: flex;
   justify-content: center;
