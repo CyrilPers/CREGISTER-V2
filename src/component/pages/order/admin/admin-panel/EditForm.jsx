@@ -3,7 +3,7 @@ import AdminContext from '../../../../../context/AdminContext';
 import Form from './Form';
 import EditInfoMessage from './EditInfoMessage.jsx'
 
-export default function EditForm(inputTexts,) {
+export default function EditForm() {
 
   const { selectedProduct, setSelectedProduct, editProduct, titleEditRef } = useContext(AdminContext)
 

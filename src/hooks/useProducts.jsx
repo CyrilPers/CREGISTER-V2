@@ -23,7 +23,10 @@ export const useProducts = (second) => {
 
     const editProduct = (productBeingEdited) => {
         const productsCopy = deepClone(products)
-        const indexOfProducToEdit = products.indexOf(selectedProduct)
+        const indexOfProducToEdit = products.findIndex(
+            (product) => product.id === productBeingEdited.id
+        )
+
         productsCopy[indexOfProducToEdit] = productBeingEdited
         setProducts(productsCopy)
     }
