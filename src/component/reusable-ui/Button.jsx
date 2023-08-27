@@ -95,8 +95,12 @@ const extraSuccessStyle = css`
   }
 `
 
+const extraMinimalistStyle = css`
+
+`
 
 const extraStyle = {
   default: extraPrimaryStyle,
   success: extraSuccessStyle,
+  minimalist: extraMinimalistStyle,
 }

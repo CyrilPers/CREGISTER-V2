@@ -26,6 +26,12 @@ export const useBasket = () => {
         basketCopy[indexOfbasketProduct].quantity += 1
         setBasket(basketCopy)
     }
+
+
+
+
+
+
     return { basket, addToBasket }
 }
 

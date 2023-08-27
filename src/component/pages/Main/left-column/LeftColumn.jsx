@@ -11,12 +11,17 @@ import { theme } from '../../../../theme/index.jsx';
 export default function LeftColumn() {
 
     const { basket } = useContext(AdminContext)
-
     const isBasketEmpty = basket.length === 0
+
+    const basketTotal = basket.reduce((total, basketProduct) => {
+        if (isNaN(basketProduct.price)) return total
+        return total += basketProduct.price * basketProduct.quantity
+    }, 0)
+
 
     return (
         <LeftColumnStyled>
-            <Total amountToPay={formatPrice(0)} />
+            <Total amountToPay={formatPrice(basketTotal)} />
             {isBasketEmpty ? <EmptyBasket /> : <BasketProducts basket={basket} />}
             <BasketFooter />
         </LeftColumnStyled>
