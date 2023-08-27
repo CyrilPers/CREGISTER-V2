@@ -88,7 +88,7 @@ const MenuStyled = styled.div`
   padding: 50px 50px 150px;
   justify-items: center;
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
-  
+  overflow-y: scroll;
   scrollbar-color: transparent transparent;
   scrollbar-width: thin;
   &:hover {
