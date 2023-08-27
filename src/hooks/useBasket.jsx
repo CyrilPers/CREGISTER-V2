@@ -33,7 +33,14 @@ export const useBasket = () => {
         setBasket(basketUpdated)
     }
 
+    const editBasketProduct = (basketProduct) => {
+        const basketCopy = deepClone(basket)
+        const indexOfProducToEdit = getIndex(basketProduct, basket)
+        basketCopy[indexOfProducToEdit] = basketProduct
+        setBasket(basketCopy)
+    }
 
-    return { basket, addToBasket, deleteBasketProduct }
+
+    return { basket, addToBasket, deleteBasketProduct, editBasketProduct }
 }
 

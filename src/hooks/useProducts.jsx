@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { fakeMenu } from "../fakeData/fakeMenu"
-import { deepClone, removeItemFromArray } from "../utils/arrays"
+import { deepClone, getIndex, removeItemFromArray } from "../utils/arrays"
 
 export const useProducts = (second) => {
 
@@ -21,13 +21,10 @@ export const useProducts = (second) => {
         setProducts(productsUpdated)
     }
 
-    const editProduct = (productBeingEdited) => {
+    const editProduct = (product) => {
         const productsCopy = deepClone(products)
-        const indexOfProducToEdit = products.findIndex(
-            (product) => product.id === productBeingEdited.id
-        )
-
-        productsCopy[indexOfProducToEdit] = productBeingEdited
+        const indexOfProducToEdit = getIndex(product.id, products)
+        productsCopy[indexOfProducToEdit] = product
         setProducts(productsCopy)
     }
     return { products, setProducts, resetProducts, addProduct, deleteProduct, editProduct }

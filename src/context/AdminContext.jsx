@@ -31,5 +31,5 @@ export default createContext({
     basket: [],
     addToBasket: () => { },
     deleteBasketProduct: () => { },
-
+    editBasketProduct: () => { },
 });
