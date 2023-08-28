@@ -5,7 +5,7 @@ import EditInfoMessage from './EditInfoMessage.jsx'
 
 export default function EditForm() {
 
-  const { selectedProduct, setSelectedProduct, editProduct, titleEditRef } = useContext(AdminContext)
+  const { selectedProduct, setSelectedProduct, editProduct, titleEditRef, username } = useContext(AdminContext)
 
   const handleChange = (event) => {
     const { name, value } = event.target
@@ -14,7 +14,7 @@ export default function EditForm() {
       [name]: value
     }
     setSelectedProduct(productBeingEdited) // update formulaire
-    editProduct(productBeingEdited) // update menu
+    editProduct(productBeingEdited, username) // update menu
   }
 
   return (

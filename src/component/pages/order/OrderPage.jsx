@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { styled } from 'styled-components'
 import { theme } from '../../../theme'
 import Main from './Main'
@@ -8,6 +8,7 @@ import { EMPTY_PRODUCT } from '../../../enum/product.jsx'
 import { useProducts } from '../../../hooks/useProducts'
 import { useBasket } from '../../../hooks/useBasket'
 import { useParams } from 'react-router-dom'
+import { getProducts } from '../../../API/products'
 
 
 export default function OrderPage() {
@@ -18,10 +19,17 @@ export default function OrderPage() {
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
   const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT)
   const titleEditRef = useRef()
-  const { products, resetProducts, addProduct, deleteProduct, editProduct } = useProducts()
+  const { products, resetProducts, addProduct, deleteProduct, editProduct, setProducts } = useProducts()
   const { basket, addToBasket, deleteBasketProduct, editBasketProduct } = useBasket()
   const { username } = useParams()
 
+
+  const initialiseProducts = async () => {
+    const productsReceived = await getProducts(username)
+    setProducts(productsReceived)
+  }
+
+  useEffect(() => { initialiseProducts() }, [])
 
 
   const adminContextValue = {

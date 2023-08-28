@@ -19,12 +19,13 @@ export const useProducts = (second) => {
         syncBothProducts(username, productsUpdated)
     }
 
-    const deleteProduct = (productId) => {
+    const deleteProduct = (productId, username) => {
         const productsUpdated = removeItemFromArray(productId, products)
         setProducts(productsUpdated)
+        syncBothProducts(username, productsUpdated)
     }
 
-    const editProduct = (product) => {
+    const editProduct = (product, username) => {
         const productsCopy = deepClone(products)
         const indexOfProducToEdit = getIndex(product.id, products)
         productsCopy[indexOfProducToEdit] = product

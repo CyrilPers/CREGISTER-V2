@@ -23,6 +23,7 @@ export default function Menu() {
     setCurrentTabSelected,
     titleEditRef,
     addToBasket,
+    username,
   } = useContext(AdminContext)
 
   if (products.length === 0) {
@@ -45,7 +46,7 @@ export default function Menu() {
 
   const handleCardDelete = (event, idProductToDelete) => {
     event.stopPropagation()
-    deleteProduct(idProductToDelete)
+    deleteProduct(idProductToDelete, username)
     idProductToDelete === selectedProduct.id && setSelectedProduct(EMPTY_PRODUCT)
     titleEditRef.current.focus()
   }
