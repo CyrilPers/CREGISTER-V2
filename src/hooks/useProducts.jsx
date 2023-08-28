@@ -6,7 +6,7 @@ import { syncBothProducts } from "../API/products"
 
 export const useProducts = (second) => {
 
-    const [products, setProducts] = useState(fakeMenu.LARGE)
+    const [products, setProducts] = useState(undefined)
 
     const resetProducts = () => {
         setProducts(fakeMenu.LARGE)

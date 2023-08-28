@@ -13,3 +13,7 @@ export const getIndex = (id, array) => {
 export const removeItemFromArray = (id, array) => {
     return array.filter((item) => item.id !== id)
 }
+
+export const isEmpty = (array) => {
+    return array.length === 0
+}

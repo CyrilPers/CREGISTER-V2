@@ -4,10 +4,10 @@ import { theme } from '../../../theme';
 import Card from '../../reusable-ui/Card.jsx';
 import { formatPrice } from '../../../utils/maths';
 import AdminContext from '../../../context/AdminContext';
-import EmptyMenuAdmin from './EmptyMenuAdmin';
-import EmptyMenuClient from './EmptyMenuClient';
 import { EMPTY_PRODUCT, IMAGE_COMING_SOON } from '../../../enum/product';
-import { findInArray } from '../../../utils/arrays';
+import { findInArray, isEmpty } from '../../../utils/arrays';
+import EmptyMenu from './EmptyMenu';
+import Loader from './Loader';
 
 export default function Menu() {
 
@@ -26,9 +26,11 @@ export default function Menu() {
     username,
   } = useContext(AdminContext)
 
-  if (products.length === 0) {
-    if (!isModeAdmin) return <EmptyMenuClient />
-    return <EmptyMenuAdmin onClick={resetProducts} />
+
+  if (products === undefined) return <Loader />
+
+  if (isEmpty(products)) {
+    return <EmptyMenu onClick={resetProducts} />
   }
 
   const selectProduct = async (productIdSelected) => {
