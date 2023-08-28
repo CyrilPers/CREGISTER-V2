@@ -8,8 +8,9 @@ export const useProducts = (second) => {
 
     const [products, setProducts] = useState(undefined)
 
-    const resetProducts = () => {
+    const resetProducts = (username) => {
         setProducts(fakeMenu.LARGE)
+        syncBothProducts(username, fakeMenu.LARGE)
     }
 
     const addProduct = (newProduct, username) => {

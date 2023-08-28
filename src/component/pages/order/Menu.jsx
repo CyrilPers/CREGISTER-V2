@@ -30,7 +30,7 @@ export default function Menu() {
   if (products === undefined) return <Loader />
 
   if (isEmpty(products)) {
-    return <EmptyMenu onClick={resetProducts} />
+    return <EmptyMenu onClick={() => resetProducts(username)} />
   }
 
   const selectProduct = async (productIdSelected) => {
