@@ -22,6 +22,7 @@ export const createUser = (userId) => {
 }
 
 export const authentificateUser = async (userId) => {
+    const existingUser = await getUser(userId)
     if (!existingUser) {
         createUser(userId)
     }
