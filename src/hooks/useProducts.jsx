@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { fakeMenu } from "../fakeData/fakeMenu"
 import { deepClone, getIndex, removeItemFromArray } from "../utils/arrays"
+import { syncBothProducts } from "../API/products"
+
 
 export const useProducts = (second) => {
 
@@ -10,10 +12,11 @@ export const useProducts = (second) => {
         setProducts(fakeMenu.LARGE)
     }
 
-    const addProduct = (newProduct) => {
+    const addProduct = (newProduct, username) => {
         const productsCopy = deepClone(products)
         const productsUpdated = [newProduct, ...productsCopy]
         setProducts(productsUpdated)
+        syncBothProducts(username, productsUpdated)
     }
 
     const deleteProduct = (productId) => {

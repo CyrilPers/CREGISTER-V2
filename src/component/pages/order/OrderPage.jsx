@@ -7,6 +7,7 @@ import AdminContext from "../../../context/AdminContext"
 import { EMPTY_PRODUCT } from '../../../enum/product.jsx'
 import { useProducts } from '../../../hooks/useProducts'
 import { useBasket } from '../../../hooks/useBasket'
+import { useParams } from 'react-router-dom'
 
 
 export default function OrderPage() {
@@ -19,8 +20,12 @@ export default function OrderPage() {
   const titleEditRef = useRef()
   const { products, resetProducts, addProduct, deleteProduct, editProduct } = useProducts()
   const { basket, addToBasket, deleteBasketProduct, editBasketProduct } = useBasket()
+  const { username } = useParams()
+
+
 
   const adminContextValue = {
+    username,
     isModeAdmin,
     setIsModeAdmin,
     isCollapsed,
