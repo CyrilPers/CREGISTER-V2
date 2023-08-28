@@ -20,10 +20,6 @@ export default function OrderPage() {
   const { products, resetProducts, addProduct, deleteProduct, editProduct } = useProducts()
   const { basket, addToBasket, deleteBasketProduct, editBasketProduct } = useBasket()
 
-
-  const apikey = import.meta.env.REACT_APP_API_KEY
-  console.log(apikey)
-
   const adminContextValue = {
     isModeAdmin,
     setIsModeAdmin,
