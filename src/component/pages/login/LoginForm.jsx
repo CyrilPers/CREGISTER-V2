@@ -6,7 +6,7 @@ import { IoChevronForward } from "react-icons/io5";
 import { BsPersonCircle } from "react-icons/bs"
 import TextInput from '../../reusable-ui/TextInput';
 import Button from '../../reusable-ui/Button';
-import { createUser } from '../../../API/user';
+import { authentificateUser, createUser, getUser } from '../../../API/user';
 
 
 
@@ -17,9 +17,9 @@ export default function LoginForm() {
   const navigate = useNavigate()
 
   // Comportement
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
-    createUser(username)
+    authentificateUser(username)
     setUsername("")
     navigate(`/order/${username}`)
   }
