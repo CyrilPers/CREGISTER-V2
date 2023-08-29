@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import { fakeBasket } from '../fakeData/fakeBasket'
 import { deepClone, findInArray, getIndex, removeItemFromArray } from '../utils/arrays'
+import { setLocalStorage } from '../utils/window.jsx'
 
 export const useBasket = () => {
-    const [basket, setBasket] = useState(fakeBasket.EMPTY)
+    const [basket, setBasket] = useState([])
 
 
-    const addToBasket = (productToAdd) => {
+    const addBasketProduct = (productToAdd, username) => {
 
         const basketCopy = deepClone(basket)
 
@@ -19,21 +19,23 @@ export const useBasket = () => {
             }
             const updatedBasket = [newBasketProduct, ...basketCopy]
             setBasket(updatedBasket)
+            setLocalStorage(username, basketCopy)
             return
         }
 
         const indexOfbasketProduct = getIndex(productToAdd.id, basketCopy)
         basketCopy[indexOfbasketProduct].quantity += 1
         setBasket(basketCopy)
+        setLocalStorage(username, basketCopy)
     }
 
 
-    const deleteBasketProduct = (basketProductId) => {
+    const deleteBasketProduct = (basketProductId, username) => {
         const basketUpdated = removeItemFromArray(basketProductId, basket)
         setBasket(basketUpdated)
+        setLocalStorage(username, basketUpdated)
     }
 
 
-    return { basket, addToBasket, deleteBasketProduct }
+    return { basket, addBasketProduct, deleteBasketProduct, setBasket }
 }
-

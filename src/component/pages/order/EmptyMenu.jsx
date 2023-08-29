@@ -3,17 +3,17 @@ import { styled } from 'styled-components';
 import { theme } from '../../../theme';
 import Button from '../../reusable-ui/Button';
 
-export default function EmptyMenuAdmin({ onClick }) {
+export default function EmptyMenu({ onClick }) {
   return (
-    <EmptyMenuAdminStyled className='no-prodducts'>
+    <EmptyMenuStyled className='no-prodducts'>
       <span className='title'>Le menu est vide</span>
       <span className='description'>Cliquez ci-dessous pour le réinitialiser</span>
       <Button label="Générer de nouveaux produits" onClick={onClick} />
-    </EmptyMenuAdminStyled>
+    </EmptyMenuStyled>
   )
 }
 
-const EmptyMenuAdminStyled = styled.div`
+const EmptyMenuStyled = styled.div`
   background-color: ${theme.colors.background_white};
   box-shadow: ${theme.shadows.strong};
   border-bottom-right-radius: ${theme.borderRadius.extraRound};

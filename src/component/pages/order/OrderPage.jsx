@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { styled } from 'styled-components'
 import { theme } from '../../../theme'
 import Main from './Main'
@@ -7,6 +7,10 @@ import AdminContext from "../../../context/AdminContext"
 import { EMPTY_PRODUCT } from '../../../enum/product.jsx'
 import { useProducts } from '../../../hooks/useProducts'
 import { useBasket } from '../../../hooks/useBasket'
+import { useParams } from 'react-router-dom'
+import { initialiseUserSession } from './helpers/initialiseUserSession'
+import { findInArray } from '../../../utils/arrays'
+
 
 
 export default function OrderPage() {
@@ -17,11 +21,27 @@ export default function OrderPage() {
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
   const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT)
   const titleEditRef = useRef()
-  const { products, resetProducts, addProduct, deleteProduct, editProduct } = useProducts()
-  const { basket, addToBasket, deleteBasketProduct } = useBasket()
+  const { products, resetProducts, addProduct, deleteProduct, editProduct, setProducts } = useProducts()
+  const { basket, addBasketProduct, deleteBasketProduct, setBasket } = useBasket()
+  const { username } = useParams()
+
+  const selectProduct = async (productIdSelected) => {
+    const productClickedOn = findInArray(productIdSelected, products)
+    await setIsCollapsed(false)
+    await setCurrentTabSelected("edit")
+    await setSelectedProduct(productClickedOn)
+    titleEditRef.current.focus()
+  }
+
+
+
+  useEffect(() => {
+    initialiseUserSession(username, setProducts, setBasket)
+  }, [])
 
 
   const adminContextValue = {
+    username,
     isModeAdmin,
     setIsModeAdmin,
     isCollapsed,
@@ -39,8 +59,9 @@ export default function OrderPage() {
     editProduct,
     titleEditRef,
     basket,
-    addToBasket,
+    addBasketProduct,
     deleteBasketProduct,
+    selectProduct,
   }
 
   return (

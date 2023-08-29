@@ -1,14 +1,22 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { styled } from 'styled-components';
 import { theme } from '../../../../../theme';
 import Header from '../../../../reusable-ui/Header.jsx'
+import { formatPrice } from '../../../../../utils/maths';
+import { calculateSumToPay } from './helper';
+import AdminContext from '../../../../../context/AdminContext';
 
-export default function Total({ amountToPay }) {
+export default function Total({ }) {
+
+    const { basket, products } = useContext(AdminContext)
+    const sumToPay = calculateSumToPay(basket, products)
+
+
     return (
         <Header>
             <TotalStyled>
                 <span className='total'>Total</span>
-                <span className='amount'>{amountToPay}</span>
+                <span className='amount'>{formatPrice(sumToPay)}</span>
             </TotalStyled>
         </Header>
     )

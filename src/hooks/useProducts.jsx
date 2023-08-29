@@ -1,31 +1,41 @@
 import { useState } from "react"
 import { fakeMenu } from "../fakeData/fakeMenu"
-import { deepClone, removeItemFromArray } from "../utils/arrays"
+import { deepClone, getIndex, removeItemFromArray } from "../utils/arrays"
+import { syncBothProducts } from "../API/products"
 
-export const useProducts = (second) => {
 
-    const [products, setProducts] = useState(fakeMenu.LARGE)
+export const useProducts = () => {
 
-    const resetProducts = () => {
-        setProducts(fakeMenu.LARGE)
-    }
+    const [products, setProducts] = useState()
 
-    const addProduct = (newProduct) => {
+
+
+    const addProduct = (newProduct, username) => {
         const productsCopy = deepClone(products)
         const productsUpdated = [newProduct, ...productsCopy]
         setProducts(productsUpdated)
+        syncBothProducts(username, productsUpdated)
     }
 
-    const deleteProduct = (productId) => {
-        const productsUpdated = removeItemFromArray(productId, products)
-        setProducts(productsUpdated)
-    }
-
-    const editProduct = (productBeingEdited) => {
+    const deleteProduct = (productId, username) => {
         const productsCopy = deepClone(products)
-        const indexOfProducToEdit = products.indexOf(selectedProduct)
+        const productsUpdated = removeItemFromArray(productId, productsCopy)
+        setProducts(productsUpdated)
+        syncBothProducts(username, productsUpdated)
+    }
+
+    const editProduct = (productBeingEdited, username) => {
+        const productsCopy = deepClone(products)
+        const indexOfProducToEdit = getIndex(productBeingEdited.id, products)
         productsCopy[indexOfProducToEdit] = productBeingEdited
         setProducts(productsCopy)
+        syncBothProducts(username, productsCopy)
     }
+
+    const resetProducts = (username) => {
+        setProducts(fakeMenu.LARGE)
+        syncBothProducts(username, fakeMenu.LARGE)
+    }
+
     return { products, setProducts, resetProducts, addProduct, deleteProduct, editProduct }
 }
