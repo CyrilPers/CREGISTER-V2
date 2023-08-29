@@ -56,7 +56,7 @@ const BasketProductsStyled = styled.div`
     
     .card-transition-appear {
         .card{
-        transform: translateX(100px);
+        transform: translateX(100%);
         opacity: 0%;
 
         }
@@ -64,13 +64,13 @@ const BasketProductsStyled = styled.div`
     .card-transition-appear-active {
         .card{
             transition: 0.5s;
-            transform: translateX(0px);
+            transform: translateX(0%);
             opacity: 100%;
         }
     }
     .card-transition-enter {
         .card{
-        transform: translateX(100px);
+        transform: translateX(100%);
         opacity: 0%;
 
         }
@@ -78,21 +78,21 @@ const BasketProductsStyled = styled.div`
     .card-transition-enter-active {
         .card{
             transition: 0.5s;
-            transform: translateX(0px);
+            transform: translateX(0%);
             opacity: 100%;
         }
     }
 
     .card-transition-exit {
         .card{
-            transform: translateX(0px);
+            transform: translateX(0%);
             opacity: 100%;
         }
     }
     .card-transition-exit-active {
         .card{
             transition: 0.5s;
-            transform: translateX(-100px);
+            transform: translateX(-100%);
             /* transform: scale(0.1); */
             opacity: 0%;
         }
