@@ -2,17 +2,18 @@
 import { getProducts } from "../../../../API/products.jsx"
 import { getLocalStorage } from "../../../../utils/window.jsx"
 
-const intialiseProducts = async (username, setProducts) => {
+const initialiseProducts = async (username, setProducts) => {
   const productsReceived = await getProducts(username)
+  console.log("productsReceived", productsReceived)
   setProducts(productsReceived)
 }
 
-const intialiseBasket = (username, setBasket) => {
+const initialiseBasket = (username, setBasket) => {
   const basketReceived = getLocalStorage(username)
   if (basketReceived) setBasket(basketReceived)
 }
 
 export const initialiseUserSession = async (username, setProducts, setBasket) => {
-  await intialiseProducts(username, setProducts)
-  intialiseBasket(username, setBasket)
+  await initialiseProducts(username, setProducts)
+  initialiseBasket(username, setBasket)
 }
