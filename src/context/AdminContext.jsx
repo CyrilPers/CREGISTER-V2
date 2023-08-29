@@ -32,7 +32,6 @@ export default createContext({
     titleEditRef: {},
 
     basket: [],
-    addToBasket: () => { },
+    addBasketProduct: () => { },
     deleteBasketProduct: () => { },
-    editBasketProduct: () => { },
 });

@@ -33,5 +33,6 @@ export const useProducts = (second) => {
         setProducts(productsCopy)
         syncBothProducts(username, productsCopy)
     }
+
     return { products, setProducts, resetProducts, addProduct, deleteProduct, editProduct }
 }

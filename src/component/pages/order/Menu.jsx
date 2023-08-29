@@ -22,7 +22,7 @@ export default function Menu() {
     setIsCollapsed,
     setCurrentTabSelected,
     titleEditRef,
-    addToBasket,
+    addBasketProduct,
     username,
   } = useContext(AdminContext)
 
@@ -56,7 +56,8 @@ export default function Menu() {
   const handleAddButton = (event, idProductToAdd) => {
     event.stopPropagation()
     const productToAdd = findInArray(idProductToAdd, products)
-    addToBasket(productToAdd)
+    console.log(productToAdd)
+    addBasketProduct(productToAdd, username)
   }
 
   return (

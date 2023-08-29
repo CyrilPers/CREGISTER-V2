@@ -10,11 +10,10 @@ import { theme } from '../../../../theme/index.jsx';
 
 export default function LeftColumn() {
 
-    const { basket, deleteBasketProduct, editBasketProduct } = useContext(AdminContext)
+    const { basket, deleteBasketProduct, username } = useContext(AdminContext)
     const isBasketEmpty = basket.length === 0
 
     const basketTotal = basket.reduce((total, basketProduct) => {
-
         return total += basketProduct.price * basketProduct.quantity
     }, 0)
 
@@ -22,7 +21,7 @@ export default function LeftColumn() {
     return (
         <LeftColumnStyled>
             <Total amountToPay={formatPrice(basketTotal)} />
-            {isBasketEmpty ? <EmptyBasket /> : <BasketProducts deleteBasketProduct={deleteBasketProduct} basket={basket} editBasketProduct={editBasketProduct} />}
+            {isBasketEmpty ? <EmptyBasket /> : <BasketProducts deleteBasketProduct={() => deleteBasketProduct(username)} basket={basket} editBasketProduct={() => editBasketProduct(username)} />}
             <BasketFooter />
         </LeftColumnStyled>
     )

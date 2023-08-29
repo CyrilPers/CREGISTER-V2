@@ -20,7 +20,7 @@ export default function OrderPage() {
   const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT)
   const titleEditRef = useRef()
   const { products, resetProducts, addProduct, deleteProduct, editProduct, setProducts } = useProducts()
-  const { basket, addToBasket, deleteBasketProduct, editBasketProduct } = useBasket()
+  const { basket, addBasketProduct, deleteBasketProduct } = useBasket()
   const { username } = useParams()
 
 
@@ -51,9 +51,8 @@ export default function OrderPage() {
     editProduct,
     titleEditRef,
     basket,
-    addToBasket,
+    addBasketProduct,
     deleteBasketProduct,
-    editBasketProduct,
   }
 
   return (
