@@ -23,6 +23,7 @@ export default function Menu() {
     addBasketProduct,
     username,
     selectProduct,
+    deleteBasketProduct,
   } = useContext(AdminContext)
 
 
@@ -34,6 +35,7 @@ export default function Menu() {
     event.stopPropagation()
     deleteProduct(idProductToDelete, username)
     idProductToDelete === selectedProduct.id && setSelectedProduct(EMPTY_PRODUCT)
+    deleteBasketProduct(idProductToDelete, username)
     titleEditRef.current.focus()
   }
 
