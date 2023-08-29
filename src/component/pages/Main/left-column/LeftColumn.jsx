@@ -11,8 +11,6 @@ import { isEmpty } from '../../../../utils/arrays.jsx';
 export default function LeftColumn() {
     const { basket, products } = useContext(AdminContext)
 
-    if (products === undefined) return <span>...Chargement</span>
-
     return (
         <LeftColumnStyled>
             <Total />

@@ -1,11 +1,15 @@
 import React from 'react'
 import { styled } from 'styled-components';
 import { theme } from '../../../../../theme';
+import { BASKET_MESSAGE } from '../../../../../enum/product';
 
-export default function EmptyBasket() {
+export default function EmptyBasket(isLoading) {
+
     return (
         <EmptyBasketStyled>
-            <span>Votre commande est vide.</span>
+            <span className='message'>
+                {isLoading ? BASKET_MESSAGE.LOADING : BASKET_MESSAGE.EMPTY}
+            </span>
         </EmptyBasketStyled>
     )
 }
@@ -16,7 +20,7 @@ background: ${theme.colors.background_white};
 flex: 1;
 box-shadow: ${theme.shadows.leftColumn};
 
-    span {
+    .message {
     padding : 0 16px;
     display: flex;
     height: calc(85vh - 70px - 70px);

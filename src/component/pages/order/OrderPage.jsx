@@ -8,8 +8,9 @@ import { EMPTY_PRODUCT } from '../../../enum/product.jsx'
 import { useProducts } from '../../../hooks/useProducts'
 import { useBasket } from '../../../hooks/useBasket'
 import { useParams } from 'react-router-dom'
-import { getProducts } from '../../../API/products'
-import { getLocalStorage } from '../../../utils/window'
+import { initialiseUserSession } from './helpers/initialiseUserSession'
+import { findInArray } from '../../../utils/arrays'
+
 
 
 export default function OrderPage() {
@@ -24,19 +25,19 @@ export default function OrderPage() {
   const { basket, addBasketProduct, deleteBasketProduct, setBasket } = useBasket()
   const { username } = useParams()
 
-
-  const initialiseProducts = async () => {
-    const productsReceived = await getProducts(username)
-    setProducts(productsReceived)
+  const selectProduct = async (productIdSelected) => {
+    const productClickedOn = findInArray(productIdSelected, products)
+    await setIsCollapsed(false)
+    await setCurrentTabSelected("edit")
+    await setSelectedProduct(productClickedOn)
+    titleEditRef.current.focus()
   }
 
-  const initialiseBasket = async () => {
-    const basketReceived = getLocalStorage(username)
-    setBasket(basketReceived)
-  }
 
-  useEffect(() => { initialiseProducts() }, [])
-  useEffect(() => { initialiseBasket() }, [])
+
+  useEffect(() => {
+    initialiseUserSession(username, setProducts, setBasket)
+  }, [])
 
 
   const adminContextValue = {
@@ -60,6 +61,7 @@ export default function OrderPage() {
     basket,
     addBasketProduct,
     deleteBasketProduct,
+    selectProduct,
   }
 
   return (

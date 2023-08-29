@@ -4,14 +4,11 @@ import { deepClone, getIndex, removeItemFromArray } from "../utils/arrays"
 import { syncBothProducts } from "../API/products"
 
 
-export const useProducts = (second) => {
+export const useProducts = () => {
 
-    const [products, setProducts] = useState(undefined)
+    const [products, setProducts] = useState()
 
-    const resetProducts = (username) => {
-        setProducts(fakeMenu.LARGE)
-        syncBothProducts(username, fakeMenu.LARGE)
-    }
+
 
     const addProduct = (newProduct, username) => {
         const productsCopy = deepClone(products)
@@ -21,7 +18,8 @@ export const useProducts = (second) => {
     }
 
     const deleteProduct = (productId, username) => {
-        const productsUpdated = removeItemFromArray(productId, products)
+        const productsCopy = deepClone(products)
+        const productsUpdated = removeItemFromArray(productId, productsCopy)
         setProducts(productsUpdated)
         syncBothProducts(username, productsUpdated)
     }
@@ -32,6 +30,11 @@ export const useProducts = (second) => {
         productsCopy[indexOfProducToEdit] = productBeingEdited
         setProducts(productsCopy)
         syncBothProducts(username, productsCopy)
+    }
+
+    const resetProducts = (username) => {
+        setProducts(fakeMenu.LARGE)
+        syncBothProducts(username, fakeMenu.LARGE)
     }
 
     return { products, setProducts, resetProducts, addProduct, deleteProduct, editProduct }

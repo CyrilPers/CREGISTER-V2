@@ -19,28 +19,12 @@ export default function Menu() {
     resetProducts,
     setSelectedProduct,
     selectedProduct,
-    setIsCollapsed,
-    setCurrentTabSelected,
     titleEditRef,
     addBasketProduct,
     username,
+    selectProduct,
   } = useContext(AdminContext)
 
-
-  if (products === undefined) return <Loader />
-
-  if (isEmpty(products)) {
-    return <EmptyMenu onClick={() => resetProducts(username)} />
-  }
-
-  const selectProduct = async (productIdSelected) => {
-    if (!isModeAdmin) return
-    await setIsCollapsed(false)
-    await setCurrentTabSelected("edit")
-    const productClickedOn = findInArray(productIdSelected, products)
-    await setSelectedProduct(productClickedOn)
-    titleEditRef.current.focus()
-  }
 
   const checkIfProductIsClicked = (idProductInMenu, idProductClicked) => {
     return idProductInMenu === idProductClicked
@@ -59,6 +43,13 @@ export default function Menu() {
     addBasketProduct(productToAdd, username)
   }
 
+  // Afficahge 
+  if (products === undefined) return <Loader />
+
+  if (isEmpty(products)) {
+    return <EmptyMenu onClick={() => resetProducts(username)} />
+  }
+
   return (
 
     <MenuStyled className='menu'>
@@ -71,10 +62,10 @@ export default function Menu() {
             leftDescription={formatPrice(price)}
             showDeleteButton={isModeAdmin}
             onDelete={(event) => handleCardDelete(event, id)}
-            onClick={() => selectProduct(id)}
+            onClick={isModeAdmin ? () => selectProduct(id) : null}
             isHoverable={isModeAdmin}
-            onAdd={(event) => handleAddButton(event, id)}
             isSelected={checkIfProductIsClicked(id, selectedProduct.id)}
+            onAdd={(event) => handleAddButton(event, id)}
           />
         )
       })}

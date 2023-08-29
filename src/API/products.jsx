@@ -5,7 +5,7 @@ export const syncBothProducts = (userId, updatedProducts) => {
     const refDoc = doc(db, "users", userId)
     const newDoc = {
         username: userId,
-        menu: updatedProducts
+        menu: updatedProducts,
     }
     setDoc(refDoc, newDoc)
 }

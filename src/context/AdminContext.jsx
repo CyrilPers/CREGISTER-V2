@@ -23,6 +23,7 @@ export default createContext({
     resetProducts: () => { },
     editProduct: () => { },
 
+    selectProduct: () => { },
     selectedProduct: {},
     setSelectedProduct: () => { },
 
