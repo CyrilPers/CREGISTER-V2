@@ -9,6 +9,7 @@ import { useProducts } from '../../../hooks/useProducts'
 import { useBasket } from '../../../hooks/useBasket'
 import { useParams } from 'react-router-dom'
 import { getProducts } from '../../../API/products'
+import { getLocalStorage } from '../../../utils/window'
 
 
 export default function OrderPage() {
@@ -20,7 +21,7 @@ export default function OrderPage() {
   const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT)
   const titleEditRef = useRef()
   const { products, resetProducts, addProduct, deleteProduct, editProduct, setProducts } = useProducts()
-  const { basket, addBasketProduct, deleteBasketProduct } = useBasket()
+  const { basket, addBasketProduct, deleteBasketProduct, setBasket } = useBasket()
   const { username } = useParams()
 
 
@@ -29,7 +30,13 @@ export default function OrderPage() {
     setProducts(productsReceived)
   }
 
+  const initialiseBasket = async () => {
+    const basketReceived = getLocalStorage(username)
+    setBasket(basketReceived)
+  }
+
   useEffect(() => { initialiseProducts() }, [])
+  useEffect(() => { initialiseBasket() }, [])
 
 
   const adminContextValue = {

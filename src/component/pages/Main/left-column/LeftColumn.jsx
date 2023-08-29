@@ -1,27 +1,22 @@
 import React, { useContext } from 'react'
 import { styled } from 'styled-components';
+import AdminContext from '../../../../context/AdminContext.jsx'
 import Total from './basket/Total.jsx';
-import { formatPrice } from '../../../../utils/maths.jsx'
-import AdminContext from '../../../../context/AdminContext.jsx';
 import BasketFooter from './basket/BasketFooter.jsx';
 import BasketProducts from './basket/BasketProducts.jsx';
 import EmptyBasket from './basket/EmptyBasket.jsx'
 import { theme } from '../../../../theme/index.jsx';
+import { isEmpty } from '../../../../utils/arrays.jsx';
 
 export default function LeftColumn() {
+    const { basket, products } = useContext(AdminContext)
 
-    const { basket, deleteBasketProduct, username } = useContext(AdminContext)
-    const isBasketEmpty = basket.length === 0
-
-    const basketTotal = basket.reduce((total, basketProduct) => {
-        return total += basketProduct.price * basketProduct.quantity
-    }, 0)
-
+    if (products === undefined) return <span>...Chargement</span>
 
     return (
         <LeftColumnStyled>
-            <Total amountToPay={formatPrice(basketTotal)} />
-            {isBasketEmpty ? <EmptyBasket /> : <BasketProducts deleteBasketProduct={() => deleteBasketProduct(username)} basket={basket} editBasketProduct={() => editBasketProduct(username)} />}
+            <Total />
+            {isEmpty(basket) ? <EmptyBasket isLoading={products === undefined} /> : <BasketProducts />}
             <BasketFooter />
         </LeftColumnStyled>
     )

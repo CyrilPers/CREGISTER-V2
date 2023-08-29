@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { fakeBasket } from '../fakeData/fakeBasket'
 import { deepClone, findInArray, getIndex, removeItemFromArray } from '../utils/arrays'
 import { setLocalStorage } from '../utils/window.jsx'
 
@@ -38,5 +37,5 @@ export const useBasket = () => {
     }
 
 
-    return { basket, addBasketProduct, deleteBasketProduct }
+    return { basket, addBasketProduct, deleteBasketProduct, setBasket }
 }
