@@ -8,6 +8,7 @@ import { EMPTY_PRODUCT, IMAGE_COMING_SOON } from '../../../enum/product';
 import { findInArray, isEmpty } from '../../../utils/arrays';
 import EmptyMenu from './EmptyMenu';
 import Loader from './Loader';
+import { checkIfProductIsClicked } from './menu/helpers.jsx'
 
 export default function Menu() {
 
@@ -27,9 +28,7 @@ export default function Menu() {
   } = useContext(AdminContext)
 
 
-  const checkIfProductIsClicked = (idProductInMenu, idProductClicked) => {
-    return idProductInMenu === idProductClicked
-  }
+
 
   const handleCardDelete = (event, idProductToDelete) => {
     event.stopPropagation()
@@ -53,7 +52,6 @@ export default function Menu() {
   }
 
   return (
-
     <MenuStyled className='menu'>
       {products.map(({ id, title, imageSource, price }) => {
         return (

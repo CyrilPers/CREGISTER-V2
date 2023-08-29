@@ -3,7 +3,7 @@ import { styled } from 'styled-components';
 import { theme } from '../../../../../theme';
 import { BASKET_MESSAGE } from '../../../../../enum/product';
 
-export default function EmptyBasket(isLoading) {
+export default function EmptyBasket({ isLoading }) {
 
     return (
         <EmptyBasketStyled>
