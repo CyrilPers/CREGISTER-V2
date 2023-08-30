@@ -28,7 +28,7 @@ export default function BasketProducts() {
                     appear={true}
                     classNames={"card-transition"}
                     key={basketProduct.id}
-                    timeout={500} // {{ enter: 500, exit: 500 }}
+                    timeout={300} // {{ enter: 500, exit: 500 }}
                 >
                     <div className='basket-card'  >
                         <BasketCard

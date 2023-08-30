@@ -10,7 +10,7 @@ export const basketCardAnimation = css`
     }
     .card-transition-appear-active {
         .card{
-            transition: 0.5s;
+            transition: 0.3s;
             transform: translateX(0%);
             opacity: 100%;
         }
@@ -24,7 +24,7 @@ export const basketCardAnimation = css`
     }
     .card-transition-enter-active {
         .card{
-            transition: 0.5s;
+            transition: 0.3s;
             transform: translateX(0%);
             opacity: 100%;
         }
@@ -38,7 +38,7 @@ export const basketCardAnimation = css`
     }
     .card-transition-exit-active {
         .card{
-            transition: 0.5s;
+            transition: 0.3s;
             transform: translateX(-100%);
             /* transform: scale(0.1); */
             opacity: 0%;
