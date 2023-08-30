@@ -3,8 +3,9 @@ import { styled } from 'styled-components';
 import { theme } from '../../../../../theme';
 import Header from '../../../../reusable-ui/Header.jsx'
 import { formatPrice } from '../../../../../utils/maths';
-import { calculateSumToPay } from './helper';
+import { calculateSumToPay } from './Helper';
 import AdminContext from '../../../../../context/AdminContext';
+import CasinoEffect from '../../../../reusable-ui/CasinoEffect';
 
 export default function Total({ }) {
 
@@ -16,7 +17,7 @@ export default function Total({ }) {
         <Header>
             <TotalStyled>
                 <span className='total'>Total</span>
-                <span className='amount'>{formatPrice(sumToPay)}</span>
+                <CasinoEffect count={formatPrice(sumToPay)} />
             </TotalStyled>
         </Header>
     )

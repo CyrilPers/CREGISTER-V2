@@ -4,6 +4,10 @@ import { theme } from '../../../../../theme';
 import BasketCard from './BasketCard';
 import { IMAGE_COMING_SOON } from '../../../../../enum/product.jsx'
 import AdminContext from '../../../../../context/AdminContext';
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
+import { basketCardAnimation } from '../../../../../theme/animations';
+
+
 
 export default function BasketProducts() {
 
@@ -18,18 +22,25 @@ export default function BasketProducts() {
     }
 
     return (
-        <BasketProductsStyled>
+        <TransitionGroup component={BasketProductsStyled}>
             {basket.map((basketProduct) =>
-                <div className='basket-card' key={basketProduct.id} >
-                    <BasketCard
-                        {...basketProduct}
-                        imageSource={basketProduct.imageSource ? basketProduct.imageSource : IMAGE_COMING_SOON}
-                        onDelete={() => handleOnDelete(basketProduct.id, username)}
-                    />
-                </div>
-            )
-            }
-        </BasketProductsStyled >
+                <CSSTransition
+                    appear={true}
+                    classNames={"card-transition"}
+                    key={basketProduct.id}
+                    timeout={300} // {{ enter: 500, exit: 500 }}
+                >
+                    <div className='basket-card'  >
+                        <BasketCard
+                            {...basketProduct}
+                            imageSource={basketProduct.imageSource ? basketProduct.imageSource : IMAGE_COMING_SOON}
+                            onDelete={() => handleOnDelete(basketProduct.id, username)}
+                            className={"card"}
+                        />
+                    </div>
+                </CSSTransition>
+            )}
+        </TransitionGroup >
     )
 }
 
@@ -47,4 +58,6 @@ const BasketProductsStyled = styled.div`
         scrollbar-color: initial;
         scrollbar-width: thin;
     }
+
+    ${basketCardAnimation}
 `;

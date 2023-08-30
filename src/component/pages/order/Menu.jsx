@@ -9,6 +9,8 @@ import { findInArray, isEmpty } from '../../../utils/arrays';
 import EmptyMenu from './EmptyMenu';
 import Loader from './Loader';
 import { checkIfProductIsClicked } from './menu/helpers.jsx'
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { menuAnimation } from '../../../theme/animations';
 
 export default function Menu() {
 
@@ -52,24 +54,30 @@ export default function Menu() {
   }
 
   return (
-    <MenuStyled className='menu'>
+    <TransitionGroup component={MenuStyled} className='menu'>
       {products.map(({ id, title, imageSource, price }) => {
         return (
-          <Card
+          <CSSTransition
+            classNames={"animation-card"}
             key={id}
-            title={title}
-            imageSource={imageSource ? imageSource : IMAGE_COMING_SOON}
-            leftDescription={formatPrice(price)}
-            showDeleteButton={isModeAdmin}
-            onDelete={(event) => handleCardDelete(event, id)}
-            onClick={isModeAdmin ? () => selectProduct(id) : null}
-            isHoverable={isModeAdmin}
-            isSelected={checkIfProductIsClicked(id, selectedProduct.id)}
-            onAdd={(event) => handleAddButton(event, id)}
-          />
+            timeout={300}
+          >
+            <Card
+              key={id}
+              title={title}
+              imageSource={imageSource ? imageSource : IMAGE_COMING_SOON}
+              leftDescription={formatPrice(price)}
+              showDeleteButton={isModeAdmin}
+              onDelete={(event) => handleCardDelete(event, id)}
+              onClick={isModeAdmin ? () => selectProduct(id) : null}
+              isHoverable={isModeAdmin}
+              isSelected={checkIfProductIsClicked(id, selectedProduct.id)}
+              onAdd={(event) => handleAddButton(event, id)}
+            />
+          </CSSTransition>
         )
       })}
-    </MenuStyled>
+    </TransitionGroup>
   )
 }
 
@@ -89,4 +97,5 @@ const MenuStyled = styled.div`
   &:hover {
         scrollbar-color: initial;
     }
+    ${menuAnimation}
 `;
