@@ -1,5 +1,17 @@
-import { css } from "styled-components";
+import { css, keyframes } from "styled-components";
 import { theme } from './index.jsx'
+
+export const fadeInFromRight = keyframes`
+    0% {
+        position: absolute;
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+`
 
 export const basketCardAnimation = css`
     .card-transition-appear {
@@ -83,3 +95,4 @@ export const casinoAnimation = css`
 }
 
 `
+

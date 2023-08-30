@@ -26,8 +26,6 @@ export default function MainRightSide() {
     )
 }
 
-
-
 const MainRightSideStyled = styled.div`
     position: relative;
     overflow-y: hidden;
