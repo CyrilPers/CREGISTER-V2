@@ -4,6 +4,8 @@ import Admin from '../../order/admin/Admin';
 import { styled } from 'styled-components';
 import { theme } from '../../../../theme';
 import AdminContext from '../../../../context/AdminContext';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { adminAnimation } from '../../../../theme/animations';
 
 export default function MainRightSide() {
 
@@ -13,14 +15,24 @@ export default function MainRightSide() {
     return (
         <MainRightSideStyled>
             <Menu />
-            {isModeAdmin && <Admin />}
+            {isModeAdmin && (
+                <TransitionGroup className="transition-group">
+                    <CSSTransition appear classNames="admin" timeout={500}>
+                        <Admin />
+                    </CSSTransition>
+                </TransitionGroup>
+            )}
         </MainRightSideStyled>
     )
 }
+
+
 
 const MainRightSideStyled = styled.div`
     position: relative;
     overflow-y: hidden;
     display: grid;
     border-bottom-right-radius: ${theme.borderRadius.extraRound};
+    
+    ${adminAnimation}
 `;

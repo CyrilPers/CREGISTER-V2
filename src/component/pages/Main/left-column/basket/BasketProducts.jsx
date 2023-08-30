@@ -5,6 +5,7 @@ import BasketCard from './BasketCard';
 import { IMAGE_COMING_SOON } from '../../../../../enum/product.jsx'
 import AdminContext from '../../../../../context/AdminContext';
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
+import { basketCardAnimation } from '../../../../../theme/animations';
 
 
 
@@ -39,8 +40,7 @@ export default function BasketProducts() {
                     </div>
                 </CSSTransition>
             )}
-        </TransitionGroup>
-
+        </TransitionGroup >
     )
 }
 
@@ -53,54 +53,11 @@ const BasketProductsStyled = styled.div`
     overflow-y: scroll;
     scrollbar-color: transparent transparent;
     scrollbar-width: thin;
-    
-    .card-transition-appear {
-        .card{
-        transform: translateX(100%);
-        opacity: 0%;
-
-        }
-    }
-    .card-transition-appear-active {
-        .card{
-            transition: 0.5s;
-            transform: translateX(0%);
-            opacity: 100%;
-        }
-    }
-    .card-transition-enter {
-        .card{
-        transform: translateX(100%);
-        opacity: 0%;
-
-        }
-    }
-    .card-transition-enter-active {
-        .card{
-            transition: 0.5s;
-            transform: translateX(0%);
-            opacity: 100%;
-        }
-    }
-
-    .card-transition-exit {
-        .card{
-            transform: translateX(0%);
-            opacity: 100%;
-        }
-    }
-    .card-transition-exit-active {
-        .card{
-            transition: 0.5s;
-            transform: translateX(-100%);
-            /* transform: scale(0.1); */
-            opacity: 0%;
-        }
-    }
-
 
     &:hover {
         scrollbar-color: initial;
         scrollbar-width: thin;
     }
+
+    ${basketCardAnimation}
 `;
