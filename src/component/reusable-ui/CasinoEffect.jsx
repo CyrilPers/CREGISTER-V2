@@ -1,6 +1,7 @@
 import React from 'react'
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { styled } from 'styled-components';
+import { casinoAnimation } from '../../theme/animations';
 
 export default function CasinoEffect({ count, className }) {
     return (
@@ -16,6 +17,7 @@ export default function CasinoEffect({ count, className }) {
     )
 }
 
+
 const CasinoEffectStyled = styled.div`
     
     position: relative;
@@ -24,26 +26,6 @@ const CasinoEffectStyled = styled.div`
     span {
         display: inline-block;
     }
-    
-    .count-animated-enter {
-        transform: translateY(100%);
-    }
-    .count-animated-active {
-        transition: 300ms;  
-        transform: translateY(0%);            
-    }
-    .count-animated-done {   
-    }
 
-    .count-animated-exit {
-        transform: translateY(0%);
-        position: absolute;
-        right: 0;
-        bottom: 0;
-    }
-    .count-animated-exit-active {
-        transition: 300ms;
-        transform: translateY(-100%);
-    }
-  
+    ${casinoAnimation}
 `;

@@ -1,4 +1,5 @@
 import { css } from "styled-components";
+import { theme } from './index.jsx'
 
 export const basketCardAnimation = css`
     .card-transition-appear {
@@ -10,7 +11,7 @@ export const basketCardAnimation = css`
     }
     .card-transition-appear-active {
         .card{
-            transition: 0.3s;
+            transition: ${theme.animation.speed.medium};
             transform: translateX(0%);
             opacity: 100%;
         }
@@ -24,7 +25,7 @@ export const basketCardAnimation = css`
     }
     .card-transition-enter-active {
         .card{
-            transition: 0.3s;
+            transition: ${theme.animation.speed.medium};
             transform: translateX(0%);
             opacity: 100%;
         }
@@ -38,7 +39,7 @@ export const basketCardAnimation = css`
     }
     .card-transition-exit-active {
         .card{
-            transition: 0.3s;
+            transition: ${theme.animation.speed.medium};
             transform: translateX(-100%);
             /* transform: scale(0.1); */
             opacity: 0%;
@@ -54,7 +55,31 @@ export const adminAnimation = css`
 &.admin-appear-active {
     opacity:1;
     transform: translateY(0);
-    transition: all 500ms;
+    transition: all ${theme.animation.speed.slow};
+    }
 }
+`
+
+export const casinoAnimation = css`
+.count-animated-enter {
+    transform: translateY(100%);
+
+&.count-animated-active {
+    transition: ${theme.animation.speed.slow};  
+    transform: translateY(0%);            
+    }
 }
+
+.count-animated-exit {
+    transform: translateY(0%);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+&.count-animated-exit-active {
+    transition: ${theme.animation.speed.slow};
+    transform: translateY(-100%);
+    }
+}
+
 `
