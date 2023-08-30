@@ -23,7 +23,14 @@ export const fadeInFromBottom = keyframes`
         transition: all ${theme.animation.speed.slow}
     }
 `
-
+export const fadeIn = keyframes`
+    0% {
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+`
 export const basketCardAnimation = css`
     .card-transition-appear {
         .card{

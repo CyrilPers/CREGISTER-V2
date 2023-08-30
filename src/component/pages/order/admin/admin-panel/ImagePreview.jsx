@@ -1,17 +1,18 @@
 import React from 'react'
 import { styled } from 'styled-components';
 import { theme } from '../../../../../theme';
+import { fadeIn } from '../../../../../theme/animations.jsx'
 
-export default function ImagePreview({imageSource, title}) {
-  return (
-    <ImagePreviewStyled>
-        {imageSource ? (
-            <img src={imageSource} alt={title} />
-        ) : (
-            <div className='empty-img'>Aucune image</div>
-        )}
-    </ImagePreviewStyled>
-  )
+export default function ImagePreview({ imageSource, title }) {
+    return (
+        <ImagePreviewStyled>
+            {imageSource ? (
+                <img src={imageSource} alt={title} />
+            ) : (
+                <div className='empty-img'>Aucune image</div>
+            )}
+        </ImagePreviewStyled>
+    )
 }
 
 const ImagePreviewStyled = styled.div`
@@ -25,6 +26,7 @@ const ImagePreviewStyled = styled.div`
         height: 100%;
         object-fit: contain;
         object-position: center;
+        animation: ${fadeIn} ${theme.animation.speed.verySlow} ease-out;
     }
 
     .empty-img {

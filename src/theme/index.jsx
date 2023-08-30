@@ -76,6 +76,7 @@ const animation = {
     quick: "100ms",
     medium: "300ms",
     slow: "500ms",
+    verySlow: "1s",
   }
 }
 
