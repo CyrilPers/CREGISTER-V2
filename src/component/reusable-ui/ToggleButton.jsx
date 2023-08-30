@@ -76,7 +76,7 @@ const ToggleButtonStyled = styled.div`
       transform: translateY(-50%);
       text-overflow: ellipsis;
       overflow: hidden;
-    }${theme.animation.speed.slow}
+    }
 
     // outside box
     &.toggle + label.rounded {
