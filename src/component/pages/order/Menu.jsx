@@ -14,7 +14,6 @@ import { menuAnimation } from '../../../theme/animations';
 
 export default function Menu() {
 
-
   const {
     products,
     isModeAdmin,
@@ -28,9 +27,6 @@ export default function Menu() {
     selectProduct,
     deleteBasketProduct,
   } = useContext(AdminContext)
-
-
-
 
   const handleCardDelete = (event, idProductToDelete) => {
     event.stopPropagation()
