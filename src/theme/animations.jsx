@@ -12,6 +12,17 @@ export const fadeInFromRight = keyframes`
         transform: translateX(0);
     }
 `
+export const fadeInFromBottom = keyframes`
+    0% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        transition: all ${theme.animation.speed.slow}
+    }
+`
 
 export const basketCardAnimation = css`
     .card-transition-appear {
@@ -23,7 +34,7 @@ export const basketCardAnimation = css`
     }
     .card-transition-appear-active {
         .card{
-            transition: ${theme.animation.speed.medium};
+            transition: ${theme.animation.speed.medium} ease-out;
             transform: translateX(0%);
             opacity: 100%;
         }
@@ -37,7 +48,7 @@ export const basketCardAnimation = css`
     }
     .card-transition-enter-active {
         .card{
-            transition: ${theme.animation.speed.medium};
+            transition: ${theme.animation.speed.medium} ease-out;
             transform: translateX(0%);
             opacity: 100%;
         }
@@ -51,7 +62,7 @@ export const basketCardAnimation = css`
     }
     .card-transition-exit-active {
         .card{
-            transition: ${theme.animation.speed.medium};
+            transition: ${theme.animation.speed.medium} ease-out;
             transform: translateX(-100%);
             /* transform: scale(0.1); */
             opacity: 0%;
@@ -60,24 +71,12 @@ export const basketCardAnimation = css`
     
 `
 
-export const adminAnimation = css`
-.admin-appear {
-    opacity:0.1;
-    transform: translateY(100%);
-    &.admin-appear-active {
-        opacity:1;
-        transform: translateY(0);
-        transition: all ${theme.animation.speed.slow};
-    }
-}
-`
-
 export const casinoAnimation = css`
 .count-animated-enter {
     transform: translateY(100%);
 
     &.count-animated-active {
-        transition: ${theme.animation.speed.slow};  
+        transition: ${theme.animation.speed.slow} ease-out;  
         transform: translateY(0%);            
     }
 }
@@ -89,7 +88,7 @@ export const casinoAnimation = css`
     bottom: 0;
 
     &.count-animated-exit-active {
-        transition: ${theme.animation.speed.slow};
+        transition: ${theme.animation.speed.slow} ease-out;
         transform: translateY(-100%);
     }
 }
@@ -103,7 +102,7 @@ export const menuAnimation = css`
         &.animation-card-enter-active {
             opacity: 1;
             transform: translateX(0);
-            transition: all ${theme.animation.speed.medium};
+            transition: all ${theme.animation.speed.medium} ease-out;
         }
     }
     .animation-card-exit {
@@ -112,7 +111,7 @@ export const menuAnimation = css`
         &.animation-card-exit-active {
             opacity: 0.1;
             transform: translateX(-100%);
-            transform: all ${theme.animation.speed.medium};
+            transform: all ${theme.animation.speed.medium} ease-out;
         }
     } 
 `
