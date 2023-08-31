@@ -34,7 +34,7 @@ export default function Card({
           {isOverlapImageVisible && (
             <div className="overlap">
               <div className="transparent-layer"></div>
-              <img src={overlapImageSource} alt="overlap" />
+              <img src={overlapImageSource} className="overlap-image" alt="overlap" />
             </div>
           )}
           <img src={imageSource} alt={title} />
