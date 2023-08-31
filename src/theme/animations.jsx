@@ -1,6 +1,20 @@
 import { css, keyframes } from "styled-components";
 import { theme } from './index.jsx'
 
+export const fadeInFromTop = keyframes`
+  0% {
+    position: absolute;
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(-40%);
+  }
+  
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`
+
 export const fadeInFromRight = keyframes`
     0% {
         position: absolute;

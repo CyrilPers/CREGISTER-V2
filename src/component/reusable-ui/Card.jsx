@@ -2,7 +2,7 @@ import styled, { css } from "styled-components"
 import { theme } from "../../theme"
 import Primary from "./Button"
 import { TiDelete } from "react-icons/ti"
-import { fadeInFromRight } from "../../theme/animations"
+import { fadeInFromRight, fadeInFromTop } from "../../theme/animations"
 
 export default function Card({
   title,
@@ -14,6 +14,8 @@ export default function Card({
   isHoverable,
   isSelected,
   onAdd,
+  overlapImageSource,
+  isOverlapImageVisible,
 }) {
 
   return (
@@ -27,9 +29,17 @@ export default function Card({
         {showDeleteButton && <button className="delete-button" aria-label="delete-button" onClick={onDelete}>
           <TiDelete className="delete-icon" />
         </button>}
+
         <div className="image">
+          {isOverlapImageVisible && (
+            <div className="overlap">
+              <div className="transparent-layer"></div>
+              <img src={overlapImageSource} alt="overlap" />
+            </div>
+          )}
           <img src={imageSource} alt={title} />
         </div>
+
         <div className="text-info">
           <div className="title">{title}</div>
           <div className="description">
@@ -40,7 +50,7 @@ export default function Card({
           </div>
         </div>
       </div>
-    </CardStyled>
+    </CardStyled >
   )
 }
 
@@ -71,6 +81,7 @@ const CardStyled = styled.div`
       border: none;
       background: none;
       animation : ${fadeInFromRight} ${theme.animation.speed.slow};
+      z-index: 2;
 
       .delete-icon{
         width: 30px;
@@ -96,6 +107,30 @@ const CardStyled = styled.div`
         height: 100%;
         object-fit: contain;
       }
+      .overlap {
+        .overlap-image {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          width: 80%;
+          height: 100%;
+          z-index: 1;
+          animation: ${fadeInFromTop} ${theme.animation.speed.slow};
+          border-radius: ${theme.borderRadius.extraRound};
+        }
+
+        .transparent-layer {
+          height: 100%;
+          width: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          opacity: 70%;
+          background: snow;
+          z-index: 1;
+          border-radius: ${theme.borderRadius.extraRound};
+        }
+      }    
     }
 
     .text-info {

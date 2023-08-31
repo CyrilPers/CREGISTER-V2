@@ -4,13 +4,14 @@ import { theme } from '../../../theme';
 import Card from '../../reusable-ui/Card.jsx';
 import { formatPrice } from '../../../utils/maths';
 import AdminContext from '../../../context/AdminContext';
-import { EMPTY_PRODUCT, IMAGE_COMING_SOON } from '../../../enum/product';
+import { EMPTY_PRODUCT, IMAGE_COMING_SOON, IMAGE_NO_STOCK } from '../../../enum/product';
 import { findInArray, isEmpty } from '../../../utils/arrays';
 import EmptyMenu from './EmptyMenu';
 import Loader from './Loader';
 import { checkIfProductIsClicked } from './menu/helpers.jsx'
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { menuAnimation } from '../../../theme/animations';
+import { convertStringToBoolean } from '../../../utils/string'
 
 export default function Menu() {
 
@@ -51,7 +52,7 @@ export default function Menu() {
 
   return (
     <TransitionGroup component={MenuStyled} className='menu'>
-      {products.map(({ id, title, imageSource, price }) => {
+      {products.map(({ id, title, imageSource, price, isAvailable }) => {
         return (
           <CSSTransition
             classNames={"animation-card"}
@@ -69,6 +70,8 @@ export default function Menu() {
               isHoverable={isModeAdmin}
               isSelected={checkIfProductIsClicked(id, selectedProduct.id)}
               onAdd={(event) => handleAddButton(event, id)}
+              overlapImageSource={IMAGE_NO_STOCK}
+              isOverlapImageVisible={convertStringToBoolean(isAvailable) === false}
             />
           </CSSTransition>
         )
