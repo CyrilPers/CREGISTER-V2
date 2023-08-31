@@ -23,12 +23,26 @@ export const fadeInFromBottom = keyframes`
         transition: all ${theme.animation.speed.slow}
     }
 `
-export const fadeIn = keyframes`
-    0% {
-        opacity: 0;
+export const fadeIn = css`
+    .picture-animation-appear {
+        opacity: 0%;
+    &.picture-animation-appear-active {
+            opacity: 100%;
+        }
     }
-    100%{
-        opacity: 1;
+
+    .picture-animation-enter {
+        opacity: 0%;
+    &.picture-animation-enter-active {
+            opacity: 100%;
+        }
+    }
+    .picture-animation-exit {
+        opacity: 0%;
+
+        &.picture-animation-exit-active {
+            opacity: 0%;
+        }
     }
 `
 export const basketCardAnimation = css`
@@ -48,7 +62,7 @@ export const basketCardAnimation = css`
     }
     .card-transition-enter {
         .card{
-        transform: translateX(100%);
+            transform: translateX(100%);
         opacity: 0%;
 
         }
