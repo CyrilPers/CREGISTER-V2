@@ -2,22 +2,15 @@ import React from 'react'
 import { styled } from 'styled-components';
 import ImagePreview from './ImagePreview';
 import TextInput from '../../../../reusable-ui/TextInput';
-import { getInputsConfig } from './inputsConfig';
+import { getInputSelectConfig, getInputTextsConfig } from './inputsConfig';
 import SelectInput from '../../../../reusable-ui/SelectInput';
 
-const isAvailableOptions = [
-    { value: true, label: "En stock" },
-    { value: false, label: "En rupture" },
-]
 
-const isPublicisedOptions = [
-    { value: false, label: "Sans pub" },
-    { value: true, label: "Avec pub" },
-]
 
 const Form = React.forwardRef(({ onSubmit, onChange, product, children, onFocus, onBlur }, ref) => {
 
-    const inputTexts = getInputsConfig(product)
+    const inputTexts = getInputTextsConfig(product)
+    const inputSelects = getInputSelectConfig(product)
 
     return (
         <FormStyled onSubmit={onSubmit}>
@@ -34,8 +27,11 @@ const Form = React.forwardRef(({ onSubmit, onChange, product, children, onFocus,
                         onBlur={onBlur}
                     />
                 ))}
-                <SelectInput options={isAvailableOptions} name="isAvailable" className="is-available" id="3" />
-                <SelectInput options={isPublicisedOptions} name="isPublicised" className="is-publicised" id="4" />
+                {inputSelects.map((inputSelect) => (
+                    <SelectInput
+                        {...inputSelect}
+                    />
+                ))}
             </div>
             <div className='submit'>{children}</div>
         </FormStyled>
