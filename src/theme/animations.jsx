@@ -25,25 +25,36 @@ export const fadeInFromBottom = keyframes`
 `
 export const fadeIn = css`
     .picture-animation-appear {
-        opacity: 0%;
+        img{
+        opacity: 0;
+    }
     &.picture-animation-appear-active {
-            opacity: 100%;
+        img{
+            opacity: 100;
+            }
         }
     }
 
     .picture-animation-enter {
-        opacity: 0%;
+        img{
+        opacity: 0;
+        }
     &.picture-animation-enter-active {
-            opacity: 100%;
+        img{
+            opacity: 1;
+            }
         }
     }
     .picture-animation-exit {
-        opacity: 0%;
-
+        img{
+            opacity: 0;
+        }
         &.picture-animation-exit-active {
-            opacity: 0%;
+            opacity: 0;
+            transition: 0s;
         }
     }
+
 `
 export const basketCardAnimation = css`
     .card-transition-appear {
@@ -63,8 +74,7 @@ export const basketCardAnimation = css`
     .card-transition-enter {
         .card{
             transform: translateX(100%);
-        opacity: 0%;
-
+            opacity: 0%;
         }
     }
     .card-transition-enter-active {
@@ -85,7 +95,6 @@ export const basketCardAnimation = css`
         .card{
             transition: ${theme.animation.speed.medium} ease-out;
             transform: translateX(-100%);
-            /* transform: scale(0.1); */
             opacity: 0%;
         }
     }

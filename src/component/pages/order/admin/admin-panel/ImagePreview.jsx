@@ -7,19 +7,18 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 export default function ImagePreview({ imageSource, title }) {
     return (
         <TransitionGroup component={ImagePreviewStyled}>
-            {imageSource ? (
-                <CSSTransition
-                    classNames={"picture-animation"}
-                    key={title}
-                    timeout={1000}
-                    appear
-                >
+            <CSSTransition
+                classNames={"picture-animation"}
+                key={title}
+                timeout={1000}
+                appear
+            >
+                {imageSource ? (
                     <img src={imageSource} alt={title} />
-                </CSSTransition>
-            ) : (
-                <div className='empty-img'>Aucune image</div>
-            )}
-
+                ) : (
+                    <div className='empty-img'>Aucune image</div>
+                )}
+            </CSSTransition>
         </TransitionGroup>
     )
 }
