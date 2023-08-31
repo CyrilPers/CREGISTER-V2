@@ -10,9 +10,6 @@ import FormInputs from './FormInputs';
 
 const Form = React.forwardRef(({ onSubmit, onChange, product, children, onFocus, onBlur }, ref) => {
 
-    const inputTexts = getInputTextsConfig(product)
-    const inputSelects = getInputSelectConfig(product)
-
     return (
         <FormStyled onSubmit={onSubmit}>
             <ImagePreview imageSource={product.imageSource} title={product.title} handleChange={onChange} />
