@@ -11,7 +11,6 @@ const Form = React.forwardRef(({ onSubmit, onChange, product, children, onFocus,
 
     const inputTexts = getInputTextsConfig(product)
     const inputSelects = getInputSelectConfig(product)
-    console.log(product)
 
     return (
         <FormStyled onSubmit={onSubmit}>
