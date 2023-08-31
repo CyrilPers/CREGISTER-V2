@@ -5,7 +5,7 @@ export default function SelectInput({ options, className, id, name }) {
     return (
         <SelectInputStyled name={name} className={className} id={id}>
             {options.map(({ value, label }) => (
-                <option option value={value}> {label} </option>
+                <option key={label} value={value}> {label} </option>
             ))
             }
         </SelectInputStyled >

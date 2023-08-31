@@ -4,7 +4,6 @@ import { getLocalStorage } from "../../../../utils/window.jsx"
 
 const initialiseProducts = async (username, setProducts) => {
   const productsReceived = await getProducts(username)
-  console.log("productsReceived", productsReceived)
   setProducts(productsReceived)
 }
 
