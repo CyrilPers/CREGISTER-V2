@@ -13,7 +13,7 @@ const Form = React.forwardRef(({ onSubmit, onChange, product, children, onFocus,
         <FormStyled onSubmit={onSubmit}>
             <ImagePreview imageSource={product.imageSource} title={product.title} handleChange={onChange} />
             <div className='input-fields'>
-                {inputTexts.map((input) =>
+                {inputTexts.map((input) => (
                     <TextInput
                         {...input}
                         key={input.id}
@@ -23,7 +23,15 @@ const Form = React.forwardRef(({ onSubmit, onChange, product, children, onFocus,
                         onFocus={onFocus}
                         onBlur={onBlur}
                     />
-                )}
+                ))}
+                <select name="isAvailable" className='is-available' id="3">
+                    <option value={true}>En stock</option>
+                    <option value={false}>En rupture</option>
+                </select>
+                <select name="isPublicised" className='is-publicised' id="4">
+                    <option value={false}>Sans pub</option>
+                    <option value={true}>Avec pub</option>
+                </select>
             </div>
             <div className='submit'>{children}</div>
         </FormStyled>
@@ -37,14 +45,26 @@ display: grid;
 grid-template-columns: 1fr 3fr;
 grid-template-rows: repeat(4, 1fr);
 column-gap: 8px;
-row-gap: 20px;
+row-gap: 8px;
 height: 100%;
 width: 70%;
 
 .input-fields {
     grid-area: 1 / 2 / 4 / 5;
+
     display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     row-gap: 8px;
+    column-gap: 8px;
+
+    .title {
+        grid-area: 1 / 1 / 2 / 4;
+    }
+    .imageSource{
+        grid-area: 2 / 1 / 3 / 4;
+    }
+
 }
 
 .submit {

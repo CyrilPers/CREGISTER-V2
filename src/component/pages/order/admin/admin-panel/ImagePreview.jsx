@@ -2,7 +2,6 @@ import React from 'react'
 import { styled } from 'styled-components';
 import { theme } from '../../../../../theme';
 import { fadeIn } from '../../../../../theme/animations.jsx'
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 export default function ImagePreview({ imageSource, title }) {
     return (
