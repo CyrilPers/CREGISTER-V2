@@ -5,7 +5,7 @@ import { fadeIn } from '../../../../../theme/animations.jsx'
 
 export default function ImagePreview({ imageSource, title }) {
     return (
-        <ImagePreviewStyled>
+        <ImagePreviewStyled key={title}>
             {imageSource ? (
                 <img src={imageSource} alt={title} />
             ) : (
