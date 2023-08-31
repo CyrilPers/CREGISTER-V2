@@ -3,7 +3,17 @@ import { styled } from 'styled-components';
 import ImagePreview from './ImagePreview';
 import TextInput from '../../../../reusable-ui/TextInput';
 import { getInputsConfig } from './inputsConfig';
+import SelectInput from '../../../../reusable-ui/SelectInput';
 
+const isAvailableOptions = [
+    { value: true, label: "En stock" },
+    { value: false, label: "En rupture" },
+]
+
+const isPublicisedOptions = [
+    { value: false, label: "Sans pub" },
+    { value: true, label: "Avec pub" },
+]
 
 const Form = React.forwardRef(({ onSubmit, onChange, product, children, onFocus, onBlur }, ref) => {
 
@@ -24,14 +34,8 @@ const Form = React.forwardRef(({ onSubmit, onChange, product, children, onFocus,
                         onBlur={onBlur}
                     />
                 ))}
-                <select name="isAvailable" className='is-available' id="3">
-                    <option value={true}>En stock</option>
-                    <option value={false}>En rupture</option>
-                </select>
-                <select name="isPublicised" className='is-publicised' id="4">
-                    <option value={false}>Sans pub</option>
-                    <option value={true}>Avec pub</option>
-                </select>
+                <SelectInput options={isAvailableOptions} name="isAvailable" className="is-available" id="3" />
+                <SelectInput options={isPublicisedOptions} name="isPublicised" className="is-publicised" id="4" />
             </div>
             <div className='submit'>{children}</div>
         </FormStyled>

@@ -1,6 +1,5 @@
-import { FaHamburger } from 'react-icons/fa';
 import { BsFillCameraFill } from 'react-icons/bs';
-import { MdOutlineEuro } from 'react-icons/md';
+import { MdOutlineEuro, MdTitle } from 'react-icons/md';
 
 export const getInputsConfig = (product) => [
     {
@@ -8,7 +7,7 @@ export const getInputsConfig = (product) => [
         name: "title",
         value: product.title,
         placeholder: 'Nom du produit',
-        Icon: <FaHamburger />,
+        Icon: <MdTitle />,
         version: "minimalist",
         className: "title",
     },
@@ -29,21 +28,4 @@ export const getInputsConfig = (product) => [
         Icon: <MdOutlineEuro />,
         version: "minimalist",
         className: "price",
-        // {
-        //     id: "3",
-        //     name: "isAvailable",
-        //     value: product.price ? product.price : "",
-        //     placeholder: "Prix",
-        //     Icon: <MdOutlineEuro />,
-        //     version: "minimalist",
-        //     className: "is-available",
-        // },
-        // {
-        //     id: "2",
-        //     name: "price",
-        //     value: product.price ? product.price : "",
-        //     placeholder: "Prix",
-        //     Icon: <MdOutlineEuro />,
-        //     version: "minimalist",
-        //     className: "price",
     }]
