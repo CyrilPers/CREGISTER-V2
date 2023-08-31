@@ -76,6 +76,7 @@ const CardStyled = styled.div`
       position: absolute;
       top: 15px;
       right: 15px;
+      cursor: pointer;
       color: ${theme.colors.primary};
       padding: 0;
       border: none;
@@ -188,8 +189,6 @@ const CardStyled = styled.div`
 `
 const hoverableStyle = css`
   &:hover {
-    transform: scale(1.05);
-    transition: ease-in-out 0.4s;
     box-shadow: ${theme.shadows.orangeHighlight};
     cursor: pointer;
   }
