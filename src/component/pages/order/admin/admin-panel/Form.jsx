@@ -11,6 +11,7 @@ const Form = React.forwardRef(({ onSubmit, onChange, product, children, onFocus,
 
     const inputTexts = getInputTextsConfig(product)
     const inputSelects = getInputSelectConfig(product)
+    console.log(product)
 
     return (
         <FormStyled onSubmit={onSubmit}>
@@ -29,6 +30,7 @@ const Form = React.forwardRef(({ onSubmit, onChange, product, children, onFocus,
                 ))}
                 {inputSelects.map((inputSelect) => (
                     <SelectInput
+                        key={inputSelect.id}
                         {...inputSelect}
                     />
                 ))}
