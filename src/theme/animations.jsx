@@ -1,6 +1,20 @@
 import { css, keyframes } from "styled-components";
 import { theme } from './index.jsx'
 
+export const fadeInFromTop = keyframes`
+  0% {
+    position: absolute;
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(-40%);
+  }
+  
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`
+
 export const fadeInFromRight = keyframes`
     0% {
         position: absolute;
@@ -23,7 +37,15 @@ export const fadeInFromBottom = keyframes`
         transition: all ${theme.animation.speed.slow}
     }
 `
-
+export const fadeIn = keyframes`
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        transition: all ${theme.animation.speed.verySlow}
+    }
+`
 export const basketCardAnimation = css`
     .card-transition-appear {
         .card{
@@ -41,9 +63,8 @@ export const basketCardAnimation = css`
     }
     .card-transition-enter {
         .card{
-        transform: translateX(100%);
-        opacity: 0%;
-
+            transform: translateX(100%);
+            opacity: 0%;
         }
     }
     .card-transition-enter-active {
@@ -64,7 +85,6 @@ export const basketCardAnimation = css`
         .card{
             transition: ${theme.animation.speed.medium} ease-out;
             transform: translateX(-100%);
-            /* transform: scale(0.1); */
             opacity: 0%;
         }
     }
