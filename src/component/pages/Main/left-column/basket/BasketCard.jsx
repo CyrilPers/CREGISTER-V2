@@ -160,4 +160,20 @@ const BasketCardStyled = styled.div`
       }
     }
   }
+  @media(max-width: 767px) {
+    height: 56px;
+
+    .image {
+    box-sizing: border-box;
+    height: 50px;
+
+    img {
+      padding: 5px;
+      box-sizing: border-box;
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+  }
 `

@@ -29,6 +29,6 @@ const LeftColumnStyled = styled.div`
     height: 85vh;   
 
     @media(max-width: 767px) {
-        height: 50vh;
+        height: 40vh;
     }
 `;

@@ -176,6 +176,16 @@ const CardStyled = styled.div`
     }
     ${({ $isHoverable, $isSelected }) => $isHoverable && $isSelected && selectedStyle}  
   }
+
+  @media(max-width: 767px) {
+    .card {
+    width: 110px;
+    height: 150px;
+    padding: 5px;
+    padding-bottom: 5px;
+    }
+    }
+
 `
 const hoverableStyle = css`
   &:hover {

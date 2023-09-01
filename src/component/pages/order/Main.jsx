@@ -34,5 +34,6 @@ const MainStyled = styled.div`
     @media(max-width: 767px) {
       display: flex;
       flex-direction: column-reverse;
+      max-height: none;
     }
   `;

@@ -25,6 +25,6 @@ const MainRightSideStyled = styled.div`
     border-bottom-right-radius: ${theme.borderRadius.extraRound};
 
     @media(max-width: 767px) {
-        min-height: 50vh;
-        }
+        height: 50vh;
+    }
 `;

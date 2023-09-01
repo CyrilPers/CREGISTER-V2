@@ -96,10 +96,13 @@ const OrderPageStyled = styled.div`
 
   @media(max-width: 767px) {
     padding: 0 5px;
+    min-height: 100vh;
+    max-height: none;
 
     .container {
       max-width: 100%;
       width: 100%;
+      max-height: none;
     }
   }
 `;
