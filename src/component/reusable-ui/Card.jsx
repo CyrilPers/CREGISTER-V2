@@ -56,17 +56,19 @@ const CardStyled = styled.div`
   height: 330px;
   
   .card {
-  background: ${theme.colors.white};
-  box-sizing: border-box;
-  width: 240px;
-  height: 330px;
-  display: grid;
-  grid-template-rows: 65% 1fr;
-  padding: 20px;
-  padding-bottom: 10px;
-  box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
-  border-radius: ${theme.borderRadius.extraRound};
-  position: relative;
+    background: ${theme.colors.white};
+    box-sizing: border-box;
+    width: 240px;
+    height: 330px;
+    display: grid;
+    grid-template-rows: 65% 1fr;
+    padding: 20px;
+    padding-bottom: 10px;
+    box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
+    border-radius: ${theme.borderRadius.extraRound};
+    position: relative;
+
+
     &:hover {
       cursor: pointer;
       box-shadow: ${theme.shadows.orangeHighlight};
@@ -178,6 +180,7 @@ const CardStyled = styled.div`
   }
 
   @media(max-width: 767px) {
+    padding: 10px;
     .card {
     width: 110px;
     height: 150px;

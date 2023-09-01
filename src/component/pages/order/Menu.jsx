@@ -93,6 +93,7 @@ const MenuStyled = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 
+
   /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));  */
   grid-row-gap: 60px;
   padding: 50px 50px 150px;
@@ -125,7 +126,10 @@ const MenuStyled = styled.div`
 
   ${ribbonAnimation}
   @media(max-width: 767px) {
-  grid-row-gap: 0px;
+    grid-row-gap: 0px;
+    max-width: 100%;
+    overflow-x: hidden;
+
   padding: 5px 5px 5px;
 
     .card-container {
