@@ -192,19 +192,48 @@ const CardStyled = styled.div`
       grid-template-rows: 30% 70%;
       padding: 5px;
 
-      .title {
-        margin: auto 0;
-        font-size: ${theme.fonts.size.P3};
-      }
+        .title {
+          margin: auto 0;
+          font-size: ${theme.fonts.size.P3};
+        }
 
-      .description {
-        display: flex;
+        .description {
+          display: flex;
 
-        .left-description {
+          .left-description {
+          }
         }
       }
     }
+  }
+  @media(min-width: 768px) and (max-width: 1388px) {
+    
+    padding: 10px;
+    .card {
+    width: 130px;
+    height: 160px;
+    padding: 5px;
+    padding-bottom: 10px;
+
+    .text-info {
+      display: grid;
+      grid-template-rows: 30% 70%;
+      padding: 5px;
+
+        .title {
+          margin: auto 0;
+          font-size: ${theme.fonts.size.P3};
+        }
+
+        .description {
+          display: flex;
+
+          .left-description {
+          }
+        }
+      }
     }
+
   }
 
 `

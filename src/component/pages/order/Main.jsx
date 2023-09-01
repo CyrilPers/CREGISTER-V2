@@ -36,4 +36,8 @@ const MainStyled = styled.div`
       flex-direction: column-reverse;
       max-height: none;
     }
+
+    @media(min-width: 768px) and (max-width: 1388px) {
+      grid-template-columns: 33% 1fr;
+    }
   `;
