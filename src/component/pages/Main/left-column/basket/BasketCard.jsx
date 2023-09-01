@@ -81,8 +81,8 @@ const BasketCardStyled = styled.div`
 
     .left-info {
       display: grid;
-      grid-template-rows: 60% 40%;
-      margin-left: 21px;
+      grid-template-rows: 70% 40%;
+      margin-left: 10px;
 
       .title {
         display: flex;
@@ -104,7 +104,6 @@ const BasketCardStyled = styled.div`
         font-size: ${theme.fonts.size.SM};
         font-weight: ${theme.fonts.weights.medium};
         font-family: ${theme.fonts.family.openSans};
-        /* color: ${theme.colors.white}; */
       }
     }
 
@@ -161,19 +160,57 @@ const BasketCardStyled = styled.div`
     }
   }
   @media(max-width: 767px) {
+
+    padding: 5px 10px;
+    margin: 5px 10px;  
     height: 56px;
+
+  .delete-button {
+      z-index: 1;
+      border: none;
+      box-sizing: border-box;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 50px;
+      border-top-right-radius: ${theme.borderRadius.round};
+      border-bottom-right-radius: ${theme.borderRadius.round};
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: ${theme.colors.red};
+      color: ${theme.colors.white};
+      cursor: pointer;
+      &:active {
+        .icon {
+          color: ${theme.colors.white};
+        }
+      }
+    }
 
     .image {
     box-sizing: border-box;
     height: 50px;
 
-    img {
-      padding: 5px;
-      box-sizing: border-box;
-      height: 100%;
-      width: 100%;
-      object-fit: contain;
+      img {
+        padding: 5px;
+      }
+    }
+    .text-info {
+    .left-info {
+      .title {
+        span {
+        }
+      }
+      .price {
+        margin-top: -5px;
+      }
+    }
+    .quantity {
+      margin-right: 60px;
     }
   }
-  }
+}
 `

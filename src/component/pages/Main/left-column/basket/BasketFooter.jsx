@@ -9,7 +9,7 @@ export default function BasketFooter() {
         <Header>
             <BasketFooterStyled>
                 <Button
-                    className="invoice-icon"
+                    className="invoice"
                     label="Ticket"
                     Icon={<FaReceipt />}
                 />
@@ -21,10 +21,17 @@ export default function BasketFooter() {
 const BasketFooterStyled = styled.div`
     height: 65px;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
     
+    .invoice {
+        width: 200px;
+    }
     .icon {
         margin: 0 5px;
   }
+  @media(max-width: 767px) {
+        height: 60px;
+    }
+  
 `;

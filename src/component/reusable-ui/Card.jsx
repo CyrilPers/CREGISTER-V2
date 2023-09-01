@@ -182,9 +182,27 @@ const CardStyled = styled.div`
     width: 110px;
     height: 150px;
     padding: 5px;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
+
+    .text-info {
+      display: grid;
+      grid-template-rows: 30% 70%;
+      padding: 5px;
+
+      .title {
+        margin: auto 0;
+        font-size: ${theme.fonts.size.P3};
+      }
+
+      .description {
+        display: flex;
+
+        .left-description {
+        }
+      }
     }
     }
+  }
 
 `
 const hoverableStyle = css`

@@ -125,8 +125,8 @@ const MenuStyled = styled.div`
 
   ${ribbonAnimation}
   @media(max-width: 767px) {
-  grid-row-gap: 10px;
-  padding: 10px 10px 50px;
+  grid-row-gap: 0px;
+  padding: 5px 5px 5px;
 
     .card-container {
       height: 170px;
