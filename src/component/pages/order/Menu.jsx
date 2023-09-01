@@ -38,10 +38,13 @@ export default function Menu() {
     titleEditRef.current.focus()
   }
 
-  const handleAddButton = (event, idProductToAdd) => {
-    event.stopPropagation()
+  const handleAddButton = (idProductToAdd) => {
     const productToAdd = findInArray(idProductToAdd, products)
-    addBasketProduct(productToAdd, username)
+    productToAdd.isAvailable ? addBasketProduct(productToAdd, username) : null;
+  }
+
+  const handleClick = (id) => {
+    isModeAdmin ? selectProduct(id) : handleAddButton(id);
   }
 
   let containerClassName = isModeAdmin ? "card-container is-hoverable" : 'card-container'
@@ -71,10 +74,9 @@ export default function Menu() {
                 leftDescription={formatPrice(price)}
                 showDeleteButton={isModeAdmin}
                 onDelete={(event) => handleCardDelete(event, id)}
-                onClick={isModeAdmin ? () => selectProduct(id) : null}
+                onClick={() => handleClick(id)}
                 isHoverable={isModeAdmin}
                 isSelected={checkIfProductIsClicked(id, selectedProduct.id)}
-                onAdd={(event) => handleAddButton(event, id)}
                 overlapImageSource={IMAGE_NO_STOCK}
                 isOverlapImageVisible={convertStringToBoolean(isAvailable) === false}
               />

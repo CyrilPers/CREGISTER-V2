@@ -1,6 +1,5 @@
 import styled, { css } from "styled-components"
 import { theme } from "../../theme"
-import Primary from "./Button"
 import { TiDelete } from "react-icons/ti"
 import { fadeInFromRight, fadeInFromTop } from "../../theme/animations"
 
@@ -13,7 +12,6 @@ export default function Card({
   onClick,
   isHoverable,
   isSelected,
-  onAdd,
   overlapImageSource,
   isOverlapImageVisible,
 }) {
@@ -44,9 +42,6 @@ export default function Card({
           <div className="title">{title}</div>
           <div className="description">
             <div className="left-description">{leftDescription}</div>
-            <div className="right-description">
-              <Primary className="add-button" label={"Ajouter"} onClick={onAdd} />
-            </div>
           </div>
         </div>
       </div>
@@ -56,6 +51,7 @@ export default function Card({
 
 const CardStyled = styled.div`
   ${({ $isHoverable }) => $isHoverable && hoverableStyle}
+
   border-radius: ${theme.borderRadius.extraRound};
   height: 330px;
   
@@ -71,6 +67,14 @@ const CardStyled = styled.div`
   box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
   border-radius: ${theme.borderRadius.extraRound};
   position: relative;
+    &:hover {
+      cursor: pointer;
+      box-shadow: ${theme.shadows.orangeHighlight};
+    }
+    &:active {
+    background-color: ${theme.colors.primary};
+    color: ${theme.colors.white};
+    }
 
     .delete-button {
       position: absolute;
@@ -155,12 +159,11 @@ const CardStyled = styled.div`
       }
 
       .description {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+        display: flex;
 
         .left-description {
           display: flex;
-          justify-content: flex-start;
+          justify-content: center;
           align-items: center;
           font-weight: ${theme.fonts.weights.medium};
           white-space: nowrap;
@@ -168,19 +171,6 @@ const CardStyled = styled.div`
           text-overflow: ellipsis;
           font-weight: ${theme.fonts.weights.medium};
           color: ${theme.colors.primary};
-        }
-
-        .right-description {
-          display: flex;
-          justify-content: flex-end;
-          align-items: center;
-          font-size: ${theme.fonts.size.P1};
-
-          .add-button {
-            font-size: ${theme.fonts.size.XS};
-            cursor: pointer;
-            padding: 12px;
-          }
         }
       }
     }
@@ -193,59 +183,60 @@ const hoverableStyle = css`
     cursor: pointer;
   }
 `
+
 const selectedStyle = css`
-  background: ${theme.colors.primary};
+background: ${theme.colors.primary};
   .primary-button {
-    color: ${theme.colors.primary};
-    background-color: ${theme.colors.white};
-    border: 1px solid ${theme.colors.white};
-    transition: all 200ms ease-out;
+  color: ${theme.colors.primary};
+  background-color: ${theme.colors.white};
+  border: 1px solid ${theme.colors.white};
+  transition: all 200ms ease - out;
     :hover {
+    color: ${theme.colors.white};
+    background-color: ${theme.colors.primary};
+    border: 1px solid ${theme.colors.white};
+    transition: all 200ms ease - out;
+  }
+    :active {
+    background-color: ${theme.colors.white};
+    color: ${theme.colors.primary};
+  }
+
+    &.is-disabled {
+    opacity: 50%;
+    cursor: not-allowed;
+    z-index: 2;
+  }
+
+    &.with-focus {
+    border: 1px solid white;
+    background-color: ${theme.colors.white};
+    color: ${theme.colors.primary};
+      :hover {
       color: ${theme.colors.white};
       background-color: ${theme.colors.primary};
       border: 1px solid ${theme.colors.white};
-      transition: all 200ms ease-out;
     }
-    :active {
-      background-color: ${theme.colors.white};
-      color: ${theme.colors.primary};
-    }
-
-    &.is-disabled {
-      opacity: 50%;
-      cursor: not-allowed;
-      z-index: 2;
-    }
-
-    &.with-focus {
-      border: 1px solid white;
-      background-color: ${theme.colors.white};
-      color: ${theme.colors.primary};
-      :hover {
-        color: ${theme.colors.white};
-        background-color: ${theme.colors.primary};
-        border: 1px solid ${theme.colors.white};
-      }
       :active {
-        background-color: ${theme.colors.white};
-        color: ${theme.colors.primary};
-      }
+      background-color: ${theme.colors.white};
+      color: ${theme.colors.primary};
     }
   }
+}
 
   .delete-button {
-    color: ${theme.colors.white};
+  color: ${theme.colors.white};
 
     :active {
-      color: ${theme.colors.white};
-    }
+    color: ${theme.colors.white};
   }
+}
 
   .text-info {
     .description {
       .left-description {
-        color: ${theme.colors.white};
-      }
+      color: ${theme.colors.white};
     }
   }
+}
 `
