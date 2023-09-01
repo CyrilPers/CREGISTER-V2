@@ -31,4 +31,7 @@ const LoginPageStyled = styled.div`
       transform: scale(2.5);
     }
 
+    @media(max-width: 767px) {
+      max-width: 100%
+    }
 `;

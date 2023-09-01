@@ -84,4 +84,18 @@ const LoginFormStyled = styled.form`
     margin: 18px 0;
 
   }
+
+  @media(max-width: 767px) {
+      max-width: 100%;
+      min-width: 300px;
+      h1{
+    font-size: ${theme.fonts.P4};
+    color: ${theme.colors.white};
+    }
+
+    h2{
+    font-size: ${theme.fonts.size.P3};
+    color: ${theme.colors.white};
+    }  
+  }
 `;

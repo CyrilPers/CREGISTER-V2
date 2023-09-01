@@ -37,5 +37,16 @@ const LogoStyled = styled.div`
         height: 80px;
         margin: 0;
     }
+    
+    @media(max-width: 767px) {
+
+      h1{
+        font-size: ${theme.fonts.size.P3};
+      }
+      img {
+        width: 40px;
+        height: 40px;
+      }
+    }
 `;
 

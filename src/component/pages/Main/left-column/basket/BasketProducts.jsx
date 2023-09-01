@@ -58,6 +58,5 @@ const BasketProductsStyled = styled.div`
         scrollbar-color: initial;
         scrollbar-width: thin;
     }
-
     ${basketCardAnimation}
 `;

@@ -19,28 +19,28 @@ const colors = {
 }
 
 const spacing = {
-  xxs: "4px",
-  xs: "8px",
-  sm: "12px",
-  md: "20px",
-  lg: "32px",
-  xl: "52px",
-  xxl: "84px",
+  xxs: "0.25rem",
+  xs: "0.5rem",
+  sm: "0.75rem",
+  md: "1.25rem",
+  lg: "2rem",
+  xl: "3.25rem",
+  xxl: "5.25rem",
 }
 
 const fonts = {
   size: {
-    XXXS: "8px",
-    XXS: "10px",
-    XS: "12px",
-    SM: "15px",
-    P0: "16px",
-    P1: "18px",
-    P2: "20px",
-    P3: "24px",
-    P4: "36px",
-    P5: "48px",
-    P6: "60px",
+    XXXS: "0.5rem",
+    XXS: "0.625rem",
+    XS: "0.75rem",
+    SM: "0.9375rem",
+    P0: "1rem",
+    P1: "1.125rem",
+    P2: "1.25rem",
+    P3: "1.5rem",
+    P4: "2.25rem",
+    P5: "3rem",
+    P6: "3.75rem",
   },
   weights: {
     light: 300,
