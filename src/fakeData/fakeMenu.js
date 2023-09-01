@@ -8,7 +8,7 @@ const SMALL = [
     price: 5.297,
     quantity: 0,
     isAvailable: true,
-    isPublicised: false,
+    isPublicised: true,
   },
   {
     id: "2",
@@ -86,7 +86,7 @@ const LARGE = [
     price: 5.4985,
     quantity: 0,
     isAvailable: true,
-    isPublicised: false,
+    isPublicised: true,
   },
   {
     id: "3",
@@ -122,7 +122,7 @@ const LARGE = [
     price: 3.356,
     quantity: 0,
     isAvailable: true,
-    isPublicised: false,
+    isPublicised: true,
   },
   {
     id: "7",
