@@ -32,12 +32,12 @@ export default function NavbarUser() {
 
   return (
     <NavbarUserStyled>
-      {/* <ToggleButton
+      <ToggleButton
         isChecked={isModeAdmin}
         labelIfChecked='DÉSACTIVER LE MODE ADMIN'
         labelIfUnchecked='ACTIVER LE MODE ADMIN'
         onToggle={notifyAdminMode}
-      /> */}
+      />
       <Profil />
       <Toast />
     </NavbarUserStyled>
@@ -54,6 +54,7 @@ const NavbarUserStyled = styled.div`
       max-width: 100%;
       align-items: center;
       justify-content: right;
+      margin-left: 0px;
     }
   
 `;

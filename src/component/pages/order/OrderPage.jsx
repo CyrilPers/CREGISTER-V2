@@ -95,7 +95,7 @@ const OrderPageStyled = styled.div`
   }  
 
   @media(max-width: 767px) {
-    padding: 0 5px;
+    padding: 0 0px;
     min-height: 100vh;
     max-height: none;
 
@@ -103,6 +103,7 @@ const OrderPageStyled = styled.div`
       max-width: 100%;
       width: 100%;
       max-height: none;
+      padding: 0 5px;
     }
   }
 `;
