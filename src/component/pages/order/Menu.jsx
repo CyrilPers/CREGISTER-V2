@@ -12,7 +12,6 @@ import { checkIfProductIsClicked } from './menu/helper/helpers.jsx'
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { menuAnimation } from '../../../theme/animations';
 import { convertStringToBoolean } from '../../../utils/string'
-import RibbonAnimated, { ribbonAnimation } from './menu/RIbbonAnimated';
 
 export default function Menu() {
 
@@ -58,7 +57,7 @@ export default function Menu() {
 
   return (
     <TransitionGroup component={MenuStyled} className='menu'>
-      {products.map(({ id, title, imageSource, price, isAvailable, isPublicised }) => {
+      {products.map(({ id, title, imageSource, price, isAvailable }) => {
         return (
           <CSSTransition
             classNames={"animation-card"}
@@ -66,7 +65,6 @@ export default function Menu() {
             timeout={300}
           >
             <div className={containerClassName}>
-              {convertStringToBoolean(isPublicised) && <RibbonAnimated />}
               <Card
                 key={id}
                 title={title}
@@ -121,8 +119,6 @@ const MenuStyled = styled.div`
     .ribbon {
       z-index: 2;
   }
-
-  ${ribbonAnimation}
   
   @media(max-width: 767px) {
     grid-auto-rows: 90px;

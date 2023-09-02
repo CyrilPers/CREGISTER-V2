@@ -88,7 +88,7 @@ const extraMinimalistStyle = css`
   }
 
   @media(max-width: 767px) {
-    padding: 0px 16px;
+    padding: 0px 5px;
   }
 `
 

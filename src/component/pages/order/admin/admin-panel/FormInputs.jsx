@@ -53,7 +53,6 @@ const FormInputsStyled = styled.div`
     }
 
     @media(max-width: 767px) {
-
     }
 
 `;

@@ -48,8 +48,8 @@ const SelectInputStyled = styled.div`
     }
 
     @media(max-width: 767px) {
-        padding: 0 0px;
-        font-size: ${theme.fonts.size.S};
+        padding: 0 5px;
+        font-size: ${theme.fonts.size.XS};
         Select {
         font-size: ${theme.fonts.size.XS};
         }
