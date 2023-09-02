@@ -160,7 +160,6 @@ const BasketCardStyled = styled.div`
     }
   }
   @media(max-width: 767px) {
-
     padding: 5px 10px;
     margin: 5px 10px;  
     height: 56px;

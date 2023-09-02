@@ -51,6 +51,7 @@ const BasketProductsStyled = styled.div`
     flex-direction: column;
     box-shadow: ${theme.shadows.leftColumn};
     overflow-y: scroll;
+    overflow-x: hidden; // don't show scroll-x while basketcard animation
     scrollbar-color: transparent transparent;
     scrollbar-width: thin;
 

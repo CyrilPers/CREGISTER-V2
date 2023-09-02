@@ -98,6 +98,7 @@ const OrderPageStyled = styled.div`
     padding: 0 0px;
     min-height: 100vh;
     max-height: none;
+    max-width: 100%;
 
     .container {
       max-width: 100%;
