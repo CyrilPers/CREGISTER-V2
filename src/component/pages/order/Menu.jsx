@@ -125,7 +125,7 @@ const MenuStyled = styled.div`
   ${ribbonAnimation}
   
   @media(max-width: 767px) {
-    row-gap: 10px;
+    grid-auto-rows: 90px;
     max-width: 100%;
     overflow-x: hidden;
     padding: 10px 0;
@@ -136,7 +136,7 @@ const MenuStyled = styled.div`
 
   @media(min-width: 768px) and (max-width: 1388px) { 
     padding: 10px 0;
-    row-gap: 10px;
+    grid-auto-rows: 110px;
     max-width: 100%;
     overflow-x: hidden;
     .card-container {
