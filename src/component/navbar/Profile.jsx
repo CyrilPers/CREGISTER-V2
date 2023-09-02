@@ -83,6 +83,7 @@ const ProfileStyled = styled.div`
     .info {
     text-align: left;
     margin-right: 5px;
+    margin-left: 20px;
 
     a {
       .description {
