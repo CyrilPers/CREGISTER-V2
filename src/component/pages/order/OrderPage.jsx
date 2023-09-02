@@ -94,7 +94,7 @@ const OrderPageStyled = styled.div`
     border-radius: ${theme.borderRadius.extraRound}
   }  
 
-  @media(max-width: 767px) {
+  @media(max-width: 1388px) {
     padding: 0 0px;
     min-height: 100vh;
     max-height: none;

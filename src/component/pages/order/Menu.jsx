@@ -124,14 +124,24 @@ const MenuStyled = styled.div`
 
   ${ribbonAnimation}
   
-  @media(max-width: 1388px) {
-    row-gap: 10px;;
+  @media(max-width: 767px) {
+    row-gap: 10px;
     max-width: 100%;
     overflow-x: hidden;
-    padding: 0;
-
+    padding: 10px 0;
     .card-container {
       height: 140px;
     }
+  }
+
+  @media(min-width: 768px) and (max-width: 1388px) { 
+    padding: 10px 0;
+    row-gap: 10px;
+    max-width: 100%;
+    overflow-x: hidden;
+    .card-container {
+      height: 160px;
+    }
+
   }
 `;
