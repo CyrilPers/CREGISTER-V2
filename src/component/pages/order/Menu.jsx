@@ -89,6 +89,7 @@ export default function Menu() {
 }
 
 const MenuStyled = styled.div`
+  
   background: ${theme.colors.background_white};
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -122,6 +123,7 @@ const MenuStyled = styled.div`
   }
 
   ${ribbonAnimation}
+  
   @media(max-width: 1388px) {
     row-gap: 10px;
     max-width: 100%;
