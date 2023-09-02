@@ -15,6 +15,6 @@ const HeaderStyled = styled.div`
     background: ${theme.colors.background_dark};
     padding: 0 16px;
     @media(max-width: 767px) {
-        height: 60px;
+        height: 50px;
     }
 `;

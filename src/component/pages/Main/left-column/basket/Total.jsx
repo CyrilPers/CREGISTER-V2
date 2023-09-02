@@ -35,6 +35,6 @@ const TotalStyled = styled.div`
     letter-spacing: 2px;  
 
     @media(max-width: 767px) {
-            font-size: ${theme.fonts.size.P3};
+        font-size: ${theme.fonts.size.P3};
     } 
 `;

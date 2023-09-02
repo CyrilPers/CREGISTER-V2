@@ -31,7 +31,14 @@ const BasketFooterStyled = styled.div`
         margin: 0 5px;
   }
   @media(max-width: 767px) {
-        height: 60px;
+        height: 50px;
+        justify-content: center;
+        .invoice {
+            width: 150px;
+            height: 30px;
+            align-items: center;
+            justify-content: center;
+    }
     }
   
 `;

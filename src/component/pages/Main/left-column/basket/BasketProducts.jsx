@@ -57,6 +57,7 @@ const BasketProductsStyled = styled.div`
     &:hover {
         scrollbar-color: initial;
         scrollbar-width: thin;
+        overflow-x: hidden;
     }
     ${basketCardAnimation}
 `;
