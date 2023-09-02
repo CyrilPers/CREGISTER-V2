@@ -54,7 +54,7 @@ const NavbarUserStyled = styled.div`
       max-width: 100%;
       align-items: center;
       justify-content: right;
-      margin-left: 0px;
+      margin-left: -50px;
     }
   
 `;

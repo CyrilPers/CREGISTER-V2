@@ -145,7 +145,7 @@ const ToggleButtonStyled = styled.div`
     &.toggle + label {
       display: inline-block;
       height: 40px;
-      width: 190px;
+      width: 150px;
       position: relative;
       font-size: ${theme.fonts.size.XXS};
       letter-spacing: 0.5px;
@@ -157,9 +157,24 @@ const ToggleButtonStyled = styled.div`
       transition: all ${theme.animation.speed.slow} ease;
     }
     &.toggle:checked + label:before {
-      left: 152px;
+      left: 112px;
       background-color: ${theme.colors.primary};
     }
+    // text inside the switch button (for checked and unchecked)
+    
+    &.toggle + label:after {
+      /* border: 1px solid blue; */
+      width: 100px;
+      text-align: center;
+      z-index: 2;
+      text-transform: uppercase;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
   }
 }
 `
