@@ -21,11 +21,12 @@ export default function BasketFooter() {
 const BasketFooterStyled = styled.div`
     height: 65px;
     display: flex;
-    justify-content: left;
+    justify-content: center;
     align-items: center;
     
     .invoice {
         width: 200px;
+        height: 40px
     }
     .icon {
         margin: 0 5px;
