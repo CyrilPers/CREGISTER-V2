@@ -182,8 +182,8 @@ const CardStyled = styled.div`
   @media(max-width: 767px) {
     padding: 10px;
     .card {
-    width: 110px;
-    height: 150px;
+    width: 100px;
+    height: 140px;
     padding: 5px;
     padding-bottom: 10px;
 
