@@ -42,4 +42,8 @@ const ImagePreviewStyled = styled.div`
         color: ${theme.colors.greySemiDark};
         border-radius: ${theme.borderRadius.round};
     }
+
+    @media(max-width: 767px) {
+        text-align: center;;
+    }
 `;
