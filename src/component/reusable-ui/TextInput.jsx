@@ -4,20 +4,20 @@ import { theme } from '../../theme';
 
 const TextInput = React.forwardRef(
   ({ onChange,
-  Icon, 
-  className, 
-  version = "default",
-  ...extraProps }, ref) => {
-  return (
-    <TextInputStyled className={className} version={version} >
-      <div className='icon'>{Icon && Icon}</div> 
-      <input
-        ref={ref}
-        type="text"
-        onChange={onChange}
-        {...extraProps}
-      />
-    </TextInputStyled>
+    Icon,
+    className,
+    version = "default",
+    ...extraProps }, ref) => {
+    return (
+      <TextInputStyled className={className} version={version} >
+        <div className='icon'>{Icon && Icon}</div>
+        <input
+          ref={ref}
+          type="text"
+          onChange={onChange}
+          {...extraProps}
+        />
+      </TextInputStyled>
     )
   }
 )
@@ -56,7 +56,7 @@ const TextInputStyled = styled.div`
     }
   }
 
-  ${({version}) => extraStyle[version]}
+  ${({ version }) => extraStyle[version]}
 `
 
 const extraNormalStyle = css`
@@ -86,9 +86,13 @@ const extraMinimalistStyle = css`
       outline: 0; 
     }
   }
+
+  @media(max-width: 767px) {
+    padding: 0px 16px;
+  }
 `
 
 const extraStyle = {
   default: extraNormalStyle,
   minimalist: extraMinimalistStyle,
- }
+}

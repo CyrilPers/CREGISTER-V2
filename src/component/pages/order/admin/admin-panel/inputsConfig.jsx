@@ -43,13 +43,5 @@ export const getInputSelectConfig = (product) => [
         Icon: <FiPackage />,
         className: "is-available",
     },
-    {
-        id: "4",
-        name: "isPublicised",
-        value: product.isPublicised,
-        options: isPublicisedOptions,
-        Icon: <GoMegaphone />,
-        className: "is-publicised",
-    },
 ]
 
