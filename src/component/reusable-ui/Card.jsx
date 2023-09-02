@@ -183,11 +183,17 @@ const CardStyled = styled.div`
     height: 140px;
     padding: 0;
 
+
     .card {
     width: 100px;
     height: 140px;
     padding: 5px;
     padding-bottom: 10px;
+
+    .delete-button {
+      top: 5px;
+      right: 5px;
+    }
 
     .text-info {
       display: grid;
@@ -219,6 +225,11 @@ const CardStyled = styled.div`
     padding: 5px;
     padding-bottom: 10px;
 
+    .delete-button {
+      top: 5px;
+      right: 5px;
+    }
+    
     .text-info {
       display: grid;
       grid-template-rows: 30% 70%;
