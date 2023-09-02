@@ -135,12 +135,12 @@ const MenuStyled = styled.div`
   }
 
   @media(min-width: 768px) and (max-width: 1388px) { 
-    padding: 10px 0;
-    grid-auto-rows: 110px;
+    padding: 10px 10px;
+    grid-auto-rows: 140px;
     max-width: 100%;
     overflow-x: hidden;
     .card-container {
-      height: 160px;
+      height: 190px;
     }
 
   }

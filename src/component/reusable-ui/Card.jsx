@@ -213,8 +213,9 @@ const CardStyled = styled.div`
     padding: 0;
     
     .card {
-    width: 130px;
-    height: 160px;
+    width: 150px;
+    /* height: 160px; */
+    height: 190px;
     padding: 5px;
     padding-bottom: 10px;
 
