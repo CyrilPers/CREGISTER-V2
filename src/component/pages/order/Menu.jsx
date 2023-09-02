@@ -129,7 +129,7 @@ const MenuStyled = styled.div`
     padding: 0;
 
     .card-container {
-      height: 150px;
+      height: 140px;
     }
   }
 `;

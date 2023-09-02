@@ -180,7 +180,7 @@ const CardStyled = styled.div`
   }
 
   @media(max-width: 767px) {
-    padding: 10px;
+    padding: 10px 0;
     .card {
     width: 100px;
     height: 140px;
