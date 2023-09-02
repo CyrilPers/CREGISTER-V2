@@ -125,7 +125,7 @@ const MenuStyled = styled.div`
   ${ribbonAnimation}
   
   @media(max-width: 1388px) {
-    row-gap: 10px;
+    row-gap: 10px;;
     max-width: 100%;
     overflow-x: hidden;
     padding: 0;
