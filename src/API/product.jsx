@@ -30,10 +30,8 @@ export async function createProductFromApi(newProduct, userId) {
 
 
 export async function updateProductFromApi(product) {
-    console.log("productid", product.id)
-    console.log("product", product)
     try {
-        await axios.post(`${API_URL}update/${product.id}`, { title: product.title, price: product.price, isAvailable: product.isAvailable, ImageSource: product.imageSource });
+        await axios.put(`${API_URL}update/${product.id}`, { title: product.title, price: product.price, isAvailable: product.isAvailable, ImageSource: product.imageSource });
     } catch (error) {
         console.log(error)
     }
