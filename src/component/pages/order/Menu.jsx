@@ -12,6 +12,7 @@ import { checkIfProductIsClicked } from './menu/helper/helpers.jsx'
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { menuAnimation } from '../../../theme/animations';
 import { convertStringToBoolean } from '../../../utils/string'
+import { getProductsFromApi } from '../../../API/product.jsx'
 
 export default function Menu() {
 
