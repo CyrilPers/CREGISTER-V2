@@ -33,4 +33,8 @@ const TotalStyled = styled.div`
     font-size: ${theme.fonts.size.P4};
     font-weight: ${theme.fonts.weights.bold};
     letter-spacing: 2px;  
+
+    @media(max-width: 767px) {
+        font-size: ${theme.fonts.size.P3};
+    } 
 `;

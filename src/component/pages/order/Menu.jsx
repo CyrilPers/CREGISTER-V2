@@ -12,7 +12,6 @@ import { checkIfProductIsClicked } from './menu/helper/helpers.jsx'
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { menuAnimation } from '../../../theme/animations';
 import { convertStringToBoolean } from '../../../utils/string'
-import RibbonAnimated, { ribbonAnimation } from './menu/RIbbonAnimated';
 
 export default function Menu() {
 
@@ -38,10 +37,13 @@ export default function Menu() {
     titleEditRef.current.focus()
   }
 
-  const handleAddButton = (event, idProductToAdd) => {
-    event.stopPropagation()
+  const handleAddButton = (idProductToAdd) => {
     const productToAdd = findInArray(idProductToAdd, products)
-    addBasketProduct(productToAdd, username)
+    productToAdd.isAvailable ? addBasketProduct(productToAdd, username) : null;
+  }
+
+  const handleClick = (id) => {
+    isModeAdmin ? selectProduct(id) : handleAddButton(id);
   }
 
   let containerClassName = isModeAdmin ? "card-container is-hoverable" : 'card-container'
@@ -55,7 +57,7 @@ export default function Menu() {
 
   return (
     <TransitionGroup component={MenuStyled} className='menu'>
-      {products.map(({ id, title, imageSource, price, isAvailable, isPublicised }) => {
+      {products.map(({ id, title, imageSource, price, isAvailable }) => {
         return (
           <CSSTransition
             classNames={"animation-card"}
@@ -63,7 +65,6 @@ export default function Menu() {
             timeout={300}
           >
             <div className={containerClassName}>
-              {convertStringToBoolean(isPublicised) && <RibbonAnimated />}
               <Card
                 key={id}
                 title={title}
@@ -71,10 +72,9 @@ export default function Menu() {
                 leftDescription={formatPrice(price)}
                 showDeleteButton={isModeAdmin}
                 onDelete={(event) => handleCardDelete(event, id)}
-                onClick={isModeAdmin ? () => selectProduct(id) : null}
+                onClick={() => handleClick(id)}
                 isHoverable={isModeAdmin}
                 isSelected={checkIfProductIsClicked(id, selectedProduct.id)}
-                onAdd={(event) => handleAddButton(event, id)}
                 overlapImageSource={IMAGE_NO_STOCK}
                 isOverlapImageVisible={convertStringToBoolean(isAvailable) === false}
               />
@@ -87,13 +87,12 @@ export default function Menu() {
 }
 
 const MenuStyled = styled.div`
+  
   background: ${theme.colors.background_white};
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-
-  /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));  */
   grid-row-gap: 60px;
-  padding: 50px 50px 150px;
+  padding: 50px 50px 50px;
   justify-items: center;
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
   overflow-y: scroll;
@@ -120,7 +119,25 @@ const MenuStyled = styled.div`
     .ribbon {
       z-index: 2;
   }
+  
+  @media(max-width: 767px) {
+    grid-auto-rows: 90px;
+    max-width: 100%;
+    overflow-x: hidden;
+    padding: 10px 0;
+    .card-container {
+      height: 140px;
+    }
+  }
 
-  ${ribbonAnimation}
+  @media(min-width: 768px) and (max-width: 1388px) { 
+    padding: 10px 10px;
+    grid-auto-rows: 140px;
+    max-width: 100%;
+    overflow-x: hidden;
+    .card-container {
+      height: 190px;
+    }
 
+  }
 `;

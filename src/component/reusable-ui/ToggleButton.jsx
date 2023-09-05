@@ -131,4 +131,50 @@ const ToggleButtonStyled = styled.div`
       background-color: ${theme.colors.primary};
     }
   }
+
+  @media(max-width: 767px) {
+    transform: scale(0.8);
+    display: flex;
+    margin-right: 5px;
+    input[type="checkbox"] {
+    // Hides the square box but keeps the core "toggle functionality"
+    &.toggle {
+      display: none;
+    }
+
+    &.toggle + label {
+      display: inline-block;
+      height: 40px;
+      width: 150px;
+      position: relative;
+      font-size: ${theme.fonts.size.XXS};
+      letter-spacing: 0.5px;
+      border: 2px solid ${theme.colors.background_dark};
+      padding: 0;
+      margin: 0;
+      cursor: pointer;
+      box-sizing: border-box;
+      transition: all ${theme.animation.speed.slow} ease;
+    }
+    &.toggle:checked + label:before {
+      left: 112px;
+      background-color: ${theme.colors.primary};
+    }
+    // text inside the switch button (for checked and unchecked)
+    
+    &.toggle + label:after {
+      /* border: 1px solid blue; */
+      width: 100px;
+      text-align: center;
+      z-index: 2;
+      text-transform: uppercase;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+  }
+}
 `

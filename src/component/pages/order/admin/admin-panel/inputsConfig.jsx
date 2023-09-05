@@ -2,7 +2,7 @@ import { BsFillCameraFill } from 'react-icons/bs';
 import { MdOutlineEuro, MdTitle } from 'react-icons/md';
 import { FiPackage } from 'react-icons/fi';
 import { GoMegaphone } from 'react-icons/go';
-import { isAvailableOptions, isPublicisedOptions } from '../../../../../enum/productSelect';
+import { isAvailableOptions } from '../../../../../enum/productSelect';
 
 export const getInputTextsConfig = (product) => [
     {
@@ -42,14 +42,6 @@ export const getInputSelectConfig = (product) => [
         options: isAvailableOptions,
         Icon: <FiPackage />,
         className: "is-available",
-    },
-    {
-        id: "4",
-        name: "isPublicised",
-        value: product.isPublicised,
-        options: isPublicisedOptions,
-        Icon: <GoMegaphone />,
-        className: "is-publicised",
     },
 ]
 

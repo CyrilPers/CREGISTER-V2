@@ -78,19 +78,33 @@ export default function OrderPage() {
 
 const OrderPageStyled = styled.div`  
   background: 
-        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-        url('/images/background.png') fixed center/cover;
+  linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+  url('/images/background.png') fixed center/cover;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 
   .container {
-    height: 95vh;
+    max-height: 95vh;
     width: 1400px;
     display: flex;
     flex-direction: column;
     padding: 0 20px;
     border-radius: ${theme.borderRadius.extraRound}
   }  
+
+  @media(max-width: 1388px) {
+    padding: 0 0px;
+    min-height: 100vh;
+    max-height: none;
+    max-width: 100%;
+
+    .container {
+      max-width: 100%;
+      width: 100%;
+      max-height: none;
+      padding: 0 5px;
+    }
+  }
 `;

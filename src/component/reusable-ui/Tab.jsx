@@ -5,11 +5,11 @@ import { theme } from '../../theme';
 
 
 
-export default function Tab({Icon, onClick, className, label}) {
+export default function Tab({ Icon, onClick, className, label }) {
   return (
-    <TabStyled 
-    onClick={onClick} 
-    className={className}
+    <TabStyled
+      onClick={onClick}
+      className={className}
     >
       <div className='icon'>{Icon}</div>
       {label && <span className='label'>{label}</span>}
@@ -51,5 +51,10 @@ const TabStyled = styled.button`
 
     .label {
       margin-left: 8px;
+    }
+    @media(max-width: 767px) {
+      height: 30px;
+      padding: 0 5px;
+      font-size: ${theme.fonts.size.XS};
     }
 `

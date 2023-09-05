@@ -34,4 +34,15 @@ box-shadow: ${theme.shadows.leftColumn};
     font-size: ${theme.fonts.size.P4};
     color: ${theme.colors.greyBlue}
     }
+
+    @media (max-width: 767px) {
+    flex: 1;
+    display: flex;
+    box-shadow: ${theme.shadows.leftColumn};
+    height: none;
+    .message{
+        height: auto;
+
+    }
+    }
 `;

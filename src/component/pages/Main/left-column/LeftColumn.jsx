@@ -27,4 +27,9 @@ const LeftColumnStyled = styled.div`
     display: flex;
     flex-direction: column;
     height: 85vh;   
+
+    @media(max-width: 767px) {
+        max-height: calc(50%);
+        overflow-x: hidden;
+    }
 `;

@@ -23,4 +23,8 @@ const MainRightSideStyled = styled.div`
     overflow-y: hidden;
     display: grid;
     border-bottom-right-radius: ${theme.borderRadius.extraRound};
+
+    @media(max-width: 767px) {
+        height: 50vh;
+    }
 `;

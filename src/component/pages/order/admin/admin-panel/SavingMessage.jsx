@@ -24,4 +24,9 @@ const SavingMessageStyled = styled.div`
     display: flex;
     margin: 0 10px;
   }
+
+  @media(max-width: 767px) {
+    font-size: ${theme.fonts.size.XS}; 
+  }
+
 `

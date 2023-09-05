@@ -46,4 +46,12 @@ const SelectInputStyled = styled.div`
       color: ${theme.colors.dark};
       width: 100%;
     }
-  `; 
+
+    @media(max-width: 767px) {
+        padding: 0 5px;
+        font-size: ${theme.fonts.size.XS};
+        Select {
+        font-size: ${theme.fonts.size.XS};
+        }
+    }
+`; 
