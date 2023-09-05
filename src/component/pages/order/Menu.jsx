@@ -12,7 +12,6 @@ import { checkIfProductIsClicked } from './menu/helper/helpers.jsx'
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { menuAnimation } from '../../../theme/animations';
 import { convertStringToBoolean } from '../../../utils/string'
-import { getProductsFromApi } from '../../../API/product.jsx'
 
 export default function Menu() {
 
@@ -27,15 +26,12 @@ export default function Menu() {
     addBasketProduct,
     username,
     selectProduct,
-    deleteBasketProduct,
   } = useContext(AdminContext)
 
   const handleCardDelete = (event, idProductToDelete) => {
     event.stopPropagation()
     deleteProduct(idProductToDelete, username)
     idProductToDelete === selectedProduct.id && setSelectedProduct(EMPTY_PRODUCT)
-    deleteBasketProduct(idProductToDelete, username)
-    titleEditRef.current.focus()
   }
 
   const handleAddButton = (idProductToAdd) => {

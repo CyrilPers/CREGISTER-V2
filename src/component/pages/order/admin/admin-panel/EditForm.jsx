@@ -4,6 +4,7 @@ import Form from './Form';
 import EditInfoMessage from './EditInfoMessage.jsx'
 import SavingMessage from './SavingMessage';
 import { useSuccessMessage } from '../../../../../hooks/useSuccessMessage.jsx'
+import { updateProductFromApi } from '../../../../../API/product';
 
 export default function EditForm() {
 
@@ -18,7 +19,7 @@ export default function EditForm() {
       [name]: value
     }
     setSelectedProduct(productBeingEdited) // update formulaire
-    editProduct(productBeingEdited, username) // update menu
+    editProduct(productBeingEdited, username) // update menu state
   }
 
   const handleOnFocus = (event) => {

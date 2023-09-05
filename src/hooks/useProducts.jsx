@@ -2,6 +2,7 @@ import { useState } from "react"
 import { fakeMenu } from "../fakeData/fakeMenu"
 import { deepClone, getIndex, removeItemFromArray } from "../utils/arrays"
 import { syncBothProducts } from "../API/products"
+import { createProductFromApi, deleteProductFromApi, updateProductFromApi } from "../API/product"
 
 
 export const useProducts = () => {
@@ -10,18 +11,18 @@ export const useProducts = () => {
 
 
 
-    const addProduct = (newProduct, username) => {
+    const addProduct = (newProduct, userId) => {
         const productsCopy = deepClone(products)
         const productsUpdated = [newProduct, ...productsCopy]
         setProducts(productsUpdated)
-        syncBothProducts(username, productsUpdated)
+        createProductFromApi(newProduct)
     }
 
-    const deleteProduct = (productId, username) => {
+    const deleteProduct = (productId) => {
         const productsCopy = deepClone(products)
         const productsUpdated = removeItemFromArray(productId, productsCopy)
         setProducts(productsUpdated)
-        syncBothProducts(username, productsUpdated)
+        deleteProductFromApi(productId)
     }
 
     const editProduct = (productBeingEdited, username) => {
@@ -29,7 +30,7 @@ export const useProducts = () => {
         const indexOfProducToEdit = getIndex(productBeingEdited.id, products)
         productsCopy[indexOfProducToEdit] = productBeingEdited
         setProducts(productsCopy)
-        syncBothProducts(username, productsCopy)
+        updateProductFromApi(productBeingEdited)
     }
 
     const resetProducts = (username) => {
