@@ -30,10 +30,10 @@ export async function createProductFromApi(newProduct, userId) {
 
 
 export async function updateProductFromApi(product) {
-    const updatedProduct = { ...product }
+    console.log("productid", product.id)
+    console.log("product", product)
     try {
-        console.log(product.id)
-        await axios.post(`${API_URL}update/${product.id}`, { updatedProduct: updatedProduct });
+        await axios.post(`${API_URL}update/${product.id}`, { title: product.title, price: product.price, isAvailable: product.isAvailable, ImageSource: product.imageSource });
     } catch (error) {
         console.log(error)
     }

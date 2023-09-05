@@ -19,6 +19,8 @@ export const useProducts = () => {
     }
 
     const deleteProduct = (productId) => {
+        console.log("id", productId)
+        console.log("id.id", productId.id)
         const productsCopy = deepClone(products)
         const productsUpdated = removeItemFromArray(productId, productsCopy)
         setProducts(productsUpdated)
