@@ -19,3 +19,12 @@ export async function createUserFromApi(username) {
         console.log(error)
     }
 }
+
+
+export const authentificateUser = async (username) => {
+    const existingUser = await getUserIdFromApi(username)
+    if (!existingUser) {
+        return await createUserFromApi(username)
+    }
+    return existingUser
+}

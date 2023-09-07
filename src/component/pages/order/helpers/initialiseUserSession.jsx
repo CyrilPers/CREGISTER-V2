@@ -5,8 +5,12 @@ import { getLocalStorage } from "../../../../utils/window.jsx"
 
 const initialiseProducts = async (username, setProducts) => {
   const userId = await getUserIdFromApi(username)
-  const productsReceived = await getProductsFromApi(userId)
-  setProducts(productsReceived)
+  const productsExisting = await getProductsFromApi(userId)
+  if (!productsExisting) {
+    setProducts([])
+    return
+  }
+  setProducts(productsExisting)
 }
 
 const initialiseBasket = (username, setBasket) => {
