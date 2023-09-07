@@ -2,7 +2,8 @@ import React from 'react'
 import LoginForm from './LoginForm'
 import { styled } from 'styled-components'
 import Logo from '../../reusable-ui/Logo'
-import { initialiseProductsFromApi } from '../../../API/product'
+import { fadeInFromTop } from '../../../theme/animations'
+import { theme } from '../../../theme'
 
 
 export default function LoginPage() {

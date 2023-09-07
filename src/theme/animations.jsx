@@ -26,6 +26,19 @@ export const fadeInFromRight = keyframes`
         transform: translateX(0);
     }
 `
+
+export const fadeInFromLeft = keyframes`
+    0% {
+        position: absolute;
+        opacity: 0;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(100%);
+    }
+`
+
 export const fadeInFromBottom = keyframes`
     0% {
         opacity: 0;
@@ -37,6 +50,19 @@ export const fadeInFromBottom = keyframes`
         transition: all ${theme.animation.speed.slow}
     }
 `
+
+export const fadeInFromBottomLog = keyframes`
+    0% {
+        opacity: 0;
+        transform: translateY(50%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        transition: all ${theme.animation.speed.verySlow}
+    }
+`
+
 export const fadeIn = keyframes`
     0% {
         opacity: 0;
