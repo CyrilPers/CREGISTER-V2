@@ -13,7 +13,6 @@ export async function getProductsFromApi(userId) {
 
 export async function deleteProductFromApi(productId) {
     try {
-        console.log(productId)
         await axios.delete(`${API_URL}delete/${productId}`);
     } catch (error) {
         console.log(error)
@@ -22,7 +21,6 @@ export async function deleteProductFromApi(productId) {
 
 export async function createProductFromApi(newProduct, userId) {
     try {
-        console.log("userid", userId)
         await axios.post(`${API_URL}create`, { title: newProduct.title, price: newProduct.price, isAvailable: newProduct.isAvailable, imageSource: newProduct.imageSource, user: { id: userId } });
     } catch (error) {
         console.log(error)
@@ -41,7 +39,6 @@ export async function updateProductFromApi(product) {
 
 export async function initialiseProductsFromApi(userId) {
     try {
-        console.log("api create initialise")
         await axios.post(`${API_URL}initialise`);
     } catch (error) {
         console.log(error)

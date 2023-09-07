@@ -11,3 +11,11 @@ export async function getUserIdFromApi(username) {
         console.log(error)
     }
 }
+
+export async function createUserFromApi(username) {
+    try {
+        await axios.post(`${API_URL}create`, { name: username });
+    } catch (error) {
+        console.log(error)
+    }
+}
