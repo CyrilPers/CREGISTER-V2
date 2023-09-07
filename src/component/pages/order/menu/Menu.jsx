@@ -1,17 +1,17 @@
 import { useContext } from 'react'
 import { styled } from 'styled-components';
-import { theme } from '../../../theme';
-import Card from '../../reusable-ui/Card.jsx';
-import { formatPrice } from '../../../utils/maths';
-import AdminContext from '../../../context/AdminContext';
-import { EMPTY_PRODUCT, IMAGE_COMING_SOON, IMAGE_NO_STOCK } from '../../../enum/product';
-import { findInArray, isEmpty } from '../../../utils/arrays';
+import { theme } from '../../../../theme';
+import Card from '../../../reusable-ui/Card.jsx';
+import { formatPrice } from '../../../../utils/maths';
+import AdminContext from '../../../../context/AdminContext.jsx';
+import { EMPTY_PRODUCT, IMAGE_COMING_SOON, IMAGE_NO_STOCK } from '../../../../enum/product';
+import { findInArray, isEmpty } from '../../../../utils/arrays';
 import EmptyMenu from './EmptyMenu';
 import Loader from './Loader';
-import { checkIfProductIsClicked } from './menu/helper/helpers.jsx'
+import { checkIfProductIsClicked } from './helper/helpers.jsx'
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { menuAnimation } from '../../../theme/animations';
-import { convertStringToBoolean } from '../../../utils/string'
+import { menuAnimation } from '../../../../theme/animations';
+import { convertStringToBoolean } from '../../../../utils/string'
 
 export default function Menu() {
 
