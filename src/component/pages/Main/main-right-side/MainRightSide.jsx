@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
-import Menu from '../../order/Menu';
 import Admin from '../../order/admin/Admin';
+import Menu from '../../order/menu/Menu.jsx'
 import { styled } from 'styled-components';
 import { theme } from '../../../../theme';
 import AdminContext from '../../../../context/AdminContext';

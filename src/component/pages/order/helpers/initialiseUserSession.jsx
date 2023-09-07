@@ -1,10 +1,16 @@
-
-import { getProducts } from "../../../../API/products.jsx"
+import { getProductsFromApi } from "../../../../API/product.jsx"
+import { getUserIdFromApi } from "../../../../API/users.jsx"
 import { getLocalStorage } from "../../../../utils/window.jsx"
 
+
 const initialiseProducts = async (username, setProducts) => {
-  const productsReceived = await getProducts(username)
-  setProducts(productsReceived)
+  const userId = await getUserIdFromApi(username)
+  const productsExisting = await getProductsFromApi(userId)
+  if (!productsExisting) {
+    setProducts([])
+    return
+  }
+  setProducts(productsExisting)
 }
 
 const initialiseBasket = (username, setBasket) => {
