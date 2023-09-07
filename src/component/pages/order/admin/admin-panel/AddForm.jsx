@@ -23,14 +23,10 @@ export default function AddForm() {
         displaySuccessMessage()
     }
 
-
-
     const handleChange = (event) => {
         const { name, value } = event.target
         setNewProduct({ ...newProduct, [name]: value })
     }
-
-
 
     return (
         <Form

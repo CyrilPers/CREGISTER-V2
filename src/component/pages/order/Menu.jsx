@@ -30,7 +30,7 @@ export default function Menu() {
 
   const handleCardDelete = (event, idProductToDelete) => {
     event.stopPropagation()
-    deleteProduct(idProductToDelete, username)
+    deleteProduct(idProductToDelete)
     idProductToDelete === selectedProduct.id && setSelectedProduct(EMPTY_PRODUCT)
   }
 
@@ -55,7 +55,7 @@ export default function Menu() {
 
   return (
     <TransitionGroup component={MenuStyled} className='menu'>
-      {products.map(({ id, title, imageSource, price, isAvailable }) => {
+      {products.slice().reverse().map(({ id, title, imageSource, price, isAvailable }) => {
         return (
           <CSSTransition
             classNames={"animation-card"}

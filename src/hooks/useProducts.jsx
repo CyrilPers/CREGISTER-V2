@@ -2,7 +2,7 @@ import { useState } from "react"
 import { fakeMenu } from "../fakeData/fakeMenu"
 import { deepClone, getIndex, removeItemFromArray } from "../utils/arrays"
 import { syncBothProducts } from "../API/products"
-import { createProductFromApi, deleteProductFromApi, updateProductFromApi } from "../API/product"
+import { createProductFromApi, deleteProductFromApi, getProductsFromApi, updateProductFromApi } from "../API/product"
 
 
 export const useProducts = () => {
@@ -11,11 +11,10 @@ export const useProducts = () => {
 
 
 
-    const addProduct = (newProduct, userId) => {
-        const productsCopy = deepClone(products)
-        const productsUpdated = [newProduct, ...productsCopy]
-        setProducts(productsUpdated)
-        createProductFromApi(newProduct, userId)
+    const addProduct = async (newProduct, userId) => {
+        await createProductFromApi(newProduct, userId)
+        const updatedProducts = await getProductsFromApi(userId);
+        setProducts(updatedProducts);
     }
 
     const deleteProduct = (productId) => {
@@ -25,7 +24,7 @@ export const useProducts = () => {
         setProducts(productsUpdated)
     }
 
-    const editProduct = (productBeingEdited, username) => {
+    const editProduct = (productBeingEdited) => {
         const productsCopy = deepClone(products)
         const indexOfProducToEdit = getIndex(productBeingEdited.id, products)
         productsCopy[indexOfProducToEdit] = productBeingEdited
