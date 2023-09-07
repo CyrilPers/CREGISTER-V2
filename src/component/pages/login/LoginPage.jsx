@@ -7,8 +7,6 @@ import { initialiseProductsFromApi } from '../../../API/product'
 
 export default function LoginPage() {
 
-  initialiseProductsFromApi("1")
-
   return (
     <LoginPageStyled>
       <Logo className={"logo-login-page"} />

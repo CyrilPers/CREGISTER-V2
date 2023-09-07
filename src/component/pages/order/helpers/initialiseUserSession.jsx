@@ -1,8 +1,11 @@
-import { getProductsFromApi, initialiseProductsFromApi } from "../../../../API/product.jsx"
+import { getProductsFromApi } from "../../../../API/product.jsx"
+import { getUserIdFromApi } from "../../../../API/users.jsx"
 import { getLocalStorage } from "../../../../utils/window.jsx"
 
-const initialiseProducts = async (userId, setProducts) => {
-  const productsReceived = await getProductsFromApi("1")
+const initialiseProducts = async (username, setProducts) => {
+  const usernameId = await getUserIdFromApi(username)
+  console.log(usernameId)
+  const productsReceived = await getProductsFromApi(usernameId)
   setProducts(productsReceived)
 }
 
