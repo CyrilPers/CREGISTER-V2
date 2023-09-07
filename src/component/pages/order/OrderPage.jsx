@@ -10,6 +10,7 @@ import { useBasket } from '../../../hooks/useBasket'
 import { useParams } from 'react-router-dom'
 import { initialiseUserSession } from './helpers/initialiseUserSession'
 import { findInArray } from '../../../utils/arrays'
+import { getUserIdFromApi } from '../../../API/users'
 
 
 
@@ -24,6 +25,7 @@ export default function OrderPage() {
   const { products, resetProducts, addProduct, deleteProduct, editProduct, setProducts } = useProducts()
   const { basket, addBasketProduct, deleteBasketProduct, setBasket } = useBasket()
   const { username } = useParams()
+  const [userId, setUserId] = useState("")
 
   const selectProduct = async (productIdSelected) => {
     const productClickedOn = findInArray(productIdSelected, products)
@@ -33,15 +35,20 @@ export default function OrderPage() {
     titleEditRef.current.focus()
   }
 
-
+  const defineUserId = async (username) => {
+    const userId = await getUserIdFromApi(username)
+    setUserId(userId)
+  }
 
   useEffect(() => {
+    defineUserId(username)
     initialiseUserSession(username, setProducts, setBasket)
   }, [])
 
 
   const adminContextValue = {
     username,
+    userId,
     isModeAdmin,
     setIsModeAdmin,
     isCollapsed,

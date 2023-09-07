@@ -15,7 +15,7 @@ export const useProducts = () => {
         const productsCopy = deepClone(products)
         const productsUpdated = [newProduct, ...productsCopy]
         setProducts(productsUpdated)
-        createProductFromApi(newProduct)
+        createProductFromApi(newProduct, userId)
     }
 
     const deleteProduct = (productId) => {

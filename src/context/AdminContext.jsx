@@ -4,6 +4,8 @@ export default createContext({
 
     username: "",
 
+    userId: 0,
+
     isModeAdmin: false,
     setIsModeAdmin: () => { },
 

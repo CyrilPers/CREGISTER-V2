@@ -2,10 +2,10 @@ import { getProductsFromApi } from "../../../../API/product.jsx"
 import { getUserIdFromApi } from "../../../../API/users.jsx"
 import { getLocalStorage } from "../../../../utils/window.jsx"
 
+
 const initialiseProducts = async (username, setProducts) => {
-  const usernameId = await getUserIdFromApi(username)
-  console.log(usernameId)
-  const productsReceived = await getProductsFromApi(usernameId)
+  const userId = await getUserIdFromApi(username)
+  const productsReceived = await getProductsFromApi(userId)
   setProducts(productsReceived)
 }
 

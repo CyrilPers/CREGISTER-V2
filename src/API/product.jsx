@@ -22,7 +22,8 @@ export async function deleteProductFromApi(productId) {
 
 export async function createProductFromApi(newProduct, userId) {
     try {
-        await axios.post(`${API_URL}create`, { title: newProduct.title, price: newProduct.price, isAvailable: newProduct.isAvailable, ImageSource: newProduct.imageSource, user_id: userId });
+        console.log(newProduct.isAvailable)
+        await axios.post(`${API_URL}create`, { title: newProduct.title, price: newProduct.price, isAvailable: newProduct.isAvailable, imageSource: newProduct.imageSource, userId: userId });
     } catch (error) {
         console.log(error)
     }
