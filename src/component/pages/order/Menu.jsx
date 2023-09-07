@@ -45,6 +45,7 @@ export default function Menu() {
 
   let containerClassName = isModeAdmin ? "card-container is-hoverable" : 'card-container'
 
+
   // Afficahge 
   if (products === undefined) return <Loader />
 

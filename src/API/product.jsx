@@ -36,3 +36,14 @@ export async function updateProductFromApi(product) {
         console.log(error)
     }
 }
+
+
+export async function initialiseProductsFromApi(userId) {
+    try {
+        console.log("api create initialise")
+        await axios.post(`${API_URL}initialise`);
+    } catch (error) {
+        console.log(error)
+    }
+}
+

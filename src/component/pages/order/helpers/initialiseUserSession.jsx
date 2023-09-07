@@ -1,4 +1,4 @@
-import { getProductsFromApi } from "../../../../API/product.jsx"
+import { getProductsFromApi, initialiseProductsFromApi } from "../../../../API/product.jsx"
 import { getLocalStorage } from "../../../../utils/window.jsx"
 
 const initialiseProducts = async (userId, setProducts) => {

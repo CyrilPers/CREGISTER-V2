@@ -19,10 +19,10 @@ export const useProducts = () => {
     }
 
     const deleteProduct = (productId) => {
+        deleteProductFromApi(productId)
         const productsCopy = deepClone(products)
         const productsUpdated = removeItemFromArray(productId, productsCopy)
         setProducts(productsUpdated)
-        deleteProductFromApi(productId)
     }
 
     const editProduct = (productBeingEdited, username) => {
