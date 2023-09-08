@@ -8,6 +8,7 @@ export default createContext({
     setInvoiceId: () => { },
 
     userId: 0,
+    setUserId: () => { },
 
     isModeAdmin: false,
     setIsModeAdmin: () => { },

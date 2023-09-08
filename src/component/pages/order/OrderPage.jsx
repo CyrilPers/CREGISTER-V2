@@ -38,7 +38,7 @@ export default function OrderPage() {
 
 
   useEffect(() => {
-    initialiseUserSession(setUserId, userId, setProducts, username)
+    initialiseUserSession(userId, setProducts, setUserId, username)
   }, [])
 
 
@@ -47,6 +47,7 @@ export default function OrderPage() {
     setInvoiceId,
     username,
     userId,
+    setUserId,
     isModeAdmin,
     setIsModeAdmin,
     isCollapsed,

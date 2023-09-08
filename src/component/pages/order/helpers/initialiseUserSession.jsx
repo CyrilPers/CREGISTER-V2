@@ -2,10 +2,8 @@ import { getBasketFromApi } from "../../../../API/basket.jsx"
 import { getProductsFromApi, initialiseProductsFromApi } from "../../../../API/products.jsx"
 import { createUserFromApi, getUserIdFromApi } from "../../../../API/users.jsx"
 
-export const initialiseProducts = async (username, setProducts) => {
+export const initialiseProducts = async (userId, setProducts) => {
 
-
-  const userId = await getUserIdFromApi(username)
   const productsExisting = await getProductsFromApi(userId)
   if (!productsExisting) {
     setProducts([])
@@ -24,19 +22,11 @@ export const initialiseBasket = async (invoiceId, setBasket) => {
   setBasket(basketExisting)
 }
 
-export const initialiseUserSession = async (setUserId, userId, setProducts, username) => {
-  await initialiseUserFromApi(username, setUserId)
-  initialiseProductsFromApi(userId, setProducts)
-}
-
-
-export const initialiseUserFromApi = async (username, setUserId) => {
-  await createUserFromApi(username)
+export const initialiseUserSession = async (setUserId, username) => {
   const newUserId = await getUserIdFromApi(username)
   console.log("newUserId", newUserId)
   setUserId(newUserId)
 }
-
 
 export const authentificateUser = async (username) => {
   const existingUser = await getUserIdFromApi(username)
@@ -45,3 +35,11 @@ export const authentificateUser = async (username) => {
   }
   return existingUser
 }
+
+export const initialiseUserFromApi = async (username) => {
+  await createUserFromApi(username)
+  newUserId = await getUserIdFromApi(username)
+  initialiseProductsFromApi(newUserId)
+}
+
+

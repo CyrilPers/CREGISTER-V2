@@ -7,7 +7,7 @@ import { BsPersonCircle } from "react-icons/bs"
 import TextInput from '../../reusable-ui/TextInput';
 import Button from '../../reusable-ui/Button';
 import { fadeInFromBottomLog } from '../../../theme/animations';
-import { authentificateUser } from '../order/helpers/initialiseUserSession';
+import { authentificateUser } from '../order/helpers/initialiseUserSession'
 
 
 
