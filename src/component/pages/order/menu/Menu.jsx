@@ -12,15 +12,18 @@ import { checkIfProductIsClicked } from './helper/helpers.jsx'
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { menuAnimation } from '../../../../theme/animations';
 import { convertStringToBoolean } from '../../../../utils/string'
-import { initialiseBasket } from '../helpers/initialiseUserSession'
+import { initialiseBasket, initialiseProducts } from '../helpers/initialiseUserSession'
 
 export default function Menu() {
 
   useEffect(() => {
     initialiseBasket(invoiceId, setBasket)
+    initialiseProducts(userId, setProducts)
   }, [])
 
   const {
+    userId,
+    setProducts,
     setBasket,
     products,
     isModeAdmin,

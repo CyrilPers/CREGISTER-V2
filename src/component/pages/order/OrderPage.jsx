@@ -8,7 +8,7 @@ import { EMPTY_PRODUCT } from '../../../enum/product.jsx'
 import { useProducts } from '../../../hooks/useProducts'
 import { useBasket } from '../../../hooks/useBasket'
 import { useParams } from 'react-router-dom'
-import { initialiseUserSession } from './helpers/initialiseUserSession'
+import { initialiseUser } from './helpers/initialiseUserSession'
 import { findInArray } from '../../../utils/arrays'
 
 
@@ -38,7 +38,7 @@ export default function OrderPage() {
 
 
   useEffect(() => {
-    initialiseUserSession(userId, setProducts, setUserId, username)
+    initialiseUser(setUserId, username)
   }, [])
 
 
@@ -55,6 +55,7 @@ export default function OrderPage() {
     currentTabSelected,
     setCurrentTabSelected,
     products,
+    setProducts,
     addProduct,
     deleteProduct,
     resetProducts,
