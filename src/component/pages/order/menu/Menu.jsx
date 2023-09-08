@@ -18,7 +18,7 @@ export default function Menu() {
 
   useEffect(() => {
     initialiseBasket(invoiceId, setBasket)
-    initialiseProducts(userId, setProducts)
+    initialiseProducts(username, setProducts)
   }, [])
 
   const {
