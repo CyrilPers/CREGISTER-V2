@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { initialiseProductsFromApi } from './products';
+import { initialiseProductsFromApi } from './products.jsx'
 
 const API_URL = 'http://localhost:3001/cregister/api/user/'
 

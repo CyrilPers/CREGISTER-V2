@@ -1,7 +1,6 @@
+import { getBasketFromApi } from "../../../../API/basket.jsx"
 import { getProductsFromApi } from "../../../../API/products.jsx"
 import { getUserIdFromApi } from "../../../../API/users.jsx"
-import { getLocalStorage } from "../../../../utils/window.jsx"
-
 
 const initialiseProducts = async (username, setProducts) => {
   const userId = await getUserIdFromApi(username)
@@ -13,9 +12,14 @@ const initialiseProducts = async (username, setProducts) => {
   setProducts(productsExisting)
 }
 
-const initialiseBasket = (username, setBasket) => {
-  const basketReceived = getLocalStorage(username)
-  if (basketReceived) setBasket(basketReceived)
+const initialiseBasket = (invoiceId, setBasket) => {
+
+  const basketExisting = getBasketFromApi(invoiceId)
+  if (!basketExisting) {
+    setBasket([])
+    return
+  }
+  setBasket(basketExisting)
 }
 
 export const initialiseUserSession = async (username, setProducts, setBasket) => {
