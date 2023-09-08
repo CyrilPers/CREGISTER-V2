@@ -6,8 +6,8 @@ import { IoChevronForward } from "react-icons/io5";
 import { BsPersonCircle } from "react-icons/bs"
 import TextInput from '../../reusable-ui/TextInput';
 import Button from '../../reusable-ui/Button';
-import { authentificateUser } from '../../../API/users';
 import { fadeInFromBottomLog } from '../../../theme/animations';
+import { authentificateUser } from '../order/helpers/initialiseUserSession';
 
 
 
@@ -21,6 +21,7 @@ export default function LoginForm() {
   const handleSubmit = async (event) => {
     event.preventDefault()
     await authentificateUser(username)
+    console.log("username", username)
     setUsername("")
     navigate(`/order/${username}`)
   }

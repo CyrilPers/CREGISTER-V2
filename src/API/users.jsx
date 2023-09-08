@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { initialiseProductsFromApi } from './products.jsx'
 
 const API_URL = 'http://localhost:3001/cregister/api/user/'
 
@@ -13,11 +12,6 @@ export async function getUserIdFromApi(username) {
     }
 }
 
-export async function initialiseUserFromApi(username) {
-    await createUserFromApi(username)
-    const userId = await getUserIdFromApi(username)
-    initialiseProductsFromApi(userId)
-}
 
 export async function createUserFromApi(username) {
     try {
@@ -28,10 +22,3 @@ export async function createUserFromApi(username) {
 }
 
 
-export const authentificateUser = async (username) => {
-    const existingUser = await getUserIdFromApi(username)
-    if (!existingUser) {
-        await initialiseUserFromApi(username)
-    }
-    return existingUser
-}
