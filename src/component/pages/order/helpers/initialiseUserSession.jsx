@@ -1,4 +1,4 @@
-import { getProductsFromApi } from "../../../../API/product.jsx"
+import { getProductsFromApi } from "../../../../API/products.jsx"
 import { getUserIdFromApi } from "../../../../API/users.jsx"
 import { getLocalStorage } from "../../../../utils/window.jsx"
 
