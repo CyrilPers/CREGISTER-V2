@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { fakeMenu } from "../fakeData/fakeMenu"
 import { deepClone, getIndex, removeItemFromArray } from "../utils/arrays"
-import { createProductFromApi, deleteProductFromApi, getProductsFromApi, updateProductFromApi } from "../API/products"
+import { createProductFromApi, deleteProductFromApi, getProductsFromApi, updateProductFromApi } from "../API/product"
 
 
 export const useProducts = () => {

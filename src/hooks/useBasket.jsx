@@ -1,39 +1,40 @@
 import { useState } from 'react'
-import { deepClone, findInArray, getIndex, removeItemFromArray } from '../utils/arrays'
-import { setLocalStorage } from '../utils/window.jsx'
+import { removeItemFromArray } from '../utils/arrays'
+import { createBasketProductFromApi, deleteBasketProductFromApi, updateBasketProductFromApi } from '../API/basket'
 
 export const useBasket = () => {
     const [basket, setBasket] = useState([])
 
 
-    const addBasketProduct = (productToAdd, username) => {
+    const addBasketProduct = async (productToAdd, invoiceId) => {
 
-        const basketCopy = deepClone(basket)
-
-        const isProductAlreadyInBasket = findInArray(productToAdd.id, basketCopy) !== undefined
+        const isProductAlreadyInBasket = getBasketProductByProductIdFromApi(productToAdd.id)
 
         if (!isProductAlreadyInBasket) {
             const newBasketProduct = {
                 ...productToAdd,
                 quantity: 1,
             }
-            const updatedBasket = [newBasketProduct, ...basketCopy]
+            await createBasketProductFromApi(newBasketProduct, invoiceId)
+            updatedBasket = await getBasketFromApi(userId)
             setBasket(updatedBasket)
-            setLocalStorage(username, basketCopy)
             return
         }
 
-        const indexOfbasketProduct = getIndex(productToAdd.id, basketCopy)
-        basketCopy[indexOfbasketProduct].quantity += 1
-        setBasket(basketCopy)
-        setLocalStorage(username, basketCopy)
+        const updatedBasketProduct = {
+            ...isProductAlreadyInBasket,
+            quantity: isProductAlreadyInBasket.quantity += 1
+        }
+        updateBasketProductFromApi(updatedBasketProduct)
+        updatedBasket = await getBasketFromApi(userId)
+        setBasket(updatedBasket)
     }
 
 
-    const deleteBasketProduct = (basketProductId, username) => {
+    const deleteBasketProduct = (basketProductId) => {
         const basketUpdated = removeItemFromArray(basketProductId, basket)
         setBasket(basketUpdated)
-        setLocalStorage(username, basketUpdated)
+        deleteBasketProductFromApi(basketProductId)
     }
 
 
