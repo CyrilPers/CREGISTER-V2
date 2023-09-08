@@ -16,6 +16,7 @@ import { getUserIdFromApi } from '../../../API/users'
 
 export default function OrderPage() {
 
+
   const [isModeAdmin, setIsModeAdmin] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [currentTabSelected, setCurrentTabSelected] = useState("add")
@@ -26,6 +27,7 @@ export default function OrderPage() {
   const { basket, addBasketProduct, deleteBasketProduct, setBasket } = useBasket()
   const { username } = useParams()
   const [userId, setUserId] = useState("")
+  const [invoiceId, setInvoiceId] = useState("1")
 
   const selectProduct = async (productIdSelected) => {
     const productClickedOn = findInArray(productIdSelected, products)
@@ -42,11 +44,13 @@ export default function OrderPage() {
 
   useEffect(() => {
     defineUserId(username)
-    initialiseUserSession(username, setProducts, setBasket)
+    initialiseUserSession(username, setProducts)
   }, [])
 
 
   const adminContextValue = {
+    invoiceId,
+    setInvoiceId,
     username,
     userId,
     isModeAdmin,
@@ -69,6 +73,7 @@ export default function OrderPage() {
     addBasketProduct,
     deleteBasketProduct,
     selectProduct,
+    setBasket,
   }
 
   return (

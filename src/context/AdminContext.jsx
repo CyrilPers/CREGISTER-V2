@@ -4,6 +4,9 @@ export default createContext({
 
     username: "",
 
+    invoiceId: "",
+    setInvoiceId: () => { },
+
     userId: 0,
 
     isModeAdmin: false,
@@ -35,6 +38,7 @@ export default createContext({
     titleEditRef: {},
 
     basket: [],
+    setBasket: () => { },
     addBasketProduct: () => { },
     deleteBasketProduct: () => { },
 });

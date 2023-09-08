@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { styled } from 'styled-components';
 import { theme } from '../../../../theme';
 import Card from '../../../reusable-ui/Card.jsx';
@@ -12,10 +12,16 @@ import { checkIfProductIsClicked } from './helper/helpers.jsx'
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { menuAnimation } from '../../../../theme/animations';
 import { convertStringToBoolean } from '../../../../utils/string'
+import { initialiseBasket } from '../helpers/initialiseUserSession'
 
 export default function Menu() {
 
+  useEffect(() => {
+    initialiseBasket(invoiceId, setBasket)
+  }, [])
+
   const {
+    setBasket,
     products,
     isModeAdmin,
     deleteProduct,
@@ -26,6 +32,7 @@ export default function Menu() {
     addBasketProduct,
     username,
     selectProduct,
+    invoiceId,
   } = useContext(AdminContext)
 
   const handleCardDelete = (event, idProductToDelete) => {
@@ -36,7 +43,7 @@ export default function Menu() {
 
   const handleAddButton = (idProductToAdd) => {
     const productToAdd = findInArray(idProductToAdd, products)
-    productToAdd.isAvailable ? addBasketProduct(productToAdd, username) : null;
+    productToAdd.isAvailable ? addBasketProduct(productToAdd, invoiceId) : null;
   }
 
   const handleClick = (id) => {

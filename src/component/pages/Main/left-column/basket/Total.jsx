@@ -9,8 +9,9 @@ import CasinoEffect from '../../../../reusable-ui/CasinoEffect';
 
 export default function Total({ }) {
 
-    const { basket, products } = useContext(AdminContext)
-    const sumToPay = calculateSumToPay(basket, products)
+    const { basket } = useContext(AdminContext)
+    const sumToPay = "1"
+    // const sumToPay = calculateSumToPay(basket)
 
 
     return (
