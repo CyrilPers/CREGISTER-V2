@@ -16,10 +16,8 @@ import { initialiseBasket, initialiseProducts } from '../helpers/initialiseUserS
 
 export default function Menu() {
 
-  useEffect(() => {
-    initialiseBasket(invoiceId, setBasket)
-    initialiseProducts(username, setProducts)
-  }, [])
+
+
 
   const {
     userId,
@@ -37,6 +35,12 @@ export default function Menu() {
     selectProduct,
     invoiceId,
   } = useContext(AdminContext)
+
+  useEffect(() => {
+    initialiseBasket(invoiceId, setBasket)
+    initialiseProducts(userId, setProducts)
+  }, [])
+
 
   const handleCardDelete = (event, idProductToDelete) => {
     event.stopPropagation()

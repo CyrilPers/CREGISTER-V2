@@ -5,14 +5,15 @@ import { styled } from 'styled-components';
 import { theme } from '../../../../theme';
 import AdminContext from '../../../../context/AdminContext';
 
+
 export default function MainRightSide() {
 
-    const { isModeAdmin } = useContext(AdminContext)
+    const { isModeAdmin, userId } = useContext(AdminContext)
 
 
     return (
         <MainRightSideStyled>
-            <Menu />
+            {userId && <Menu />}
             {isModeAdmin && <Admin />}
         </MainRightSideStyled>
     )
