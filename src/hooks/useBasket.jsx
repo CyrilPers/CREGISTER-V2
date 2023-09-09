@@ -1,22 +1,23 @@
 import { useState } from 'react'
 import { removeItemFromArray } from '../utils/arrays'
-import { createBasketProductFromApi, deleteBasketProductFromApi, updateBasketProductFromApi } from '../API/basket'
+import { createBasketProductFromApi, deleteBasketProductFromApi, getBasketFromApi, getBasketProductByProductIdFromApi, updateBasketProductFromApi } from '../API/basket'
 
 export const useBasket = () => {
     const [basket, setBasket] = useState([])
 
 
-    const addBasketProduct = async (productToAdd, invoiceId) => {
-
-        const isProductAlreadyInBasket = getBasketProductByProductIdFromApi(productToAdd.id)
-
+    const addBasketProduct = async (productToAdd, invoiceId, userId) => {
+        const isProductAlreadyInBasket = await getBasketProductByProductIdFromApi(productToAdd.id)
         if (!isProductAlreadyInBasket) {
             const newBasketProduct = {
                 ...productToAdd,
                 quantity: 1,
             }
             await createBasketProductFromApi(newBasketProduct, invoiceId)
-            updatedBasket = await getBasketFromApi(userId)
+            console.log("newBasketProduct", newBasketProduct)
+            console.log("invoiceId", invoiceId)
+
+            const updatedBasket = await getBasketFromApi(userId)
             setBasket(updatedBasket)
             return
         }
@@ -25,7 +26,8 @@ export const useBasket = () => {
             ...isProductAlreadyInBasket,
             quantity: isProductAlreadyInBasket.quantity += 1
         }
-        updateBasketProductFromApi(updatedBasketProduct)
+        await updateBasketProductFromApi(updatedBasketProduct)
+        console.log("2")
         updatedBasket = await getBasketFromApi(userId)
         setBasket(updatedBasket)
     }
