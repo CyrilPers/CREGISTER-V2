@@ -27,8 +27,7 @@ export const useBasket = () => {
             quantity: isProductAlreadyInBasket.quantity += 1
         }
 
-        const basketProductId = isProductAlreadyInBasket.id
-        await updateBasketProductFromApi(updatedBasketProduct, basketProductId)
+        await updateBasketProductFromApi(updatedBasketProduct)
         const updatedBasket = await getBasketFromApi(userId)
         setBasket(updatedBasket)
     }
