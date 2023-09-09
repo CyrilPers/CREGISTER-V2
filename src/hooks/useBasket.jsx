@@ -6,7 +6,7 @@ export const useBasket = () => {
     const [basket, setBasket] = useState([])
 
 
-    const addBasketProduct = async (productToAdd, invoiceId, userId) => {
+    const addBasketProduct = async (productToAdd, invoiceId) => {
         const isProductAlreadyInBasket = await getBasketProductByProductIdFromApi(productToAdd.id)
         if (!isProductAlreadyInBasket) {
             const newBasketProduct = {
@@ -14,7 +14,7 @@ export const useBasket = () => {
                 quantity: 1,
             }
             await createBasketProductFromApi(newBasketProduct, invoiceId)
-            const updatedBasket = await getBasketFromApi(userId)
+            const updatedBasket = await getBasketFromApi(invoiceId)
             setBasket(updatedBasket)
             return
         }
@@ -23,9 +23,8 @@ export const useBasket = () => {
             ...isProductAlreadyInBasket,
             quantity: isProductAlreadyInBasket.quantity += 1
         }
-
         await updateBasketProductFromApi(updatedBasketProduct)
-        const updatedBasket = await getBasketFromApi(userId)
+        const updatedBasket = await getBasketFromApi(invoiceId)
         setBasket(updatedBasket)
     }
 

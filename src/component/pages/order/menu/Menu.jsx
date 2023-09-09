@@ -18,7 +18,6 @@ export default function Menu() {
 
 
 
-
   const {
     userId,
     setProducts,
@@ -37,7 +36,6 @@ export default function Menu() {
   } = useContext(AdminContext)
 
   useEffect(() => {
-    initialiseBasket(invoiceId, setBasket)
     initialiseProducts(userId, setProducts)
   }, [])
 
@@ -50,7 +48,7 @@ export default function Menu() {
 
   const handleAddButton = (idProductToAdd) => {
     const productToAdd = findInArray(idProductToAdd, products)
-    productToAdd.isAvailable ? addBasketProduct(productToAdd, invoiceId, userId) : null;
+    productToAdd.isAvailable ? addBasketProduct(productToAdd, invoiceId) : null;
   }
 
   const handleClick = (id) => {

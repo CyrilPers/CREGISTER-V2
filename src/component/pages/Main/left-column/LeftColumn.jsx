@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { styled } from 'styled-components';
 import AdminContext from '../../../../context/AdminContext.jsx'
 import Total from './basket/Total.jsx';
@@ -7,14 +7,20 @@ import BasketProducts from './basket/BasketProducts.jsx';
 import EmptyBasket from './basket/EmptyBasket.jsx'
 import { theme } from '../../../../theme/index.jsx';
 import { isEmpty } from '../../../../utils/arrays.jsx';
+import { initialiseBasket } from '../../order/helpers/initialiseUserSession.jsx';
 
 export default function LeftColumn() {
-    const { basket, products } = useContext(AdminContext)
+    const { basket, setBasket, invoiceId } = useContext(AdminContext)
+
+    useEffect(() => {
+        initialiseBasket(invoiceId, setBasket)
+    }, [])
+
 
     return (
         <LeftColumnStyled>
             <Total />
-            {isEmpty(basket) ? <EmptyBasket isLoading={products === undefined} /> : <BasketProducts />}
+            {isEmpty(basket) ? <EmptyBasket isLoading={basket === undefined} /> : <BasketProducts />}
             <BasketFooter />
         </LeftColumnStyled>
     )
@@ -26,7 +32,7 @@ const LeftColumnStyled = styled.div`
     border-bottom-left-radius: ${theme.borderRadius.extraRound};
     display: flex;
     flex-direction: column;
-    height: 85vh;   
+    height: 85vh;
 
     @media(max-width: 767px) {
         max-height: calc(50%);

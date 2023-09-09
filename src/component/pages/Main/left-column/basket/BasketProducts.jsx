@@ -12,13 +12,12 @@ import { basketCardAnimation } from '../../../../../theme/animations';
 export default function BasketProducts() {
 
     const {
-        username,
         basket,
         deleteBasketProduct,
     } = useContext(AdminContext)
 
-    const handleOnDelete = (id, username) => {
-        deleteBasketProduct(id, username)
+    const handleOnDelete = (id) => {
+        deleteBasketProduct(id)
     }
 
     return (
@@ -34,7 +33,7 @@ export default function BasketProducts() {
                         <BasketCard
                             {...basketProduct}
                             imageSource={basketProduct.imageSource ? basketProduct.imageSource : IMAGE_COMING_SOON}
-                            onDelete={() => handleOnDelete(basketProduct.id, username)}
+                            onDelete={() => handleOnDelete(basketProduct.id)}
                             className={"card"}
                         />
                     </div>
