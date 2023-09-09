@@ -14,9 +14,6 @@ export const useBasket = () => {
                 quantity: 1,
             }
             await createBasketProductFromApi(newBasketProduct, invoiceId)
-            console.log("newBasketProduct", newBasketProduct)
-            console.log("invoiceId", invoiceId)
-
             const updatedBasket = await getBasketFromApi(userId)
             setBasket(updatedBasket)
             return
