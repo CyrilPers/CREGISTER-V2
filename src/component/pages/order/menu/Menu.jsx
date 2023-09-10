@@ -21,7 +21,6 @@ export default function Menu() {
   const {
     userId,
     setProducts,
-    setBasket,
     products,
     isModeAdmin,
     deleteProduct,
@@ -30,14 +29,13 @@ export default function Menu() {
     selectedProduct,
     titleEditRef,
     addBasketProduct,
-    username,
     selectProduct,
     invoiceId,
   } = useContext(AdminContext)
 
   useEffect(() => {
     initialiseProducts(userId, setProducts)
-  }, [])
+  }, [products])
 
 
   const handleCardDelete = (event, idProductToDelete) => {
@@ -62,7 +60,7 @@ export default function Menu() {
   if (products === undefined) return <Loader />
 
   if (isEmpty(products)) {
-    return <EmptyMenu onClick={() => resetProducts(username)} />
+    return <EmptyMenu onClick={() => resetProducts(userId)} />
   }
 
   return (

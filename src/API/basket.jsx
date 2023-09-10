@@ -30,8 +30,6 @@ export async function deleteBasketProductFromApi(productId) {
 
 export async function createBasketProductFromApi(newProduct, invoiceId) {
     try {
-        console.log("create basketproduct")
-        console.log("createproduct", newProduct)
         await axios.post(`${API_URL}create`, { productName: newProduct.title, productPrice: newProduct.price, productId: newProduct.id, imageSource: newProduct.imageSource, quantity: newProduct.quantity, invoice: { id: invoiceId } });
     } catch (error) {
         console.log(error)
@@ -41,7 +39,6 @@ export async function createBasketProductFromApi(newProduct, invoiceId) {
 
 export async function updateBasketProductFromApi(newProduct) {
     try {
-        console.log("update", newProduct)
         await axios.put(`${API_URL}update/${newProduct.id}`, { productId: newProduct.productId, productName: newProduct.productName, productPrice: newProduct.productPrice, productId: newProduct.productId, imageSource: newProduct.imageSource, quantity: newProduct.quantity, invoice: { id: newProduct.invoice.id } });
     } catch (error) {
         console.log(error)

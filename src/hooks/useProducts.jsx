@@ -1,7 +1,6 @@
 import { useState } from "react"
-import { fakeMenu } from "../fakeData/fakeMenu"
 import { deepClone, getIndex, removeItemFromArray } from "../utils/arrays"
-import { createProductFromApi, deleteProductFromApi, getProductsFromApi, updateProductFromApi } from "../API/products"
+import { createProductFromApi, deleteProductFromApi, getProductsFromApi, initialiseProductsFromApi, updateProductFromApi } from "../API/products"
 
 
 export const useProducts = () => {
@@ -31,9 +30,10 @@ export const useProducts = () => {
         updateProductFromApi(productBeingEdited)
     }
 
-    const resetProducts = (username) => {
-        setProducts(fakeMenu.LARGE)
-        syncBothProducts(username, fakeMenu.LARGE)
+    const resetProducts = async (userId) => {
+        initialiseProductsFromApi(userId)
+        const updatedProducts = await getProductsFromApi(userId);
+        setProducts(updatedProducts)
     }
 
     return { products, setProducts, resetProducts, addProduct, deleteProduct, editProduct }

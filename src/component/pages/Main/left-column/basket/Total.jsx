@@ -10,9 +10,6 @@ export default function Total({ basket }) {
 
     // const sumToPay = "1"
     const sumToPay = calculateSumToPay(basket)
-    console.log("basket", basket)
-
-
     return (
         <Header>
             <TotalStyled>

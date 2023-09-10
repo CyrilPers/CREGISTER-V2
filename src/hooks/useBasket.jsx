@@ -30,9 +30,10 @@ export const useBasket = () => {
 
 
     const deleteBasketProduct = (basketProductId) => {
+        deleteBasketProductFromApi(basketProductId)
         const basketUpdated = removeItemFromArray(basketProductId, basket)
         setBasket(basketUpdated)
-        deleteBasketProductFromApi(basketProductId)
+
     }
 
 
