@@ -1,7 +1,6 @@
 import { useState } from "react"
 import { deepClone, getIndex, removeItemFromArray } from "../utils/arrays"
 import { createProductFromApi, deleteProductFromApi, getProductsFromApi, initialiseProductsFromApi, updateProductFromApi } from "../API/products"
-import { fakeProducts } from '../fakeData/fakeProducts'
 
 export const useProducts = () => {
 
