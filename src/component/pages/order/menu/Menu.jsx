@@ -12,7 +12,7 @@ import { checkIfProductIsClicked } from './helper/helpers.jsx'
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { menuAnimation } from '../../../../theme/animations';
 import { convertStringToBoolean } from '../../../../utils/string'
-import { initialiseBasket, initialiseProducts } from '../helpers/initialiseUserSession'
+import { initialiseProducts } from '../helpers/initialiseUserSession'
 
 export default function Menu() {
 
@@ -35,7 +35,7 @@ export default function Menu() {
 
   useEffect(() => {
     initialiseProducts(userId, setProducts)
-  }, [products])
+  }, [])
 
 
   const handleCardDelete = (event, idProductToDelete) => {

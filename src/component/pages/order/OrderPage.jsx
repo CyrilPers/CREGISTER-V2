@@ -8,7 +8,7 @@ import { EMPTY_PRODUCT } from '../../../enum/product.jsx'
 import { useProducts } from '../../../hooks/useProducts'
 import { useBasket } from '../../../hooks/useBasket'
 import { useParams } from 'react-router-dom'
-import { initialiseUser } from './helpers/initialiseUserSession'
+import { initialiseProducts, initialiseUser } from './helpers/initialiseUserSession'
 import { findInArray } from '../../../utils/arrays'
 
 
