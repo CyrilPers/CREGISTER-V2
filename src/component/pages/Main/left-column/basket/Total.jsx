@@ -6,10 +6,11 @@ import { formatPrice } from '../../../../../utils/maths';
 import { calculateSumToPay } from './Helper';
 import CasinoEffect from '../../../../reusable-ui/CasinoEffect';
 
-export default function Total({ }) {
+export default function Total({ basket }) {
 
-    const sumToPay = "1"
-    // const sumToPay = calculateSumToPay(basket)
+    // const sumToPay = "1"
+    const sumToPay = calculateSumToPay(basket)
+    console.log("basket", basket)
 
 
     return (

@@ -19,7 +19,7 @@ export default function LeftColumn() {
 
     return (
         <LeftColumnStyled>
-            <Total />
+            <Total basket={basket} />
             {isEmpty(basket) ? <EmptyBasket isLoading={basket === undefined} /> : <BasketProducts />}
             <BasketFooter />
         </LeftColumnStyled>
