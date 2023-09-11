@@ -10,16 +10,15 @@ export default function Card({
   showDeleteButton,
   onDelete,
   onClick,
-  isNotHoverable,
   isHoverable,
   isSelected,
   overlapImageSource,
   isOverlapImageVisible,
   className,
+  isNotHoverable,
 }) {
 
   console.log("isNotHoverable", isNotHoverable)
-  console.log("isHoverable", isHoverable)
 
   return (
     <CardStyled
