@@ -6,11 +6,17 @@ import { checkIfProductIsClicked } from './helper/helpers'
 import { formatPrice } from '../../../../utils/maths';
 import { IMAGE_COMING_SOON, IMAGE_NO_STOCK } from '../../../../enum/product';
 
-export default function ProductsMap({ selectedProduct, isModeAdmin, products, handleCardDelete, handleClick, containerClassName }) {
+export default function ProductsMap({ selectedCategory, selectedProduct, isModeAdmin, products, handleCardDelete, handleClick, containerClassName }) {
 
+    const filteredProducts = selectedCategory
+        ? selectedCategory
+            ? products.filter((product) => product.category.id === selectedCategory)
+            : []
+        : products.filter((product) => product.category.id === 1);
 
+    console.log("selectedCategory", selectedCategory)
     return (
-        <>{products.slice().reverse().map(({ id, title, imageSource, price, isAvailable }) => {
+        <>{filteredProducts.slice().reverse().map(({ id, title, imageSource, price, isAvailable }) => {
             return (
                 <CSSTransition
                     classNames={"animation-card"}
