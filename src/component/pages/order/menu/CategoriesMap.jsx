@@ -1,7 +1,7 @@
 import React from 'react'
 import Card from '../../../reusable-ui/Card'
 
-export default function CategoriesMap({ categories, containerClassName }) {
+export default function CategoriesMap({ isModeAdmin, categories }) {
     return (
         <>{categories.slice().reverse().map(({ id, name }) => {
             return (
@@ -10,6 +10,7 @@ export default function CategoriesMap({ categories, containerClassName }) {
                         key={id}
                         title={name}
                         className="minimize"
+                        isNotHoverable={isModeAdmin}
                     />
                 </div>
             )

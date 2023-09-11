@@ -65,7 +65,7 @@ export default function Menu() {
 
   return (
     <TransitionGroup component={MenuStyled} className='menu'>
-      <CategoriesMap categories={categories} containerClassName="category" />
+      <CategoriesMap categories={categories} isModeAdmin={isModeAdmin} containerClassName="category" />
       <ProductsMap selectedProduct={selectedProduct} isModeAdmin={isModeAdmin} products={products} handleCardDelete={handleCardDelete} handleClick={handleClick} containerClassName={containerClassName} />
     </TransitionGroup>
   )
