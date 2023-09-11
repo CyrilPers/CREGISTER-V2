@@ -14,7 +14,7 @@ export default function CategoriesMap({ isModeAdmin, categories, handleCategoryC
                         title={name}
                         className="minimize"
                         isNotHoverable={isModeAdmin}
-                        OnClick={() => handleCategoryClick(id)}
+                        onClick={() => handleCategoryClick(id)}
                     />
                 </div>
             )

@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { styled } from 'styled-components';
 import { theme } from '../../../../theme';
 import AdminContext from '../../../../context/AdminContext.jsx';
@@ -64,7 +64,7 @@ export default function Menu() {
     setShowBackButton(true);
   }
 
-
+  console.log("selectedCategory", selectedCategory)
 
   let containerClassName = isModeAdmin ? "card-container is-hoverable" : 'card-container'
 
