@@ -3,8 +3,13 @@ import Card from '../../../reusable-ui/Card'
 
 
 
-export default function CategoriesMap({ showBackButton, isModeAdmin, handleBackButtonClick, categories, handleCategoryClick }) {
-    console.log(isModeAdmin)
+export default function CategoriesMap({ selectedCategory, showBackButton, isModeAdmin, handleBackButtonClick, categories, handleCategoryClick }) {
+
+    const filteredCategories =
+        selectedCategory === null
+            ? categories.filter((categories) => categories.id !== 1)
+            : categories.filter((categories) => categories.id === null)
+
     return (
 
         <>{showBackButton && <Card
@@ -14,7 +19,7 @@ export default function CategoriesMap({ showBackButton, isModeAdmin, handleBackB
             isNotHoverable={isModeAdmin}
             onClick={handleBackButtonClick}
         />}
-            {categories.slice().reverse().map(({ id, name }) => {
+            {filteredCategories.slice().reverse().map(({ id, name }) => {
                 return (
                     <div className="category" key={id}>
                         <Card
