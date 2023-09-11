@@ -63,7 +63,6 @@ export default function Menu() {
     return <EmptyMenu onClick={() => resetProducts(userId)} />
   }
 
-  console.log(categories)
   return (
     <TransitionGroup component={MenuStyled} className='menu'>
       <CategoriesMap categories={categories} containerClassName="category" />

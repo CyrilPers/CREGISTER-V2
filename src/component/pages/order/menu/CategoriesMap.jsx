@@ -5,11 +5,11 @@ export default function CategoriesMap({ categories, containerClassName }) {
     return (
         <>{categories.slice().reverse().map(({ id, name }) => {
             return (
-                <div className={containerClassName}>
+                <div key={id}>
                     <Card
                         key={id}
                         title={name}
-                        className="category-card"
+                        className="minimize"
                     />
                 </div>
             )

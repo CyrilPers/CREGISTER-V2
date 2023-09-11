@@ -30,6 +30,7 @@ export default function ProductsMap({ selectedProduct, isModeAdmin, products, ha
                             isSelected={checkIfProductIsClicked(id, selectedProduct.id)}
                             overlapImageSource={IMAGE_NO_STOCK}
                             isOverlapImageVisible={convertStringToBoolean(isAvailable) === false}
+                            className="card"
                         />
                     </div>
                 </CSSTransition>
