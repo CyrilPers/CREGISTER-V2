@@ -57,7 +57,7 @@ export default function Menu() {
 
 
   // Afficahge 
-  if (products === undefined) return <Loader />
+  if (products === undefined || categories === undefined) return <Loader />
 
   if (isEmpty(products)) {
     return <EmptyMenu onClick={() => resetProducts(userId)} />
