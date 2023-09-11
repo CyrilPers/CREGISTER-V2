@@ -1,18 +1,15 @@
 import { useContext, useEffect } from 'react'
 import { styled } from 'styled-components';
 import { theme } from '../../../../theme';
-import Card from '../../../reusable-ui/Card.jsx';
-import { formatPrice } from '../../../../utils/maths';
 import AdminContext from '../../../../context/AdminContext.jsx';
-import { EMPTY_PRODUCT, IMAGE_COMING_SOON, IMAGE_NO_STOCK } from '../../../../enum/product';
+import { EMPTY_PRODUCT } from '../../../../enum/product';
 import { findInArray, isEmpty } from '../../../../utils/arrays';
 import EmptyMenu from './EmptyMenu';
 import Loader from './Loader';
-import { checkIfProductIsClicked } from './helper/helpers.jsx'
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { TransitionGroup } from 'react-transition-group';
 import { menuAnimation } from '../../../../theme/animations';
-import { convertStringToBoolean } from '../../../../utils/string'
 import { initialiseProducts } from '../helpers/initialiseUserSession'
+import ProductsMap from './ProductsMap';
 
 export default function Menu() {
 
@@ -65,31 +62,8 @@ export default function Menu() {
 
   return (
     <TransitionGroup component={MenuStyled} className='menu'>
-      {products.slice().reverse().map(({ id, title, imageSource, price, isAvailable }) => {
-        return (
-          <CSSTransition
-            classNames={"animation-card"}
-            key={id}
-            timeout={300}
-          >
-            <div className={containerClassName}>
-              <Card
-                key={id}
-                title={title}
-                imageSource={imageSource ? imageSource : IMAGE_COMING_SOON}
-                leftDescription={formatPrice(price)}
-                showDeleteButton={isModeAdmin}
-                onDelete={(event) => handleCardDelete(event, id)}
-                onClick={() => handleClick(id)}
-                isHoverable={isModeAdmin}
-                isSelected={checkIfProductIsClicked(id, selectedProduct.id)}
-                overlapImageSource={IMAGE_NO_STOCK}
-                isOverlapImageVisible={convertStringToBoolean(isAvailable) === false}
-              />
-            </div>
-          </CSSTransition>
-        )
-      })}
+      <ProductsMap selectedProduct={selectedProduct} isModeAdmin={isModeAdmin} products={products} handleCardDelete={handleCardDelete} handleClick={handleClick} containerClassName={containerClassName} />
+
     </TransitionGroup>
   )
 }
