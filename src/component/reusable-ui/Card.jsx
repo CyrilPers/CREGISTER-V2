@@ -19,6 +19,7 @@ export default function Card({
 }) {
 
   console.log("isNotHoverable", isNotHoverable)
+  //IsNotHiverable is set correctly then get undefined...
 
   return (
     <CardStyled
