@@ -14,6 +14,7 @@ import CategoriesMap from './CategoriesMap';
 
 export default function Menu() {
 
+  const [showBackButton, setShowBackButton] = useState(false)
 
 
   const {
@@ -30,7 +31,10 @@ export default function Menu() {
     addBasketProduct,
     selectProduct,
     invoiceId,
+    setSelectedCategory,
+    selectedCategory,
   } = useContext(AdminContext)
+
 
   useEffect(() => {
     initialiseProducts(userId, setProducts)
@@ -53,6 +57,15 @@ export default function Menu() {
     isModeAdmin ? selectProduct(id) : handleAddButton(id);
   }
 
+
+  const handleCategoryClick = (id) => {
+    // Mettre à jour l'état de la catégorie sélectionnée
+    setSelectedCategory(id)
+    setShowBackButton(true);
+  }
+
+
+
   let containerClassName = isModeAdmin ? "card-container is-hoverable" : 'card-container'
 
 
@@ -65,7 +78,7 @@ export default function Menu() {
 
   return (
     <TransitionGroup component={MenuStyled} className='menu'>
-      <CategoriesMap categories={categories} isModeAdmin={isModeAdmin} containerClassName="category" />
+      <CategoriesMap handleCategoryClick={handleCategoryClick} categories={categories} isModeAdmin={isModeAdmin} containerClassName="category" />
       <ProductsMap selectedProduct={selectedProduct} isModeAdmin={isModeAdmin} products={products} handleCardDelete={handleCardDelete} handleClick={handleClick} containerClassName={containerClassName} />
     </TransitionGroup>
   )

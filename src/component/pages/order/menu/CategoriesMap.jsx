@@ -1,7 +1,9 @@
 import React from 'react'
 import Card from '../../../reusable-ui/Card'
 
-export default function CategoriesMap({ isModeAdmin, categories }) {
+
+
+export default function CategoriesMap({ isModeAdmin, categories, handleCategoryClick }) {
     console.log(isModeAdmin)
     return (
         <>{categories.slice().reverse().map(({ id, name }) => {
@@ -12,6 +14,7 @@ export default function CategoriesMap({ isModeAdmin, categories }) {
                         title={name}
                         className="minimize"
                         isNotHoverable={isModeAdmin}
+                        OnClick={() => handleCategoryClick(id)}
                     />
                 </div>
             )

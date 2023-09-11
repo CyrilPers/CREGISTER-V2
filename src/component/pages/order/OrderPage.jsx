@@ -25,7 +25,7 @@ export default function OrderPage() {
   const titleEditRef = useRef()
   const { products, resetProducts, addProduct, deleteProduct, editProduct, setProducts } = useProducts()
   const { basket, addBasketProduct, deleteBasketProduct, setBasket } = useBasket()
-  const { categories, setCategories } = useCategories()
+  const { categories, setCategories, selectedCategory, setSelectedCategory } = useCategories()
   const { username } = useParams()
   const [userId, setUserId] = useState();
   const [invoiceId, setInvoiceId] = useState("1")
@@ -74,6 +74,8 @@ export default function OrderPage() {
     deleteBasketProduct,
     selectProduct,
     setBasket,
+    selectedCategory,
+    setSelectedCategory,
   }
 
   return (
