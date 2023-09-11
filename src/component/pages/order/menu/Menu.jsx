@@ -58,6 +58,12 @@ export default function Menu() {
   }
 
 
+  const handleBackButtonClick = () => {
+    // Cacher boutton retour et set catégorie selectionné sur null quand clique sur retour
+    setSelectedCategory(null);
+    setShowBackButton(false);
+  }
+
   const handleCategoryClick = (id) => {
     // Mettre à jour l'état de la catégorie sélectionnée
     setSelectedCategory(id)
@@ -78,7 +84,7 @@ export default function Menu() {
 
   return (
     <TransitionGroup component={MenuStyled} className='menu'>
-      <CategoriesMap handleCategoryClick={handleCategoryClick} categories={categories} isModeAdmin={isModeAdmin} containerClassName="category" />
+      <CategoriesMap handleBackButtonClick={handleBackButtonClick} showBackButton={showBackButton} handleCategoryClick={handleCategoryClick} categories={categories} isModeAdmin={isModeAdmin} containerClassName="category" />
       <ProductsMap selectedProduct={selectedProduct} isModeAdmin={isModeAdmin} products={products} handleCardDelete={handleCardDelete} handleClick={handleClick} containerClassName={containerClassName} />
     </TransitionGroup>
   )
