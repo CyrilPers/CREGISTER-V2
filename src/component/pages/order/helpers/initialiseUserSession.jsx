@@ -1,4 +1,5 @@
 import { getBasketFromApi } from "../../../../API/basket.jsx"
+import { getCategoriesFromApi } from "../../../../API/categories.jsx"
 import { getProductsFromApi, initialiseProductsFromApi } from "../../../../API/products.jsx"
 import { createUserFromApi, getUserIdFromApi } from "../../../../API/users.jsx"
 
@@ -10,6 +11,16 @@ export const initialiseProducts = async (userId, setProducts) => {
     return
   }
   setProducts(productsExisting)
+}
+
+
+export const initialiseCategories = async (userId, setCategories) => {
+  const categoriesExisting = await getCategoriesFromApi(userId)
+  if (!categoriesExisting) {
+    setCategories([])
+    return
+  }
+  setCategories(categoriesExisting)
 }
 
 

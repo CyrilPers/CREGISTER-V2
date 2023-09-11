@@ -8,8 +8,9 @@ import { EMPTY_PRODUCT } from '../../../enum/product.jsx'
 import { useProducts } from '../../../hooks/useProducts'
 import { useBasket } from '../../../hooks/useBasket'
 import { useParams } from 'react-router-dom'
-import { initialiseProducts, initialiseUser } from './helpers/initialiseUserSession'
+import { initialiseUser } from './helpers/initialiseUserSession'
 import { findInArray } from '../../../utils/arrays'
+import { useCategories } from '../../../hooks/useCategories'
 
 
 
@@ -24,6 +25,7 @@ export default function OrderPage() {
   const titleEditRef = useRef()
   const { products, resetProducts, addProduct, deleteProduct, editProduct, setProducts } = useProducts()
   const { basket, addBasketProduct, deleteBasketProduct, setBasket } = useBasket()
+  const { categories, setCategories } = useCategories()
   const { username } = useParams()
   const [userId, setUserId] = useState();
   const [invoiceId, setInvoiceId] = useState("1")
@@ -43,6 +45,8 @@ export default function OrderPage() {
 
 
   const adminContextValue = {
+    categories,
+    setCategories,
     invoiceId,
     setInvoiceId,
     username,

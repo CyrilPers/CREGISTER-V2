@@ -8,14 +8,17 @@ import EmptyMenu from './EmptyMenu';
 import Loader from './Loader';
 import { TransitionGroup } from 'react-transition-group';
 import { menuAnimation } from '../../../../theme/animations';
-import { initialiseProducts } from '../helpers/initialiseUserSession'
+import { initialiseCategories, initialiseProducts } from '../helpers/initialiseUserSession'
 import ProductsMap from './ProductsMap';
+import CategoriesMap from './CategoriesMap';
 
 export default function Menu() {
 
 
 
   const {
+    setCategories,
+    categories,
     userId,
     setProducts,
     products,
@@ -24,7 +27,6 @@ export default function Menu() {
     resetProducts,
     setSelectedProduct,
     selectedProduct,
-    titleEditRef,
     addBasketProduct,
     selectProduct,
     invoiceId,
@@ -32,6 +34,7 @@ export default function Menu() {
 
   useEffect(() => {
     initialiseProducts(userId, setProducts)
+    initialiseCategories(userId, setCategories)
   }, [])
 
 
@@ -60,10 +63,11 @@ export default function Menu() {
     return <EmptyMenu onClick={() => resetProducts(userId)} />
   }
 
+  console.log(categories)
   return (
     <TransitionGroup component={MenuStyled} className='menu'>
+      <CategoriesMap categories={categories} containerClassName="category" />
       <ProductsMap selectedProduct={selectedProduct} isModeAdmin={isModeAdmin} products={products} handleCardDelete={handleCardDelete} handleClick={handleClick} containerClassName={containerClassName} />
-
     </TransitionGroup>
   )
 }
