@@ -7,8 +7,8 @@ export default function CategoriesMap({ selectedCategory, showBackButton, isMode
 
     const filteredCategories =
         selectedCategory === null
-            ? categories.filter((categories) => categories.id !== 1)
-            : categories.filter((categories) => categories.id === null)
+            ? categories.filter((category) => category.id !== 1)
+            : categories.filter((category) => category.id === null)
 
     return (
 
