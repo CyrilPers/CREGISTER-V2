@@ -1,7 +1,6 @@
 import { BsFillCameraFill } from 'react-icons/bs';
 import { MdOutlineEuro, MdTitle } from 'react-icons/md';
 import { FiPackage } from 'react-icons/fi';
-import { GoMegaphone } from 'react-icons/go';
 import { isAvailableOptions } from '../../../../../enum/productSelect';
 
 export const getInputTextsConfig = (product) => [
