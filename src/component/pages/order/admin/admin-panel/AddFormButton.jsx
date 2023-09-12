@@ -1,13 +1,13 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import Button from '../../../../reusable-ui/Button'
 import SubmitMessage from './SubmitMessage'
 
-export default function AddFormButton({ isSubmitted }) {
+export default function AddFormButton({ isSubmitted, label }) {
     return (
         <>
             <Button
                 className='submit-button'
-                label="Ajouter le produit"
+                label={label}
                 version="success"
             />
             {isSubmitted && <SubmitMessage />}

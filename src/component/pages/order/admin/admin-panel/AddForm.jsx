@@ -39,7 +39,7 @@ export default function AddForm() {
             product={newProduct}
             isSubmitted={isSubmitted}
         >
-            <AddFormButton isSubmitted={isSubmitted} />
+            <AddFormButton isSubmitted={isSubmitted} label={"Ajouter le produit"} />
         </Form>
     )
 };
