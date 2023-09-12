@@ -47,4 +47,6 @@ export default createContext({
     setCategories: () => { },
     selectedCategory: [],
     setSelectedCategory: () => { },
+    newCategory: {},
+    setNewCategory: () => { }
 });

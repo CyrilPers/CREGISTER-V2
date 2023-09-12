@@ -18,6 +18,12 @@ export const getTabsConfig = (hasAlreadyBeenClicked) => [
     Icon: <MdModeEditOutline />,
     content: hasAlreadyBeenClicked ? <EditForm /> : <HintMessage />,
   },
+  {
+    index: "addCategory",
+    label: "Ajouter une catégorie",
+    Icon: <AiOutlinePlus />,
+    content: hasAlreadyBeenClicked ? <EditForm /> : <HintMessage />,
+  },
 ]
 export const getTabSelected = (tabs, currentTabSelected) => {
   return tabs.find((tab) => tab.index === currentTabSelected)
