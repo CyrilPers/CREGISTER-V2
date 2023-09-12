@@ -4,23 +4,25 @@ import { EMPTY_PRODUCT } from '../../../../../enum/product.jsx';
 import Form from './Form';
 import AddFormButton from './AddFormButton';
 import { useSuccessMessage } from '../../../../../hooks/useSuccessMessage';
+import { findIdInArray } from '../../../../../utils/arrays';
 
 export default function AddForm() {
 
-    const { addProduct, setNewProduct, newProduct, userId, selectedCategory } = useContext(AdminContext)
+    const { addProduct, setNewProduct, newProduct, userId, selectedCategory, categories } = useContext(AdminContext)
     const { isSubmitted, displaySuccessMessage } = useSuccessMessage()
 
 
     const handleSubmit = (event) => {
         event.preventDefault()
         const id = crypto.randomUUID()
+        const mainCat = findIdInArray("MAIN", categories)
+        const categoryId = selectedCategory ? selectedCategory : mainCat
         const newProductToAdd = {
             ...newProduct,
-            // category: { id: selectedCategory.id },
+            category: { id: categoryId },
             id
         }
-        addProduct(newProductToAdd, userId, selectedCategory)
-        // addProduct(newProductToAdd, userId, selectedCategory)
+        addProduct(newProductToAdd, userId)
         setNewProduct(EMPTY_PRODUCT)
         displaySuccessMessage()
     }
