@@ -1,5 +1,6 @@
 import { getBasketFromApi } from "../../../../API/basket.jsx"
 import { getCategoriesFromApi, initialiseCategoriesFromApi } from "../../../../API/categories.jsx"
+import { initialiseCustomersFromApi } from "../../../../API/customers.jsx"
 import { getProductsFromApi, initialiseBurgerProductsFromApi, initialiseDessertProductsFromApi, initialiseMainProductsFromApi, initialiseSaladeProductsFromApi } from "../../../../API/products.jsx"
 import { createUserFromApi, getUserIdFromApi } from "../../../../API/users.jsx"
 import { findIdInArray } from "../../../../utils/arrays.jsx"
@@ -61,6 +62,7 @@ export const initialiseNewUserFromApi = async (username) => {
   initialiseBurgerProductsFromApi(newUserId, burgerCatId)
   initialiseSaladeProductsFromApi(newUserId, saladeCatId)
   initialiseDessertProductsFromApi(newUserId, dessertCatId)
+  initialiseCustomersFromApi(newUserId)
 }
 
 
