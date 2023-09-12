@@ -1,10 +1,23 @@
 import React from 'react'
+import TextInput from '../../../../../reusable-ui/TextInput';
+import { getCategoryInputTextsConfig } from './categoryInputsConfig.jsx'
+import styled from 'styled-components';
 
-export default function CategoryFormInputs() {
+export default function CategoryFormInputs(onBlur, category, onChange) {
+    const categoryInputTexts = getCategoryInputTextsConfig(category)
+
+
     return (
-        <CategoryFormInputsStyled>
-            CategoryFormInputs
-
+        <CategoryFormInputsStyled className='input-fields'>
+            {categoryInputTexts.map((input) => {
+                <TextInput
+                    {...input}
+                    key={input.id}
+                    onChange={onChange}
+                    version="minimalist"
+                    onBlur={onBlur}
+                />
+            })}
         </CategoryFormInputsStyled>
     )
 }

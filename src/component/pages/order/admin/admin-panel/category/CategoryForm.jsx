@@ -1,10 +1,11 @@
 import React from 'react'
 import styled from 'styled-components';
+import CategoryFormInputs from './CategoryFormInputs';
 
-export default function CategoryForm() {
+export default function CategoryForm(onSubmit, onChange, category, onBlur) {
     return (
-        <CategoryFormStyled>
-            CategoryForm
+        <CategoryFormStyled onSubmit={onSubmit}>
+            <CategoryFormInputs onBlur={onBlur} onChange={onChange} category={category} />
         </CategoryFormStyled>
     )
 }
