@@ -70,20 +70,15 @@ export default function Menu() {
     setShowBackButton(true);
   }
 
-  console.log("selectedCategory", selectedCategory)
-
   let containerClassName = isModeAdmin ? "card-container is-hoverable" : 'card-container'
 
 
   // Afficahge 
   if (products === undefined || categories === undefined) return <Loader />
 
-  if (isEmpty(products)) {
-    return <EmptyMenu onClick={() => resetProducts(userId)} />
-  }
-
-
-  console.log(products)
+  // if (isEmpty(products)) {
+  //   return <EmptyMenu onClick={() => resetProducts(userId)} />
+  // }
 
   return (
     <TransitionGroup component={MenuStyled} className='menu'>

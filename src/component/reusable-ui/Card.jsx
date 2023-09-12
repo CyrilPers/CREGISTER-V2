@@ -10,7 +10,6 @@ export default function Card({
   showDeleteButton,
   onDelete,
   onClick,
-  isNotHoverable,
   isHoverable,
   isSelected,
   overlapImageSource,
@@ -18,14 +17,10 @@ export default function Card({
   className,
 }) {
 
-  console.log("isNotHoverable", isNotHoverable)
-  //IsNotHiverable is set correctly then get undefined...
-
   return (
     <CardStyled
 
       onClick={onClick}
-      $isNotHoverable={isNotHoverable}
       $isHoverable={isHoverable}
       $isSelected={isSelected}
     >
@@ -57,7 +52,6 @@ export default function Card({
 
 const CardStyled = styled.div`
   ${({ $isHoverable }) => $isHoverable && hoverableStyle}
-  ${({ $isNotHoverable }) => $isNotHoverable && notHoverableStyle}
 
   border-radius: ${theme.borderRadius.extraRound};
   height: 330px;
@@ -322,16 +316,6 @@ const hoverableStyle = css`
   &:hover {
     box-shadow: ${theme.shadows.orangeHighlight};
     cursor: pointer;
-  }
-`
-
-const notHoverableStyle = css`
-  &:hover {
-      box-shadow: ${theme.shadows.red};
-    }
-  &:active {
-  background-color: ${theme.colors.secondary};
-  color: ${theme.colors.white};
   }
 `
 

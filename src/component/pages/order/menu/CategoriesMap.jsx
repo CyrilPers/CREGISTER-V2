@@ -16,7 +16,6 @@ export default function CategoriesMap({ selectedCategory, showBackButton, isMode
             key="back"
             title="RETOUR"
             className="minimize"
-            isNotHoverable={isModeAdmin}
             onClick={handleBackButtonClick}
         />}
             {filteredCategories.slice().reverse().map(({ id, name }) => {
@@ -26,7 +25,6 @@ export default function CategoriesMap({ selectedCategory, showBackButton, isMode
                             key={id}
                             title={name}
                             className="minimize"
-                            isNotHoverable={isModeAdmin}
                             onClick={() => handleCategoryClick(id)}
                         />
                     </div>

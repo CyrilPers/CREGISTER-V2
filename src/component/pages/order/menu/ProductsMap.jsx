@@ -8,16 +8,14 @@ import { IMAGE_COMING_SOON, IMAGE_NO_STOCK } from '../../../../enum/product';
 
 export default function ProductsMap({ selectedCategory, selectedProduct, isModeAdmin, products, handleCardDelete, handleClick, containerClassName }) {
 
+
     const filteredProducts = selectedCategory
         ? selectedCategory
             ? products.filter((product) => product.category.id === selectedCategory)
             : []
         : products.filter((product) => product.category.name === "MAIN") || [];
 
-    console.log(products)
 
-
-    console.log("selectedCategory", selectedCategory)
     return (
         <>{filteredProducts.slice().reverse().map(({ id, title, imageSource, price, isAvailable }) => {
             return (
