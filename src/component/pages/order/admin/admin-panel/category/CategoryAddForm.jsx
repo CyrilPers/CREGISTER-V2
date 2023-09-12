@@ -23,7 +23,7 @@ export default function CategoryAddForm() {
 
     const handleChange = (event) => {
         const { name, value } = event.target
-        setNewProduct({ ...newProduct, [name]: value })
+        setNewCategory({ ...newCategory, [name]: value })
     }
 
     return (
