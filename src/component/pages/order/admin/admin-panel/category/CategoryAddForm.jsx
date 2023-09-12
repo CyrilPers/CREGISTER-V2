@@ -2,6 +2,8 @@ import React, { useContext } from 'react'
 import AdminContext from '../../../../../../context/AdminContext'
 import { useSuccessMessage } from '../../../../../../hooks/useSuccessMessage'
 import { EMPTY_CATEGORY } from "../../../../../../enum/category.jsx"
+import CategoryForm from './CategoryForm'
+import AddFormButton from '../AddFormButton'
 
 
 export default function CategoryAddForm() {
@@ -27,6 +29,13 @@ export default function CategoryAddForm() {
     }
 
     return (
-        <div>CategoryAddForm</div>
+        <CategoryForm
+            onSubmit={handleSubmit}
+            onChange={handleChange}
+            category={newCategory}
+            isSubmitted={isSubmitted}
+        >
+            <AddFormButton isSubmitted={isSubmitted} label={"Ajouter la catégorie"} />
+        </CategoryForm>
     )
 }

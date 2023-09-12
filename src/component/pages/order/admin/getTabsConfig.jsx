@@ -3,6 +3,7 @@ import { AiOutlinePlus } from "react-icons/ai"
 import EditForm from './admin-panel/EditForm'
 import AddForm from './admin-panel/AddForm'
 import HintMessage from './admin-panel/HintMessage.jsx'
+import CategoryAddForm from './admin-panel/category/CategoryAddForm'
 
 export const getTabsConfig = (hasAlreadyBeenClicked) => [
 
@@ -22,7 +23,7 @@ export const getTabsConfig = (hasAlreadyBeenClicked) => [
     index: "addCategory",
     label: "Ajouter une catégorie",
     Icon: <AiOutlinePlus />,
-    content: hasAlreadyBeenClicked ? <EditForm /> : <HintMessage />,
+    content: <CategoryAddForm />,
   },
 ]
 export const getTabSelected = (tabs, currentTabSelected) => {
