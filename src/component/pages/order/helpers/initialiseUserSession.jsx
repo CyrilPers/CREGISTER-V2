@@ -1,7 +1,8 @@
 import { getBasketFromApi } from "../../../../API/basket.jsx"
 import { getCategoriesFromApi, initialiseCategoriesFromApi } from "../../../../API/categories.jsx"
-import { getProductsFromApi, initialiseProductsFromApi } from "../../../../API/products.jsx"
+import { getProductsFromApi, initialiseBurgerProductsFromApi } from "../../../../API/products.jsx"
 import { createUserFromApi, getUserIdFromApi } from "../../../../API/users.jsx"
+import { findIdInArray } from "../../../../utils/arrays.jsx"
 
 export const initialiseProducts = async (userId, setProducts) => {
 
@@ -51,7 +52,9 @@ export const initialiseNewUserFromApi = async (username) => {
   await createUserFromApi(username)
   const newUserId = await getUserIdFromApi(username)
   await initialiseCategoriesFromApi(newUserId)
-  initialiseProductsFromApi(newUserId)
+  const categories = await getCategoriesFromApi(newUserId)
+  const burgerCatId = findIdInArray("BURGERS", categories)
+  initialiseBurgerProductsFromApi(newUserId, burgerCatId)
 }
 
 

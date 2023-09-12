@@ -17,3 +17,8 @@ export const removeItemFromArray = (id, array) => {
 export const isEmpty = (array) => {
     return array.length === 0
 }
+
+export const findIdInArray = (name, array) => {
+    const foundItem = array.find(item => item.name === name);
+    return foundItem.id
+}

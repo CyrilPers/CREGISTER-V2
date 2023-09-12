@@ -37,9 +37,9 @@ export async function updateProductFromApi(product) {
 }
 
 
-export async function initialiseProductsFromApi(userId, categoryId) {
+export async function initialiseBurgerProductsFromApi(userId, categoryId) {
     try {
-        await axios.post(`${API_URL}initialise/${userId}/12`);
+        await axios.post(`${API_URL}initialise-burger/${userId}/${categoryId}`);
     } catch (error) {
         console.log(error)
     }

@@ -25,7 +25,6 @@ export default function Menu() {
     products,
     isModeAdmin,
     deleteProduct,
-    resetProducts,
     setSelectedProduct,
     selectedProduct,
     addBasketProduct,
@@ -75,10 +74,6 @@ export default function Menu() {
 
   // Afficahge 
   if (products === undefined || categories === undefined) return <Loader />
-
-  // if (isEmpty(products)) {
-  //   return <EmptyMenu onClick={() => resetProducts(userId)} />
-  // }
 
   return (
     <TransitionGroup component={MenuStyled} className='menu'>

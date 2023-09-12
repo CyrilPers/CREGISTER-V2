@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { deepClone, getIndex, removeItemFromArray } from "../utils/arrays"
-import { createProductFromApi, deleteProductFromApi, getProductsFromApi, initialiseProductsFromApi, updateProductFromApi } from "../API/products"
+import { createProductFromApi, deleteProductFromApi, getProductsFromApi, updateProductFromApi } from "../API/products"
 
 export const useProducts = () => {
 
@@ -28,11 +28,5 @@ export const useProducts = () => {
         updateProductFromApi(productBeingEdited)
     }
 
-    const resetProducts = async (userId) => {
-        await initialiseProductsFromApi(userId)
-        const updatedProducts = await getProductsFromApi(userId);
-        setProducts(updatedProducts)
-    }
-
-    return { products, setProducts, resetProducts, addProduct, deleteProduct, editProduct }
+    return { products, setProducts, addProduct, deleteProduct, editProduct }
 }

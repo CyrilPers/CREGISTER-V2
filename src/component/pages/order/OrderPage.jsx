@@ -23,7 +23,7 @@ export default function OrderPage() {
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
   const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT)
   const titleEditRef = useRef()
-  const { products, resetProducts, addProduct, deleteProduct, editProduct, setProducts } = useProducts()
+  const { products, addProduct, deleteProduct, editProduct, setProducts } = useProducts()
   const { basket, addBasketProduct, deleteBasketProduct, setBasket } = useBasket()
   const { categories, setCategories, selectedCategory, setSelectedCategory } = useCategories()
   const { username } = useParams()
@@ -62,7 +62,6 @@ export default function OrderPage() {
     setProducts,
     addProduct,
     deleteProduct,
-    resetProducts,
     newProduct,
     setNewProduct,
     selectedProduct,
