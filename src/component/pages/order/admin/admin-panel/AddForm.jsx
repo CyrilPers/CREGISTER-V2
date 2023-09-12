@@ -7,7 +7,7 @@ import { useSuccessMessage } from '../../../../../hooks/useSuccessMessage';
 
 export default function AddForm() {
 
-    const { addProduct, setNewProduct, newProduct, userId } = useContext(AdminContext)
+    const { addProduct, setNewProduct, newProduct, userId, selectedCategory } = useContext(AdminContext)
     const { isSubmitted, displaySuccessMessage } = useSuccessMessage()
 
 
@@ -16,9 +16,11 @@ export default function AddForm() {
         const id = crypto.randomUUID()
         const newProductToAdd = {
             ...newProduct,
+            // category: { id: selectedCategory.id },
             id
         }
-        addProduct(newProductToAdd, userId)
+        addProduct(newProductToAdd, userId, selectedCategory)
+        // addProduct(newProductToAdd, userId, selectedCategory)
         setNewProduct(EMPTY_PRODUCT)
         displaySuccessMessage()
     }

@@ -49,7 +49,7 @@ export default function Menu() {
   }
 
   const handleAddButton = (idProductToAdd) => {
-    const productToAdd = findInArray(idProductToAdd, products)
+    const productToAdd = findInArray(idProductToAdd, products,)
     productToAdd.isAvailable ? addBasketProduct(productToAdd, invoiceId) : null;
   }
 

@@ -12,7 +12,10 @@ export default function ProductsMap({ selectedCategory, selectedProduct, isModeA
         ? selectedCategory
             ? products.filter((product) => product.category.id === selectedCategory)
             : []
-        : products.filter((product) => product.category.id === 1);
+        : products.filter((product) => product.category.name === "MAIN") || [];
+
+    console.log(products)
+
 
     console.log("selectedCategory", selectedCategory)
     return (

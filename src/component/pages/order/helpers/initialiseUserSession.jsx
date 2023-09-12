@@ -1,5 +1,5 @@
 import { getBasketFromApi } from "../../../../API/basket.jsx"
-import { getCategoriesFromApi } from "../../../../API/categories.jsx"
+import { getCategoriesFromApi, initialiseCategoriesFromApi } from "../../../../API/categories.jsx"
 import { getProductsFromApi, initialiseProductsFromApi } from "../../../../API/products.jsx"
 import { createUserFromApi, getUserIdFromApi } from "../../../../API/users.jsx"
 
@@ -50,6 +50,7 @@ export const authentificateUser = async (username) => {
 export const initialiseNewUserFromApi = async (username) => {
   await createUserFromApi(username)
   const newUserId = await getUserIdFromApi(username)
+  await initialiseCategoriesFromApi(newUserId)
   initialiseProductsFromApi(newUserId)
 }
 
