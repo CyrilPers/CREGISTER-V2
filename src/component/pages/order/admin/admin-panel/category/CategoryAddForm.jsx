@@ -14,10 +14,13 @@ export default function CategoryAddForm() {
     const handleSubmit = (event) => {
         event.preventDefault()
         const id = crypto.randomUUID()
+        console.log("newCategory", newCategory)
+
         const newCategoryToAdd = {
-            ...newCategory,
+            name: newCategory,
             id
         }
+        console.log("newCategoryToAdd", newCategoryToAdd)
         addCategory(newCategoryToAdd, userId)
         setNewCategory(EMPTY_CATEGORY)
         displaySuccessMessage()

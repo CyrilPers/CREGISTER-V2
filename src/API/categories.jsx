@@ -11,30 +11,23 @@ export async function getCategoriesFromApi(userId) {
     }
 }
 
-export async function deleteCategoryFromApi(productId) {
+export async function deleteCategoryFromApi(categoryId) {
     try {
-        await axios.delete(`${API_URL}delete/${productId}`);
+        await axios.delete(`${API_URL}delete/${categoryId}`);
     } catch (error) {
         console.log(error)
     }
 }
 
-export async function createCategoryFromApi(newProduct, userId) {
+export async function createCategoryFromApi(newCategory, userId) {
+    console.log("newcat", newCategory)
     try {
-        await axios.post(`${API_URL}create`, { title: newProduct.title, price: newProduct.price, isAvailable: newProduct.isAvailable ?? "true", imageSource: newProduct.imageSource, user: { id: userId } });
+        await axios.post(`${API_URL}create`, { name: newCategory.name, user: { id: userId } });
     } catch (error) {
         console.log(error)
     }
 }
 
-
-export async function updateCategoryFromApi(product) {
-    try {
-        await axios.put(`${API_URL}update/${product.id}`, { title: product.title, price: product.price, isAvailable: product.isAvailable, ImageSource: product.imageSource });
-    } catch (error) {
-        console.log(error)
-    }
-}
 
 
 export async function initialiseCategoriesAndProductsFromApi(userId) {
