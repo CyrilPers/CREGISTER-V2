@@ -8,7 +8,7 @@ import CategoryForm from './CategoryForm'
 
 export default function CategoryAddForm() {
 
-    const { addCategory, newCategory, setNewCategory } = useContext(AdminContext)
+    const { addCategory, newCategory, setNewCategory, userId } = useContext(AdminContext)
     const { isSubmitted, displaySuccessMessage } = useSuccessMessage()
 
     const handleSubmit = (event) => {
@@ -24,8 +24,7 @@ export default function CategoryAddForm() {
     }
 
     const handleChange = (event) => {
-        const { name, value } = event.target
-        setNewCategory({ ...newCategory, [name]: value })
+        setNewCategory(event.target.value)
     }
 
     return (

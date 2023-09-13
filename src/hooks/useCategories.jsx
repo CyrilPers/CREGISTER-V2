@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { deleteCategoryFromApi, getCategoriesFromApi } from '../API/categories'
+import { createCategoryFromApi, deleteCategoryFromApi, getCategoriesFromApi } from '../API/categories'
 import { EMPTY_CATEGORY } from '../enum/category'
 
 export const useCategories = () => {
