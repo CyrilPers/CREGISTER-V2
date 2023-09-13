@@ -102,7 +102,7 @@ const CardStyled = styled.div`
       border: none;
       background: none;
       animation : ${fadeInFromRight} ${theme.animation.speed.slow};
-      z-index: 2;
+      z-index: 3;
 
       .delete-icon{
         width: 30px;

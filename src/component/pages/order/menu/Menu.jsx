@@ -68,7 +68,8 @@ export default function Menu() {
     setShowBackButton(true);
   }
 
-  const handleCategoryDelete = (id) => {
+  const handleCategoryDelete = (event, id) => {
+    event.stopPropagation()
     deleteCategoryFromApi(id)
   }
 

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { getCategoriesFromApi } from '../API/categories'
+import { deleteCategoryFromApi, getCategoriesFromApi } from '../API/categories'
 
 export const useCategories = () => {
     const [categories, setCategories] = useState()
@@ -9,10 +9,15 @@ export const useCategories = () => {
     const addCategory = async (newCategory, userId) => {
         await createCategoryFromApi(newCategory, userId)
         const updatedCategories = await getCategoriesFromApi(userId);
-        setProducts(updatedCategories);
+        setCategories(updatedCategories);
     }
 
+    const deleteCategory = async (id, userId) => {
+        await deleteCategoryFromApi(id)
+        const updatedCategories = await getCategoriesFromApi(userId);
+        setCategories(updatedCategories);
 
+    }
 
-    return { addCategory, categories, setCategories, selectedCategory, setSelectedCategory, newCategory, setNewCategory }
+    return { addCategory, categories, setCategories, selectedCategory, setSelectedCategory, newCategory, setNewCategory, deleteCategory }
 }
