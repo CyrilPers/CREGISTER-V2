@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { deepClone, findIdInArray, getIndex, removeItemFromArray } from "../utils/arrays"
+import { deepClone, getIndex, removeItemFromArray } from "../utils/arrays"
 import { createProductFromApi, deleteProductFromApi, getProductsFromApi, updateProductFromApi } from "../API/products"
 
 export const useProducts = () => {

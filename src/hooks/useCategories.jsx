@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { deleteCategoryFromApi, getCategoriesFromApi } from '../API/categories'
+import { EMPTY_CATEGORY } from '../enum/category'
 
 export const useCategories = () => {
     const [categories, setCategories] = useState()
     const [selectedCategory, setSelectedCategory] = useState(null)
-    const [newCategory, setNewCategory] = useState()
+    const [newCategory, setNewCategory] = useState(EMPTY_CATEGORY)
 
     const addCategory = async (newCategory, userId) => {
         await createCategoryFromApi(newCategory, userId)
