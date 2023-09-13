@@ -26,6 +26,8 @@ export default function CategoriesMap({ selectedCategory, showBackButton, isMode
                             title={name}
                             className="minimize"
                             onClick={() => handleCategoryClick(id)}
+                            onDelete={(event) => handleCardDelete(event, id)}
+                            showDeleteButton={isModeAdmin}
                         />
                     </div>
                 )

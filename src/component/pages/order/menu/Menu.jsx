@@ -68,6 +68,10 @@ export default function Menu() {
     setShowBackButton(true);
   }
 
+  const handleCategoryDelete = (id) => {
+    deleteCategoryFromApi(id)
+  }
+
   let containerClassName = isModeAdmin ? "card-container is-hoverable" : 'card-container'
 
 
@@ -76,7 +80,7 @@ export default function Menu() {
 
   return (
     <TransitionGroup component={MenuStyled} className='menu'>
-      <CategoriesMap selectedCategory={selectedCategory} handleBackButtonClick={handleBackButtonClick} showBackButton={showBackButton} handleCategoryClick={handleCategoryClick} categories={categories} isModeAdmin={isModeAdmin} containerClassName="category" />
+      <CategoriesMap selectedCategory={selectedCategory} handleBackButtonClick={handleBackButtonClick} showBackButton={showBackButton} handleCategoryClick={handleCategoryClick} categories={categories} isModeAdmin={isModeAdmin} containerClassName="category" handleCategoryDelete={handleCategoryDelete} />
       <ProductsMap selectedCategory={selectedCategory} selectedProduct={selectedProduct} isModeAdmin={isModeAdmin} products={products} handleCardDelete={handleCardDelete} handleClick={handleClick} containerClassName={containerClassName} />
     </TransitionGroup>
   )

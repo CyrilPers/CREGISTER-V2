@@ -62,12 +62,13 @@ const CardStyled = styled.div`
     width: 240px;
     height: 330px;
     display: flex; 
-    padding: 1cm;
+    padding: 20px;
     box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
     border-radius: ${theme.borderRadius.extraRound};
     align-items: center;
     justify-content: center;
     color: ${theme.colors.white};
+    position: relative;
 
     &:hover {
       cursor: pointer;
@@ -91,6 +92,31 @@ const CardStyled = styled.div`
         text-overflow: ellipsis;
         font-family: ${theme.fonts.family.stylish};
     }
+    .delete-button {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      cursor: pointer;
+      color: ${theme.colors.primary};
+      padding: 0;
+      border: none;
+      background: none;
+      animation : ${fadeInFromRight} ${theme.animation.speed.slow};
+      z-index: 2;
+
+      .delete-icon{
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+      }
+      :hover {
+        color: ${theme.colors.red}
+      }
+      :active{
+        color: ${theme.colors.primary}
+      }
+    }
+
 
   }
   
