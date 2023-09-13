@@ -1,5 +1,5 @@
 import { getBasketFromApi } from "../../../../API/basket.jsx"
-import { getCategoriesFromApi, initialiseCategoriesAndProductsFromApi, initialiseCategoriesFromApi } from "../../../../API/categories.jsx"
+import { getCategoriesFromApi, initialiseCategoriesAndProductsFromApi } from "../../../../API/categories.jsx"
 import { initialiseCustomersFromApi } from "../../../../API/customers.jsx"
 import { getProductsFromApi } from "../../../../API/products.jsx"
 import { createUserFromApi, getUserIdFromApi } from "../../../../API/users.jsx"

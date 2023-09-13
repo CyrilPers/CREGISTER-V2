@@ -17,6 +17,7 @@ export default function Menu() {
 
 
   const {
+    deleteCategory,
     setCategories,
     categories,
     userId,
@@ -57,20 +58,20 @@ export default function Menu() {
 
 
   const handleBackButtonClick = () => {
-    // Cacher boutton retour et set catégorie selectionné sur null quand clique sur retour
-    setSelectedCategory(null);
-    setShowBackButton(false);
+    // Mettre à jour l'état de la catégorie sélectionnée et cacher bouton retour
+    setSelectedCategory(null)
+    setShowBackButton(false)
   }
 
   const handleCategoryClick = (id) => {
-    // Mettre à jour l'état de la catégorie sélectionnée
+    // Mettre à jour l'état de la catégorie sélectionnée et faire apparaitre bouton retour
     setSelectedCategory(id)
-    setShowBackButton(true);
+    setShowBackButton(true)
   }
 
   const handleCategoryDelete = (event, id) => {
     event.stopPropagation()
-    deleteCategoryFromApi(id)
+    deleteCategory(id, userId)
   }
 
   let containerClassName = isModeAdmin ? "card-container is-hoverable" : 'card-container'
