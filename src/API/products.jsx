@@ -35,35 +35,3 @@ export async function updateProductFromApi(product) {
         console.log(error)
     }
 }
-
-export async function initialiseMainProductsFromApi(userId, categoryId) {
-    try {
-        await axios.post(`${API_URL}initialise-main/${userId}/${categoryId}`);
-    } catch (error) {
-        console.log(error)
-    }
-}
-
-export async function initialiseBurgerProductsFromApi(userId, categoryId) {
-    try {
-        await axios.post(`${API_URL}initialise-burger/${userId}/${categoryId}`);
-    } catch (error) {
-        console.log(error)
-    }
-}
-
-export async function initialiseSaladeProductsFromApi(userId, categoryId) {
-    try {
-        await axios.post(`${API_URL}initialise-salade/${userId}/${categoryId}`);
-    } catch (error) {
-        console.log(error)
-    }
-}
-
-export async function initialiseDessertProductsFromApi(userId, categoryId) {
-    try {
-        await axios.post(`${API_URL}initialise-dessert/${userId}/${categoryId}`);
-    } catch (error) {
-        console.log(error)
-    }
-}

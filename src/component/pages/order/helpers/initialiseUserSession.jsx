@@ -1,9 +1,8 @@
 import { getBasketFromApi } from "../../../../API/basket.jsx"
-import { getCategoriesFromApi, initialiseCategoriesFromApi } from "../../../../API/categories.jsx"
+import { getCategoriesFromApi, initialiseCategoriesAndProductsFromApi, initialiseCategoriesFromApi } from "../../../../API/categories.jsx"
 import { initialiseCustomersFromApi } from "../../../../API/customers.jsx"
-import { getProductsFromApi, initialiseBurgerProductsFromApi, initialiseDessertProductsFromApi, initialiseMainProductsFromApi, initialiseSaladeProductsFromApi } from "../../../../API/products.jsx"
+import { getProductsFromApi } from "../../../../API/products.jsx"
 import { createUserFromApi, getUserIdFromApi } from "../../../../API/users.jsx"
-import { findIdInArray } from "../../../../utils/arrays.jsx"
 
 export const initialiseProducts = async (userId, setProducts) => {
 
@@ -52,16 +51,7 @@ export const authentificateUser = async (username) => {
 export const initialiseNewUserFromApi = async (username) => {
   await createUserFromApi(username)
   const newUserId = await getUserIdFromApi(username)
-  await initialiseCategoriesFromApi(newUserId)
-  const categories = await getCategoriesFromApi(newUserId)
-  const mainCatId = findIdInArray("MAIN", categories)
-  const burgerCatId = findIdInArray("BURGERS", categories)
-  const saladeCatId = findIdInArray("SALADES", categories)
-  const dessertCatId = findIdInArray("DESSERTS", categories)
-  initialiseMainProductsFromApi(newUserId, mainCatId)
-  initialiseBurgerProductsFromApi(newUserId, burgerCatId)
-  initialiseSaladeProductsFromApi(newUserId, saladeCatId)
-  initialiseDessertProductsFromApi(newUserId, dessertCatId)
+  await initialiseCategoriesAndProductsFromApi(newUserId)
   initialiseCustomersFromApi(newUserId)
 }
 

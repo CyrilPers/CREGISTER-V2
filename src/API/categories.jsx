@@ -37,7 +37,7 @@ export async function updateCategoryFromApi(product) {
 }
 
 
-export async function initialiseCategoriesFromApi(userId) {
+export async function initialiseCategoriesAndProductsFromApi(userId) {
     try {
         await axios.post(`${API_URL}initialise/${userId}`);
     } catch (error) {
