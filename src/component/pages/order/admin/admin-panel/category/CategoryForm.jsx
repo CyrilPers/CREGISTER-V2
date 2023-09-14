@@ -17,7 +17,7 @@ export default CategoryForm
 const CategoryFormStyled = styled.form`
     display: grid;
     grid-template-columns: 1fr 3fr;
-    grid-template-rows: repeat(42 1fr);
+    grid-template-rows: repeat(2 1fr);
     column-gap: 8px;
     row-gap: 8px;
     height: 100%;
@@ -37,9 +37,10 @@ const CategoryFormStyled = styled.form`
         }
     }
     @media(max-width: 767px) {
+        padding-top: 20px;
         width: 100%;
         .submit {
-        grid-area: 4 / 2 / 5 / 5; 
+        grid-area: 2 / 2 / 3 / 3;        
         display: flex; 
         align-items: center;
         position: relative;
