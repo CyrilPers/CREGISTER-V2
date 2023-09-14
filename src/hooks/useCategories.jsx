@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { createCategoryFromApi, deleteCategoryFromApi, getCategoriesFromApi } from '../API/categories'
+import { createCategoryFromApi, deleteCategoryFromApi, getCategoriesFromApi, resetCategoriesAndProductsFromApi } from '../API/categories'
 import { EMPTY_CATEGORY } from '../enum/category'
 
 export const useCategories = () => {
@@ -20,5 +20,11 @@ export const useCategories = () => {
 
     }
 
-    return { addCategory, categories, setCategories, selectedCategory, setSelectedCategory, newCategory, setNewCategory, deleteCategory }
+    const resetCategoryAndProducts = async (userId) => {
+        await resetCategoriesAndProductsFromApi(userId)
+        const updatedCategories = await getCategoriesFromApi(userId);
+        setCategories(updatedCategories);
+    }
+
+    return { resetCategoryAndProducts, addCategory, categories, setCategories, selectedCategory, setSelectedCategory, newCategory, setNewCategory, deleteCategory }
 }

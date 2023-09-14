@@ -51,4 +51,5 @@ export default createContext({
     setNewCategory: () => { },
     deleteCategory: () => { },
     addCategory: () => { },
+    resetCategoryAndProducts: () => { },
 });

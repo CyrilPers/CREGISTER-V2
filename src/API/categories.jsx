@@ -38,3 +38,10 @@ export async function initialiseCategoriesAndProductsFromApi(userId) {
     }
 }
 
+export async function resetCategoriesAndProductsFromApi(userId) {
+    try {
+        await axios.post(`${API_URL}reset/${userId}`);
+    } catch (error) {
+        console.log(error)
+    }
+}

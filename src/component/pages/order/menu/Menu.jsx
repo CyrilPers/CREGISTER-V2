@@ -10,6 +10,8 @@ import { menuAnimation } from '../../../../theme/animations';
 import { initialiseCategories, initialiseProducts } from '../helpers/initialiseUserSession'
 import ProductsMap from './ProductsMap';
 import CategoriesMap from './CategoriesMap';
+import EmptyMenu from './EmptyMenu';
+import { isEmpty } from '../../../../utils/arrays.jsx'
 
 export default function Menu() {
 
@@ -17,6 +19,7 @@ export default function Menu() {
 
 
   const {
+    resetCategoryAndProducts,
     deleteCategory,
     setCategories,
     categories,
@@ -48,7 +51,7 @@ export default function Menu() {
   }
 
   const handleAddButton = (idProductToAdd) => {
-    const productToAdd = findInArray(idProductToAdd, products,)
+    const productToAdd = findInArray(idProductToAdd, products)
     productToAdd.isAvailable ? addBasketProduct(productToAdd, invoiceId) : null;
   }
 
@@ -74,11 +77,21 @@ export default function Menu() {
     deleteCategory(id, userId)
   }
 
+  const handleReset = () => {
+    resetCategoryAndProducts(userId)
+  }
+
   let containerClassName = isModeAdmin ? "card-container is-hoverable" : 'card-container'
 
+  console.log("categories", categories)
+
+  const displayedCategories = categories ? categories.filter((category) => category.name !== "MAIN") : null
+
+  console.log(displayedCategories)
 
   // Afficahge 
   if (products === undefined || categories === undefined) return <Loader />
+  if (isEmpty(products) && isEmpty(displayedCategories)) return <EmptyMenu onClick={handleReset} />
 
   return (
     <TransitionGroup component={MenuStyled} className='menu'>
