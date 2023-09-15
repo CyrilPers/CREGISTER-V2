@@ -14,6 +14,12 @@ export const removeItemFromArray = (id, array) => {
     return array.filter((item) => item.id !== id)
 }
 
+
+export const removeItemsCategoryFromArray = (categoryId, array) => {
+    return array.filter((item) => item.category.id !== categoryId)
+}
+
+
 export const isEmpty = (array) => {
     return array.length === 0
 }

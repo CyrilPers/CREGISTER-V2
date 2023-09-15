@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { deepClone, getIndex, removeItemFromArray } from "../utils/arrays"
+import { deepClone, getIndex, removeItemFromArray, removeItemsCategoryFromArray } from "../utils/arrays"
 import { createProductFromApi, deleteProductFromApi, getProductsFromApi, updateProductFromApi } from "../API/products"
 
 export const useProducts = () => {
@@ -9,6 +9,7 @@ export const useProducts = () => {
 
     const addProduct = async (newProduct, userId, categoryId) => {
         await createProductFromApi(newProduct, userId, categoryId)
+        // update avec API pour avoir l'ID de la BDD afin de pouvoir delete
         const updatedProducts = await getProductsFromApi(userId);
         setProducts(updatedProducts);
     }
@@ -28,5 +29,12 @@ export const useProducts = () => {
         updateProductFromApi(productBeingEdited)
     }
 
-    return { products, setProducts, addProduct, deleteProduct, editProduct }
+    const deleteProductsFromCategory = (categoryId) => {
+        const productsCopy = deepClone(products)
+        const productsUpdated = removeItemsCategoryFromArray(categoryId, productsCopy)
+        setProducts(productsUpdated)
+    }
+
+
+    return { products, setProducts, addProduct, deleteProduct, editProduct, deleteProductsFromCategory }
 }

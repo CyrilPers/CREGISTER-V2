@@ -19,6 +19,7 @@ export default function Menu() {
 
 
   const {
+    deleteProductsFromCategory,
     deleteCategory,
     setCategories,
     categories,
@@ -74,8 +75,7 @@ export default function Menu() {
   const handleCategoryDelete = async (event, categoryId) => {
     event.stopPropagation()
     await deleteCategory(categoryId)
-    // actualise products (les produits dans catégories sont supprimés autmatiquements dans la BDD)
-    initialiseProducts(userId, setProducts)
+    deleteProductsFromCategory(categoryId, products)
   }
 
   const handleReset = () => {

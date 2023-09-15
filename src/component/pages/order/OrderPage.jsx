@@ -23,7 +23,7 @@ export default function OrderPage() {
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
   const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT)
   const titleEditRef = useRef()
-  const { products, addProduct, deleteProduct, editProduct, setProducts } = useProducts()
+  const { deleteProductsFromCategory, products, addProduct, deleteProduct, editProduct, setProducts } = useProducts()
   const { basket, addBasketProduct, deleteBasketProduct, setBasket } = useBasket()
   const { categories, setCategories, selectedCategory, setSelectedCategory, newCategory, setNewCategory, deleteCategory, addCategory } = useCategories()
   const { username } = useParams()
@@ -45,6 +45,7 @@ export default function OrderPage() {
 
 
   const adminContextValue = {
+    deleteProductsFromCategory,
     deleteCategory,
     newCategory,
     setNewCategory,
