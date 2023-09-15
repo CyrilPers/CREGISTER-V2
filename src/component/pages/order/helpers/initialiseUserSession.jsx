@@ -19,10 +19,13 @@ export const initialiseCategories = async (userId, setCategories) => {
   const categoriesExisting = await getCategoriesFromApi(userId)
   if (!categoriesExisting) {
     setCategories([])
+    setDisplayedCategories([])
     return
   }
   setCategories(categoriesExisting)
 }
+
+
 
 
 export const initialiseBasket = async (invoiceId, setBasket) => {

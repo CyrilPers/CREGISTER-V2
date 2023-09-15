@@ -43,7 +43,9 @@ export default createContext({
     deleteBasketProduct: () => { },
 
 
+    setDisplayedCategories: () => { },
     categories: [],
+    displayedCategories: [],
     setCategories: () => { },
     selectedCategory: [],
     setSelectedCategory: () => { },

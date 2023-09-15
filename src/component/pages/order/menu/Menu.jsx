@@ -71,9 +71,11 @@ export default function Menu() {
     setShowBackButton(true)
   }
 
-  const handleCategoryDelete = (event, categoryId) => {
+  const handleCategoryDelete = async (event, categoryId) => {
     event.stopPropagation()
-    deleteCategory(categoryId)
+    await deleteCategory(categoryId)
+    // actualise products (les produits dans catégories sont supprimés autmatiquements dans la BDD)
+    initialiseProducts(userId, setProducts)
   }
 
   const handleReset = () => {
@@ -84,10 +86,12 @@ export default function Menu() {
 
   const displayedCategories = categories ? categories.filter((category) => category.name !== "MAIN") : null
 
-  // Afficahge 
+
+  // Affichage 
   if (products === undefined || categories === undefined) return <Loader />
 
   if (isEmpty(products) && isEmpty(displayedCategories)) return <EmptyMenu onClick={handleReset} />
+
 
   return (
     <TransitionGroup component={MenuStyled} className='menu'>
