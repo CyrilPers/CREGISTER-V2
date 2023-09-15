@@ -7,14 +7,14 @@ export const useProducts = () => {
     const [products, setProducts] = useState()
 
 
-    const addProduct = async (newProduct, userId, selectedCategory, categoryId) => {
+    const addProduct = async (newProduct, userId, categoryId) => {
         await createProductFromApi(newProduct, userId, categoryId)
         const updatedProducts = await getProductsFromApi(userId);
         setProducts(updatedProducts);
     }
 
-    const deleteProduct = (productId) => {
-        deleteProductFromApi(productId)
+    const deleteProduct = async (productId) => {
+        await deleteProductFromApi(productId)
         const productsCopy = deepClone(products)
         const productsUpdated = removeItemFromArray(productId, productsCopy)
         setProducts(productsUpdated)

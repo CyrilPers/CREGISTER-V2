@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { createCategoryFromApi, deleteCategoryFromApi, getCategoriesFromApi, resetCategoriesAndProductsFromApi } from '../API/categories'
 import { EMPTY_CATEGORY } from '../enum/category'
+import { deepClone, removeItemFromArray } from '../utils/arrays'
 
 export const useCategories = () => {
     const [categories, setCategories] = useState()
@@ -13,18 +14,13 @@ export const useCategories = () => {
         setCategories(updatedCategories);
     }
 
-    const deleteCategory = async (id, userId) => {
-        await deleteCategoryFromApi(id)
-        const updatedCategories = await getCategoriesFromApi(userId);
-        setCategories(updatedCategories);
-
-    }
-
-    const resetCategoryAndProducts = async (userId) => {
-        await resetCategoriesAndProductsFromApi(userId)
-        const updatedCategories = await getCategoriesFromApi(userId);
+    const deleteCategory = async (categoryId) => {
+        await deleteCategoryFromApi(categoryId)
+        const categoriesCopy = deepClone(categories)
+        const updatedCategories = removeItemFromArray(categoryId, categoriesCopy)
         setCategories(updatedCategories);
     }
 
-    return { resetCategoryAndProducts, addCategory, categories, setCategories, selectedCategory, setSelectedCategory, newCategory, setNewCategory, deleteCategory }
+
+    return { addCategory, categories, setCategories, selectedCategory, setSelectedCategory, newCategory, setNewCategory, deleteCategory }
 }

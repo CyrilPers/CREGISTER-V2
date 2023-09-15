@@ -7,7 +7,7 @@ import { findInArray } from '../../../../utils/arrays';
 import Loader from './Loader';
 import { TransitionGroup } from 'react-transition-group';
 import { menuAnimation } from '../../../../theme/animations';
-import { initialiseCategories, initialiseProducts } from '../helpers/initialiseUserSession'
+import { initialiseCategories, initialiseProducts, resetCategoryAndProducts } from '../helpers/initialiseUserSession'
 import ProductsMap from './ProductsMap';
 import CategoriesMap from './CategoriesMap';
 import EmptyMenu from './EmptyMenu';
@@ -19,7 +19,6 @@ export default function Menu() {
 
 
   const {
-    resetCategoryAndProducts,
     deleteCategory,
     setCategories,
     categories,
@@ -72,25 +71,22 @@ export default function Menu() {
     setShowBackButton(true)
   }
 
-  const handleCategoryDelete = (event, id) => {
+  const handleCategoryDelete = (event, categoryId) => {
     event.stopPropagation()
-    deleteCategory(id, userId)
+    deleteCategory(categoryId)
   }
 
   const handleReset = () => {
-    resetCategoryAndProducts(userId)
+    resetCategoryAndProducts(userId, setCategories, setProducts)
   }
 
   let containerClassName = isModeAdmin ? "card-container is-hoverable" : 'card-container'
 
-  console.log("categories", categories)
-
   const displayedCategories = categories ? categories.filter((category) => category.name !== "MAIN") : null
-
-  console.log(displayedCategories)
 
   // Afficahge 
   if (products === undefined || categories === undefined) return <Loader />
+
   if (isEmpty(products) && isEmpty(displayedCategories)) return <EmptyMenu onClick={handleReset} />
 
   return (

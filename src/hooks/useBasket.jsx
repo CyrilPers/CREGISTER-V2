@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { removeItemFromArray } from '../utils/arrays'
+import { deepClone, removeItemFromArray } from '../utils/arrays'
 import { createBasketProductFromApi, deleteBasketProductFromApi, getBasketFromApi, getBasketProductByProductIdFromApi, updateBasketProductFromApi } from '../API/basket'
 
 export const useBasket = () => {
@@ -31,9 +31,9 @@ export const useBasket = () => {
 
     const deleteBasketProduct = (basketProductId) => {
         deleteBasketProductFromApi(basketProductId)
-        const basketUpdated = removeItemFromArray(basketProductId, basket)
+        const basketCopy = deepClone(basket)
+        const basketUpdated = removeItemFromArray(basketProductId, basketCopy)
         setBasket(basketUpdated)
-
     }
 
 

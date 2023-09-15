@@ -1,5 +1,5 @@
 import { getBasketFromApi } from "../../../../API/basket.jsx"
-import { getCategoriesFromApi, initialiseCategoriesAndProductsFromApi } from "../../../../API/categories.jsx"
+import { getCategoriesFromApi, initialiseCategoriesAndProductsFromApi, resetCategoriesAndProductsFromApi } from "../../../../API/categories.jsx"
 import { initialiseCustomersFromApi } from "../../../../API/customers.jsx"
 import { getProductsFromApi } from "../../../../API/products.jsx"
 import { createUserFromApi, getUserIdFromApi } from "../../../../API/users.jsx"
@@ -54,5 +54,15 @@ export const initialiseNewUserFromApi = async (username) => {
   await initialiseCategoriesAndProductsFromApi(newUserId)
   initialiseCustomersFromApi(newUserId)
 }
+
+
+export const resetCategoryAndProducts = async (userId, setCategories, setProducts) => {
+  await resetCategoriesAndProductsFromApi(userId)
+  const updatedCategories = await getCategoriesFromApi(userId);
+  setCategories(updatedCategories);
+  const updatedProducts = await getProductsFromApi(userId);
+  setProducts(updatedProducts);
+}
+
 
 
