@@ -8,13 +8,14 @@ import { EMPTY_PRODUCT } from '../../../enum/product.jsx'
 import { useProducts } from '../../../hooks/useProducts'
 import { useBasket } from '../../../hooks/useBasket'
 import { useParams } from 'react-router-dom'
-import { initialiseUserSession } from './helpers/initialiseUserSession'
+import { initialiseUser } from './helpers/initialiseUserSession'
 import { findInArray } from '../../../utils/arrays'
-import { getUserIdFromApi } from '../../../API/users'
+import { useCategories } from '../../../hooks/useCategories'
 
 
 
 export default function OrderPage() {
+
 
   const [isModeAdmin, setIsModeAdmin] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(false)
@@ -22,10 +23,12 @@ export default function OrderPage() {
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
   const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT)
   const titleEditRef = useRef()
-  const { products, resetProducts, addProduct, deleteProduct, editProduct, setProducts } = useProducts()
+  const { products, addProduct, deleteProduct, editProduct, setProducts } = useProducts()
   const { basket, addBasketProduct, deleteBasketProduct, setBasket } = useBasket()
+  const { categories, setCategories, selectedCategory, setSelectedCategory, newCategory, setNewCategory, deleteCategory, addCategory } = useCategories()
   const { username } = useParams()
-  const [userId, setUserId] = useState("")
+  const [userId, setUserId] = useState();
+  const [invoiceId, setInvoiceId] = useState("1")
 
   const selectProduct = async (productIdSelected) => {
     const productClickedOn = findInArray(productIdSelected, products)
@@ -35,20 +38,23 @@ export default function OrderPage() {
     titleEditRef.current.focus()
   }
 
-  const defineUserId = async (username) => {
-    const userId = await getUserIdFromApi(username)
-    setUserId(userId)
-  }
 
   useEffect(() => {
-    defineUserId(username)
-    initialiseUserSession(username, setProducts, setBasket)
+    initialiseUser(setUserId, username)
   }, [])
 
 
   const adminContextValue = {
+    deleteCategory,
+    newCategory,
+    setNewCategory,
+    categories,
+    setCategories,
+    invoiceId,
+    setInvoiceId,
     username,
     userId,
+    setUserId,
     isModeAdmin,
     setIsModeAdmin,
     isCollapsed,
@@ -56,9 +62,9 @@ export default function OrderPage() {
     currentTabSelected,
     setCurrentTabSelected,
     products,
+    setProducts,
     addProduct,
     deleteProduct,
-    resetProducts,
     newProduct,
     setNewProduct,
     selectedProduct,
@@ -69,6 +75,10 @@ export default function OrderPage() {
     addBasketProduct,
     deleteBasketProduct,
     selectProduct,
+    setBasket,
+    selectedCategory,
+    setSelectedCategory,
+    addCategory,
   }
 
   return (

@@ -1,24 +1,20 @@
 import { useState } from "react"
-import { fakeMenu } from "../fakeData/fakeMenu"
 import { deepClone, getIndex, removeItemFromArray } from "../utils/arrays"
-import { syncBothProducts } from "../API/products"
-import { createProductFromApi, deleteProductFromApi, getProductsFromApi, updateProductFromApi } from "../API/product"
-
+import { createProductFromApi, deleteProductFromApi, getProductsFromApi, updateProductFromApi } from "../API/products"
 
 export const useProducts = () => {
 
     const [products, setProducts] = useState()
 
 
-
-    const addProduct = async (newProduct, userId) => {
-        await createProductFromApi(newProduct, userId)
+    const addProduct = async (newProduct, userId, categoryId) => {
+        await createProductFromApi(newProduct, userId, categoryId)
         const updatedProducts = await getProductsFromApi(userId);
         setProducts(updatedProducts);
     }
 
-    const deleteProduct = (productId) => {
-        deleteProductFromApi(productId)
+    const deleteProduct = async (productId) => {
+        await deleteProductFromApi(productId)
         const productsCopy = deepClone(products)
         const productsUpdated = removeItemFromArray(productId, productsCopy)
         setProducts(productsUpdated)
@@ -32,10 +28,5 @@ export const useProducts = () => {
         updateProductFromApi(productBeingEdited)
     }
 
-    const resetProducts = (username) => {
-        setProducts(fakeMenu.LARGE)
-        syncBothProducts(username, fakeMenu.LARGE)
-    }
-
-    return { products, setProducts, resetProducts, addProduct, deleteProduct, editProduct }
+    return { products, setProducts, addProduct, deleteProduct, editProduct }
 }

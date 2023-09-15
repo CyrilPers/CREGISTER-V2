@@ -8,8 +8,8 @@ import CasinoEffect from "../../../../reusable-ui/CasinoEffect"
 
 
 export default function BasketCard({
-  title,
-  price,
+  productName,
+  productPrice,
   quantity,
   imageSource,
   className,
@@ -21,14 +21,14 @@ export default function BasketCard({
         <MdDeleteForever className="icon" />
       </div>
       <div className="image">
-        <img src={imageSource} alt={title} />
+        <img src={imageSource} alt={productName} />
       </div>
       <div className="text-info">
         <div className="left-info">
           <div className="title">
-            <span>{title}</span>
+            <span>{productName}</span>
           </div>
-          <span className="price">{formatPrice(price)}</span>
+          <span className="price">{formatPrice(productPrice)}</span>
         </div>
         <div className="quantity">
           <span>x</span> <CasinoEffect count={quantity} />

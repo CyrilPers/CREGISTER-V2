@@ -4,7 +4,11 @@ export default createContext({
 
     username: "",
 
+    invoiceId: "",
+    setInvoiceId: () => { },
+
     userId: 0,
+    setUserId: () => { },
 
     isModeAdmin: false,
     setIsModeAdmin: () => { },
@@ -22,7 +26,6 @@ export default createContext({
     setProducts: () => { },
     addProduct: () => { },
     deleteProduct: () => { },
-    resetProducts: () => { },
     editProduct: () => { },
 
     selectProduct: () => { },
@@ -35,6 +38,19 @@ export default createContext({
     titleEditRef: {},
 
     basket: [],
+    setBasket: () => { },
     addBasketProduct: () => { },
     deleteBasketProduct: () => { },
+
+
+    setDisplayedCategories: () => { },
+    categories: [],
+    displayedCategories: [],
+    setCategories: () => { },
+    selectedCategory: [],
+    setSelectedCategory: () => { },
+    newCategory: {},
+    setNewCategory: () => { },
+    deleteCategory: () => { },
+    addCategory: () => { },
 });

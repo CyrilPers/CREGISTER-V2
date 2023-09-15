@@ -6,7 +6,8 @@ import { IoChevronForward } from "react-icons/io5";
 import { BsPersonCircle } from "react-icons/bs"
 import TextInput from '../../reusable-ui/TextInput';
 import Button from '../../reusable-ui/Button';
-import { authentificateUser } from '../../../API/users';
+import { fadeInFromBottomLog } from '../../../theme/animations';
+import { authentificateUser } from '../order/helpers/initialiseUserSession'
 
 
 
@@ -62,11 +63,13 @@ const LoginFormStyled = styled.form`
   padding: 40px 32px;
   border-radius: ${theme.borderRadius.round};
   font-family: ${theme.fonts.family.stylish};
+  animation: ${fadeInFromBottomLog} ease-out ${theme.animation.speed.verySlow};
 
 
   hr{
     border: 1.5px solid ${theme.colors.loginLine};
     margin-bottom: 40px;
+
   }
 
   h1{
@@ -77,6 +80,7 @@ const LoginFormStyled = styled.form`
   h2{
     font-size: ${theme.fonts.size.P4};
     color: ${theme.colors.white};
+
 
   }  
 

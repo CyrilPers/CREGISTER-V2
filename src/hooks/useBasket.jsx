@@ -1,39 +1,39 @@
 import { useState } from 'react'
-import { deepClone, findInArray, getIndex, removeItemFromArray } from '../utils/arrays'
-import { setLocalStorage } from '../utils/window.jsx'
+import { deepClone, removeItemFromArray } from '../utils/arrays'
+import { createBasketProductFromApi, deleteBasketProductFromApi, getBasketFromApi, getBasketProductByProductIdFromApi, updateBasketProductFromApi } from '../API/basket'
 
 export const useBasket = () => {
     const [basket, setBasket] = useState([])
 
 
-    const addBasketProduct = (productToAdd, username) => {
-
-        const basketCopy = deepClone(basket)
-
-        const isProductAlreadyInBasket = findInArray(productToAdd.id, basketCopy) !== undefined
-
+    const addBasketProduct = async (productToAdd, invoiceId) => {
+        const isProductAlreadyInBasket = await getBasketProductByProductIdFromApi(productToAdd.id)
         if (!isProductAlreadyInBasket) {
             const newBasketProduct = {
                 ...productToAdd,
                 quantity: 1,
             }
-            const updatedBasket = [newBasketProduct, ...basketCopy]
+            await createBasketProductFromApi(newBasketProduct, invoiceId)
+            const updatedBasket = await getBasketFromApi(invoiceId)
             setBasket(updatedBasket)
-            setLocalStorage(username, basketCopy)
             return
         }
 
-        const indexOfbasketProduct = getIndex(productToAdd.id, basketCopy)
-        basketCopy[indexOfbasketProduct].quantity += 1
-        setBasket(basketCopy)
-        setLocalStorage(username, basketCopy)
+        const updatedBasketProduct = {
+            ...isProductAlreadyInBasket,
+            quantity: isProductAlreadyInBasket.quantity += 1
+        }
+        await updateBasketProductFromApi(updatedBasketProduct)
+        const updatedBasket = await getBasketFromApi(invoiceId)
+        setBasket(updatedBasket)
     }
 
 
-    const deleteBasketProduct = (basketProductId, username) => {
-        const basketUpdated = removeItemFromArray(basketProductId, basket)
+    const deleteBasketProduct = (basketProductId) => {
+        deleteBasketProductFromApi(basketProductId)
+        const basketCopy = deepClone(basket)
+        const basketUpdated = removeItemFromArray(basketProductId, basketCopy)
         setBasket(basketUpdated)
-        setLocalStorage(username, basketUpdated)
     }
 
 

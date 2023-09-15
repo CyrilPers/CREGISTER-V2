@@ -1,0 +1,37 @@
+import React from 'react'
+import Card from '../../../reusable-ui/Card'
+
+
+
+export default function CategoriesMap({ handleCategoryDelete, selectedCategory, showBackButton, isModeAdmin, handleBackButtonClick, categories, handleCategoryClick }) {
+
+    const filteredCategories =
+        selectedCategory === null
+            ? categories.filter((category) => category.name !== "MAIN")
+            : []
+
+    return (
+
+        <>{showBackButton && <Card
+            key="back"
+            title="RETOUR"
+            className="minimize"
+            onClick={handleBackButtonClick}
+        />}
+            {filteredCategories.slice().reverse().map(({ id, name }) => {
+                return (
+                    <div className="category" key={id}>
+                        <Card
+                            key={id}
+                            title={name}
+                            className="minimize"
+                            onClick={() => handleCategoryClick(id)}
+                            onDelete={(event) => handleCategoryDelete(event, id)}
+                            showDeleteButton={isModeAdmin}
+                        />
+                    </div>
+                )
+            })}
+        </>
+    )
+}

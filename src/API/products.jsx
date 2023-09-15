@@ -1,21 +1,37 @@
-import { doc, getDoc, setDoc } from "firebase/firestore"
-import { db } from "./firebase-config"
+import axios from 'axios'
 
-export const syncBothProducts = (userId, updatedProducts) => {
-    const refDoc = doc(db, "users", userId)
-    const newDoc = {
-        username: userId,
-        menu: updatedProducts,
+const API_URL = 'http://localhost:3001/cregister/api/product/'
+
+export async function getProductsFromApi(userId) {
+    try {
+        const { data } = await axios.get(`${API_URL}user=${userId}`);
+        return data;
+    } catch (error) {
+        console.log(error)
     }
-    setDoc(refDoc, newDoc)
 }
 
-export const getProducts = async (userId) => {
-    const docRef = doc(db, "users", userId)
+export async function deleteProductFromApi(productId) {
+    try {
+        await axios.delete(`${API_URL}delete/${productId}`);
+    } catch (error) {
+        console.log(error)
+    }
+}
 
-    const docSnapshot = await getDoc(docRef)
-    if (docSnapshot.exists()) {
-        const { menu } = docSnapshot.data()
-        return menu
+export async function createProductFromApi(newProduct, userId) {
+    try {
+        await axios.post(`${API_URL}create`, { title: newProduct.title, price: newProduct.price, isAvailable: newProduct.isAvailable ?? "true", imageSource: newProduct.imageSource ?? "/image/coming-soon.png", user: { id: userId }, category: { id: newProduct.category.id } });
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+export async function updateProductFromApi(product) {
+    try {
+        await axios.put(`${API_URL}update/${product.id}`, { title: product.title, price: product.price, isAvailable: product.isAvailable, imageSource: product.imageSource ?? "/image/coming-soon.png" });
+    } catch (error) {
+        console.log(error)
     }
 }

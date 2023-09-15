@@ -14,16 +14,17 @@ export default function Card({
   isSelected,
   overlapImageSource,
   isOverlapImageVisible,
+  className,
 }) {
 
   return (
     <CardStyled
-      className="produit"
+
       onClick={onClick}
       $isHoverable={isHoverable}
       $isSelected={isSelected}
     >
-      <div className="card">
+      <div className={className}>
         {showDeleteButton && <button className="delete-button" aria-label="delete-button" onClick={onDelete}>
           <TiDelete className="delete-icon" />
         </button>}
@@ -54,6 +55,70 @@ const CardStyled = styled.div`
 
   border-radius: ${theme.borderRadius.extraRound};
   height: 330px;
+
+  .minimize {
+    background: ${theme.colors.background_dark};
+    box-sizing: border-box;
+    width: 240px;
+    height: 330px;
+    display: flex; 
+    padding: 20px;
+    box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
+    border-radius: ${theme.borderRadius.extraRound};
+    align-items: center;
+    justify-content: center;
+    color: ${theme.colors.white};
+    position: relative;
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: ${theme.shadows.orangeHighlight};
+    }
+    &:active {
+    background-color: ${theme.colors.primary};
+    color: ${theme.colors.dark};
+    }
+
+    .image {
+      display: none;
+    }
+
+    .title {
+        font-size: ${theme.fonts.size.P4};
+        font-weight: ${theme.fonts.weights.bold};
+        white-space: nowrap;
+        overflow: hidden;
+        width: 100%;
+        text-overflow: ellipsis;
+        font-family: ${theme.fonts.family.stylish};
+    }
+    .delete-button {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      cursor: pointer;
+      color: ${theme.colors.primary};
+      padding: 0;
+      border: none;
+      background: none;
+      animation : ${fadeInFromRight} ${theme.animation.speed.slow};
+      z-index: 3;
+
+      .delete-icon{
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+      }
+      :hover {
+        color: ${theme.colors.red}
+      }
+      :active{
+        color: ${theme.colors.primary}
+      }
+    }
+
+
+  }
   
   .card {
     background: ${theme.colors.white};
@@ -183,6 +248,16 @@ const CardStyled = styled.div`
     height: 140px;
     padding: 0;
 
+    .minimize {
+    width: 100px;
+    height: 140px;
+    padding: 5px;
+    padding-bottom: 10px;
+
+    .title {
+          font-size: ${theme.fonts.size.P3};
+    }
+  }
 
     .card {
     width: 100px;
@@ -217,10 +292,21 @@ const CardStyled = styled.div`
   @media(min-width: 768px) and (max-width: 1388px) {
     height: 160px;
     padding: 0;
+
+    .minimize {
+    width: 150px;
+    height: 190px;
+    padding: 10px;
+    padding-bottom: 10px;
+
+    .title {
+          font-size: ${theme.fonts.size.P3};
+    }
+  }
+
     
     .card {
     width: 150px;
-    /* height: 160px; */
     height: 190px;
     padding: 5px;
     padding-bottom: 10px;

@@ -4,15 +4,12 @@ import { theme } from '../../../../../theme';
 import Header from '../../../../reusable-ui/Header.jsx'
 import { formatPrice } from '../../../../../utils/maths';
 import { calculateSumToPay } from './Helper';
-import AdminContext from '../../../../../context/AdminContext';
 import CasinoEffect from '../../../../reusable-ui/CasinoEffect';
 
-export default function Total({ }) {
+export default function Total({ basket }) {
 
-    const { basket, products } = useContext(AdminContext)
-    const sumToPay = calculateSumToPay(basket, products)
-
-
+    // const sumToPay = "1"
+    const sumToPay = calculateSumToPay(basket)
     return (
         <Header>
             <TotalStyled>

@@ -12,6 +12,7 @@ export async function getUserIdFromApi(username) {
     }
 }
 
+
 export async function createUserFromApi(username) {
     try {
         await axios.post(`${API_URL}create`, { name: username });
@@ -21,10 +22,3 @@ export async function createUserFromApi(username) {
 }
 
 
-export const authentificateUser = async (username) => {
-    const existingUser = await getUserIdFromApi(username)
-    if (!existingUser) {
-        return await createUserFromApi(username)
-    }
-    return existingUser
-}

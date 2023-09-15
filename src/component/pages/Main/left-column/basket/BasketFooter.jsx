@@ -3,8 +3,15 @@ import { styled } from 'styled-components';
 import Header from '../../../../reusable-ui/Header';
 import Button from '../../../../reusable-ui/Button.jsx'
 import { FaReceipt } from 'react-icons/fa'
+import { initialiseCustomersFromApi } from '../../../../../API/customers';
 
 export default function BasketFooter() {
+
+    const handleClick = () => {
+        initialiseCustomersFromApi("147")
+    }
+
+
     return (
         <Header>
             <BasketFooterStyled>
@@ -12,6 +19,7 @@ export default function BasketFooter() {
                     className="invoice"
                     label="Ticket"
                     Icon={<FaReceipt />}
+                    onClick={handleClick}
                 />
             </BasketFooterStyled>
         </Header>

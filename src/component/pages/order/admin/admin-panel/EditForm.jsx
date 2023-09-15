@@ -4,7 +4,6 @@ import Form from './Form';
 import EditInfoMessage from './EditInfoMessage.jsx'
 import SavingMessage from './SavingMessage';
 import { useSuccessMessage } from '../../../../../hooks/useSuccessMessage.jsx'
-import { updateProductFromApi } from '../../../../../API/product';
 
 export default function EditForm() {
 

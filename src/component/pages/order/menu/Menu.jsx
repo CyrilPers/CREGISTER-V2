@@ -1,32 +1,47 @@
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { styled } from 'styled-components';
 import { theme } from '../../../../theme';
-import Card from '../../../reusable-ui/Card.jsx';
-import { formatPrice } from '../../../../utils/maths';
 import AdminContext from '../../../../context/AdminContext.jsx';
-import { EMPTY_PRODUCT, IMAGE_COMING_SOON, IMAGE_NO_STOCK } from '../../../../enum/product';
-import { findInArray, isEmpty } from '../../../../utils/arrays';
-import EmptyMenu from './EmptyMenu';
+import { EMPTY_PRODUCT } from '../../../../enum/product';
+import { findInArray } from '../../../../utils/arrays';
 import Loader from './Loader';
-import { checkIfProductIsClicked } from './helper/helpers.jsx'
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { TransitionGroup } from 'react-transition-group';
 import { menuAnimation } from '../../../../theme/animations';
-import { convertStringToBoolean } from '../../../../utils/string'
+import { initialiseCategories, initialiseProducts, resetCategoryAndProducts } from '../helpers/initialiseUserSession'
+import ProductsMap from './ProductsMap';
+import CategoriesMap from './CategoriesMap';
+import EmptyMenu from './EmptyMenu';
+import { isEmpty } from '../../../../utils/arrays.jsx'
 
 export default function Menu() {
 
+  const [showBackButton, setShowBackButton] = useState(false)
+
+
   const {
+    deleteCategory,
+    setCategories,
+    categories,
+    userId,
+    setProducts,
     products,
     isModeAdmin,
     deleteProduct,
-    resetProducts,
     setSelectedProduct,
     selectedProduct,
-    titleEditRef,
     addBasketProduct,
-    username,
     selectProduct,
+    invoiceId,
+    setSelectedCategory,
+    selectedCategory,
   } = useContext(AdminContext)
+
+
+  useEffect(() => {
+    initialiseProducts(userId, setProducts)
+    initialiseCategories(userId, setCategories)
+  }, [])
+
 
   const handleCardDelete = (event, idProductToDelete) => {
     event.stopPropagation()
@@ -36,50 +51,52 @@ export default function Menu() {
 
   const handleAddButton = (idProductToAdd) => {
     const productToAdd = findInArray(idProductToAdd, products)
-    productToAdd.isAvailable ? addBasketProduct(productToAdd, username) : null;
+    productToAdd.isAvailable ? addBasketProduct(productToAdd, invoiceId) : null;
   }
 
   const handleClick = (id) => {
     isModeAdmin ? selectProduct(id) : handleAddButton(id);
   }
 
+
+  const handleBackButtonClick = () => {
+    // Mettre à jour l'état de la catégorie sélectionnée et cacher bouton retour
+    setSelectedCategory(null)
+    setShowBackButton(false)
+  }
+
+  const handleCategoryClick = (id) => {
+    // Mettre à jour l'état de la catégorie sélectionnée et faire apparaitre bouton retour
+    setSelectedCategory(id)
+    setShowBackButton(true)
+  }
+
+  const handleCategoryDelete = async (event, categoryId) => {
+    event.stopPropagation()
+    await deleteCategory(categoryId)
+    // actualise products (les produits dans catégories sont supprimés autmatiquements dans la BDD)
+    initialiseProducts(userId, setProducts)
+  }
+
+  const handleReset = () => {
+    resetCategoryAndProducts(userId, setCategories, setProducts)
+  }
+
   let containerClassName = isModeAdmin ? "card-container is-hoverable" : 'card-container'
 
+  const displayedCategories = categories ? categories.filter((category) => category.name !== "MAIN") : null
 
-  // Afficahge 
-  if (products === undefined) return <Loader />
 
-  if (isEmpty(products)) {
-    return <EmptyMenu onClick={() => resetProducts(username)} />
-  }
+  // Affichage 
+  if (products === undefined || categories === undefined) return <Loader />
+
+  if (isEmpty(products) && isEmpty(displayedCategories)) return <EmptyMenu onClick={handleReset} />
+
 
   return (
     <TransitionGroup component={MenuStyled} className='menu'>
-      {products.slice().reverse().map(({ id, title, imageSource, price, isAvailable }) => {
-        return (
-          <CSSTransition
-            classNames={"animation-card"}
-            key={id}
-            timeout={300}
-          >
-            <div className={containerClassName}>
-              <Card
-                key={id}
-                title={title}
-                imageSource={imageSource ? imageSource : IMAGE_COMING_SOON}
-                leftDescription={formatPrice(price)}
-                showDeleteButton={isModeAdmin}
-                onDelete={(event) => handleCardDelete(event, id)}
-                onClick={() => handleClick(id)}
-                isHoverable={isModeAdmin}
-                isSelected={checkIfProductIsClicked(id, selectedProduct.id)}
-                overlapImageSource={IMAGE_NO_STOCK}
-                isOverlapImageVisible={convertStringToBoolean(isAvailable) === false}
-              />
-            </div>
-          </CSSTransition>
-        )
-      })}
+      <CategoriesMap selectedCategory={selectedCategory} handleBackButtonClick={handleBackButtonClick} showBackButton={showBackButton} handleCategoryClick={handleCategoryClick} categories={categories} isModeAdmin={isModeAdmin} containerClassName="category" handleCategoryDelete={handleCategoryDelete} />
+      <ProductsMap selectedCategory={selectedCategory} selectedProduct={selectedProduct} isModeAdmin={isModeAdmin} products={products} handleCardDelete={handleCardDelete} handleClick={handleClick} containerClassName={containerClassName} />
     </TransitionGroup>
   )
 }

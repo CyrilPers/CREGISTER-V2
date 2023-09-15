@@ -4,13 +4,13 @@ import { theme } from '../../../../theme';
 import Button from '../../../reusable-ui/Button';
 
 export default function EmptyMenu({ onClick }) {
-  return (
-    <EmptyMenuStyled className='no-prodducts'>
-      <span className='title'>Le menu est vide</span>
-      <span className='description'>Cliquez ci-dessous pour le réinitialiser</span>
-      <Button label="Générer de nouveaux produits" onClick={onClick} />
-    </EmptyMenuStyled>
-  )
+    return (
+        <EmptyMenuStyled className='no-prodducts'>
+            <span className='title'>Le menu est vide</span>
+            <span className='description'>Cliquez ci-dessous pour le réinitialiser</span>
+            <Button label="Générer de nouveaux produits" onClick={onClick} />
+        </EmptyMenuStyled>
+    )
 }
 
 const EmptyMenuStyled = styled.div`
