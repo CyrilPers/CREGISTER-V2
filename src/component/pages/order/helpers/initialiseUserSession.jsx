@@ -17,7 +17,6 @@ export const initialiseProducts = async (userId, setProducts) => {
 export const initialiseCustomers = async (userId, setCustomers) => {
   const customersExisting = await getCustomersFromApi(userId)
   if (!customersExisting) {
-    console.log("NoCustomers")
     setCustomers([])
     return
   }
@@ -26,7 +25,6 @@ export const initialiseCustomers = async (userId, setCustomers) => {
 }
 
 export const initialiseCategories = async (userId, setCategories) => {
-  console.log("initialiseCat")
   const categoriesExisting = await getCategoriesFromApi(userId)
   if (!categoriesExisting) {
     setCategories([])

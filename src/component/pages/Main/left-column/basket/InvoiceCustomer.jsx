@@ -4,12 +4,7 @@ import Header from '../../../../reusable-ui/Header';
 import { FaSearch } from 'react-icons/fa'
 export default function InvoiceCustomer({ customers }) {
 
-
-
-    const data = { customers }
-
-    console.log("data", data)
-
+    const data = customers
     const [value, setValue] = useState("");
 
     const handleChange = (event) => {
@@ -35,7 +30,7 @@ export default function InvoiceCustomer({ customers }) {
                 </div>
                 <ul>
                     {
-                        data.map((element) => <li>{element}</li>)
+                        data.filter((element) => element.name.includes(value)).map((element) => <li key={element.id}>{element.name}</li>)
                     }
                 </ul>
             </CustomerStyled>

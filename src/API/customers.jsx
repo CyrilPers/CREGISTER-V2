@@ -11,7 +11,6 @@ export async function initialiseCustomersFromApi(userId) {
 }
 
 export async function getCustomersFromApi(userId) {
-    console.log("userId", userId)
     try {
         const { data } = await axios.get(`${API_URL}user=${userId}`);
         return data;
