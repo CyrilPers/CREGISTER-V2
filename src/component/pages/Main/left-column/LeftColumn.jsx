@@ -6,20 +6,23 @@ import BasketProducts from './basket/BasketProducts.jsx';
 import EmptyBasket from './basket/EmptyBasket.jsx'
 import { theme } from '../../../../theme/index.jsx';
 import { isEmpty } from '../../../../utils/arrays.jsx';
-import { initialiseBasket } from '../../order/helpers/initialiseUserSession.jsx';
+import { initialiseBasket, initialiseCustomer, initialiseCustomers } from '../../order/helpers/initialiseUserSession.jsx';
 import InvoiceCustomer from './basket/InvoiceCustomer.jsx';
 
 export default function LeftColumn() {
-    const { basket, setBasket, invoiceId, customers } = useContext(AdminContext)
+    const { basket, setBasket, invoiceId, customers, setCustomer, setCustomers, customer } = useContext(AdminContext)
 
     useEffect(() => {
         initialiseBasket(invoiceId, setBasket)
+        initialiseCustomers(invoiceId, setCustomers)
+        initialiseCustomer(invoiceId, setCustomer)
     }, [])
 
 
+    console.log("customer", customer)
     return (
         <LeftColumnStyled>
-            <InvoiceCustomer customers={customers} />
+            <InvoiceCustomer customers={customers} customer={customer} />
             {isEmpty(basket) ? <EmptyBasket isLoading={basket === undefined} /> : <BasketProducts />}
             <BasketFooter basket={basket} />
         </LeftColumnStyled>

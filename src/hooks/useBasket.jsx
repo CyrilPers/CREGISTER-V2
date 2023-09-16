@@ -4,6 +4,7 @@ import { createBasketProductFromApi, deleteBasketProductFromApi, getBasketFromAp
 
 export const useBasket = () => {
     const [basket, setBasket] = useState([])
+    const [customer, setCustomer] = useState()
 
 
     const addBasketProduct = async (productToAdd, invoiceId) => {
@@ -37,5 +38,5 @@ export const useBasket = () => {
     }
 
 
-    return { basket, addBasketProduct, deleteBasketProduct, setBasket }
+    return { basket, addBasketProduct, deleteBasketProduct, setBasket, customer, setCustomer }
 }

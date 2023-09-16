@@ -57,4 +57,7 @@ export default createContext({
 
     setCustomers: () => { },
     customers: [],
+
+    customer: {},
+    setCustomer: () => { },
 });

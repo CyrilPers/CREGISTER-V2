@@ -1,6 +1,7 @@
 import { getBasketFromApi } from "../../../../API/basket.jsx"
 import { getCategoriesFromApi, initialiseCategoriesAndProductsFromApi, resetCategoriesAndProductsFromApi } from "../../../../API/categories.jsx"
 import { getCustomersFromApi, initialiseCustomersFromApi } from "../../../../API/customers.jsx"
+import { getInvoiceFromApi } from "../../../../API/invoice.jsx"
 import { getProductsFromApi } from "../../../../API/products.jsx"
 import { createUserFromApi, getUserIdFromApi } from "../../../../API/users.jsx"
 
@@ -43,6 +44,18 @@ export const initialiseBasket = async (invoiceId, setBasket) => {
   }
   setBasket(basketExisting)
 }
+
+export const initialiseCustomer = async (invoiceId, setCustomer) => {
+
+  const invoiceExisting = await getInvoiceFromApi(invoiceId)
+  const customerExisting = invoiceExisting.customer
+  if (!customerExisting) {
+    setCustomer()
+    return
+  }
+  setCustomer(customerExisting)
+}
+
 
 export const initialiseUser = async (setUserId, username) => {
   const newUserId = await getUserIdFromApi(username)
