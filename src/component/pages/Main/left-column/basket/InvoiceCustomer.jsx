@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Header from '../../../../reusable-ui/Header';
 import { FaCheck } from 'react-icons/fa'
 import SearchCustomer from './SearchCustomer';
+import CustomerBlock from './CustomerBlock';
 export default function InvoiceCustomer({ customers, customer }) {
 
     const [value, setValue] = useState();
@@ -18,12 +19,11 @@ export default function InvoiceCustomer({ customers, customer }) {
     return (
         <Header>
             <CustomerStyled>
-                <SearchCustomer icon={FaCheck} placeholder={"Nom, prénom, numéro..."} data={customers} value={value} handleClick={handleClick} handleChange={handleChange} />
+                {customer ? <CustomerBlock customer={customer} /> : <SearchCustomer icon={FaCheck} placeholder={"Nom, prénom, numéro..."} data={customers} value={value} handleClick={handleClick} handleChange={handleChange} />}
             </CustomerStyled>
         </Header>
     )
 }
-
 const CustomerStyled = styled.div`
     height: 65px;
     display: flex;
