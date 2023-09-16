@@ -8,6 +8,7 @@ import EmptyBasket from './basket/EmptyBasket.jsx'
 import { theme } from '../../../../theme/index.jsx';
 import { isEmpty } from '../../../../utils/arrays.jsx';
 import { initialiseBasket } from '../../order/helpers/initialiseUserSession.jsx';
+import Customer from './basket/Customer.jsx';
 
 export default function LeftColumn() {
     const { basket, setBasket, invoiceId } = useContext(AdminContext)
@@ -19,9 +20,9 @@ export default function LeftColumn() {
 
     return (
         <LeftColumnStyled>
-            <Total basket={basket} />
+            <Customer />
             {isEmpty(basket) ? <EmptyBasket isLoading={basket === undefined} /> : <BasketProducts />}
-            <BasketFooter />
+            <BasketFooter basket={basket} />
         </LeftColumnStyled>
     )
 }
