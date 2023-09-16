@@ -1,17 +1,20 @@
 import React, { useState } from 'react'
 import styled from 'styled-components';
 import Header from '../../../../reusable-ui/Header';
-import { FaSearch } from 'react-icons/fa'
+import { FaCheck } from 'react-icons/fa'
 export default function InvoiceCustomer({ customers }) {
 
     const data = customers
-    const [value, setValue] = useState("");
+    const [value, setValue] = useState();
 
     const handleChange = (event) => {
         setValue(event.target.value)
     }
 
-
+    const handleClick = (element) => {
+        setValue(element)
+        // ou appliquer le customer à l'invoice
+    }
     return (
         <Header>
             <CustomerStyled>
@@ -24,13 +27,16 @@ export default function InvoiceCustomer({ customers }) {
                         placeholder="Nom, prénom, numéro..."
                         value={value}
                         onChange={handleChange}
-                    // onkeyDown={handleKeyDown}
                     />
-                    <button><FaSearch className="icon" /></button>
+                    <FaCheck className="icon" />
                 </div>
                 <ul>
-                    {
-                        data.filter((element) => element.name.includes(value)).map((element) => <li key={element.id}>{element.name}</li>)
+                    {value &&
+                        data.filter((element) => {
+                            return element.name.includes(value) ||
+                                element.surname.includes(value) ||
+                                element.phoneNumber.includes(value);
+                        }).map((element) => <li onClick={() => handleClick(element.name)} key={element.id}>{element.name} {element.surname} </li>)
                     }
                 </ul>
             </CustomerStyled>
