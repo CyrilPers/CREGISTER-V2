@@ -15,20 +15,21 @@ export const initialiseProducts = async (userId, setProducts) => {
 }
 
 export const initialiseCustomers = async (userId, setCustomers) => {
-  const customersExisting = await getCustomersFromApi(user)
+  const customersExisting = await getCustomersFromApi(userId)
   if (!customersExisting) {
+    console.log("NoCustomers")
     setCustomers([])
     return
   }
-  setCategories(categoriesExisting)
+  setCustomers(customersExisting)
 
 }
 
 export const initialiseCategories = async (userId, setCategories) => {
+  console.log("initialiseCat")
   const categoriesExisting = await getCategoriesFromApi(userId)
   if (!categoriesExisting) {
     setCategories([])
-    setDisplayedCategories([])
     return
   }
   setCategories(categoriesExisting)

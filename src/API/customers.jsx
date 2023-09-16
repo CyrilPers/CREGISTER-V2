@@ -11,9 +11,12 @@ export async function initialiseCustomersFromApi(userId) {
 }
 
 export async function getCustomersFromApi(userId) {
+    console.log("userId", userId)
     try {
-        await axios.get(`${API_URL}user=${userId}`);
+        const { data } = await axios.get(`${API_URL}user=${userId}`);
+        return data;
     } catch (error) {
         console.log(error)
     }
 }
+
