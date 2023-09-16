@@ -19,7 +19,15 @@ export default function InvoiceCustomer({ customers, customer }) {
     return (
         <Header>
             <CustomerStyled>
-                {customer ? <CustomerBlock customer={customer} /> : <SearchCustomer icon={FaCheck} placeholder={"Nom, prénom, numéro..."} data={customers} value={value} handleClick={handleClick} handleChange={handleChange} />}
+                {customer ? <CustomerBlock customer={customer} /> :
+                    <SearchCustomer
+                        icon={FaCheck}
+                        placeholder={"Nom, prénom, numéro..."}
+                        data={customers}
+                        value={value}
+                        handleClick={handleClick}
+                        handleChange={handleChange}
+                    />}
             </CustomerStyled>
         </Header>
     )
