@@ -19,6 +19,7 @@ export default function Menu() {
 
 
   const {
+    setCustomers,
     deleteProductsFromCategory,
     deleteCategory,
     setCategories,
@@ -41,6 +42,7 @@ export default function Menu() {
   useEffect(() => {
     initialiseProducts(userId, setProducts)
     initialiseCategories(userId, setCategories)
+    initialiseCustomers(userId, setCustomers)
   }, [])
 
 

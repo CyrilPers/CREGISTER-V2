@@ -53,4 +53,8 @@ export default createContext({
     setNewCategory: () => { },
     deleteCategory: () => { },
     addCategory: () => { },
+
+
+    setCustomers: () => { },
+    customers: [],
 });

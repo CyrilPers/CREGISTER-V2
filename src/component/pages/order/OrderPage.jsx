@@ -11,6 +11,7 @@ import { useParams } from 'react-router-dom'
 import { initialiseUser } from './helpers/initialiseUserSession'
 import { findInArray } from '../../../utils/arrays'
 import { useCategories } from '../../../hooks/useCategories'
+import { useCustomers } from '../../../hooks/useCustomers'
 
 
 
@@ -26,6 +27,7 @@ export default function OrderPage() {
   const { deleteProductsFromCategory, products, addProduct, deleteProduct, editProduct, setProducts } = useProducts()
   const { basket, addBasketProduct, deleteBasketProduct, setBasket } = useBasket()
   const { categories, setCategories, selectedCategory, setSelectedCategory, newCategory, setNewCategory, deleteCategory, addCategory } = useCategories()
+  const { setCustomers, customers } = useCustomers()
   const { username } = useParams()
   const [userId, setUserId] = useState();
   const [invoiceId, setInvoiceId] = useState("1")
@@ -45,6 +47,8 @@ export default function OrderPage() {
 
 
   const adminContextValue = {
+    setCustomers,
+    customers,
     deleteProductsFromCategory,
     deleteCategory,
     newCategory,
