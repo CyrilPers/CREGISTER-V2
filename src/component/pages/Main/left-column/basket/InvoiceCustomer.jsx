@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Header from '../../../../reusable-ui/Header';
 import SearchCustomer from './SearchCustomer';
 import CustomerBlock from './CustomerBlock';
-export default function InvoiceCustomer({ invoiceId, customers, customer, editInvoice }) {
+export default function InvoiceCustomer({ invoice, customers, customer, editInvoice }) {
 
     const [value, setValue] = useState();
 
@@ -13,12 +13,12 @@ export default function InvoiceCustomer({ invoiceId, customers, customer, editIn
 
     const handleClick = (element) => {
         setValue(element)
-        editInvoice(invoiceId, element)
+        editInvoice(invoice, element)
     }
 
     const handleDelete = () => {
         setValue()
-        editInvoice(invoiceId)
+        editInvoice(invoice)
     }
 
     return (
