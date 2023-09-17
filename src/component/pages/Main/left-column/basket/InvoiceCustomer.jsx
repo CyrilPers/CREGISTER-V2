@@ -33,6 +33,7 @@ export default function InvoiceCustomer({ customers, customer }) {
     )
 }
 const CustomerStyled = styled.div`
+    display: flex;
     height: 65px;
     display: flex;
     justify-content: center;

@@ -17,17 +17,27 @@ export default function CustomerBlock({ customer }) {
 }
 
 const CustomerBlockStyled = styled.div`
-    display: inline-block;
+    height: 65px;
+    width: auto;
+    display: flex;
+    align-items: center;
+
 
     .customer {
-        width: 100px;
+        box-sizing: border-box;
+        padding: 5px;
+        display:flex;
+        justify-content: start;
+        width: 200px;
         height: 50px;
-        font-size: ${theme.fonts.size.P2};
+        font-size: ${theme.fonts.size.P3};
         font-family: ${theme.fonts.family.stylish};
         border: 2px solid ${theme.colors.primary};
         border-radius: ${theme.borderRadius.round};
         color: black;
-        background-color: ${theme.colors.greyLight}
+        background-color: ${theme.colors.greyLight};
+        overflow-x: hidden;
+        text-overflow: ellipsis;
     }
     .buttons {
         height:50px;
