@@ -17,7 +17,6 @@ export default function InvoiceCustomer({ invoiceId, customers, customer, editIn
     }
 
     const handleDelete = () => {
-        console.log("delete")
         setValue()
         editInvoice(invoiceId)
     }
