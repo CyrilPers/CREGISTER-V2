@@ -14,8 +14,14 @@ export default function InvoiceCustomer({ customers, customer }) {
 
     const handleClick = (element) => {
         setValue(element)
-        // ou appliquer le customer à l'invoice
+        // appliquer le customer à l'invoice
     }
+
+    const handleDelete = () => {
+        setValue()
+        // appliquer customer invoice null
+    }
+
     return (
         <Header>
             <CustomerStyled>
@@ -27,6 +33,7 @@ export default function InvoiceCustomer({ customers, customer }) {
                         value={value}
                         handleClick={handleClick}
                         handleChange={handleChange}
+                        handleDelete={handleDelete}
                     />}
             </CustomerStyled>
         </Header>

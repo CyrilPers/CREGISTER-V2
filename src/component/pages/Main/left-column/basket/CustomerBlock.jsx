@@ -3,13 +3,13 @@ import styled from 'styled-components';
 import { theme } from '../../../../../theme';
 import { TiDelete } from 'react-icons/ti'
 
-export default function CustomerBlock({ customer }) {
+export default function CustomerBlock({ customer, handleDelete }) {
     return (
         <CustomerBlockStyled>
 
             <div className='customer'>{customer.surname} {customer.name}</div>
             <div className='buttons'>
-                <TiDelete className='button' />
+                <TiDelete className='delete-button' onClick={handleDelete} />
             </div>
         </CustomerBlockStyled>
 
@@ -40,11 +40,15 @@ const CustomerBlockStyled = styled.div`
         text-overflow: ellipsis;
     }
     .buttons {
+        display: flex;
         height:50px;
         width:auto;
-        .button {
-            height:50px;
+        align-items: center;
+        .delete-button {
+            height:40px;
             width:auto;
+            color: ${theme.colors.primary};
+
         }
     }
 `;
