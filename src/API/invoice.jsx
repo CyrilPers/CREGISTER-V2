@@ -10,3 +10,11 @@ export async function getInvoiceFromApi(invoiceId) {
         console.log(error)
     }
 }
+
+export async function editInvoiceFromApi(invoiceId, newUser) {
+    try {
+        await axios.put(`${API_URL}update/${invoiceId}`, { user: newUser });
+    } catch (error) {
+        console.log(error)
+    }
+}

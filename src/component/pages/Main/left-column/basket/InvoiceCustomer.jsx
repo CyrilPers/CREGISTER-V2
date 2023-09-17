@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import styled from 'styled-components';
 import Header from '../../../../reusable-ui/Header';
-import { FaCheck } from 'react-icons/fa'
 import SearchCustomer from './SearchCustomer';
 import CustomerBlock from './CustomerBlock';
-export default function InvoiceCustomer({ customers, customer }) {
+export default function InvoiceCustomer({ invoiceId, customers, customer, editInvoice }) {
 
     const [value, setValue] = useState();
 
@@ -14,27 +13,33 @@ export default function InvoiceCustomer({ customers, customer }) {
 
     const handleClick = (element) => {
         setValue(element)
-        // appliquer le customer à l'invoice
+        editInvoice(invoiceId, element)
     }
 
     const handleDelete = () => {
+        console.log("delete")
         setValue()
-        // appliquer customer invoice null
+        editInvoice(invoiceId)
     }
 
     return (
         <Header>
             <CustomerStyled>
-                {customer ? <CustomerBlock customer={customer} /> :
+                {customer ? (
+                    <CustomerBlock
+                        customer={customer}
+                        handleDelete={handleDelete}
+                    />
+                ) : (
                     <SearchCustomer
-                        icon={FaCheck}
                         placeholder={"Nom, prénom, numéro..."}
                         data={customers}
                         value={value}
                         handleClick={handleClick}
                         handleChange={handleChange}
                         handleDelete={handleDelete}
-                    />}
+                    />
+                )}
             </CustomerStyled>
         </Header>
     )

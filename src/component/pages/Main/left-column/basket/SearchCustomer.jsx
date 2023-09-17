@@ -1,6 +1,7 @@
 import React from 'react'
+import { FaCheck } from 'react-icons/fa'
 
-export default function SearchCustomer({ placeholder, data, handleClick, handleChange, value, icon }) {
+export default function SearchCustomer({ placeholder, data, handleClick, handleChange, value }) {
     return (
         <>
             <div className='inputSearch'>
@@ -12,7 +13,7 @@ export default function SearchCustomer({ placeholder, data, handleClick, handleC
                     value={value}
                     onChange={handleChange}
                 />
-                <icon className="icon" />
+                <FaCheck className="icon" />
             </div>
             <ul>
                 {value &&

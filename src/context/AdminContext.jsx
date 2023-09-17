@@ -60,4 +60,9 @@ export default createContext({
 
     customer: {},
     setCustomer: () => { },
+
+
+    invoices: [],
+    setInvoices: () => { },
+    editInvoice: () => { },
 });

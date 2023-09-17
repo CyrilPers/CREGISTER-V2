@@ -9,8 +9,11 @@ export default function CustomerBlock({ customer, handleDelete }) {
 
             <div className='customer'>{customer.surname} {customer.name}</div>
             <div className='buttons'>
-                <TiDelete className='delete-button' onClick={handleDelete} />
+                <button className="delete-button" onClick={handleDelete}>
+                    <TiDelete className='delete-icon' />
+                </button>
             </div>
+
         </CustomerBlockStyled>
 
     )
@@ -27,9 +30,8 @@ const CustomerBlockStyled = styled.div`
         box-sizing: border-box;
         padding: 5px;
         display:flex;
-        justify-content: start;
         width: 200px;
-        height: 50px;
+        height: 40px;
         font-size: ${theme.fonts.size.P3};
         font-family: ${theme.fonts.family.stylish};
         border: 2px solid ${theme.colors.primary};
@@ -44,11 +46,26 @@ const CustomerBlockStyled = styled.div`
         height:50px;
         width:auto;
         align-items: center;
-        .delete-button {
-            height:40px;
-            width:auto;
-            color: ${theme.colors.primary};
 
+        .delete-button {
+        top: 15px;
+        right: 15px;
+        cursor: pointer;
+        color: ${theme.colors.primary};
+        border: none;
+        background: none;
+
+            .delete-icon{
+                width: 40px;
+                height: 40px;
+                cursor: pointer;
+            }
+            &:hover {
+                color: ${theme.colors.red}
+            }
+            &:active{
+                color: ${theme.colors.primary}
+            }
         }
     }
 `;

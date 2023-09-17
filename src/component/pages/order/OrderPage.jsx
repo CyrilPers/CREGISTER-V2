@@ -12,6 +12,7 @@ import { initialiseUser } from './helpers/initialiseUserSession'
 import { findInArray } from '../../../utils/arrays'
 import { useCategories } from '../../../hooks/useCategories'
 import { useCustomers } from '../../../hooks/useCustomers'
+import { useInvoices } from '../../../hooks/useInvoices'
 
 
 
@@ -24,8 +25,9 @@ export default function OrderPage() {
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
   const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT)
   const titleEditRef = useRef()
+  const { invoices, setInvoices, editInvoice, customer, setCustomer } = useInvoices()
   const { deleteProductsFromCategory, products, addProduct, deleteProduct, editProduct, setProducts } = useProducts()
-  const { basket, addBasketProduct, deleteBasketProduct, setBasket, customer, setCustomer } = useBasket()
+  const { basket, addBasketProduct, deleteBasketProduct, setBasket } = useBasket()
   const { categories, setCategories, selectedCategory, setSelectedCategory, newCategory, setNewCategory, deleteCategory, addCategory } = useCategories()
   const { setCustomers, customers } = useCustomers()
   const { username } = useParams()
@@ -47,6 +49,9 @@ export default function OrderPage() {
 
 
   const adminContextValue = {
+    invoices,
+    setInvoices,
+    editInvoice,
     customer,
     setCustomer,
     setCustomers,

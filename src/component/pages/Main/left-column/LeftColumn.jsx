@@ -10,7 +10,7 @@ import { initialiseBasket, initialiseCustomer, initialiseCustomers } from '../..
 import InvoiceCustomer from './basket/InvoiceCustomer.jsx';
 
 export default function LeftColumn() {
-    const { basket, setBasket, invoiceId, customers, setCustomer, setCustomers, customer } = useContext(AdminContext)
+    const { editInvoice, basket, setBasket, invoiceId, customers, setCustomer, setCustomers, customer } = useContext(AdminContext)
 
     useEffect(() => {
         initialiseBasket(invoiceId, setBasket)
@@ -22,7 +22,7 @@ export default function LeftColumn() {
     console.log("customer", customer)
     return (
         <LeftColumnStyled>
-            <InvoiceCustomer customers={customers} customer={customer} />
+            <InvoiceCustomer customers={customers} customer={customer} setCustomer={setCustomer} editInvoice={editInvoice} invoiceId={invoiceId} />
             {isEmpty(basket) ? <EmptyBasket isLoading={basket === undefined} /> : <BasketProducts />}
             <BasketFooter basket={basket} />
         </LeftColumnStyled>
