@@ -12,15 +12,17 @@ export async function getInvoiceFromApi(invoiceId) {
 }
 
 export async function editInvoiceFromApi(invoice, newCustomer) {
-    const customerId = newCustomer ? newCustomer.id : null;
     try {
-        await axios.put(`${API_URL}update/${invoice.id}`, {
+        const requestData = {
             createdAt: invoice.createdAt,
-            user: { id: invoice.user.id },
-            customer: {
-                id: customerId
-            }
-        });
+            user: { id: invoice.user.id }
+        };
+
+        if (newCustomer) {
+            requestData.customer = { id: newCustomer.id };
+        }
+
+        await axios.put(`${API_URL}update/${invoice.id}`, requestData);
     } catch (error) {
         console.log(error)
     }
