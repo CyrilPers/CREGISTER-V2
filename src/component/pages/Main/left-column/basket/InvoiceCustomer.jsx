@@ -12,7 +12,7 @@ export default function InvoiceCustomer({ invoice, customers, customer, editInvo
     }
 
     const handleClick = (element) => {
-        setValue(element)
+        setValue(element.name)
         editInvoice(invoice, element)
     }
 
