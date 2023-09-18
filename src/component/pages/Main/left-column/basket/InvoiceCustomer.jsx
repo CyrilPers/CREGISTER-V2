@@ -18,7 +18,7 @@ export default function InvoiceCustomer({ invoice, customers, customer, editInvo
 
     const handleDelete = () => {
         setValue()
-        editInvoice(invoice)
+        editInvoice(invoice, null)
     }
 
     console.log("customer", customer)

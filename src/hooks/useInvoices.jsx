@@ -7,7 +7,7 @@ export const useInvoices = () => {
     const [invoice, setInvoice] = useState()
 
     const editInvoice = (invoice, newCustomer) => {
-        setCustomer(newCustomer.name)
+        setCustomer(newCustomer)
         editInvoiceFromApi(invoice, newCustomer)
     }
 
