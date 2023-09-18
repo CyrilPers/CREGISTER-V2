@@ -4,7 +4,9 @@ import { theme } from '../../../../../theme';
 import { TiDelete } from 'react-icons/ti'
 
 export default function CustomerBlock({ customer, handleDelete }) {
+
     return (
+
         <CustomerBlockStyled>
 
             <div className='customer'>{customer.surname} {customer.name}</div>
@@ -24,7 +26,6 @@ const CustomerBlockStyled = styled.div`
     width: auto;
     display: flex;
     align-items: center;
-
 
     .customer {
         box-sizing: border-box;
