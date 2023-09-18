@@ -38,13 +38,13 @@ const SearchCustomerStyled = styled.div`
     flex-direction: column;
     padding-right: 50px;
 
+
     .inputSearch {
         box-sizing: border-box;
         padding: 5px;
         display:flex;
         width: 200px;
-        height: 40px;
-        
+        height: 40px;        
         border: 2px solid ${theme.colors.primary};
         border-radius: ${theme.borderRadius.round};
         color: black;
@@ -63,12 +63,12 @@ const SearchCustomerStyled = styled.div`
         }
     }
     ul {
-    padding-top: 22px;
+    margin-top: 40px;
     padding-left: 0px;
     list-style: none;
     overflow: hidden;
     position: absolute;
-    width: 100%;
+    width: 200px;
     }
 
     ul li {
