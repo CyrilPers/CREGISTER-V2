@@ -14,6 +14,7 @@ export default function MainRightSide() {
     return (
         <MainRightSideStyled>
             {userId && <Menu />}
+            {/* <Customers /> */}
             {isModeAdmin && <Admin />}
         </MainRightSideStyled>
     )

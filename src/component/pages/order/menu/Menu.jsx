@@ -10,8 +10,8 @@ import { menuAnimation } from '../../../../theme/animations';
 import { initialiseCategories, initialiseCustomers, initialiseProducts, resetCategoryAndProducts } from '../helpers/initialiseUserSession'
 import ProductsMap from './ProductsMap';
 import CategoriesMap from './CategoriesMap';
-import EmptyMenu from './EmptyMenu';
 import { isEmpty } from '../../../../utils/arrays.jsx'
+import Empty from '../../../reusable-ui/Empty';
 
 export default function Menu() {
 
@@ -42,7 +42,6 @@ export default function Menu() {
   useEffect(() => {
     initialiseProducts(userId, setProducts)
     initialiseCategories(userId, setCategories)
-    initialiseCustomers(userId, setCustomers)
   }, [])
 
 
@@ -88,11 +87,14 @@ export default function Menu() {
 
   const displayedCategories = categories ? categories.filter((category) => category.name !== "MAIN") : null
 
+  const title = "Le menu est vide"
+  const description = "Cliquez ci-dessous pour le réinitialiser"
+  const label = "Générer de nouveaux produits"
 
   // Affichage 
   if (products === undefined || categories === undefined) return <Loader />
 
-  if (isEmpty(products) && isEmpty(displayedCategories)) return <EmptyMenu onClick={handleReset} />
+  if (isEmpty(products) && isEmpty(displayedCategories)) return <Empty onClick={handleReset} description={description} title={title} label={label} />
 
 
   return (

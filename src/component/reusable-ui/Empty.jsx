@@ -1,19 +1,19 @@
 import React from 'react'
 import { styled } from 'styled-components';
-import { theme } from '../../../../theme';
-import Button from '../../../reusable-ui/Button';
+import { theme } from '../../theme';
+import Button from './Button';
 
-export default function EmptyMenu({ onClick }) {
-    return (
-        <EmptyMenuStyled className='no-prodducts'>
-            <span className='title'>Le menu est vide</span>
-            <span className='description'>Cliquez ci-dessous pour le réinitialiser</span>
-            <Button label="Générer de nouveaux produits" onClick={onClick} />
-        </EmptyMenuStyled>
-    )
+export default function Empty({ onClick, title, description, label }) {
+  return (
+    <EmptyStyled className='no-prodducts'>
+      <span className='title'>{title}</span>
+      <span className='description'>{description}</span>
+      <Button label={label} onClick={onClick} />
+    </EmptyStyled>
+  )
 }
 
-const EmptyMenuStyled = styled.div`
+const EmptyStyled = styled.div`
   background-color: ${theme.colors.background_white};
   box-shadow: ${theme.shadows.strong};
   border-bottom-right-radius: ${theme.borderRadius.extraRound};
