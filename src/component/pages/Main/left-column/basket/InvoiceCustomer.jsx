@@ -21,8 +21,6 @@ export default function InvoiceCustomer({ invoice, customers, customer, editInvo
         editInvoice(invoice, null)
     }
 
-    console.log("customer", customer)
-
     return (
         <Header>
             <CustomerStyled>

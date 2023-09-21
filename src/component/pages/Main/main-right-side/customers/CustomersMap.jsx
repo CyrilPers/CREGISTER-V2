@@ -1,26 +1,27 @@
 import React from 'react'
+import { CSSTransition } from 'react-transition-group'
+import CustomerCard from './CustomerCard'
 
-export default function CustomersMap({ customers }) {
+export default function CustomersMap({ customers, isModeAdmin }) {
     return (
         <>
-            {customers.map(({ id, name, surename, index, phoneNumber, city }) => {
+            {customers.map(({ id, name, surname, index, phoneNumber, address }) => {
                 return (
                     <CSSTransition
                         classNames={"animation-card"}
                         key={id}
                         timeout={300}
                     >
-                        <div className={containerClassname}>
+                        <div className="customer" key={id}>
                             <CustomerCard
                                 key={id}
                                 index={index}
                                 name={name}
-                                surename={surename}
-                                city={city}
+                                surname={surname}
+                                address={address}
                                 phoneNumber={phoneNumber}
                                 showDeleteButton={isModeAdmin}
                                 onDelete={(event) => handleCardDelete(event, id)}
-                                className="card"
                             />
                         </div>
                     </CSSTransition>

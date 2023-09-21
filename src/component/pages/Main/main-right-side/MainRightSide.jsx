@@ -4,6 +4,7 @@ import Menu from '../../order/menu/Menu.jsx'
 import { styled } from 'styled-components';
 import { theme } from '../../../../theme';
 import AdminContext from '../../../../context/AdminContext';
+import Customers from './customers/customers';
 
 
 export default function MainRightSide() {
@@ -13,8 +14,8 @@ export default function MainRightSide() {
 
     return (
         <MainRightSideStyled>
-            {userId && <Menu />}
-            {/* <Customers /> */}
+            {/* {userId && <Menu />} */}
+            {userId && <Customers />}
             {isModeAdmin && <Admin />}
         </MainRightSideStyled>
     )

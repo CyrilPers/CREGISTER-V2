@@ -1,25 +1,29 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import AdminContext from '../../../../../context/AdminContext';
 import { theme } from '../../../../../theme';
-import { styled } from 'styled-components';
 import Empty from '../../../../reusable-ui/Empty';
 import { isEmpty } from '../../../../../utils/arrays';
 import CustomersMap from './CustomersMap';
+import Loader from '../../../order/menu/Loader';
+import styled from 'styled-components';
+import { initialiseCustomers } from '../../../order/helpers/initialiseUserSession';
 
 export default function Customers() {
 
-    const { customers, setCustomers, userId } = useContext(AdminContext)
+    const { customers, setCustomers, userId, isModeAdmin } = useContext(AdminContext)
 
     useEffect(() => {
         initialiseCustomers(userId, setCustomers)
     }, [])
 
+    console.log("customers", customers)
+
     const title = "La liste de clients est vide"
     const description = "Cliquez ci-dessous pour la réinitialiser"
     const label = "Générer de nouveaux clients"
-    const handleReset = {
+    const handleReset = () => { } // A CHANGER !
+    const handleDelete = () => { } // A CHANGER !
 
-    }
 
     // Affichage 
     if (customers === undefined) return <Loader />
