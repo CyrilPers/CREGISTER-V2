@@ -46,12 +46,15 @@ const CustomerCardStyled = styled.div`
     margin-top: 10px;
     margin-left: 10px;
     padding: 0 5px;
+    align-items: center;
     position: relative;
 
     .cards {
         display: flex;
-        flex-direction: column;
+        display: inline-flex;
+        justify-content: space-between;
         width: 100%;
+        padding-right: 50px;
     }
 
     .delete-button {
