@@ -65,7 +65,6 @@ const CustomerCardStyled = styled.div`
     align-items: center;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    justify-content: space-between;
     width: 100%;
     padding-right: 20px;
     padding-left: 20px;
