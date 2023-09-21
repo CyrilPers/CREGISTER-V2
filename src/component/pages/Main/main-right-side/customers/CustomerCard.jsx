@@ -24,6 +24,19 @@ export default function CustomerCard({
             {showDeleteButton && <button className="delete-button" aria-label="delete-button" onClick={onDelete}>
                 <TiDelete className="delete-icon" />
             </button>}
+            {/* <table className='customers-table'>
+                <tbody>
+                    <tr key={index}>
+                        <td>{name}</td>
+                        <td>{surname}</td>
+                        <td>{phoneNumber}</td>
+                        <td>{address.city}</td>
+                    </tr>
+                </tbody>
+
+
+
+            </table> */}
             <div className='cards'>
                 <div className='name'>{name}</div>
                 <div className='surname'>{surname}</div>
@@ -46,15 +59,19 @@ const CustomerCardStyled = styled.div`
     margin-top: 10px;
     margin-left: 10px;
     padding: 0 5px;
-    align-items: center;
     position: relative;
 
     .cards {
-        display: flex;
-        display: inline-flex;
-        justify-content: space-between;
-        width: 100%;
-        padding-right: 50px;
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: space-between;
+    width: 100%;
+    padding-right: 20px;
+    padding-left: 20px;
+    font-family: ${theme.fonts.family.stylish};
+    font-weight: ${theme.fonts.weights.semiBold};
+    font-size: ${theme.fonts.size.P3}
     }
 
     .delete-button {
