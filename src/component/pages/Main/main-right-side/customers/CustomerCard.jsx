@@ -70,7 +70,9 @@ const CustomerCardStyled = styled.div`
     padding-left: 20px;
     font-family: ${theme.fonts.family.stylish};
     font-weight: ${theme.fonts.weights.semiBold};
-    font-size: ${theme.fonts.size.P3}
+    font-size: ${theme.fonts.size.P3};
+    overflow-x: hidden;
+    text-overflow: ellipsis;
     }
 
     .delete-button {
