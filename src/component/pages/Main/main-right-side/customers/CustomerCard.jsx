@@ -24,19 +24,6 @@ export default function CustomerCard({
             {showDeleteButton && <button className="delete-button" aria-label="delete-button" onClick={onDelete}>
                 <TiDelete className="delete-icon" />
             </button>}
-            {/* <table className='customers-table'>
-                <tbody>
-                    <tr key={index}>
-                        <td>{name}</td>
-                        <td>{surname}</td>
-                        <td>{phoneNumber}</td>
-                        <td>{address.city}</td>
-                    </tr>
-                </tbody>
-
-
-
-            </table> */}
             <div className='cards'>
                 <div className='name'>{name}</div>
                 <div className='surname'>{surname}</div>
