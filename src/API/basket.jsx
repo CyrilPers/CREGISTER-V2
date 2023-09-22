@@ -39,7 +39,7 @@ export async function createBasketProductFromApi(newProduct, invoiceId) {
 
 export async function updateBasketProductFromApi(newProduct) {
     try {
-        await axios.put(`${API_URL}update/${newProduct.id}`, { productId: newProduct.productId, productName: newProduct.productName, productPrice: newProduct.productPrice, productId: newProduct.productId, imageSource: newProduct.imageSource, quantity: newProduct.quantity, invoice: { id: newProduct.invoice.id } });
+        await axios.put(`${API_URL}update/${newProduct.id}`, { productId: newProduct.productId, productName: newProduct.productName, productPrice: newProduct.productPrice, imageSource: newProduct.imageSource, quantity: newProduct.quantity, invoice: { id: newProduct.invoice.id } });
     } catch (error) {
         console.log(error)
     }

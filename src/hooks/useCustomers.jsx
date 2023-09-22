@@ -1,17 +1,20 @@
 import { useState } from "react"
 import { deepClone, removeItemFromArray } from "../utils/arrays"
+import { deleteCustomerFromApi } from '../API/customers.jsx'
+
 
 export const useCustomers = () => {
     const [customers, setCustomers] = useState([])
 
 
-    const deleteCustomer = (id) => {
+    const deleteCustomer = async (id) => {
+        console.log("id", id)
+        await deleteCustomerFromApi(id)
         const customersCopy = deepClone(customers)
         const updatedCustomer = removeItemFromArray(id, customersCopy)
         setCustomers(updatedCustomer)
-        deleteCustomerFromApi(id)
     }
 
-    return { customers, setCustomers }
+    return { customers, setCustomers, deleteCustomer }
 }
 

@@ -20,4 +20,10 @@ export async function getCustomersFromApi(userId) {
 }
 
 
-
+export async function deleteCustomerFromApi(customerId) {
+    try {
+        await axios.delete(`${API_URL}delete/${customerId}`);
+    } catch (error) {
+        console.log(error)
+    }
+}

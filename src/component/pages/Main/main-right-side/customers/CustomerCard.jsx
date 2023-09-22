@@ -6,32 +6,30 @@ import { fadeInFromRight } from '../../../../../theme/animations';
 
 
 export default function CustomerCard({
-    id,
-    key,
-    index,
-    address,
-    name,
-    surname,
-    phoneNumber,
-    showDeleteButton,
-    onDelete
+  id,
+  key,
+  index,
+  address,
+  name,
+  surname,
+  phoneNumber,
+  showDeleteButton,
+  onDelete
 }) {
 
-    console.log("surname", surname)
-
-    return (
-        <CustomerCardStyled>
-            {showDeleteButton && <button className="delete-button" aria-label="delete-button" onClick={onDelete}>
-                <TiDelete className="delete-icon" />
-            </button>}
-            <div className='cards'>
-                <div className='name'>{name}</div>
-                <div className='surname'>{surname}</div>
-                <div className='phoneNumber'>{phoneNumber}</div>
-                <div className='city'>{address.city}</div>
-            </div>
-        </CustomerCardStyled>
-    )
+  return (
+    <CustomerCardStyled>
+      {showDeleteButton && <button className="delete-button" aria-label="delete-button" onClick={onDelete}>
+        <TiDelete className="delete-icon" />
+      </button>}
+      <div className='cards'>
+        <div className='name'>{name}</div>
+        <div className='surname'>{surname}</div>
+        <div className='phoneNumber'>{phoneNumber}</div>
+        <div className='city'>{address.city}</div>
+      </div>
+    </CustomerCardStyled>
+  )
 }
 
 const CustomerCardStyled = styled.div`

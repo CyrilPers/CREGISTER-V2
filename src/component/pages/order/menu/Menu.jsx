@@ -7,7 +7,7 @@ import { findInArray } from '../../../../utils/arrays';
 import Loader from './Loader';
 import { TransitionGroup } from 'react-transition-group';
 import { menuAnimation } from '../../../../theme/animations';
-import { initialiseCategories, initialiseCustomers, initialiseProducts, resetCategoryAndProducts } from '../helpers/initialiseUserSession'
+import { initialiseCategories, initialiseProducts, resetCategoryAndProducts } from '../helpers/initialiseUserSession'
 import ProductsMap from './ProductsMap';
 import CategoriesMap from './CategoriesMap';
 import { isEmpty } from '../../../../utils/arrays.jsx'
@@ -19,7 +19,6 @@ export default function Menu() {
 
 
   const {
-    setCustomers,
     deleteProductsFromCategory,
     deleteCategory,
     setCategories,

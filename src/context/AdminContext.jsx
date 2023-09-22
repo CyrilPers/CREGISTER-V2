@@ -60,6 +60,7 @@ export default createContext({
 
     customer: {},
     setCustomer: () => { },
+    deleteCustomer: () => { },
 
 
     invoices: [],

@@ -10,19 +10,23 @@ import { initialiseCustomers } from '../../../order/helpers/initialiseUserSessio
 
 export default function Customers() {
 
-    const { customers, setCustomers, userId, isModeAdmin } = useContext(AdminContext)
+    const { customers, setCustomers, userId, isModeAdmin, deleteCustomer } = useContext(AdminContext)
 
     useEffect(() => {
         initialiseCustomers(userId, setCustomers)
     }, [])
 
-    console.log("customers", customers)
-
     const title = "La liste de clients est vide"
     const description = "Cliquez ci-dessous pour la réinitialiser"
     const label = "Générer de nouveaux clients"
+
     const handleReset = () => { } // A CHANGER !
-    const handleDelete = () => { } // A CHANGER !
+
+    const handleDelete = (event, id) => {
+        event.stopPropagation()
+        console.log("idHandleDelete", id)
+        deleteCustomer(id)
+    }
 
 
     // Affichage 
