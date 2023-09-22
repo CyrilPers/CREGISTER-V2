@@ -40,7 +40,7 @@ const CustomerCardStyled = styled.div`
     background: ${theme.colors.greyLight};
     display: flex;
     box-shadow: -2px 2px 2px 0px rgb(0 0 0 / 20%);
-    margin: 5px;
+    margin: 0px;
     margin-top: 10px;
     margin-left: 10px;
     padding: 0 5px;
