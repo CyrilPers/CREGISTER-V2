@@ -7,6 +7,8 @@ import CustomersMap from './CustomersMap';
 import Loader from '../../../order/menu/Loader';
 import styled from 'styled-components';
 import { initialiseCustomers } from '../../../order/helpers/initialiseUserSession';
+import { TransitionGroup } from 'react-transition-group';
+import { menuAnimation } from '../../../../../theme/animations';
 
 export default function Customers() {
 
@@ -20,23 +22,23 @@ export default function Customers() {
     const description = "Cliquez ci-dessous pour la réinitialiser"
     const label = "Générer de nouveaux clients"
 
-    const handleReset = () => { } // A CHANGER !
+    const handleReset = () => { } // A CHANGER
 
     const handleDelete = (event, id) => {
         event.stopPropagation()
-        console.log("idHandleDelete", id)
         deleteCustomer(id)
     }
 
 
-    // Affichage 
+
+    // Affichage:
     if (customers === undefined) return <Loader />
     if (isEmpty(customers)) return <Empty description={description} title={title} label={label} onClick={handleReset} />
 
     return (
-        <CustomersStyled>
+        <TransitionGroup component={CustomersStyled} className='customers'>
             <CustomersMap customers={customers} isModeAdmin={isModeAdmin} handleDelete={handleDelete} />
-        </CustomersStyled>
+        </TransitionGroup>
     )
 }
 
@@ -51,4 +53,6 @@ const CustomersStyled = styled.div`
     &:hover {
         scrollbar-color: initial;
     }
+
+    ${menuAnimation}
 `;

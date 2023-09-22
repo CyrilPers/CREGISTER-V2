@@ -8,7 +8,6 @@ export const useCustomers = () => {
 
 
     const deleteCustomer = async (id) => {
-        console.log("id", id)
         await deleteCustomerFromApi(id)
         const customersCopy = deepClone(customers)
         const updatedCustomer = removeItemFromArray(id, customersCopy)

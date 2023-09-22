@@ -6,7 +6,6 @@ export default function CustomersMap({ customers, isModeAdmin, handleDelete }) {
     return (
         <>
             {customers.map(({ id, name, surname, index, phoneNumber, address }) => {
-                console.log("id", id)
                 return (
                     <CSSTransition
                         classNames={"animation-card"}
