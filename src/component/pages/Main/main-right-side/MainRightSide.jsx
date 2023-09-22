@@ -14,8 +14,8 @@ export default function MainRightSide() {
 
     return (
         <MainRightSideStyled>
-            {userId && <Menu />}
-            {/* {userId && <Customers />} */}
+            {/* {userId && <Menu />} */}
+            {userId && <Customers />}
             {isModeAdmin && <Admin />}
         </MainRightSideStyled>
     )

@@ -97,10 +97,10 @@ export default function Menu() {
 
 
   return (
-    <TransitionGroup component={MenuStyled} className='menu'>
+    <MenuStyled>
       <CategoriesMap selectedCategory={selectedCategory} handleBackButtonClick={handleBackButtonClick} showBackButton={showBackButton} handleCategoryClick={handleCategoryClick} categories={categories} isModeAdmin={isModeAdmin} containerClassName="category" handleCategoryDelete={handleCategoryDelete} />
       <ProductsMap selectedCategory={selectedCategory} selectedProduct={selectedProduct} isModeAdmin={isModeAdmin} products={products} handleCardDelete={handleCardDelete} handleClick={handleClick} containerClassName={containerClassName} />
-    </TransitionGroup>
+    </MenuStyled>
   )
 }
 
@@ -120,8 +120,7 @@ const MenuStyled = styled.div`
   &:hover {
         scrollbar-color: initial;
     }
-
-  ${menuAnimation}
+    /* ${menuAnimation} */
 
   .card-container {
     position: relative; 

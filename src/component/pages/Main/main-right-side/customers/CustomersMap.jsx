@@ -1,10 +1,15 @@
 import React from 'react'
 import { CSSTransition } from 'react-transition-group'
 import CustomerCard from './CustomerCard'
+import { menuAnimation } from '../../../../../theme/animations'
+import styled from 'styled-components'
 
 export default function CustomersMap({ customers, isModeAdmin, handleDelete }) {
     return (
-        <>
+
+        /// FICHIER A SUPPRIMER //
+
+        <TransitionGroup component={CustomersMapStyled}>
             {customers.map(({ id, name, surname, index, phoneNumber, address }) => {
                 return (
                     <CSSTransition
@@ -27,7 +32,12 @@ export default function CustomersMap({ customers, isModeAdmin, handleDelete }) {
                     </CSSTransition>
                 )
             })}
-        </>
+        </TransitionGroup>
     )
 }
 
+const CustomersMapStyled = styled.div`
+
+${menuAnimation}
+
+`;

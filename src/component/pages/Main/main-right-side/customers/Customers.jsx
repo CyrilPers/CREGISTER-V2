@@ -3,12 +3,12 @@ import AdminContext from '../../../../../context/AdminContext';
 import { theme } from '../../../../../theme';
 import Empty from '../../../../reusable-ui/Empty';
 import { isEmpty } from '../../../../../utils/arrays';
-import CustomersMap from './CustomersMap';
 import Loader from '../../../order/menu/Loader';
 import styled from 'styled-components';
 import { initialiseCustomers } from '../../../order/helpers/initialiseUserSession';
-import { TransitionGroup } from 'react-transition-group';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { menuAnimation } from '../../../../../theme/animations';
+import CustomerCard from './CustomerCard'
 
 export default function Customers() {
 
@@ -37,7 +37,28 @@ export default function Customers() {
 
     return (
         <TransitionGroup component={CustomersStyled} className='customers'>
-            <CustomersMap customers={customers} isModeAdmin={isModeAdmin} handleDelete={handleDelete} />
+            {customers.map(({ id, name, surname, index, phoneNumber, address }) => {
+                return (
+                    <CSSTransition
+                        classNames={"animation-card"}
+                        key={id}
+                        timeout={300}
+                    >
+                        <div className="customer">
+                            <CustomerCard
+                                key={id}
+                                index={index}
+                                name={name}
+                                surname={surname}
+                                address={address}
+                                phoneNumber={phoneNumber}
+                                showDeleteButton={isModeAdmin}
+                                onDelete={(event) => handleDelete(event, id)}
+                            />
+                        </div>
+                    </CSSTransition>
+                )
+            })}
         </TransitionGroup>
     )
 }
