@@ -7,7 +7,7 @@ import { EMPTY_PRODUCT } from '../../../../../enum/product';
 
 export default function AdminPanel() {
 
-  const { currentTabSelected, selectedProduct } = useContext(AdminContext)
+  const { currentTabSelected, selectedProduct, selectedCustomer } = useContext(AdminContext)
 
   const hasAlreadyBeenClicked = selectedProduct !== EMPTY_PRODUCT
   const tabs = getTabsConfig(hasAlreadyBeenClicked)

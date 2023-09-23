@@ -4,7 +4,7 @@ import Menu from '../../order/menu/Menu.jsx'
 import { styled } from 'styled-components';
 import { theme } from '../../../../theme';
 import AdminContext from '../../../../context/AdminContext.jsx';
-import Customers from './customers/Customers.jsx'
+import Customers from './customers/customers.jsx';
 
 
 export default function MainRightSide() {
