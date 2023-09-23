@@ -2,42 +2,43 @@ import React, { useContext } from 'react'
 import { styled } from 'styled-components';
 import Tab from '../../../reusable-ui/Tab';
 import { theme } from '../../../../theme';
-import {FiChevronDown, FiChevronUp} from 'react-icons/fi'
+import { FiChevronDown, FiChevronUp } from 'react-icons/fi'
 import AdminContext from '../../../../context/AdminContext';
-import { getTabsConfig } from './getTabsConfig';
+import { getTabsConfigProduct, getTabsConfigCustomer } from './getTabsConfig';
 
 
 export default function AdminTabs() {
 
   const {
-    isCollapsed, 
-    setIsCollapsed, 
+    isCollapsed,
+    setIsCollapsed,
     currentTabSelected,
     setCurrentTabSelected,
+    currentPage,
   } = useContext(AdminContext)
 
 
   const selectTab = (tabSelected) => {
-    setIsCollapsed(false) 
+    setIsCollapsed(false)
     setCurrentTabSelected(tabSelected)
   }
 
-  const tabs = getTabsConfig()
+  const tabs = (currentPage === "invoice") ? getTabsConfigProduct() : getTabsConfigCustomer()
 
   return (
     <AdminTabsStyled>
       <Tab
-        Icon = {isCollapsed ? <FiChevronUp /> : <FiChevronDown />}
-        onClick = {() => setIsCollapsed(!isCollapsed)}
-        className = {isCollapsed ? "is-active" : ""}
+        Icon={isCollapsed ? <FiChevronUp /> : <FiChevronDown />}
+        onClick={() => setIsCollapsed(!isCollapsed)}
+        className={isCollapsed ? "is-active" : ""}
       />
       {tabs.map((tab) =>
-          <Tab 
+        <Tab
           {...tab}
           key={tab.index}
-          onClick={() => selectTab(tab.index)} 
-          className={currentTabSelected === tab.index ? "is-active" : ""} 
-          />
+          onClick={() => selectTab(tab.index)}
+          className={currentTabSelected === tab.index ? "is-active" : ""}
+        />
       )}
     </AdminTabsStyled>
   )

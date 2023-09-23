@@ -5,7 +5,7 @@ import AddForm from './admin-panel/AddForm'
 import HintMessage from './admin-panel/HintMessage.jsx'
 import CategoryAddForm from './admin-panel/category/CategoryAddForm'
 
-export const getTabsConfig = (hasAlreadyBeenClicked) => [
+export const getTabsConfigProduct = (hasAlreadyBeenClicked) => [
 
   {
     index: "add",
@@ -17,7 +17,7 @@ export const getTabsConfig = (hasAlreadyBeenClicked) => [
     index: "edit",
     label: "Modifier un produit",
     Icon: <MdModeEditOutline />,
-    content: hasAlreadyBeenClicked ? <EditForm /> : <HintMessage />,
+    content: hasAlreadyBeenClicked ? <EditForm /> : <HintMessage element="produit" />,
   },
   {
     index: "addCategory",
@@ -26,6 +26,23 @@ export const getTabsConfig = (hasAlreadyBeenClicked) => [
     content: <CategoryAddForm />,
   },
 ]
+
+export const getTabsConfigCustomer = (hasAlreadyBeenClicked) => [
+  {
+    index: "add",
+    label: "Ajouter un client",
+    Icon: <AiOutlinePlus />,
+    content: <AddForm />,
+  },
+  {
+    index: "edit",
+    label: "Modifier un client",
+    Icon: <MdModeEditOutline />,
+    content: hasAlreadyBeenClicked ? <EditForm /> : <HintMessage element="client" />,
+  },
+]
+
+
 export const getTabSelected = (tabs, currentTabSelected) => {
   return tabs.find((tab) => tab.index === currentTabSelected)
 }

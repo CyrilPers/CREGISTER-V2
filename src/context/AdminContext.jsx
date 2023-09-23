@@ -71,4 +71,8 @@ export default createContext({
 
     invoice: {},
     setInvoice: () => { },
+
+
+    currentPage: {},
+    setCurrentPage: () => { },
 });

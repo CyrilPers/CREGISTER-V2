@@ -1,22 +1,27 @@
 import React, { useContext } from 'react'
 import { styled } from 'styled-components';
 import AdminContext from '../../../../../context/AdminContext';
-import { getTabSelected, getTabsConfig } from '../getTabsConfig';
+import { getTabSelected, getTabsConfigProduct, getTabsConfigCustomer } from '../getTabsConfig';
 import { theme } from '../../../../../theme';
 import { EMPTY_PRODUCT } from '../../../../../enum/product';
 
 export default function AdminPanel() {
 
-  const { currentTabSelected, selectedProduct, selectedCustomer } = useContext(AdminContext)
+  const { currentTabSelected, selectedProduct, selectedCustomer, currentPage } = useContext(AdminContext)
 
   const hasAlreadyBeenClicked = selectedProduct !== EMPTY_PRODUCT
-  const tabs = getTabsConfig(hasAlreadyBeenClicked)
-  const tabSelected = getTabSelected(tabs, currentTabSelected)
+  const tabsProducts = getTabsConfigProduct(hasAlreadyBeenClicked)
+  const tabSelectedProduct = getTabSelected(tabsProducts, currentTabSelected)
+
+  const hasAlreadyBeenClickedCustomer = selectedCustomer !== EMPTY_PRODUCT
+  const tabsCustomer = getTabsConfigCustomer(hasAlreadyBeenClickedCustomer)
+  const tabSelectedCustomer = getTabSelected(tabsCustomer, currentTabSelected)
 
 
   return (
     <AdminPanelStyled>
-      {tabSelected.content}
+      {currentPage === "invoice" && tabSelectedProduct.content}
+      {currentPage === "customers" && tabSelectedCustomer.content}
     </AdminPanelStyled>
   )
 }
