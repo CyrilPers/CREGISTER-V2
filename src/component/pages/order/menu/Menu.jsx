@@ -5,7 +5,6 @@ import AdminContext from '../../../../context/AdminContext.jsx';
 import { EMPTY_PRODUCT } from '../../../../enum/product';
 import { findInArray } from '../../../../utils/arrays';
 import Loader from './Loader';
-import { TransitionGroup } from 'react-transition-group';
 import { menuAnimation } from '../../../../theme/animations';
 import { initialiseCategories, initialiseProducts, resetCategoryAndProducts } from '../helpers/initialiseUserSession'
 import ProductsMap from './ProductsMap';

@@ -12,7 +12,7 @@ import CustomerCard from './CustomerCard'
 
 export default function Customers() {
 
-    const { customers, setCustomers, userId, isModeAdmin, deleteCustomer } = useContext(AdminContext)
+    const { customers, setCustomers, userId, isModeAdmin, deleteCustomer, selectedCustomer, setSelectedCustomer } = useContext(AdminContext)
 
     useEffect(() => {
         initialiseCustomers(userId, setCustomers)
@@ -29,6 +29,10 @@ export default function Customers() {
         deleteCustomer(id)
     }
 
+    const handleClick = (id) => {
+        console.log("id selected customer", id)
+        isModeAdmin && setSelectedCustomer(id);
+    }
 
 
     // Affichage:
@@ -54,6 +58,7 @@ export default function Customers() {
                                 phoneNumber={phoneNumber}
                                 showDeleteButton={isModeAdmin}
                                 onDelete={(event) => handleDelete(event, id)}
+                                onClick={() => handleClick(id)}
                             />
                         </div>
                     </CSSTransition>
@@ -74,6 +79,11 @@ const CustomersStyled = styled.div`
     &:hover {
         scrollbar-color: initial;
     }
-
+    .customer {
+        &:hover{
+            transform:scale(1.05);
+            transition: ease-out ${theme.animation.speed.slow};
+        }
+    }
     ${menuAnimation}
 `;

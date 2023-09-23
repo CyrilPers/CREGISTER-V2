@@ -6,9 +6,7 @@ import { fadeInFromRight } from '../../../../../theme/animations';
 
 
 export default function CustomerCard({
-  id,
-  key,
-  index,
+  onClick,
   address,
   name,
   surname,
@@ -18,7 +16,9 @@ export default function CustomerCard({
 }) {
 
   return (
-    <CustomerCardStyled>
+    <CustomerCardStyled
+      onClick={onClick}
+    >
       {showDeleteButton && <button className="delete-button" aria-label="delete-button" onClick={onDelete}>
         <TiDelete className="delete-icon" />
       </button>}
