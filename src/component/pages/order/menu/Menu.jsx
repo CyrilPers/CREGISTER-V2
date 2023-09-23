@@ -116,6 +116,7 @@ const MenuStyled = styled.div`
   scrollbar-color: transparent transparent;
   scrollbar-width: thin;
 
+
   &:hover {
         scrollbar-color: initial;
     }

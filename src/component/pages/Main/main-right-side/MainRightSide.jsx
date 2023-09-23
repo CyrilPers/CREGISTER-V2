@@ -3,8 +3,8 @@ import Admin from '../../order/admin/Admin';
 import Menu from '../../order/menu/Menu.jsx'
 import { styled } from 'styled-components';
 import { theme } from '../../../../theme';
-import AdminContext from '../../../../context/AdminContext';
-import Customers from './customers/customers';
+import AdminContext from '../../../../context/AdminContext.jsx';
+import Customers from './customers/Customers.jsx'
 
 
 export default function MainRightSide() {

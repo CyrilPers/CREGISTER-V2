@@ -1,10 +1,10 @@
-import React, { useContext, useEffect } from 'react'
-import AdminContext from '../../../../../context/AdminContext';
+import { useContext, useEffect } from 'react'
+import AdminContext from '../../../../../context/AdminContext.jsx';
 import { theme } from '../../../../../theme';
 import Empty from '../../../../reusable-ui/Empty';
 import { isEmpty } from '../../../../../utils/arrays';
 import Loader from '../../../order/menu/Loader';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { initialiseCustomers } from '../../../order/helpers/initialiseUserSession';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { menuAnimation } from '../../../../../theme/animations';
@@ -76,10 +76,12 @@ const CustomersStyled = styled.div`
     overflow-y: scroll;
     scrollbar-color: transparent transparent;
     scrollbar-width: thin;
+
     &:hover {
         scrollbar-color: initial;
     }
     .customer {
+        /* border: 1px solid red; */
         &:hover{
             transform:scale(1.05);
             transition: ease-out ${theme.animation.speed.slow};
