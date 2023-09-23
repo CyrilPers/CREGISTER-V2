@@ -6,7 +6,6 @@ import HintMessage from './admin-panel/HintMessage.jsx'
 import CategoryAddForm from './admin-panel/category/CategoryAddForm'
 
 export const getTabsConfigProduct = (hasAlreadyBeenClicked) => [
-
   {
     index: "add",
     label: "Ajouter un produit",
@@ -38,7 +37,7 @@ export const getTabsConfigCustomer = (hasAlreadyBeenClicked) => [
     index: "edit",
     label: "Modifier un client",
     Icon: <MdModeEditOutline />,
-    content: hasAlreadyBeenClicked ? <EditForm /> : <HintMessage element="client" />,
+    content: hasAlreadyBeenClicked ? <EditForm /> : <HintMessage element="produit" />,
   },
 ]
 

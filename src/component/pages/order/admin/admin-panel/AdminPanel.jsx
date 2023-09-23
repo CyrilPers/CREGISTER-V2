@@ -4,6 +4,7 @@ import AdminContext from '../../../../../context/AdminContext';
 import { getTabSelected, getTabsConfigProduct, getTabsConfigCustomer } from '../getTabsConfig';
 import { theme } from '../../../../../theme';
 import { EMPTY_PRODUCT } from '../../../../../enum/product';
+import { EMPTY_CUSTOMER } from '../../../../../enum/customer';
 
 export default function AdminPanel() {
 
@@ -13,9 +14,11 @@ export default function AdminPanel() {
   const tabsProducts = getTabsConfigProduct(hasAlreadyBeenClicked)
   const tabSelectedProduct = getTabSelected(tabsProducts, currentTabSelected)
 
-  const hasAlreadyBeenClickedCustomer = selectedCustomer !== EMPTY_PRODUCT
+  const hasAlreadyBeenClickedCustomer = selectedCustomer !== EMPTY_CUSTOMER
   const tabsCustomer = getTabsConfigCustomer(hasAlreadyBeenClickedCustomer)
   const tabSelectedCustomer = getTabSelected(tabsCustomer, currentTabSelected)
+
+  console.log("currentTabSelected", currentTabSelected)
 
 
   return (

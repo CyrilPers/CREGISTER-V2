@@ -4,6 +4,7 @@ import { HiCursorClick } from 'react-icons/hi'
 import { theme } from '../../../../../theme';
 
 export default function HintMessage({ element }) {
+
   return (
     <HintMessageStyled>
       <span>Cliquer sur un {element} pour le modifier.</span>

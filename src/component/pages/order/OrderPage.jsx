@@ -21,7 +21,7 @@ export default function OrderPage() {
 
   const [isModeAdmin, setIsModeAdmin] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(false)
-  const [currentPage, setCurrentPage] = useState("invoice")
+  const [currentPage, setCurrentPage] = useState("customers")
   const [currentTabSelected, setCurrentTabSelected] = useState("add")
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
   const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT)
