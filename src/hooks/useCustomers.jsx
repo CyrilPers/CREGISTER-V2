@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { deepClone, removeItemFromArray } from "../utils/arrays"
-import { deleteCustomerFromApi } from '../API/customers.jsx'
+import { createCustomerFromApi, deleteCustomerFromApi, getCustomersFromApi } from '../API/customers.jsx'
 import { EMPTY_CUSTOMER } from '../enum/customer.jsx'
 
 
@@ -12,10 +12,16 @@ export const useCustomers = () => {
     const deleteCustomer = async (id) => {
         await deleteCustomerFromApi(id)
         const customersCopy = deepClone(customers)
-        const updatedCustomer = removeItemFromArray(id, customersCopy)
-        setCustomers(updatedCustomer)
+        const updatedCustomers = removeItemFromArray(id, customersCopy)
+        setCustomers(updatedCustomers)
     }
 
-    return { customers, setCustomers, deleteCustomer, selectedCustomer, setSelectedCustomer }
+    const addCustomer = async (newCustomer, userId) => {
+        await createCustomerFromApi(newCustomer, userId)
+        const updatedCustomers = await getCustomersFromApi(userId)
+        setCustomers(updatedCustomers)
+    }
+
+    return { customers, setCustomers, deleteCustomer, selectedCustomer, setSelectedCustomer, addCustomer }
 }
 

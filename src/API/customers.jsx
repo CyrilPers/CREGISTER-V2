@@ -27,3 +27,11 @@ export async function deleteCustomerFromApi(customerId) {
         console.log(error)
     }
 }
+
+export async function createCustomerFromApi(newCustomer, userId) {
+    try {
+        await axios.post(`${API_URL}create`, { name: newCustomer.name, surname: newCustomer.surname, phoneNumber: newCustomer.phoneNumber, user: { id: userId }, address: { id: newCustomer.address.id, city: newCustomer.address.city, street: newCustomer.address.city, streetNumber: newCustomer.address.streetNumber, country: newCustomer.address.country, zipCode: newCustomer.address.zipCode } });
+    } catch (error) {
+        console.log(error)
+    }
+}
