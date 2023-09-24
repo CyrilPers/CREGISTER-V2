@@ -10,6 +10,6 @@ export const EMPTY_CUSTOMER = Object.freeze({
         city: "",
         streetNumber: "",
         country: "",
-        postalCode: "",
+        zipCode: "",
     }
 })

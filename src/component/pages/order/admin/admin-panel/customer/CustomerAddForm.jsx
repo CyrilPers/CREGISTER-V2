@@ -18,14 +18,14 @@ export default function CustomerAddForm() {
             ...newCustomer,
             id
         }
-        addProduct(newCustomerToAdd, userId)
-        setNewProduct(EMPTY_CUSTOMER)
+        addCustomer(newCustomerToAdd, userId)
+        setNewCustomer(EMPTY_CUSTOMER)
         displaySuccessMessage()
     }
 
     const handleChange = (event) => {
         const { name, value } = event.target
-        setNewProduct({ ...newCustomer, [name]: value })
+        setNewCustomer({ ...newCustomer, [name]: value })
     }
 
 

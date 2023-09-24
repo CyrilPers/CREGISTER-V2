@@ -55,6 +55,7 @@ export default createContext({
     addCategory: () => { },
 
 
+    selectCustomer: () => { },
     setCustomers: () => { },
     customers: [],
     selectedCustomer: {},
@@ -66,6 +67,7 @@ export default createContext({
     newCustomer: {},
     setNewCustomer: () => { },
     addCustomer: () => { },
+    editCustomer: () => { },
 
 
     invoices: [],

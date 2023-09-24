@@ -1,7 +1,7 @@
 import React from 'react'
 import TextInput from '../../../../../reusable-ui/TextInput';
-import { getCategoryInputTextsConfig } from './categoryInputsConfig.jsx'
 import styled from 'styled-components';
+import { getCategoryInputTextsConfig } from '../inputsConfig';
 
 const CategoryFormInputs = React.forwardRef(({ onBlur, category, onChange }, ref) => {
     const categoryInputTexts = getCategoryInputTextsConfig(category)

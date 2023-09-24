@@ -18,8 +18,6 @@ export default function AdminPanel() {
   const tabsCustomer = getTabsConfigCustomer(hasAlreadyBeenClickedCustomer)
   const tabSelectedCustomer = getTabSelected(tabsCustomer, currentTabSelected)
 
-  console.log("currentTabSelected", currentTabSelected)
-
 
   return (
     <AdminPanelStyled>

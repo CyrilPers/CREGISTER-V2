@@ -12,7 +12,7 @@ import CustomerCard from './CustomerCard'
 
 export default function Customers() {
 
-    const { customers, setCustomers, userId, isModeAdmin, deleteCustomer, selectedCustomer, setSelectedCustomer } = useContext(AdminContext)
+    const { customers, setCustomers, userId, isModeAdmin, deleteCustomer, selectCustomer } = useContext(AdminContext)
 
     useEffect(() => {
         initialiseCustomers(userId, setCustomers)
@@ -30,8 +30,7 @@ export default function Customers() {
     }
 
     const handleClick = (id) => {
-        console.log("id selected customer", id)
-        isModeAdmin && setSelectedCustomer(id);
+        { isModeAdmin && selectCustomer(id) }
     }
 
 

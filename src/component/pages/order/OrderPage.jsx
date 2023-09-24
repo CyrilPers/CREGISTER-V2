@@ -32,7 +32,7 @@ export default function OrderPage() {
   const { deleteProductsFromCategory, products, addProduct, deleteProduct, editProduct, setProducts } = useProducts()
   const { basket, addBasketProduct, deleteBasketProduct, setBasket } = useBasket()
   const { categories, setCategories, selectedCategory, setSelectedCategory, newCategory, setNewCategory, deleteCategory, addCategory } = useCategories()
-  const { setCustomers, customers, deleteCustomer, selectedCustomer, setSelectedCustomer, addCustomer } = useCustomers()
+  const { setCustomers, customers, deleteCustomer, selectedCustomer, setSelectedCustomer, addCustomer, editCustomer } = useCustomers()
   const { username } = useParams()
   const [userId, setUserId] = useState();
   const [invoiceId, setInvoiceId] = useState("1")
@@ -45,6 +45,15 @@ export default function OrderPage() {
     titleEditRef.current.focus()
   }
 
+  const selectCustomer = async (customerIdSelected) => {
+    console.log("select")
+    const customerClickedOn = findInArray(customerIdSelected, customers)
+    await setIsCollapsed(false)
+    await setCurrentTabSelected("edit")
+    await setSelectedCustomer(customerClickedOn)
+    console.log("customerClickedOn", customerClickedOn)
+    titleEditRef.current.focus()
+  }
 
   useEffect(() => {
     initialiseUser(setUserId, username)
@@ -52,6 +61,8 @@ export default function OrderPage() {
 
 
   const adminContextValue = {
+    selectCustomer,
+    editCustomer,
     addCustomer,
     currentPage,
     setCurrentPage,

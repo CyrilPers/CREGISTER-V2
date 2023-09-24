@@ -35,3 +35,13 @@ export async function createCustomerFromApi(newCustomer, userId) {
         console.log(error)
     }
 }
+
+export async function updateCustomerFromApi(updatedCustomer) {
+    try {
+        await axios.put(`${API_URL}update/${updatedCustomer.id}`, { name: updatedCustomer.name, surname: updatedCustomer.surname, phoneNumber: updatedCustomer.phoneNumber, user: { id: updatedCustomer.userId }, address: { id: updatedCustomer.address.id, city: updatedCustomer.address.city, street: updatedCustomer.address.city, streetNumber: updatedCustomer.address.streetNumber, country: updatedCustomer.address.country, zipCode: updatedCustomer.address.zipCode } });
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
