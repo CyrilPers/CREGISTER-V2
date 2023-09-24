@@ -40,7 +40,7 @@ export default function Customers() {
 
     return (
         <TransitionGroup component={CustomersStyled} className='customers'>
-            {customers.map(({ id, name, surname, index, phoneNumber, address }) => {
+            {customers.slice().reverse().map(({ id, name, surname, index, phoneNumber, address }) => {
                 return (
                     <CSSTransition
                         classNames={"animation-card"}
@@ -75,6 +75,7 @@ const CustomersStyled = styled.div`
     overflow-y: scroll;
     scrollbar-color: transparent transparent;
     scrollbar-width: thin;
+    padding: 0 20px;
 
     &:hover {
         scrollbar-color: initial;

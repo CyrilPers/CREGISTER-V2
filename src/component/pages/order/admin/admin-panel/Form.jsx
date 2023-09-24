@@ -67,18 +67,20 @@ grid-template-rows: repeat(4, 1fr);
 column-gap: 8px;
 row-gap: 8px;
 height: 100%;
-width: 100%;
+width: 70%;
 .submit {
-    grid-area: 5 / 1 / 5 / 1;
+    grid-area: 5 / 1 / 5 / 5;
     display: flex;
-    align-items: center;
+    justify-content: start;
     position: relative;
     top: 20px;
     }
 
     @media(max-width: 767px) {
+        width: 100%;
         .submit {
             top: 0px;
+            font-size: ${theme.fonts.size.XXS};
             .submit-button {
                 font-size: ${theme.fonts.size.XXS};
                 height: 25px;

@@ -19,10 +19,10 @@ export default function CustomerCard({
     <CustomerCardStyled
       onClick={onClick}
     >
-      {showDeleteButton && <button className="delete-button" aria-label="delete-button" onClick={onDelete}>
-        <TiDelete className="delete-icon" />
-      </button>}
       <div className='cards'>
+        {showDeleteButton && <button className="delete-button" aria-label="delete-button" onClick={onDelete}>
+          <TiDelete className="delete-icon" />
+        </button>}
         <div className='name'>{name}</div>
         <div className='surname'>{surname}</div>
         <div className='phoneNumber'>{phoneNumber}</div>
@@ -58,6 +58,7 @@ const CustomerCardStyled = styled.div`
     font-size: ${theme.fonts.size.P3};
     overflow-x: hidden;
     text-overflow: ellipsis;
+    position: relative;
     }
 
     .delete-button {
