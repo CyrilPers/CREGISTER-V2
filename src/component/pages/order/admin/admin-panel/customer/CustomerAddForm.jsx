@@ -36,7 +36,7 @@ export default function CustomerAddForm() {
             onChange={handleChange}
             element={newCustomer}
             isSubmitted={isSubmitted}
-            picture={false}
+            isProduct={false}
         >
             <AddFormButton isSubmitted={isSubmitted} label={"Ajouter le client"} />
         </Form>

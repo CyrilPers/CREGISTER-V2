@@ -39,7 +39,7 @@ export default function AddForm() {
             onChange={handleChange}
             element={newProduct}
             isSubmitted={isSubmitted}
-            picture={true}
+            isProduct={true}
         >
             <AddFormButton isSubmitted={isSubmitted} label={"Ajouter le produit"} />
         </Form>
