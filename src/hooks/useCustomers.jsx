@@ -22,12 +22,12 @@ export const useCustomers = () => {
         setCustomers(updatedCustomers)
     }
 
-    const editCustomer = (customerBeingEdited) => {
+    const editCustomer = (customerBeingEdited, userId) => {
         const customersCopy = deepClone(customers)
         const indexOfCustomerToEdit = getIndex(customerBeingEdited.id, customers)
         customersCopy[indexOfCustomerToEdit] = customerBeingEdited
         setCustomers(customersCopy)
-        updateCustomerFromApi(customerBeingEdited)
+        updateCustomerFromApi(customerBeingEdited, userId)
     }
 
 

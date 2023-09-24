@@ -7,9 +7,10 @@ import EditInfoMessage from '../EditInfoMessage'
 
 export default function CustomerEditForm() {
 
-    const { selectedCustomer, setSelectedCustomer, editCustomer, titleEditRef } = useContext(AdminContext)
+    const { selectedCustomer, setSelectedCustomer, editCustomer, titleEditRef, userId } = useContext(AdminContext)
     const [valueOnFocus, setValueOnFocus] = useState()
     const { isSubmitted: isSaved, displaySuccessMessage } = useSuccessMessage()
+    console.log("userId", userId)
 
     const handleChange = (event) => {
         const { name, value } = event.target
@@ -22,7 +23,7 @@ export default function CustomerEditForm() {
             }
         }
         setSelectedCustomer(customerBeingEdited) // update formulaire
-        editCustomer(customerBeingEdited) // update menu state
+        editCustomer(customerBeingEdited, userId) // update menu state
     }
 
     const handleOnFocus = (event) => {

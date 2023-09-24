@@ -46,12 +46,10 @@ export default function OrderPage() {
   }
 
   const selectCustomer = async (customerIdSelected) => {
-    console.log("select")
     const customerClickedOn = findInArray(customerIdSelected, customers)
     await setIsCollapsed(false)
     await setCurrentTabSelected("edit")
     await setSelectedCustomer(customerClickedOn)
-    console.log("customerClickedOn", customerClickedOn)
     titleEditRef.current.focus()
   }
 
