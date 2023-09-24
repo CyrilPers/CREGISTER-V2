@@ -1,16 +1,18 @@
 import React from 'react'
 import { styled } from 'styled-components';
-import { getInputSelectConfig, getInputTextsConfig } from './inputsConfig';
+import { getCustomerInputTextsConfig, getInputSelectConfig, getInputTextsConfig } from './inputsConfig';
 import TextInput from '../../../../reusable-ui/TextInput.jsx'
 import SelectInput from '../../../../reusable-ui/SelectInput';
 
 
-const FormInputs = React.forwardRef(({ onFocus, onBlur, product, onChange }, ref) => {
-    const inputTexts = getInputTextsConfig(product)
-    const inputSelects = getInputSelectConfig(product)
+const FormInputs = React.forwardRef(({ onFocus, onBlur, element, onChange, currentPage }, ref) => {
+
+    const isProduct = currentPage === "invoice"
+    const inputTexts = isProduct ? getInputTextsConfig(element) : getCustomerInputTextsConfig(element)
+    const inputSelects = getInputSelectConfig(element)
 
     return (
-        <FormInputsStyled className='input-fields'>
+        <FormInputsStyled>
             {inputTexts.map((input) => (
                 <TextInput
                     {...input}
@@ -22,7 +24,7 @@ const FormInputs = React.forwardRef(({ onFocus, onBlur, product, onChange }, ref
                     onBlur={onBlur}
                 />
             ))}
-            {inputSelects.map((inputSelect) => (
+            {isProduct && inputSelects.map((inputSelect) => (
                 <SelectInput
                     key={inputSelect.id}
                     {...inputSelect}

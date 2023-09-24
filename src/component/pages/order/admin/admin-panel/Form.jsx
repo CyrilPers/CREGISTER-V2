@@ -5,12 +5,12 @@ import FormInputs from './FormInputs';
 
 
 
-const Form = React.forwardRef(({ onSubmit, onChange, product, children, onFocus, onBlur }, ref) => {
+const Form = React.forwardRef(({ onSubmit, onChange, element, children, onFocus, onBlur, picture, currentPage }, ref) => {
 
     return (
-        <FormStyled onSubmit={onSubmit}>
-            <ImagePreview imageSource={product.imageSource} title={product.title} handleChange={onChange} />
-            <FormInputs onFocus={onFocus} onBlur={onBlur} onChange={onChange} product={product} ref={ref} />
+        <FormStyled onSubmit={onSubmit} currentPage={currentPage}>
+            {picture && <ImagePreview imageSource={element.imageSource} title={element.title} handleChange={onChange} />}
+            <FormInputs onFocus={onFocus} onBlur={onBlur} onChange={onChange} element={element} ref={ref} />
             <div className='submit'>{children}</div>
         </FormStyled>
     )

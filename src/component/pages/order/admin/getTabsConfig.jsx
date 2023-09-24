@@ -4,6 +4,7 @@ import EditForm from './admin-panel/EditForm'
 import AddForm from './admin-panel/AddForm'
 import HintMessage from './admin-panel/HintMessage.jsx'
 import CategoryAddForm from './admin-panel/category/CategoryAddForm'
+import CustomerAddForm from './admin-panel/customer/CustomerAddForm.jsx'
 
 export const getTabsConfigProduct = (hasAlreadyBeenClicked) => [
   {
@@ -31,7 +32,7 @@ export const getTabsConfigCustomer = (hasAlreadyBeenClicked) => [
     index: "add",
     label: "Ajouter un client",
     Icon: <AiOutlinePlus />,
-    content: <AddForm />,
+    content: <CustomerAddForm />
   },
   {
     index: "edit",

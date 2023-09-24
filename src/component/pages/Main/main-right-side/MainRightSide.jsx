@@ -9,13 +9,13 @@ import Customers from './customers/customers.jsx';
 
 export default function MainRightSide() {
 
-    const { isModeAdmin, userId } = useContext(AdminContext)
+    const { isModeAdmin, userId, currentPage } = useContext(AdminContext)
 
 
     return (
         <MainRightSideStyled>
-            {/* {userId && <Menu />} */}
-            {userId && <Customers />}
+            {currentPage === "invoice" && userId && <Menu />}
+            {currentPage === "customers" && userId && <Customers />}
             {isModeAdmin && <Admin />}
         </MainRightSideStyled>
     )
