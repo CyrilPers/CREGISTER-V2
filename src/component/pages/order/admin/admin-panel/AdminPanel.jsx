@@ -14,6 +14,7 @@ export default function AdminPanel() {
   const tabsProducts = getTabsConfigProduct(hasAlreadyBeenClicked)
   const tabSelectedProduct = getTabSelected(tabsProducts, currentTabSelected)
 
+
   const hasAlreadyBeenClickedCustomer = selectedCustomer !== EMPTY_CUSTOMER
   const tabsCustomer = getTabsConfigCustomer(hasAlreadyBeenClickedCustomer)
   const tabSelectedCustomer = getTabSelected(tabsCustomer, currentTabSelected)

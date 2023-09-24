@@ -120,7 +120,6 @@ const MenuStyled = styled.div`
   &:hover {
         scrollbar-color: initial;
     }
-    /* ${menuAnimation} */
 
   .card-container {
     position: relative; 

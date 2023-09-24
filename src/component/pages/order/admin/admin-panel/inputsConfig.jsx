@@ -66,7 +66,7 @@ export const getCustomerInputTextsConfig = (customer) => [
     {
         id: "3",
         name: "streetNumber",
-        value: customer.address.streetNumber,
+        value: customer.address.streetNumber ? customer.address.streetNumber : "",
         placeholder: "N° de rue",
         Icon: <AiOutlineFieldNumber />,
         version: "minimalist",
@@ -75,7 +75,7 @@ export const getCustomerInputTextsConfig = (customer) => [
     {
         id: "4",
         name: "street",
-        value: customer.address.street,
+        value: customer.address.street ? customer.address.street : "",
         placeholder: "Rue",
         Icon: "",
         version: "minimalist",
@@ -84,7 +84,7 @@ export const getCustomerInputTextsConfig = (customer) => [
     {
         id: "5",
         name: "zipCode",
-        value: customer.address.zipCode,
+        value: customer.address.zipCode ? customer.address.zipCode : "",
         placeholder: "Code postal",
         Icon: "",
         version: "minimalist",
@@ -93,7 +93,7 @@ export const getCustomerInputTextsConfig = (customer) => [
     {
         id: "6",
         name: "city",
-        value: customer.address.city,
+        value: customer.address.city ? customer.address.city : "",
         placeholder: "Ville",
         Icon: <FaCity />,
         version: "minimalist",
@@ -102,7 +102,7 @@ export const getCustomerInputTextsConfig = (customer) => [
     {
         id: "7",
         name: "country",
-        value: customer.address.country,
+        value: customer.address.country ? customer.address.country : "",
         placeholder: "Pays",
         Icon: "",
         version: "minimalist",

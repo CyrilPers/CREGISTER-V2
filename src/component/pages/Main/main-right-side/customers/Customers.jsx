@@ -9,10 +9,11 @@ import { initialiseCustomers } from '../../../order/helpers/initialiseUserSessio
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { menuAnimation } from '../../../../../theme/animations';
 import CustomerCard from './CustomerCard'
+import { checkIfProductIsClicked } from '../../../order/menu/helper/helpers.jsx';
 
 export default function Customers() {
 
-    const { customers, setCustomers, userId, isModeAdmin, deleteCustomer, selectCustomer } = useContext(AdminContext)
+    const { customers, setCustomers, userId, isModeAdmin, deleteCustomer, selectCustomer, selectedCustomer } = useContext(AdminContext)
 
     useEffect(() => {
         initialiseCustomers(userId, setCustomers)
@@ -58,6 +59,7 @@ export default function Customers() {
                                 showDeleteButton={isModeAdmin}
                                 onDelete={(event) => handleDelete(event, id)}
                                 onClick={() => handleClick(id)}
+                                isSelected={checkIfProductIsClicked(id, selectedCustomer.id)}
                             />
                         </div>
                     </CSSTransition>
