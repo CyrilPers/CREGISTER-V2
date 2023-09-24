@@ -15,7 +15,11 @@ export default function CustomerEditForm() {
         const { name, value } = event.target
         const customerBeingEdited = {
             ...selectedCustomer,
-            [name]: value
+            [name]: value,
+            address: {
+                ...selectedCustomer.address,
+                [name]: value
+            }
         }
         setSelectedCustomer(customerBeingEdited) // update formulaire
         editCustomer(customerBeingEdited) // update menu state

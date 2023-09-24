@@ -25,7 +25,15 @@ export default function CustomerAddForm() {
 
     const handleChange = (event) => {
         const { name, value } = event.target
-        setNewCustomer({ ...newCustomer, [name]: value })
+        const newCustomerToAdd = {
+            ...newCustomer,
+            [name]: value,
+            address: {
+                ...newCustomer.address,
+                [name]: value
+            }
+        }
+        setNewCustomer(newCustomerToAdd)
     }
 
 
