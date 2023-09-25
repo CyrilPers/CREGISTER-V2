@@ -5,6 +5,7 @@ import { styled } from 'styled-components';
 import { theme } from '../../../../theme';
 import AdminContext from '../../../../context/AdminContext.jsx';
 import Customers from './customers/customers.jsx';
+import Invoices from './invoices/Invoices';
 
 
 export default function MainRightSide() {
@@ -16,6 +17,7 @@ export default function MainRightSide() {
         <MainRightSideStyled>
             {currentPage === "invoice" && userId && <Menu />}
             {currentPage === "customers" && userId && <Customers />}
+            {currentPage === "invoices" && userId && <Invoices />}
             {isModeAdmin && <Admin />}
         </MainRightSideStyled>
     )

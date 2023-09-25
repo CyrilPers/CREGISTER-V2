@@ -15,6 +15,16 @@ export const initialiseProducts = async (userId, setProducts) => {
   setProducts(productsExisting)
 }
 
+export const initialiseInvoices = async (userId, setInvoices) => {
+
+  const invoicesExisting = await getInvoicesFromApi(userId)
+  if (!invoicesExisting) {
+    setInvoices([])
+    return
+  }
+  setInvoices(invoicesExisting)
+}
+
 export const initialiseCustomers = async (userId, setCustomers) => {
   const customersExisting = await getCustomersFromApi(userId)
   if (!customersExisting) {
