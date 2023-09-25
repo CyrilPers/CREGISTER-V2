@@ -37,7 +37,6 @@ export default function CustomerEditForm() {
         }
     }
 
-    console.log("selected", selectedCustomer)
     return (
         <Form
             element={selectedCustomer}

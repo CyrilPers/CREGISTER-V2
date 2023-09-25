@@ -94,5 +94,10 @@ const ProfileStyled = styled.div`
     }
   }
   }
+
+  @media(min-width: 768px) and (max-width: 1388px) { 
+    padding: 0;
+    max-width: 100%
+    }
 `;
 

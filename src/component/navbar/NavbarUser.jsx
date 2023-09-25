@@ -54,7 +54,13 @@ const NavbarUserStyled = styled.div`
       max-width: 100%;
       align-items: center;
       justify-content: right;
-      margin-left: -50px;
+      margin-left: -40px;
     }
+
+    @media(min-width: 768px) and (max-width: 1388px) { 
+      max-width: 100%;
+      margin-left: 0px;
+    }
+
   
 `;
