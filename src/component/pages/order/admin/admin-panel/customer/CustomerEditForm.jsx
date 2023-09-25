@@ -10,7 +10,6 @@ export default function CustomerEditForm() {
     const { selectedCustomer, setSelectedCustomer, editCustomer, titleEditRef, userId } = useContext(AdminContext)
     const [valueOnFocus, setValueOnFocus] = useState()
     const { isSubmitted: isSaved, displaySuccessMessage } = useSuccessMessage()
-    console.log("userId", userId)
 
     const handleChange = (event) => {
         const { name, value } = event.target
@@ -38,6 +37,7 @@ export default function CustomerEditForm() {
         }
     }
 
+    console.log("selected", selectedCustomer)
     return (
         <Form
             element={selectedCustomer}

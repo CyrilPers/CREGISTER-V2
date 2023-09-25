@@ -16,6 +16,8 @@ export default function CustomerCard({
   isSelected,
 }) {
 
+  console.log("isselected",)
+
   return (
     <CustomerCardStyled
       onClick={onClick}
@@ -35,6 +37,7 @@ export default function CustomerCard({
 }
 
 const CustomerCardStyled = styled.div`
+
     box-sizing: border-box;
     border-radius: ${theme.borderRadius.round};
     width: auto;
@@ -94,24 +97,14 @@ const CustomerCardStyled = styled.div`
       :active{
         color: ${theme.colors.primary}
       }
-      ${({ $isSelected }) => $isSelected && selectedStyle}
     }
+    ${({ $isSelected }) => $isSelected && selectedStyle}
+
 `
 
 const selectedStyle = css`
-    box-sizing: border-box;
-    border-radius: ${theme.borderRadius.round};
-    width: auto;
-    height: 40px;
     background: ${theme.colors.primary};
-    display: flex;
-    box-shadow: -2px 2px 2px 0px rgb(0 0 0 / 20%);
-    margin: 0px;
-    margin-top: 10px;
-    margin-left: 10px;
-    padding: 0 5px;
-    position: relative;
-
+   
     &:hover {
       cursor: pointer;
       box-shadow: ${theme.shadows.orangeHighlight};
@@ -119,44 +112,5 @@ const selectedStyle = css`
     &:active {
     background-color: ${theme.colors.primary};
     color: ${theme.colors.dark};
-    }
-
-    .cards {
-    align-items: center;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    width: 100%;
-    padding-right: 20px;
-    padding-left: 20px;
-    font-family: ${theme.fonts.family.stylish};
-    font-weight: ${theme.fonts.weights.semiBold};
-    font-size: ${theme.fonts.size.P3};
-    overflow-x: hidden;
-    text-overflow: ellipsis;
-    position: relative;
-    }
-
-    .delete-button {
-      position: absolute;
-      align-items: center;
-      right: 0px;
-      cursor: pointer;
-      color: ${theme.colors.primary};
-      border: none;
-      background: none;
-      animation : ${fadeInFromRight} ${theme.animation.speed.slow};
-      z-index: 3;
-
-      .delete-icon{
-        width: 35px;
-        height: 35px;
-        cursor: pointer;
-      }
-      :hover {
-        color: ${theme.colors.red}
-      }
-      :active{
-        color: ${theme.colors.primary}
-      }
     }
 `
