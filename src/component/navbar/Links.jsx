@@ -29,7 +29,7 @@ const LinksStyled = styled.div`
     align-items: center;
     justify-content: center;
     font-family: ${theme.fonts.family.stylish};
-    font-size: ${theme.fonts.size.P3};
+    font-size: ${theme.fonts.size.P4};
     font-weight: ${theme.fonts.weights.semiBold};
     color: ${theme.colors.background_dark};
     .link {
@@ -37,7 +37,7 @@ const LinksStyled = styled.div`
         &:hover {
             cursor: pointer;
             color: ${theme.colors.primary};
-            font-size: ${theme.fonts.size.P4};
+            font-size: ${theme.fonts.size.P5};
             font-weight: ${theme.fonts.weights.bold};
         }
     }
