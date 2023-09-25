@@ -53,4 +53,31 @@ export default createContext({
     setNewCategory: () => { },
     deleteCategory: () => { },
     addCategory: () => { },
+
+
+    selectCustomer: () => { },
+    setCustomers: () => { },
+    customers: [],
+    selectedCustomer: {},
+    setSelectedCustomer: () => { },
+
+    customer: {},
+    setCustomer: () => { },
+    deleteCustomer: () => { },
+    newCustomer: {},
+    setNewCustomer: () => { },
+    addCustomer: () => { },
+    editCustomer: () => { },
+
+
+    invoices: [],
+    setInvoices: () => { },
+    editInvoice: () => { },
+
+    invoice: {},
+    setInvoice: () => { },
+
+
+    currentPage: {},
+    setCurrentPage: () => { },
 });

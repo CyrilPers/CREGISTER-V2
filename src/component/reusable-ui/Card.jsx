@@ -54,9 +54,10 @@ const CardStyled = styled.div`
   ${({ $isHoverable }) => $isHoverable && hoverableStyle}
 
   border-radius: ${theme.borderRadius.extraRound};
-  height: 330px;
+  
 
   .minimize {
+    height: 330px;
     background: ${theme.colors.background_dark};
     box-sizing: border-box;
     width: 240px;
@@ -121,6 +122,7 @@ const CardStyled = styled.div`
   }
   
   .card {
+    height: 330px;
     background: ${theme.colors.white};
     box-sizing: border-box;
     width: 240px;

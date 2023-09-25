@@ -11,6 +11,9 @@ import { useParams } from 'react-router-dom'
 import { initialiseUser } from './helpers/initialiseUserSession'
 import { findInArray } from '../../../utils/arrays'
 import { useCategories } from '../../../hooks/useCategories'
+import { useCustomers } from '../../../hooks/useCustomers'
+import { useInvoices } from '../../../hooks/useInvoices'
+import { EMPTY_CUSTOMER } from '../../../enum/customer'
 
 
 
@@ -19,13 +22,17 @@ export default function OrderPage() {
 
   const [isModeAdmin, setIsModeAdmin] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(false)
+  const [currentPage, setCurrentPage] = useState("customers")
   const [currentTabSelected, setCurrentTabSelected] = useState("add")
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
+  const [newCustomer, setNewCustomer] = useState(EMPTY_CUSTOMER)
   const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT)
   const titleEditRef = useRef()
-  const { products, addProduct, deleteProduct, editProduct, setProducts } = useProducts()
+  const { invoices, setInvoices, editInvoice, customer, setCustomer, invoice, setInvoice } = useInvoices()
+  const { deleteProductsFromCategory, products, addProduct, deleteProduct, editProduct, setProducts } = useProducts()
   const { basket, addBasketProduct, deleteBasketProduct, setBasket } = useBasket()
   const { categories, setCategories, selectedCategory, setSelectedCategory, newCategory, setNewCategory, deleteCategory, addCategory } = useCategories()
+  const { setCustomers, customers, deleteCustomer, selectedCustomer, setSelectedCustomer, addCustomer, editCustomer } = useCustomers()
   const { username } = useParams()
   const [userId, setUserId] = useState();
   const [invoiceId, setInvoiceId] = useState("1")
@@ -38,6 +45,13 @@ export default function OrderPage() {
     titleEditRef.current.focus()
   }
 
+  const selectCustomer = async (customerIdSelected) => {
+    const customerClickedOn = findInArray(customerIdSelected, customers)
+    await setIsCollapsed(false)
+    await setCurrentTabSelected("edit")
+    await setSelectedCustomer(customerClickedOn)
+    titleEditRef.current.focus()
+  }
 
   useEffect(() => {
     initialiseUser(setUserId, username)
@@ -45,6 +59,24 @@ export default function OrderPage() {
 
 
   const adminContextValue = {
+    selectCustomer,
+    editCustomer,
+    addCustomer,
+    currentPage,
+    setCurrentPage,
+    selectedCustomer,
+    setSelectedCustomer,
+    deleteCustomer,
+    invoice,
+    setInvoice,
+    invoices,
+    setInvoices,
+    editInvoice,
+    customer,
+    setCustomer,
+    setCustomers,
+    customers,
+    deleteProductsFromCategory,
     deleteCategory,
     newCategory,
     setNewCategory,
@@ -67,6 +99,8 @@ export default function OrderPage() {
     deleteProduct,
     newProduct,
     setNewProduct,
+    newCustomer,
+    setNewCustomer,
     selectedProduct,
     setSelectedProduct,
     editProduct,

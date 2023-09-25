@@ -1,27 +1,28 @@
 import React, { useContext, useEffect } from 'react'
 import { styled } from 'styled-components';
 import AdminContext from '../../../../context/AdminContext.jsx'
-import Total from './basket/Total.jsx';
 import BasketFooter from './basket/BasketFooter.jsx';
 import BasketProducts from './basket/BasketProducts.jsx';
 import EmptyBasket from './basket/EmptyBasket.jsx'
 import { theme } from '../../../../theme/index.jsx';
 import { isEmpty } from '../../../../utils/arrays.jsx';
-import { initialiseBasket } from '../../order/helpers/initialiseUserSession.jsx';
+import { initialiseBasket, initialiseCustomers, initialiseInvoice } from '../../order/helpers/initialiseUserSession.jsx';
+import InvoiceCustomer from './basket/InvoiceCustomer.jsx';
 
 export default function LeftColumn() {
-    const { basket, setBasket, invoiceId } = useContext(AdminContext)
+    const { editInvoice, basket, setBasket, invoiceId, invoice, customers, setCustomer, setCustomers, customer, setInvoice } = useContext(AdminContext)
 
     useEffect(() => {
         initialiseBasket(invoiceId, setBasket)
+        initialiseCustomers(invoiceId, setCustomers)
+        initialiseInvoice(invoiceId, setCustomer, setInvoice)
     }, [])
-
 
     return (
         <LeftColumnStyled>
-            <Total basket={basket} />
+            <InvoiceCustomer customers={customers} customer={customer} setCustomer={setCustomer} editInvoice={editInvoice} invoice={invoice} />
             {isEmpty(basket) ? <EmptyBasket isLoading={basket === undefined} /> : <BasketProducts />}
-            <BasketFooter />
+            <BasketFooter basket={basket} />
         </LeftColumnStyled>
     )
 }

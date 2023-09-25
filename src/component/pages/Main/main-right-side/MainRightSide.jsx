@@ -3,17 +3,19 @@ import Admin from '../../order/admin/Admin';
 import Menu from '../../order/menu/Menu.jsx'
 import { styled } from 'styled-components';
 import { theme } from '../../../../theme';
-import AdminContext from '../../../../context/AdminContext';
+import AdminContext from '../../../../context/AdminContext.jsx';
+import Customers from './customers/customers.jsx';
 
 
 export default function MainRightSide() {
 
-    const { isModeAdmin, userId } = useContext(AdminContext)
+    const { isModeAdmin, userId, currentPage } = useContext(AdminContext)
 
 
     return (
         <MainRightSideStyled>
-            {userId && <Menu />}
+            {currentPage === "invoice" && userId && <Menu />}
+            {currentPage === "customers" && userId && <Customers />}
             {isModeAdmin && <Admin />}
         </MainRightSideStyled>
     )

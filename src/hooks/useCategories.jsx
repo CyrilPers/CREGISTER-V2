@@ -10,6 +10,7 @@ export const useCategories = () => {
 
     const addCategory = async (newCategory, userId) => {
         await createCategoryFromApi(newCategory, userId)
+        // update avec API pour avoir l'ID de la BDD afin de pouvoir delete
         const updatedCategories = await getCategoriesFromApi(userId);
         setCategories(updatedCategories);
     }

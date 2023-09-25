@@ -8,7 +8,7 @@ import { findIdInArray } from '../../../../../utils/arrays';
 
 export default function AddForm() {
 
-    const { addProduct, setNewProduct, newProduct, userId, selectedCategory, categories } = useContext(AdminContext)
+    const { addProduct, setNewProduct, newProduct, userId, selectedCategory, categories, currentPage } = useContext(AdminContext)
     const { isSubmitted, displaySuccessMessage } = useSuccessMessage()
 
 
@@ -34,10 +34,12 @@ export default function AddForm() {
 
     return (
         <Form
+            currentPage={currentPage}
             onSubmit={handleSubmit}
             onChange={handleChange}
-            product={newProduct}
+            element={newProduct}
             isSubmitted={isSubmitted}
+            isProduct={true}
         >
             <AddFormButton isSubmitted={isSubmitted} label={"Ajouter le produit"} />
         </Form>

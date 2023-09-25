@@ -5,13 +5,12 @@ import AdminContext from '../../../../context/AdminContext.jsx';
 import { EMPTY_PRODUCT } from '../../../../enum/product';
 import { findInArray } from '../../../../utils/arrays';
 import Loader from './Loader';
-import { TransitionGroup } from 'react-transition-group';
 import { menuAnimation } from '../../../../theme/animations';
 import { initialiseCategories, initialiseProducts, resetCategoryAndProducts } from '../helpers/initialiseUserSession'
 import ProductsMap from './ProductsMap';
 import CategoriesMap from './CategoriesMap';
-import EmptyMenu from './EmptyMenu';
 import { isEmpty } from '../../../../utils/arrays.jsx'
+import Empty from '../../../reusable-ui/Empty';
 
 export default function Menu() {
 
@@ -19,6 +18,7 @@ export default function Menu() {
 
 
   const {
+    deleteProductsFromCategory,
     deleteCategory,
     setCategories,
     categories,
@@ -51,7 +51,7 @@ export default function Menu() {
 
   const handleAddButton = (idProductToAdd) => {
     const productToAdd = findInArray(idProductToAdd, products)
-    productToAdd.isAvailable ? addBasketProduct(productToAdd, invoiceId) : null;
+    productToAdd.isAvailable && addBasketProduct(productToAdd, invoiceId)
   }
 
   const handleClick = (id) => {
@@ -74,8 +74,7 @@ export default function Menu() {
   const handleCategoryDelete = async (event, categoryId) => {
     event.stopPropagation()
     await deleteCategory(categoryId)
-    // actualise products (les produits dans catégories sont supprimés autmatiquements dans la BDD)
-    initialiseProducts(userId, setProducts)
+    deleteProductsFromCategory(categoryId, products)
   }
 
   const handleReset = () => {
@@ -86,18 +85,21 @@ export default function Menu() {
 
   const displayedCategories = categories ? categories.filter((category) => category.name !== "MAIN") : null
 
+  const title = "Le menu est vide"
+  const description = "Cliquez ci-dessous pour le réinitialiser"
+  const label = "Générer de nouveaux produits"
 
   // Affichage 
   if (products === undefined || categories === undefined) return <Loader />
 
-  if (isEmpty(products) && isEmpty(displayedCategories)) return <EmptyMenu onClick={handleReset} />
+  if (isEmpty(products) && isEmpty(displayedCategories)) return <Empty onClick={handleReset} description={description} title={title} label={label} />
 
 
   return (
-    <TransitionGroup component={MenuStyled} className='menu'>
+    <MenuStyled>
       <CategoriesMap selectedCategory={selectedCategory} handleBackButtonClick={handleBackButtonClick} showBackButton={showBackButton} handleCategoryClick={handleCategoryClick} categories={categories} isModeAdmin={isModeAdmin} containerClassName="category" handleCategoryDelete={handleCategoryDelete} />
       <ProductsMap selectedCategory={selectedCategory} selectedProduct={selectedProduct} isModeAdmin={isModeAdmin} products={products} handleCardDelete={handleCardDelete} handleClick={handleClick} containerClassName={containerClassName} />
-    </TransitionGroup>
+    </MenuStyled>
   )
 }
 
@@ -114,11 +116,10 @@ const MenuStyled = styled.div`
   scrollbar-color: transparent transparent;
   scrollbar-width: thin;
 
+
   &:hover {
         scrollbar-color: initial;
     }
-
-  ${menuAnimation}
 
   .card-container {
     position: relative; 

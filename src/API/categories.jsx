@@ -20,7 +20,6 @@ export async function deleteCategoryFromApi(categoryId) {
 }
 
 export async function createCategoryFromApi(newCategory, userId) {
-    console.log("newcat", newCategory)
     try {
         await axios.post(`${API_URL}create`, { name: newCategory.name, user: { id: userId } });
     } catch (error) {

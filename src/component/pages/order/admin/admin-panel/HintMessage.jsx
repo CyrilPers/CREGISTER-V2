@@ -1,13 +1,14 @@
 import React from 'react'
 import { styled } from 'styled-components';
-import {HiCursorClick} from 'react-icons/hi'
+import { HiCursorClick } from 'react-icons/hi'
 import { theme } from '../../../../../theme';
 
-export default function HintMessage() {
+export default function HintMessage({ element }) {
+
   return (
     <HintMessageStyled>
-       <span>Cliquer sur un produit pour le modifier.</span>
-       <HiCursorClick />
+      <span>Cliquer sur un {element} pour le modifier.</span>
+      <HiCursorClick />
     </HintMessageStyled>
   )
 }
