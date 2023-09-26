@@ -76,9 +76,7 @@ const CustomerCardStyled = styled.div`
     }
   }
 
-
     .delete-button {
-      border: 3px solid red;
       position: absolute;
       align-items: center;
       right: 0px;
