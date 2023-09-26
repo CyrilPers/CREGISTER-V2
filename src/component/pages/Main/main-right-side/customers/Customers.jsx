@@ -1,14 +1,14 @@
-import { useContext, useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import AdminContext from '../../../../../context/AdminContext.jsx';
-import { theme } from '../../../../../theme';
-import Empty from '../../../../reusable-ui/Empty';
-import { isEmpty } from '../../../../../utils/arrays';
-import Loader from '../../../order/menu/Loader';
+import { theme } from '../../../../../theme/index.jsx';
+import Empty from '../../../../reusable-ui/Empty.jsx';
+import { isEmpty } from '../../../../../utils/arrays.jsx';
+import Loader from '../../../order/menu/Loader.jsx';
 import { styled } from 'styled-components';
-import { initialiseCustomers } from '../../../order/helpers/initialiseUserSession';
+import { initialiseCustomers } from '../../../order/helpers/initialiseUserSession.jsx';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { menuAnimation } from '../../../../../theme/animations';
-import CustomerCard from './CustomerCard'
+import { menuAnimation } from '../../../../../theme/animations.jsx';
+import CustomerCard from './CustomerCard.jsx'
 import { checkIfProductIsClicked } from '../../../order/menu/helper/helpers.jsx';
 
 export default function Customers() {

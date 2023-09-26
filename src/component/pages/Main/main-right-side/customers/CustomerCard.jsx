@@ -104,7 +104,10 @@ const CustomerCardStyled = styled.div`
 `
 
 const selectedStyle = css`
-    background: ${theme.colors.primary};
+
+    .cards {
+      background: ${theme.colors.primary};
+ 
    
     &:hover {
       cursor: pointer;
@@ -114,4 +117,5 @@ const selectedStyle = css`
     background-color: ${theme.colors.primary};
     color: ${theme.colors.dark};
     }
+  }
 `
