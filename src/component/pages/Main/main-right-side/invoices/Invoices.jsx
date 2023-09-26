@@ -31,6 +31,7 @@ export default function Invoices() {
         { !isModeAdmin && (await setInvoiceId(id), setCurrentPage("invoice")) }
     }
 
+    console.log("isModeAdmin", isModeAdmin)
 
     // Affichage : 
 
