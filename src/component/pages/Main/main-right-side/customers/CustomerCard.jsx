@@ -82,7 +82,7 @@ const CustomerCardStyled = styled.div`
       right: 0px;
       cursor: pointer;
       color: ${theme.colors.primary};
-      /* border: none; */
+      border: none;
       background: none;
       animation : ${fadeInFromRight} ${theme.animation.speed.slow};
       z-index: 3;

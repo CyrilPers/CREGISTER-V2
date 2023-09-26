@@ -38,3 +38,11 @@ export async function getInvoicesFromApi(userId) {
     }
 
 }
+
+export async function deleteInvoiceFromApi(invoiceId) {
+    try {
+        await axios.delete(`${API_URL}delete/${invoiceId}`);
+    } catch (error) {
+        console.log(error)
+    }
+}

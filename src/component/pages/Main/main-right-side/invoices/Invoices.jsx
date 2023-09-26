@@ -5,12 +5,12 @@ import AdminContext from '../../../../../context/AdminContext';
 import { getIndex, isEmpty } from '../../../../../utils/arrays';
 import Empty from '../../../../reusable-ui/Empty';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import CustomerCard from '../customers/CustomerCard';
+import CustomerCard from '../customers/CustomerCard.jsx';
 import { theme } from '../../../../../theme';
 import { menuAnimation } from '../../../../../theme/animations';
 
 export default function Invoices() {
-    const { invoices, userId, setInvoices, isModeAdmin, setInvoiceId, invoiceId, setCurrentPage } = useContext(AdminContext)
+    const { invoices, userId, setInvoices, isModeAdmin, setInvoiceId, setCurrentPage, deleteInvoice } = useContext(AdminContext)
 
     useEffect(() => {
         initialiseInvoices(userId, setInvoices)
