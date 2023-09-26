@@ -115,7 +115,8 @@ export default function OrderPage() {
     addCategory,
   }
 
-  console.log("currentpage", currentPage)
+  console.log("invoiceId", invoiceId)
+
   return (
     <AdminContext.Provider value={adminContextValue}>
       <OrderPageStyled>

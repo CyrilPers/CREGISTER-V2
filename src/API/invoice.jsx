@@ -31,7 +31,7 @@ export async function editInvoiceFromApi(invoice, newCustomer) {
 
 export async function getInvoicesFromApi(userId) {
     try {
-        const { data } = await axios.get(`${API_URL}id=${invoiceId}`);
+        const { data } = await axios.get(`${API_URL}user=${userId}`);
         return data;
     } catch (error) {
         console.log(error)
