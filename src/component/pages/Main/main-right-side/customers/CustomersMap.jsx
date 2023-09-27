@@ -1,6 +1,6 @@
 import React from 'react'
 import { CSSTransition } from 'react-transition-group'
-import CustomerCard from './CustomerCard.jsx'
+import CustomerCard from './CustomerCard'
 import { menuAnimation } from '../../../../../theme/animations'
 import styled from 'styled-components'
 

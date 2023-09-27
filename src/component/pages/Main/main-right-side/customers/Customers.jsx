@@ -8,7 +8,7 @@ import { styled } from 'styled-components';
 import { initialiseCustomers } from '../../../order/helpers/initialiseUserSession.jsx';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { menuAnimation } from '../../../../../theme/animations.jsx';
-import CustomerCard from './CustomerCard.jsx'
+import CustomerCard from './CustomerCard'
 import { checkIfProductIsClicked } from '../../../order/menu/helper/helpers.jsx';
 
 export default function Customers() {

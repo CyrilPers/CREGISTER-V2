@@ -32,6 +32,7 @@ export default function Menu() {
     addBasketProduct,
     selectProduct,
     invoiceId,
+    invoice,
     setSelectedCategory,
     selectedCategory,
   } = useContext(AdminContext)
@@ -51,7 +52,7 @@ export default function Menu() {
 
   const handleAddButton = (idProductToAdd) => {
     const productToAdd = findInArray(idProductToAdd, products)
-    productToAdd.isAvailable && addBasketProduct(productToAdd, invoiceId)
+    productToAdd.isAvailable && addBasketProduct(productToAdd, invoice)
   }
 
   const handleClick = (id) => {

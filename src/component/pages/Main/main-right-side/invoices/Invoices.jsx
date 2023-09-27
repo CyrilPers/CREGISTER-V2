@@ -5,7 +5,7 @@ import AdminContext from '../../../../../context/AdminContext';
 import { getIndex, isEmpty } from '../../../../../utils/arrays';
 import Empty from '../../../../reusable-ui/Empty';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import CustomerCard from '../customers/CustomerCard.jsx';
+import CustomerCard from '../customers/CustomerCard';
 import { theme } from '../../../../../theme';
 import { menuAnimation } from '../../../../../theme/animations';
 
