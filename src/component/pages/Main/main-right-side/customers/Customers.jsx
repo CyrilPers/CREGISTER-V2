@@ -77,7 +77,7 @@ const CustomersStyled = styled.div`
     overflow-y: scroll;
     scrollbar-color: transparent transparent;
     scrollbar-width: thin;
-    padding: 0 20px;
+    padding: 0 25px;
 
     &:hover {
         scrollbar-color: initial;

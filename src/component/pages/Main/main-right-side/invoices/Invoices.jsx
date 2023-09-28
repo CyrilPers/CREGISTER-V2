@@ -76,12 +76,12 @@ const InvoicesStyled = styled.div`
     overflow-y: scroll;
     scrollbar-color: transparent transparent;
     scrollbar-width: thin;
-    padding: 0 20px;
+    padding: 0 25px;
 
     &:hover {
         scrollbar-color: initial;
     }
-    .customer {
+    .invoice {
         &:hover{
             transform:scale(1.05);
             transition: ease-out ${theme.animation.speed.slow};

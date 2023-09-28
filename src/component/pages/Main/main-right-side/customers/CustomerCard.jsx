@@ -54,8 +54,6 @@ const CustomerCardStyled = styled.div`
     align-items: center;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    padding-right: 20px;
-    padding-left: 20px;
     font-family: ${theme.fonts.family.stylish};
     font-weight: ${theme.fonts.weights.semiBold};
     font-size: ${theme.fonts.size.P3};
@@ -63,7 +61,7 @@ const CustomerCardStyled = styled.div`
     text-overflow: ellipsis;
     position: relative;
     
-    padding: 0 5px;
+    padding: 0 20px;
     position: relative;
 
     &:hover {
