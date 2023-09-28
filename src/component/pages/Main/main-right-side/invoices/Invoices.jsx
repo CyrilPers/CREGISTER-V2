@@ -8,6 +8,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import CustomerCard from '../customers/CustomerCard';
 import { theme } from '../../../../../theme';
 import { menuAnimation } from '../../../../../theme/animations';
+import { formatDate } from '../../../../../utils/maths';
 
 export default function Invoices() {
     const { invoices, userId, setInvoices, isModeAdmin, setInvoiceId, setCurrentPage, deleteInvoice } = useContext(AdminContext)
@@ -31,13 +32,12 @@ export default function Invoices() {
         { !isModeAdmin && (await setInvoiceId(id), setCurrentPage("invoice")) }
     }
 
-    console.log("isModeAdmin", isModeAdmin)
-
     // Affichage : 
 
     if (invoices === undefined) return <Loader />
     if (isEmpty(invoices)) return <Empty description={description} title={title} label={label} onClick={handleReset} />
 
+    console.log("invoices", invoices)
 
     return (
         <TransitionGroup component={InvoicesStyled} classNames="invoices">
@@ -51,10 +51,11 @@ export default function Invoices() {
                         <div className='invoice'>
                             <CustomerCard
                                 key={id}
-                                name={getIndex(id, invoices)}
-                                surname={createdAt}
-                                address={customer ? customer : ""}
-                                phoneNumber={total}
+                                index={getIndex(id, invoices) + 1}
+                                surname={customer && customer.surname ? customer.surname : " "}
+                                name={customer && customer.name ? customer.name : " "}
+                                phoneNumber={total ? total + " €" : "0 €"}
+                                city={formatDate(createdAt)}
                                 showDeleteButton={isModeAdmin}
                                 onDelete={(event) => handleDelete(event, id)}
                                 onClick={() => handleClick(id)}

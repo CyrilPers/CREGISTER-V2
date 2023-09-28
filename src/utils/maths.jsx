@@ -12,6 +12,18 @@ export function formatPrice(priceToFormat) {
   return formattedPrice
 }
 
+export function formatDate(dateToFormat) {
+  const dateObj = new Date(dateToFormat);
+
+  const optionsDate = { day: 'numeric', month: 'numeric', year: 'numeric' };
+  const optionsTime = { hour: 'numeric', minute: 'numeric' };
+
+  const formattedDate = dateObj.toLocaleDateString('fr-FR', optionsDate);
+  const formattedTime = dateObj.toLocaleTimeString('fr-FR', optionsTime);
+
+  return `${formattedDate} - ${formattedTime}`;
+}
+
 export function replaceFrenchCommaWithDot(price) {
   if (typeof price === "string") price = parseFloat(price.replace(",", "."))
   return price

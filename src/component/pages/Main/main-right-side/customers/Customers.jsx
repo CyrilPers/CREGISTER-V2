@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import AdminContext from '../../../../../context/AdminContext.jsx';
 import { theme } from '../../../../../theme/index.jsx';
 import Empty from '../../../../reusable-ui/Empty.jsx';
-import { isEmpty } from '../../../../../utils/arrays.jsx';
+import { getIndex, isEmpty } from '../../../../../utils/arrays.jsx';
 import Loader from '../../../order/menu/Loader.jsx';
 import { styled } from 'styled-components';
 import { initialiseCustomers } from '../../../order/helpers/initialiseUserSession.jsx';
@@ -51,10 +51,10 @@ export default function Customers() {
                         <div className="customer">
                             <CustomerCard
                                 key={id}
-                                index={index}
+                                index={getIndex(id, customers) + 1}
                                 name={name}
                                 surname={surname}
-                                address={address}
+                                city={address.city}
                                 phoneNumber={phoneNumber}
                                 showDeleteButton={isModeAdmin}
                                 onDelete={(event) => handleDelete(event, id)}

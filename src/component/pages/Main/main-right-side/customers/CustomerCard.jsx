@@ -7,16 +7,15 @@ import { fadeInFromRight } from '../../../../../theme/animations';
 
 export default function CustomerCard({
   onClick,
-  address,
   name,
   surname,
   phoneNumber,
   showDeleteButton,
   onDelete,
+  city,
   isSelected,
+  index,
 }) {
-
-  console.log("showDeleteButton", showDeleteButton)
 
   return (
     <CustomerCardStyled
@@ -27,10 +26,11 @@ export default function CustomerCard({
         {showDeleteButton && <button className="delete-button" aria-label="delete-button" onClick={onDelete}>
           <TiDelete className="delete-icon" />
         </button>}
+        <div className='index'>{index}</div>
         <div className='name'>{name}</div>
         <div className='surname'>{surname}</div>
         <div className='phoneNumber'>{phoneNumber}</div>
-        <div className='city'>{address.city}</div>
+        <div className='city'>{city}</div>
       </div>
     </CustomerCardStyled>
   )
@@ -53,7 +53,7 @@ const CustomerCardStyled = styled.div`
     margin-left: 10px;
     align-items: center;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     padding-right: 20px;
     padding-left: 20px;
     font-family: ${theme.fonts.family.stylish};
