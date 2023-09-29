@@ -54,8 +54,8 @@ export default function Customers() {
                                 index={getIndex(id, customers) + 1}
                                 name={name}
                                 surname={surname}
-                                city={address.city}
-                                phoneNumber={phoneNumber}
+                                element2={address.city}
+                                element1={phoneNumber}
                                 showDeleteButton={isModeAdmin}
                                 onDelete={(event) => handleDelete(event, id)}
                                 onClick={() => handleClick(id)}

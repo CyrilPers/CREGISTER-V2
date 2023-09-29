@@ -54,8 +54,8 @@ export default function Invoices() {
                                 index={getIndex(id, invoices) + 1}
                                 surname={customer && customer.surname ? customer.surname : " "}
                                 name={customer && customer.name ? customer.name : " "}
-                                phoneNumber={total ? total + " €" : "0 €"}
-                                city={formatDate(createdAt)}
+                                element1={total ? total + " €" : "0 €"}
+                                element2={formatDate(createdAt)}
                                 showDeleteButton={isModeAdmin}
                                 onDelete={(event) => handleDelete(event, id)}
                                 onClick={() => handleClick(id)}

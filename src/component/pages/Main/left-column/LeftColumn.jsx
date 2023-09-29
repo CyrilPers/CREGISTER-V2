@@ -8,9 +8,10 @@ import { theme } from '../../../../theme/index.jsx';
 import { isEmpty } from '../../../../utils/arrays.jsx';
 import { initialiseBasket, initialiseCustomers, initialiseInvoice } from '../../order/helpers/initialiseUserSession.jsx';
 import InvoiceCustomer from './basket/InvoiceCustomer.jsx';
+import InvoicesLeft from './invoices/InvoicesLeft.jsx';
 
 export default function LeftColumn() {
-    const { editInvoice, basket, setBasket, invoiceId, invoice, customers, setCustomer, setCustomers, customer, setInvoice } = useContext(AdminContext)
+    const { editInvoice, basket, setBasket, invoiceId, invoice, customers, setCustomer, setCustomers, customer, setInvoice, currentPage } = useContext(AdminContext)
 
     useEffect(() => {
         initialiseBasket(invoiceId, setBasket)
@@ -18,11 +19,18 @@ export default function LeftColumn() {
         initialiseInvoice(invoiceId, setCustomer, setInvoice)
     }, [])
 
+    console.log("currentPage", currentPage)
     return (
         <LeftColumnStyled>
-            <InvoiceCustomer customers={customers} customer={customer} setCustomer={setCustomer} editInvoice={editInvoice} invoice={invoice} />
-            {isEmpty(basket) ? <EmptyBasket isLoading={basket === undefined} /> : <BasketProducts />}
-            <BasketFooter basket={basket} />
+            {/* INVOICE */}
+            {currentPage === "invoice" && <InvoiceCustomer customers={customers} customer={customer} setCustomer={setCustomer} editInvoice={editInvoice} invoice={invoice} />}
+            {currentPage === "invoice" && (isEmpty(basket) ? <EmptyBasket isLoading={basket === undefined} /> : <BasketProducts />)}
+            {currentPage === "invoice" && <BasketFooter basket={basket} />}
+
+            {/* INVOICES */}
+            {currentPage === "invoices" && <InvoicesLeft customers={customers} customer={customer} setCustomer={setCustomer} editInvoice={editInvoice} invoice={invoice} />}
+
+
         </LeftColumnStyled>
     )
 }

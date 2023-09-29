@@ -9,10 +9,10 @@ export default function CustomerCard({
   onClick,
   name,
   surname,
-  phoneNumber,
+  element1,
   showDeleteButton,
   onDelete,
-  city,
+  element2,
   isSelected,
   index,
 }) {
@@ -29,8 +29,8 @@ export default function CustomerCard({
         <div className='index'>{index}</div>
         <div className='name'>{name}</div>
         <div className='surname'>{surname}</div>
-        <div className='phoneNumber'>{phoneNumber}</div>
-        <div className='city'>{city}</div>
+        <div className='element1'>{element1}</div>
+        <div className='element2'>{element2}</div>
       </div>
     </CustomerCardStyled>
   )
