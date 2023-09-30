@@ -116,7 +116,6 @@ export default function OrderPage() {
     addCategory,
   }
 
-  console.log("invoiceId", invoiceId)
 
   return (
     <AdminContext.Provider value={adminContextValue}>

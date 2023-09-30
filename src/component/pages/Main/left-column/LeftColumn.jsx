@@ -9,9 +9,10 @@ import { isEmpty } from '../../../../utils/arrays.jsx';
 import { initialiseBasket, initialiseCustomers, initialiseInvoice } from '../../order/helpers/initialiseUserSession.jsx';
 import InvoiceCustomer from './basket/InvoiceCustomer.jsx';
 import InvoicesLeft from './invoices/InvoicesLeft.jsx';
+import CustomersLeft from './customers/CustomersLeft.jsx';
 
 export default function LeftColumn() {
-    const { editInvoice, basket, setBasket, invoiceId, invoice, customers, setCustomer, setCustomers, customer, setInvoice, currentPage } = useContext(AdminContext)
+    const { editInvoice, basket, setBasket, invoices, invoiceId, invoice, customers, setCustomer, setCustomers, customer, setInvoice, currentPage } = useContext(AdminContext)
 
     useEffect(() => {
         initialiseBasket(invoiceId, setBasket)
@@ -19,17 +20,18 @@ export default function LeftColumn() {
         initialiseInvoice(invoiceId, setCustomer, setInvoice)
     }, [])
 
-    console.log("currentPage", currentPage)
     return (
         <LeftColumnStyled>
             {/* INVOICE */}
-            {currentPage === "invoice" && <InvoiceCustomer customers={customers} customer={customer} setCustomer={setCustomer} editInvoice={editInvoice} invoice={invoice} />}
+            {currentPage === "invoice" && <InvoiceCustomer customer={customer} setCustomer={setCustomer} editInvoice={editInvoice} invoice={invoice} />}
             {currentPage === "invoice" && (isEmpty(basket) ? <EmptyBasket isLoading={basket === undefined} /> : <BasketProducts />)}
             {currentPage === "invoice" && <BasketFooter basket={basket} />}
 
             {/* INVOICES */}
-            {currentPage === "invoices" && <InvoicesLeft customers={customers} customer={customer} setCustomer={setCustomer} editInvoice={editInvoice} invoice={invoice} />}
+            {currentPage === "invoices" && <InvoicesLeft invoices={invoices} />}
 
+            {/* CUSTOMERS */}
+            {currentPage === "customers" && <CustomersLeft customers={customers} />}
 
         </LeftColumnStyled>
     )

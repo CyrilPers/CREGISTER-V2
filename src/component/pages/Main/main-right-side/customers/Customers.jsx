@@ -8,8 +8,8 @@ import { styled } from 'styled-components';
 import { initialiseCustomers } from '../../../order/helpers/initialiseUserSession.jsx';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { menuAnimation } from '../../../../../theme/animations.jsx';
-import CustomerCard from './CustomerCard'
 import { checkIfProductIsClicked } from '../../../order/menu/helper/helpers.jsx';
+import HorizontalCard from '../../../../reusable-ui/HorizontalCard.jsx';
 
 export default function Customers() {
 
@@ -49,7 +49,7 @@ export default function Customers() {
                         timeout={300}
                     >
                         <div className="customer">
-                            <CustomerCard
+                            <HorizontalCard
                                 key={id}
                                 index={getIndex(id, customers) + 1}
                                 name={name}

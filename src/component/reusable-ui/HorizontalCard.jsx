@@ -1,11 +1,11 @@
 import React from 'react'
 import styled, { css } from 'styled-components';
-import { theme } from '../../../../../theme';
+import { theme } from '../../theme';
 import { TiDelete } from "react-icons/ti"
-import { fadeInFromRight } from '../../../../../theme/animations';
+import { fadeInFromRight } from '../../theme/animations';
 
 
-export default function CustomerCard({
+export default function HorizontalCard({
   onClick,
   name,
   surname,
@@ -18,7 +18,7 @@ export default function CustomerCard({
 }) {
 
   return (
-    <CustomerCardStyled
+    <HorizontalCardStyled
       onClick={onClick}
       $isSelected={isSelected}
     >
@@ -32,11 +32,11 @@ export default function CustomerCard({
         <div className='element1'>{element1}</div>
         <div className='element2'>{element2}</div>
       </div>
-    </CustomerCardStyled>
+    </HorizontalCardStyled>
   )
 }
 
-const CustomerCardStyled = styled.div`
+const HorizontalCardStyled = styled.div`
     
 
     .cards {

@@ -5,10 +5,11 @@ import AdminContext from '../../../../../context/AdminContext';
 import { getIndex, isEmpty } from '../../../../../utils/arrays';
 import Empty from '../../../../reusable-ui/Empty';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import CustomerCard from '../customers/CustomerCard';
 import { theme } from '../../../../../theme';
 import { menuAnimation } from '../../../../../theme/animations';
 import { formatDate } from '../../../../../utils/maths';
+import HorizontalCard from '../../../../reusable-ui/HorizontalCard';
+import Button from '../../../../reusable-ui/Button';
 
 export default function Invoices() {
     const { invoices, userId, setInvoices, isModeAdmin, setInvoiceId, setCurrentPage, deleteInvoice, currentPage } = useContext(AdminContext)
@@ -20,7 +21,6 @@ export default function Invoices() {
     const title = "La liste de clients est vide"
     const description = "Cliquez ci-dessous pour la réinitialiser"
     const label = "Générer de nouveaux clients"
-
     const handleReset = () => { } // A CHANGER
 
     const handleDelete = (event, id) => {
@@ -32,18 +32,22 @@ export default function Invoices() {
         { !isModeAdmin && (await setInvoiceId(id), setCurrentPage("invoice")) }
     }
 
-    console.log("invoices", invoices)
+    const handleCreateOrder = () => {
+
+    }
 
     // Affichage : 
 
     if (invoices === undefined) return <Loader />
     if (isEmpty(invoices)) return <Empty description={description} title={title} label={label} onClick={handleReset} />
 
-    console.log("invoices", invoices)
-    console.log("currentPage", currentPage)
 
     return (
         <TransitionGroup component={InvoicesStyled} classNames="invoices">
+            <div className='create-invoice'>
+                <Button onClick={handleCreateOrder} label="Créer une commande" />
+
+            </div>
             {invoices.slice().reverse().map(({ id, createdAt, total, customer }) => {
                 return (
                     <CSSTransition
@@ -51,8 +55,8 @@ export default function Invoices() {
                         key={id}
                         timeout={300}
                     >
-                        <div className='invoice'>
-                            <CustomerCard
+                        <div className='customer'>
+                            <HorizontalCard
                                 key={id}
                                 index={getIndex(id, invoices) + 1}
                                 surname={customer && customer.surname ? customer.surname : " "}
@@ -80,6 +84,14 @@ const InvoicesStyled = styled.div`
     scrollbar-color: transparent transparent;
     scrollbar-width: thin;
     padding: 0 25px;
+    align-items: center;
+
+
+    .create-invoice{
+        width: 75%;
+        height: 40px;
+        margin: 15px 0;
+    }
 
     &:hover {
         scrollbar-color: initial;

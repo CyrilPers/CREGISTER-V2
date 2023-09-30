@@ -1,23 +1,28 @@
 import React from 'react'
 import styled from 'styled-components';
 import { theme } from '../../../../../theme';
-import { FaVrCardboard } from 'react-icons/fa';
+import { isEmpty } from '../../../../../utils/arrays.jsx';
 import { getIndex } from '../../../../../utils/arrays';
 
 export default function BestInvoicesMap({ invoices }) {
     const invoicesSorted = invoices.sort((a, b) => b.total - a.total);
     return (
         <BestInvoicesMapStyled>
-            {
-                invoices.map(({ id, customer, total, index }) => (
+            <div className='titles'>
+                <span>#</span>
+                <span>Commande</span>
+                <span>Nom</span>
+                <span>Total</span>
+            </div>
+            {!isEmpty(invoices) &&
+                invoices.slice(0, 5).map(({ id, customer, total }) => (
                     <div key={id} className='invoice'>
-                        <span>{getIndex(id, invoicesSorted) + 1} -</span>
-                        <span>Commande: {id}</span>
-                        <span>Nom :{customer ? customer.name : "Na"}</span>
-                        <span>Total :{total} €</span>
+                        <span>{getIndex(id, invoicesSorted) + 1}</span>
+                        <span>{id}</span>
+                        <span>{customer ? customer.name : "Na"}</span>
+                        <span>{total} €</span>
                     </div>
-                ))
-            }
+                ))}
         </BestInvoicesMapStyled>
     )
 };
@@ -28,18 +33,24 @@ const BestInvoicesMapStyled = styled.div`
     flex-direction: column;
     align-items: center;
     width: 100%;
+    font-size: ${theme.fonts.size.P3};
+    font-family: ${theme.fonts.family.stylish};
+    span {
+    padding: 0 10px;
+    }
+
+    .titles {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 5px;
+    padding: 0 10px;
+    }
 
     .invoice{
         width: 100%;
         background-color: ${theme.colors.greyLight};
-        display: flex;
-        flex-direction: row;
-        justify-content: start;
-        span{
-            font-size: ${theme.fonts.size.P3};
-            font-family: ${theme.fonts.family.stylish};
-            padding: 0 10px;
-        }
-    }
-  
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        margin: 5px 0px;}
 `;

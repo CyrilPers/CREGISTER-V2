@@ -16,7 +16,6 @@ export const initialiseProducts = async (userId, setProducts) => {
 }
 
 export const initialiseInvoices = async (userId, setInvoices) => {
-  console.log("initialiseInvoices")
 
   const invoicesExisting = await getInvoicesFromApi(userId)
   if (!invoicesExisting) {

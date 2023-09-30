@@ -1,12 +1,9 @@
-import React, { useContext } from 'react'
-import AdminContext from '../../../../../context/AdminContext';
+import React from 'react'
 import styled from 'styled-components';
-import { theme } from '../../../../../theme';
 import LeftHead from '../../../../reusable-ui/LeftHead';
 import BestInvoicesMap from './BestInvoicesMap';
 
-export default function InvoicesLeft() {
-    const { invoices } = useContext(AdminContext)
+export default function InvoicesLeft({ invoices }) {
 
 
 
