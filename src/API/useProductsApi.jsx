@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 export const useProductsApi = () => {
 
-    const [newProductApi, setNewProductApi] = useState("test")
+    const [newProductApi, setNewProductApi] = useState()
 
     const API_URL = 'http://localhost:3001/cregister/api/product/'
 

@@ -40,11 +40,10 @@ const BestInvoicesMapStyled = styled.div`
     }
 
     .titles {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    margin: 5px 5px;
-    padding: 0 10px;
+    margin: 5px 0px;
     }
 
     .invoice{
