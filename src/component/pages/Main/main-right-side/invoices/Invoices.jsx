@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from 'react'
 import styled from 'styled-components';
-import { initialiseInvoices } from '../../../order/helpers/initialiseUserSession';
 import AdminContext from '../../../../../context/AdminContext';
 import { getIndex, isEmpty } from '../../../../../utils/arrays';
 import Empty from '../../../../reusable-ui/Empty';
@@ -12,7 +11,7 @@ import HorizontalCard from '../../../../reusable-ui/HorizontalCard';
 import Button from '../../../../reusable-ui/Button';
 
 export default function Invoices() {
-    const { invoices, userId, setInvoices, isModeAdmin, setInvoiceId, setCurrentPage, deleteInvoice, currentPage } = useContext(AdminContext)
+    const { initialiseInvoices, invoices, userId, setInvoices, isModeAdmin, setInvoiceId, setCurrentPage, deleteInvoice, currentPage } = useContext(AdminContext)
 
     useEffect(() => {
         initialiseInvoices(userId, setInvoices)

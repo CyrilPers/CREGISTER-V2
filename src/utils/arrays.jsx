@@ -28,3 +28,7 @@ export const findIdInArray = (name, array) => {
     const foundItem = array.find(item => item.name === name);
     return foundItem.id
 }
+
+export const addItemToArray = (newItem, array) => {
+    return [...array, newItem];
+}

@@ -7,12 +7,13 @@ import { BsPersonCircle } from "react-icons/bs"
 import TextInput from '../../reusable-ui/TextInput';
 import Button from '../../reusable-ui/Button';
 import { fadeInFromBottomLog } from '../../../theme/animations';
-import { authentificateUser } from '../order/helpers/initialiseUserSession'
+import { initialiseUserSession } from '../order/helpers/initialiseUserSession';
 
 
 
 export default function LoginForm() {
 
+  const { authentificateUser } = initialiseUserSession()
 
   const [username, setUsername] = useState("")
   const navigate = useNavigate()

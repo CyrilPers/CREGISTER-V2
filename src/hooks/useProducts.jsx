@@ -1,24 +1,25 @@
 import { useState } from "react"
-import { deepClone, getIndex, removeItemFromArray, removeItemsCategoryFromArray } from "../utils/arrays"
-import { createProductFromApi, deleteProductFromApi, getProductsFromApi, updateProductFromApi } from "../API/products"
+import { addItemToArray, deepClone, getIndex, removeItemFromArray, removeItemsCategoryFromArray } from "../utils/arrays"
+import { useProductsApi } from "../API/useProductsApi"
 
 export const useProducts = () => {
 
     const [products, setProducts] = useState()
+    const { createProductFromApi, deleteProductFromApi, updateProductFromApi, newProductApi } = useProductsApi()
 
 
     const addProduct = async (newProduct, userId, categoryId) => {
-        await createProductFromApi(newProduct, userId, categoryId)
-        // update avec API pour avoir l'ID de la BDD afin de pouvoir delete
-        const updatedProducts = await getProductsFromApi(userId);
+        const newProductApi = await createProductFromApi(newProduct, userId, categoryId)
+        const productsCopy = deepClone(products)
+        const updatedProducts = addItemToArray(newProductApi, productsCopy);
         setProducts(updatedProducts);
     }
 
     const deleteProduct = async (productId) => {
         await deleteProductFromApi(productId)
         const productsCopy = deepClone(products)
-        const productsUpdated = removeItemFromArray(productId, productsCopy)
-        setProducts(productsUpdated)
+        const updatedProducts = removeItemFromArray(productId, productsCopy)
+        setProducts(updatedProducts)
     }
 
     const editProduct = (productBeingEdited) => {
@@ -31,8 +32,8 @@ export const useProducts = () => {
 
     const deleteProductsFromCategory = (categoryId) => {
         const productsCopy = deepClone(products)
-        const productsUpdated = removeItemsCategoryFromArray(categoryId, productsCopy)
-        setProducts(productsUpdated)
+        const updatedProducts = removeItemsCategoryFromArray(categoryId, productsCopy)
+        setProducts(updatedProducts)
     }
 
 
