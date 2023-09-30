@@ -1,7 +1,7 @@
 import React from 'react'
 import { styled } from 'styled-components';
 import { theme } from '../../../theme/index';
-import LeftColumn from '../Main/left-column/LeftColumn';
+import LeftColumn from '../main/left-column/LeftColumn';
 import MainRightSide from '../Main/main-right-side/MainRightSide';
 
 

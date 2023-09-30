@@ -1,25 +1,24 @@
 import React from 'react'
 import styled, { css } from 'styled-components';
-import { theme } from '../../../../../theme';
+import { theme } from '../../theme';
 import { TiDelete } from "react-icons/ti"
-import { fadeInFromRight } from '../../../../../theme/animations';
+import { fadeInFromRight } from '../../theme/animations';
 
 
-export default function CustomerCard({
+export default function HorizontalCard({
   onClick,
-  address,
   name,
   surname,
-  phoneNumber,
+  element1,
   showDeleteButton,
   onDelete,
+  element2,
   isSelected,
+  index,
 }) {
 
-  console.log("isselected",)
-
   return (
-    <CustomerCardStyled
+    <HorizontalCardStyled
       onClick={onClick}
       $isSelected={isSelected}
     >
@@ -27,28 +26,41 @@ export default function CustomerCard({
         {showDeleteButton && <button className="delete-button" aria-label="delete-button" onClick={onDelete}>
           <TiDelete className="delete-icon" />
         </button>}
+        <div className='index'>{index}</div>
         <div className='name'>{name}</div>
         <div className='surname'>{surname}</div>
-        <div className='phoneNumber'>{phoneNumber}</div>
-        <div className='city'>{address.city}</div>
+        <div className='element1'>{element1}</div>
+        <div className='element2'>{element2}</div>
       </div>
-    </CustomerCardStyled>
+    </HorizontalCardStyled>
   )
 }
 
-const CustomerCardStyled = styled.div`
+const HorizontalCardStyled = styled.div`
+    
 
-    box-sizing: border-box;
+    .cards {
+    overflow : hidden;
     border-radius: ${theme.borderRadius.round};
-    width: auto;
-    height: 40px;
     background: ${theme.colors.greyLight};
+    height: 40px;
+    box-sizing: border-box;
+    width: auto;
     display: flex;
     box-shadow: -2px 2px 2px 0px rgb(0 0 0 / 20%);
     margin: 0px;
     margin-top: 10px;
-    margin-left: 10px;
-    padding: 0 5px;
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    font-family: ${theme.fonts.family.stylish};
+    font-weight: ${theme.fonts.weights.semiBold};
+    font-size: ${theme.fonts.size.P3};
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    position: relative;
+    
+    padding: 0 20px;
     position: relative;
 
     &:hover {
@@ -59,28 +71,14 @@ const CustomerCardStyled = styled.div`
     background-color: ${theme.colors.primary};
     color: ${theme.colors.dark};
     }
-
-    .cards {
-    align-items: center;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    width: 100%;
-    padding-right: 20px;
-    padding-left: 20px;
-    font-family: ${theme.fonts.family.stylish};
-    font-weight: ${theme.fonts.weights.semiBold};
-    font-size: ${theme.fonts.size.P3};
-    overflow-x: hidden;
-    text-overflow: ellipsis;
-    position: relative;
-    }
+  }
 
     .delete-button {
       position: absolute;
       align-items: center;
       right: 0px;
       cursor: pointer;
-      color: ${theme.colors.greyLight};
+      color: ${theme.colors.primary};
       border: none;
       background: none;
       animation : ${fadeInFromRight} ${theme.animation.speed.slow};
@@ -103,7 +101,10 @@ const CustomerCardStyled = styled.div`
 `
 
 const selectedStyle = css`
-    background: ${theme.colors.primary};
+
+    .cards {
+      background: ${theme.colors.primary};
+ 
    
     &:hover {
       cursor: pointer;
@@ -113,4 +114,5 @@ const selectedStyle = css`
     background-color: ${theme.colors.primary};
     color: ${theme.colors.dark};
     }
+  }
 `

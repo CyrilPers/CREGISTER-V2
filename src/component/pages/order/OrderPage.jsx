@@ -22,13 +22,13 @@ export default function OrderPage() {
 
   const [isModeAdmin, setIsModeAdmin] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(false)
-  const [currentPage, setCurrentPage] = useState("customers")
+  const [currentPage, setCurrentPage] = useState("invoices")
   const [currentTabSelected, setCurrentTabSelected] = useState("add")
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
   const [newCustomer, setNewCustomer] = useState(EMPTY_CUSTOMER)
   const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT)
   const titleEditRef = useRef()
-  const { invoices, setInvoices, editInvoice, customer, setCustomer, invoice, setInvoice } = useInvoices()
+  const { invoices, setInvoices, editInvoice, customer, setCustomer, invoice, setInvoice, deleteInvoice } = useInvoices()
   const { deleteProductsFromCategory, products, addProduct, deleteProduct, editProduct, setProducts } = useProducts()
   const { basket, addBasketProduct, deleteBasketProduct, setBasket } = useBasket()
   const { categories, setCategories, selectedCategory, setSelectedCategory, newCategory, setNewCategory, deleteCategory, addCategory } = useCategories()
@@ -59,6 +59,7 @@ export default function OrderPage() {
 
 
   const adminContextValue = {
+    deleteInvoice,
     selectCustomer,
     editCustomer,
     addCustomer,
@@ -115,7 +116,7 @@ export default function OrderPage() {
     addCategory,
   }
 
-  console.log("currentpage", currentPage)
+
   return (
     <AdminContext.Provider value={adminContextValue}>
       <OrderPageStyled>

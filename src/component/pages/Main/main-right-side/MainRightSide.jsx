@@ -4,7 +4,8 @@ import Menu from '../../order/menu/Menu.jsx'
 import { styled } from 'styled-components';
 import { theme } from '../../../../theme';
 import AdminContext from '../../../../context/AdminContext.jsx';
-import Customers from './customers/customers.jsx';
+import Invoices from './invoices/Invoices.jsx';
+import Customers from './customers/Customers';
 
 
 export default function MainRightSide() {
@@ -14,9 +15,12 @@ export default function MainRightSide() {
 
     return (
         <MainRightSideStyled>
+            {/* CREER FICHIER CONFIG POUR TRAITER LE CONTENU A AFFICHER currentPage.content COMME POUR ADMIN */}
             {currentPage === "invoice" && userId && <Menu />}
             {currentPage === "customers" && userId && <Customers />}
-            {isModeAdmin && <Admin />}
+            {currentPage === "invoices" && userId && <Invoices />}
+
+            {isModeAdmin && currentPage !== "invoices" && <Admin />}
         </MainRightSideStyled>
     )
 }

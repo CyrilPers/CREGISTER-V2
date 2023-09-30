@@ -27,3 +27,22 @@ export async function editInvoiceFromApi(invoice, newCustomer) {
         console.log(error)
     }
 }
+
+
+export async function getInvoicesFromApi(userId) {
+    try {
+        const { data } = await axios.get(`${API_URL}user=${userId}`);
+        return data;
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+export async function deleteInvoiceFromApi(invoiceId) {
+    try {
+        await axios.delete(`${API_URL}delete/${invoiceId}`);
+    } catch (error) {
+        console.log(error)
+    }
+}

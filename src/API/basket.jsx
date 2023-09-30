@@ -28,9 +28,9 @@ export async function deleteBasketProductFromApi(productId) {
     }
 }
 
-export async function createBasketProductFromApi(newProduct, invoiceId) {
+export async function createBasketProductFromApi(newProduct, invoice) {
     try {
-        await axios.post(`${API_URL}create`, { productName: newProduct.title, productPrice: newProduct.price, productId: newProduct.id, imageSource: newProduct.imageSource, quantity: newProduct.quantity, invoice: { id: invoiceId } });
+        await axios.post(`${API_URL}create`, { productName: newProduct.title, productPrice: newProduct.price, productId: newProduct.id, imageSource: newProduct.imageSource, quantity: newProduct.quantity, invoice: invoice });
     } catch (error) {
         console.log(error)
     }
