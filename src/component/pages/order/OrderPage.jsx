@@ -129,7 +129,6 @@ export default function OrderPage() {
     addCategory,
   }
 
-  console.log("userid", userId)
   return (
     <AdminContext.Provider value={adminContextValue}>
       <OrderPageStyled>

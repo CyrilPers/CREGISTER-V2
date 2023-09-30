@@ -10,6 +10,7 @@ export const useProducts = () => {
 
     const addProduct = async (newProduct, userId, categoryId) => {
         await createProductFromApi(newProduct, userId, categoryId)
+        console.log("newProductApi", newProductApi)
         const productsCopy = deepClone(products)
         const updatedProducts = addItemToArray(newProductApi, productsCopy);
         setProducts(updatedProducts);
