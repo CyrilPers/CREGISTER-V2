@@ -8,7 +8,7 @@ import { EMPTY_PRODUCT } from '../../../enum/product.jsx'
 import { useProducts } from '../../../hooks/useProducts'
 import { useBasket } from '../../../hooks/useBasket'
 import { useParams } from 'react-router-dom'
-import { initialiseUserSession } from './helpers/initialiseUserSession'
+import { initialiseBasket, initialiseInvoice, initialiseCategories, initialiseCustomers, initialiseInvoices, initialiseProducts, initialiseUser } from './helpers/initialiseUserSession'
 import { findInArray } from '../../../utils/arrays'
 import { useCategories } from '../../../hooks/useCategories'
 import { useCustomers } from '../../../hooks/useCustomers'
@@ -30,7 +30,6 @@ export default function OrderPage() {
   const { invoices, setInvoices, editInvoice, customer, setCustomer, invoice, setInvoice, deleteInvoice } = useInvoices()
   const { deleteProductsFromCategory, products, addProduct, deleteProduct, editProduct, setProducts } = useProducts()
   const { basket, addBasketProduct, deleteBasketProduct, setBasket } = useBasket()
-  const { initialiseProducts, initialiseInvoices, initialiseCustomers, initialiseCategories, initialiseBasket, initialiseInvoice, initialiseUser, authentificateUser, initialiseNewUserFromApi, resetCategoryAndProducts } = initialiseUserSession()
   const { categories, setCategories, selectedCategory, setSelectedCategory, newCategory, setNewCategory, deleteCategory, addCategory } = useCategories()
   const { setCustomers, customers, deleteCustomer, selectedCustomer, setSelectedCustomer, addCustomer, editCustomer } = useCustomers()
   const { username } = useParams()
@@ -64,14 +63,9 @@ export default function OrderPage() {
 
 
   const adminContextValue = {
-    initialiseProducts,
-    initialiseInvoices,
-    initialiseCustomers,
-    initialiseCategories,
     initialiseBasket,
     initialiseInvoice,
-    initialiseNewUserFromApi,
-    resetCategoryAndProducts,
+    initialiseCustomers,
     deleteInvoice,
     selectCustomer,
     editCustomer,

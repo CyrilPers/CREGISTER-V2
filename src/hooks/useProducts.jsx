@@ -1,17 +1,18 @@
 import { useState } from "react"
 import { addItemToArray, deepClone, getIndex, removeItemFromArray, removeItemsCategoryFromArray } from "../utils/arrays"
-import { useProductsApi } from "../API/useProductsApi"
+import { createProductFromApi, deleteProductFromApi, updateProductFromApi } from "../API/product"
 
 export const useProducts = () => {
 
     const [products, setProducts] = useState()
-    const { createProductFromApi, deleteProductFromApi, updateProductFromApi, newProductApi } = useProductsApi()
-
 
     const addProduct = async (newProduct, userId, categoryId) => {
+        let newProductApi;
         await createProductFromApi(newProduct, userId, categoryId)
-        console.log("newProductApi", newProductApi)
-        const productsCopy = deepClone(products)
+            .then(apiResponse => {
+                newProductApi = apiResponse;
+            });
+        const productsCopy = deepClone(products);
         const updatedProducts = addItemToArray(newProductApi, productsCopy);
         setProducts(updatedProducts);
     }
