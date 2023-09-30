@@ -35,6 +35,9 @@ export default function Invoices() {
 
     }
 
+
+    useEffect(() => { }, [invoices])
+
     // Affichage : 
 
     if (invoices === undefined) return <Loader />
