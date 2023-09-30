@@ -89,5 +89,6 @@ const CustomersStyled = styled.div`
             transition: ease-out ${theme.animation.speed.slow};
         }
     }
+
     ${menuAnimation}
 `;

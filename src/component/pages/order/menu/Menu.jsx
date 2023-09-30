@@ -9,6 +9,8 @@ import ProductsMap from './ProductsMap';
 import CategoriesMap from './CategoriesMap';
 import { isEmpty } from '../../../../utils/arrays.jsx'
 import Empty from '../../../reusable-ui/Empty';
+import { menuAnimation } from '../../../../theme/animations';
+import { TransitionGroup } from 'react-transition-group';
 
 export default function Menu() {
 
@@ -33,7 +35,6 @@ export default function Menu() {
     selectedProduct,
     addBasketProduct,
     selectProduct,
-    invoiceId,
     invoice,
     setSelectedCategory,
     selectedCategory,
@@ -43,7 +44,7 @@ export default function Menu() {
   useEffect(() => {
     initialiseProducts(userId, setProducts)
     initialiseCategories(userId, setCategories)
-  }, [])
+  }, [products])
 
 
   const handleCardDelete = (event, idProductToDelete) => {
@@ -92,7 +93,6 @@ export default function Menu() {
   const description = "Cliquez ci-dessous pour le réinitialiser"
   const label = "Générer de nouveaux produits"
 
-  console.log("currentPage", currentPage)
 
   // Affichage 
   if (products === undefined || categories === undefined) return <Loader />
