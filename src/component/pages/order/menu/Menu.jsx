@@ -36,7 +36,7 @@ export default function Menu() {
   } = useContext(AdminContext)
 
 
-  useEffect(() => { }, [products])
+  useEffect(() => { }, [products, categories])
 
   console.log("categories", categories)
   console.log("products", products)
