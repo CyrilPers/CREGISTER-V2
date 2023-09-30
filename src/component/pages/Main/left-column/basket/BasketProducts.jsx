@@ -20,6 +20,8 @@ export default function BasketProducts() {
         deleteBasketProduct(id)
     }
 
+    useEffect(() => { }, [basket])
+
     return (
         <TransitionGroup component={BasketProductsStyled}>
             {basket.map((basketProduct) =>
