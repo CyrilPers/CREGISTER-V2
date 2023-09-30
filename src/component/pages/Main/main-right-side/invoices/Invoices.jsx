@@ -46,7 +46,6 @@ export default function Invoices() {
         <TransitionGroup component={InvoicesStyled} classNames="invoices">
             <div className='create-invoice'>
                 <Button onClick={handleCreateOrder} label="Créer une commande" />
-
             </div>
             {invoices.slice().reverse().map(({ id, createdAt, total, customer }) => {
                 return (
@@ -55,7 +54,7 @@ export default function Invoices() {
                         key={id}
                         timeout={300}
                     >
-                        <div className='customer'>
+                        <div className='invoice'>
                             <HorizontalCard
                                 key={id}
                                 index={getIndex(id, invoices) + 1}
@@ -83,7 +82,7 @@ const InvoicesStyled = styled.div`
     overflow-y: scroll;
     scrollbar-color: transparent transparent;
     scrollbar-width: thin;
-    padding: 0 25px;
+    padding: 0 30px;
     align-items: center;
 
 
@@ -97,6 +96,9 @@ const InvoicesStyled = styled.div`
         scrollbar-color: initial;
     }
     .invoice {
+        width: 100%;
+
+
         &:hover{
             transform:scale(1.05);
             transition: ease-out ${theme.animation.speed.slow};

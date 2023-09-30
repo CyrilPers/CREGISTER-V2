@@ -1,4 +1,7 @@
 import axios from 'axios'
+import { useState } from 'react';
+
+const [newProduct, setNewProduct] = useState()
 
 const API_URL = 'http://localhost:3001/cregister/api/product/'
 

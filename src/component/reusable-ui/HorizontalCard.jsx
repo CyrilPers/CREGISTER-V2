@@ -50,7 +50,6 @@ const HorizontalCardStyled = styled.div`
     box-shadow: -2px 2px 2px 0px rgb(0 0 0 / 20%);
     margin: 0px;
     margin-top: 10px;
-    margin-left: 10px;
     align-items: center;
     display: grid;
     grid-template-columns: repeat(5, 1fr);

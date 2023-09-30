@@ -71,19 +71,20 @@ export default function Customers() {
 
 
 const CustomersStyled = styled.div`
+
     background: ${theme.colors.background_white};
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
     scrollbar-color: transparent transparent;
     scrollbar-width: thin;
-    padding: 0 25px;
+    padding: 0 30px;
 
     &:hover {
         scrollbar-color: initial;
     }
     .customer {
-        /* border: 1px solid red; */
+        width: 100%;
         &:hover{
             transform:scale(1.05);
             transition: ease-out ${theme.animation.speed.slow};

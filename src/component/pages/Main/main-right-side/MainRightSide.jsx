@@ -4,8 +4,8 @@ import Menu from '../../order/menu/Menu.jsx'
 import { styled } from 'styled-components';
 import { theme } from '../../../../theme';
 import AdminContext from '../../../../context/AdminContext.jsx';
-import Customers from './customers/Customers';
 import Invoices from './invoices/Invoices.jsx';
+import Customers from './customers/Customers';
 
 
 export default function MainRightSide() {
