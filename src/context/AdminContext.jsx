@@ -80,4 +80,16 @@ export default createContext({
 
     currentPage: {},
     setCurrentPage: () => { },
+
+
+    initialiseProducts: () => { },
+    initialiseInvoices: () => { },
+    initialiseCustomers: () => { },
+    initialiseCategories: () => { },
+    initialiseBasket: () => { },
+    initialiseInvoice: () => { },
+    initialiseUser: () => { },
+    authentificateUser: () => { },
+    initialiseNewUserFromApi: () => { },
+    resetCategoryAndProducts: () => { },
 });

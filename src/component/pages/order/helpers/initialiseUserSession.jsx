@@ -1,13 +1,14 @@
 import { getBasketFromApi } from "../../../../API/basket.jsx"
 import { getCategoriesFromApi, initialiseCategoriesAndProductsFromApi, resetCategoriesAndProductsFromApi } from "../../../../API/categories.jsx"
-import { getCustomersFromApi, initialiseCustomersFromApi } from "../../../../API/customers.jsx"
 import { getInvoiceFromApi, getInvoicesFromApi } from "../../../../API/invoice.jsx"
+import { useCustomersApi } from "../../../../API/useCustomersApi.jsx"
 import { useProductsApi } from "../../../../API/useProductsApi.jsx"
 import { createUserFromApi, getUserIdFromApi } from "../../../../API/users.jsx"
 
 
 export const initialiseUserSession = () => {
   const { getProductsFromApi } = useProductsApi()
+  const { getCustomersFromApi, initialiseCustomersFromApi } = useCustomersApi()
 
 
   const initialiseProducts = async (userId, setProducts) => {

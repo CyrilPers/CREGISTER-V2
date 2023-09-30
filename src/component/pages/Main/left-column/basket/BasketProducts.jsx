@@ -25,7 +25,7 @@ export default function BasketProducts() {
             {basket.map((basketProduct) =>
                 <CSSTransition
                     appear={true}
-                    classNames={"card-transition"}
+                    className={"card-transition"}
                     key={basketProduct.id}
                     timeout={300} // {{ enter: 500, exit: 500 }}
                 >

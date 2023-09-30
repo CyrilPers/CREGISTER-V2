@@ -44,7 +44,7 @@ export default function Invoices() {
 
 
     return (
-        <TransitionGroup component={InvoicesStyled} classNames="invoices">
+        <TransitionGroup component={InvoicesStyled}>
             <div className='create-invoice'>
                 <Button onClick={handleCreateOrder} label="Créer une commande" />
             </div>
@@ -96,10 +96,11 @@ const InvoicesStyled = styled.div`
     &:hover {
         scrollbar-color: initial;
     }
+    .animation-card{
+        width: 100%;
+    }
     .invoice {
         width: 100%;
-
-
         &:hover{
             transform:scale(1.05);
             transition: ease-out ${theme.animation.speed.slow};

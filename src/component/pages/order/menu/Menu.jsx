@@ -9,8 +9,6 @@ import ProductsMap from './ProductsMap';
 import CategoriesMap from './CategoriesMap';
 import { isEmpty } from '../../../../utils/arrays.jsx'
 import Empty from '../../../reusable-ui/Empty';
-import { menuAnimation } from '../../../../theme/animations';
-import { TransitionGroup } from 'react-transition-group';
 
 export default function Menu() {
 

@@ -23,7 +23,7 @@ export default function ProductsMap({ selectedCategory, selectedProduct, isModeA
             {filteredProducts.slice().reverse().map(({ id, title, imageSource, price, isAvailable }) => {
                 return (
                     <CSSTransition
-                        classNames={"animation-card"}
+                        className={"animation-card"}
                         key={id}
                         timeout={300}
                     >

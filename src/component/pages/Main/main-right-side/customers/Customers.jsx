@@ -16,7 +16,7 @@ export default function Customers() {
 
     useEffect(() => {
         initialiseCustomers(userId, setCustomers)
-    }, [])
+    }, [customers])
 
     const title = "La liste de clients est vide"
     const description = "Cliquez ci-dessous pour la réinitialiser"

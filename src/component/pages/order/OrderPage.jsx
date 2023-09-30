@@ -14,6 +14,7 @@ import { useCategories } from '../../../hooks/useCategories'
 import { useCustomers } from '../../../hooks/useCustomers'
 import { useInvoices } from '../../../hooks/useInvoices'
 import { EMPTY_CUSTOMER } from '../../../enum/customer'
+import { useCustomersApi } from '../../../API/useCustomersApi'
 
 
 
