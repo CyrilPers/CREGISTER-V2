@@ -44,6 +44,7 @@ const BasketFooterStyled = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 20px;
     
     .invoice-button {
         width: 100px;
