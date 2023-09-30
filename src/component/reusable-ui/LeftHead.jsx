@@ -14,6 +14,10 @@ export default function LeftHead({ title }) {
 }
 
 const LeftHeadStyled = styled.div`
+    display: flex;
+    height: 65px;
+    justify-content: center;
+    align-items: center;
     font-size: ${theme.fonts.size.P4};
     font-family: ${theme.fonts.family.stylish};
     color: ${theme.colors.primary}

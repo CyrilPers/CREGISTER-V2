@@ -46,7 +46,6 @@ export default function InvoiceCustomer({ invoice, customers, customer, editInvo
 const CustomerStyled = styled.div`
     display: flex;
     height: 65px;
-    display: flex;
     justify-content: center;
     align-items: center;
 `;

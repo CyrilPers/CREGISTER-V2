@@ -11,7 +11,7 @@ import { menuAnimation } from '../../../../../theme/animations';
 import { formatDate } from '../../../../../utils/maths';
 
 export default function Invoices() {
-    const { invoices, userId, setInvoices, isModeAdmin, setInvoiceId, setCurrentPage, deleteInvoice } = useContext(AdminContext)
+    const { invoices, userId, setInvoices, isModeAdmin, setInvoiceId, setCurrentPage, deleteInvoice, currentPage } = useContext(AdminContext)
 
     useEffect(() => {
         initialiseInvoices(userId, setInvoices)
@@ -32,12 +32,15 @@ export default function Invoices() {
         { !isModeAdmin && (await setInvoiceId(id), setCurrentPage("invoice")) }
     }
 
+    console.log("invoices", invoices)
+
     // Affichage : 
 
     if (invoices === undefined) return <Loader />
     if (isEmpty(invoices)) return <Empty description={description} title={title} label={label} onClick={handleReset} />
 
     console.log("invoices", invoices)
+    console.log("currentPage", currentPage)
 
     return (
         <TransitionGroup component={InvoicesStyled} classNames="invoices">
