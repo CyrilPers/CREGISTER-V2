@@ -14,8 +14,6 @@ import { useCategories } from '../../../hooks/useCategories'
 import { useCustomers } from '../../../hooks/useCustomers'
 import { useInvoices } from '../../../hooks/useInvoices'
 import { EMPTY_CUSTOMER } from '../../../enum/customer'
-import { useCustomersApi } from '../../../API/useCustomersApi'
-
 
 
 export default function OrderPage() {
@@ -57,6 +55,10 @@ export default function OrderPage() {
 
   useEffect(() => {
     initialiseUser(setUserId, username)
+    initialiseCategories(userId, setCategories)
+    initialiseCustomers(userId, setCustomers)
+    initialiseInvoices(userId, setInvoices)
+    initialiseProducts(userId, setProducts)
   }, [])
 
 

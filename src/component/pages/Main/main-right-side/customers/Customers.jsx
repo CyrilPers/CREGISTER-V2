@@ -12,11 +12,9 @@ import HorizontalCard from '../../../../reusable-ui/HorizontalCard.jsx';
 
 export default function Customers() {
 
-    const { initialiseCustomers, customers, setCustomers, userId, isModeAdmin, deleteCustomer, selectCustomer, selectedCustomer } = useContext(AdminContext)
+    const { customers, isModeAdmin, deleteCustomer, selectCustomer, selectedCustomer } = useContext(AdminContext)
 
-    useEffect(() => {
-        initialiseCustomers(userId, setCustomers)
-    }, [customers])
+    useEffect(() => { }, [])
 
     const title = "La liste de clients est vide"
     const description = "Cliquez ci-dessous pour la réinitialiser"

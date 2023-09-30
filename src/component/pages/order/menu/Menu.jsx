@@ -16,10 +16,7 @@ export default function Menu() {
 
 
   const {
-    initialiseCategories,
-    initialiseProducts,
     resetCategoryAndProducts,
-    currentPage,
     deleteProductsFromCategory,
     deleteCategory,
     setCategories,
@@ -39,10 +36,7 @@ export default function Menu() {
   } = useContext(AdminContext)
 
 
-  useEffect(() => {
-    initialiseProducts(userId, setProducts)
-    initialiseCategories(userId, setCategories)
-  }, [products])
+  useEffect(() => { }, [products])
 
 
   const handleCardDelete = (event, idProductToDelete) => {
