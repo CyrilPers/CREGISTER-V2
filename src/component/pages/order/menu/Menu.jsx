@@ -18,6 +18,7 @@ export default function Menu() {
 
 
   const {
+    currentPage,
     deleteProductsFromCategory,
     deleteCategory,
     setCategories,
@@ -89,6 +90,8 @@ export default function Menu() {
   const title = "Le menu est vide"
   const description = "Cliquez ci-dessous pour le réinitialiser"
   const label = "Générer de nouveaux produits"
+
+  console.log("currentPage", currentPage)
 
   // Affichage 
   if (products === undefined || categories === undefined) return <Loader />

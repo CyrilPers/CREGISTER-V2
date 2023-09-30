@@ -11,7 +11,7 @@ const Form = React.forwardRef(({ onSubmit, onChange, element, children, onFocus,
     return (
         <FormStyled onSubmit={onSubmit} currentPage={currentPage} $isProduct={isProduct}>
             {isProduct && <ImagePreview imageSource={element.imageSource} title={element.title} handleChange={onChange} />}
-            <FormInputs isCustomer={!isProduct} onFocus={onFocus} onBlur={onBlur} onChange={onChange} element={element} ref={ref} />
+            <FormInputs currentPage={currentPage} isCustomer={!isProduct} onFocus={onFocus} onBlur={onBlur} onChange={onChange} element={element} ref={ref} />
             <div className='submit'>{children}</div>
         </FormStyled>
     )

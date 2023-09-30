@@ -39,7 +39,7 @@ export const getCustomerInputTextsConfig = (customer) => [
     {
         id: "0",
         name: "name",
-        value: customer.name,
+        value: customer.name && customer.name,
         placeholder: 'Prénom',
         Icon: <MdTitle />,
         version: "minimalist",
@@ -48,7 +48,7 @@ export const getCustomerInputTextsConfig = (customer) => [
     {
         id: "1",
         name: "surname",
-        value: customer.surname,
+        value: customer.surname && customer.surname,
         placeholder: "Nom",
         Icon: <MdTitle />,
         version: "minimalist",
@@ -57,7 +57,7 @@ export const getCustomerInputTextsConfig = (customer) => [
     {
         id: "2",
         name: "phoneNumber",
-        value: customer.phoneNumber,
+        value: customer.phoneNumber && customer.phoneNumber,
         placeholder: "Téléphone",
         Icon: <BsTelephoneFill />,
         version: "minimalist",
@@ -66,7 +66,7 @@ export const getCustomerInputTextsConfig = (customer) => [
     {
         id: "3",
         name: "streetNumber",
-        value: customer.address.streetNumber ? customer.address.streetNumber : "",
+        value: customer.address && customer.address.streetNumber ? customer.address.streetNumber : "",
         placeholder: "N° de rue",
         Icon: <AiOutlineFieldNumber />,
         version: "minimalist",
@@ -75,7 +75,7 @@ export const getCustomerInputTextsConfig = (customer) => [
     {
         id: "4",
         name: "street",
-        value: customer.address.street ? customer.address.street : "",
+        value: customer.address && customer.address.street ? customer.address.street : "",
         placeholder: "Rue",
         Icon: "",
         version: "minimalist",
@@ -84,7 +84,7 @@ export const getCustomerInputTextsConfig = (customer) => [
     {
         id: "5",
         name: "zipCode",
-        value: customer.address.zipCode ? customer.address.zipCode : "",
+        value: customer.address && customer.address.zipCode ? customer.address.zipCode : "",
         placeholder: "Code postal",
         Icon: "",
         version: "minimalist",
@@ -93,7 +93,7 @@ export const getCustomerInputTextsConfig = (customer) => [
     {
         id: "6",
         name: "city",
-        value: customer.address.city ? customer.address.city : "",
+        value: customer.address && customer.address.city ? customer.address.city : "",
         placeholder: "Ville",
         Icon: <FaCity />,
         version: "minimalist",
@@ -102,7 +102,7 @@ export const getCustomerInputTextsConfig = (customer) => [
     {
         id: "7",
         name: "country",
-        value: customer.address.country ? customer.address.country : "",
+        value: customer.address && customer.address.country ? customer.address.country : "",
         placeholder: "Pays",
         Icon: "",
         version: "minimalist",

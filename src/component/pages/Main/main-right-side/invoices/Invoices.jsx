@@ -29,7 +29,9 @@ export default function Invoices() {
     }
 
     const handleClick = async (id) => {
-        { !isModeAdmin && (await setInvoiceId(id), setCurrentPage("invoice")) }
+        {
+            !isModeAdmin && (await setInvoiceId(id), setCurrentPage("invoice"))
+        }
     }
 
     const handleCreateOrder = () => {
