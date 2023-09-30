@@ -9,9 +9,13 @@ export const useCategories = () => {
     const [newCategory, setNewCategory] = useState(EMPTY_CATEGORY)
 
     const addCategory = async (newCategory, userId) => {
+        let newCategoryApi
         await createCategoryFromApi(newCategory, userId)
-        // update avec API pour avoir l'ID de la BDD afin de pouvoir delete
-        const updatedCategories = await getCategoriesFromApi(userId);
+            .then(apiResponse => {
+                newCategoryApi = apiResponse;
+            });
+        const categoriesCopy = deepClone(categories);
+        const updatedCategories = addItemToArray(newCategoryApi, categoriesCopy);
         setCategories(updatedCategories);
     }
 

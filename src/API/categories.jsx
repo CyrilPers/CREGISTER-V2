@@ -21,7 +21,8 @@ export async function deleteCategoryFromApi(categoryId) {
 
 export async function createCategoryFromApi(newCategory, userId) {
     try {
-        await axios.post(`${API_URL}create`, { name: newCategory.name, user: { id: userId } });
+        const { data } = await axios.post(`${API_URL}create`, { name: newCategory.name, user: { id: userId } });
+        return data;
     } catch (error) {
         console.log(error)
     }

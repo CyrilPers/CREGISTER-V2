@@ -23,7 +23,6 @@ export async function deleteProductFromApi(productId) {
 export async function createProductFromApi(newProduct, userId) {
     try {
         const { data } = await axios.post(`${API_URL}create`, { title: newProduct.title, price: newProduct.price, isAvailable: newProduct.isAvailable ?? "true", imageSource: newProduct.imageSource ?? "/image/coming-soon.png", user: { id: userId }, category: { id: newProduct.category.id } });
-        console.log("data", data);
         return data;
     } catch (error) {
         console.log(error)
