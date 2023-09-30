@@ -38,6 +38,8 @@ export default function Menu() {
 
   useEffect(() => { }, [products])
 
+  console.log("categories", categories)
+  console.log("products", products)
 
   const handleCardDelete = (event, idProductToDelete) => {
     event.stopPropagation()

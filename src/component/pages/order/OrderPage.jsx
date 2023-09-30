@@ -53,13 +53,14 @@ export default function OrderPage() {
     titleEditRef.current.focus()
   }
 
+
   useEffect(() => {
     initialiseUser(setUserId, username)
     initialiseCategories(userId, setCategories)
     initialiseCustomers(userId, setCustomers)
     initialiseInvoices(userId, setInvoices)
     initialiseProducts(userId, setProducts)
-  }, [])
+  }, [userId])
 
 
   const adminContextValue = {
@@ -69,8 +70,6 @@ export default function OrderPage() {
     initialiseCategories,
     initialiseBasket,
     initialiseInvoice,
-    initialiseUser,
-    authentificateUser,
     initialiseNewUserFromApi,
     resetCategoryAndProducts,
     deleteInvoice,
@@ -130,7 +129,7 @@ export default function OrderPage() {
     addCategory,
   }
 
-
+  console.log("userid", userId)
   return (
     <AdminContext.Provider value={adminContextValue}>
       <OrderPageStyled>

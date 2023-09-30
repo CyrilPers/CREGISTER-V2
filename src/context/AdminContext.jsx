@@ -88,7 +88,6 @@ export default createContext({
     initialiseCategories: () => { },
     initialiseBasket: () => { },
     initialiseInvoice: () => { },
-    initialiseUser: () => { },
     authentificateUser: () => { },
     initialiseNewUserFromApi: () => { },
     resetCategoryAndProducts: () => { },

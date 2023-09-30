@@ -14,6 +14,7 @@ export const initialiseUserSession = () => {
   const initialiseProducts = async (userId, setProducts) => {
 
     const productsExisting = await getProductsFromApi(userId)
+    console.log("productsuserID", userId)
     if (!productsExisting) {
       setProducts([])
       return
@@ -42,6 +43,7 @@ export const initialiseUserSession = () => {
   }
 
   const initialiseCategories = async (userId, setCategories) => {
+    console.log("categoriesuserID", userId)
     const categoriesExisting = await getCategoriesFromApi(userId)
     if (!categoriesExisting) {
       setCategories([])
