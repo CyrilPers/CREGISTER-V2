@@ -18,7 +18,6 @@ export default function LeftColumn() {
         initialiseInvoice(invoiceId, setCustomer, setInvoice)
     }, [invoiceId])
 
-    console.log("leftcustomers", customers)
     return (
         <LeftColumnStyled>
             {/* INVOICE */}

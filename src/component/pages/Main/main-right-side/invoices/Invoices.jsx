@@ -35,7 +35,6 @@ export default function Invoices() {
         setCurrentPage("invoice")
     }
 
-    console.log("userId", userId)
 
     useEffect(() => { initialiseInvoices(userId, setInvoices) }, [])
 
