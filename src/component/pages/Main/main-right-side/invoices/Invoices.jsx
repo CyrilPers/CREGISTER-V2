@@ -11,7 +11,7 @@ import HorizontalCard from '../../../../reusable-ui/HorizontalCard';
 import Button from '../../../../reusable-ui/Button';
 
 export default function Invoices() {
-    const { invoices, isModeAdmin, setInvoiceId, setCurrentPage, deleteInvoice, currentPage } = useContext(AdminContext)
+    const { invoices, isModeAdmin, setInvoiceId, setCurrentPage, deleteInvoice, createInvoice, userId } = useContext(AdminContext)
 
     useEffect(() => { }, [invoices])
 
@@ -31,8 +31,9 @@ export default function Invoices() {
         }
     }
 
-    const handleCreateOrder = () => {
-
+    const handleCreateOrder = async () => {
+        await createInvoice(userId)
+        setCurrentPage("invoice")
     }
 
 

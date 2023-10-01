@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { deleteInvoiceFromApi, editInvoiceFromApi } from "../API/invoice"
+import { createInvoiceFromApi, deleteInvoiceFromApi, editInvoiceFromApi } from "../API/invoice"
 import { deepClone, removeItemFromArray } from "../utils/arrays"
 
 export const useInvoices = () => {
@@ -12,13 +12,15 @@ export const useInvoices = () => {
         editInvoiceFromApi(invoice, newCustomer)
     }
 
-    const deleteProduct = async (productId) => {
-        await deleteProductFromApi(productId)
-        const productsCopy = deepClone(products)
-        const productsUpdated = removeItemFromArray(productId, productsCopy)
-        setProducts(productsUpdated)
-    }
 
+    const createInvoice = async (userId, setInvoiceId) => {
+        let newInvoiceApi;
+        await createInvoiceFromApi(userId)
+            .then(apiResponse => {
+                newInvoiceApi = apiResponse;
+            });
+        setInvoiceId(newInvoiceApi.id);
+    }
 
 
     const deleteInvoice = async (invoiceId) => {
@@ -29,6 +31,6 @@ export const useInvoices = () => {
     }
 
 
-    return { invoices, setInvoices, editInvoice, customer, setCustomer, invoice, setInvoice, deleteInvoice }
+    return { invoices, setInvoices, editInvoice, customer, setCustomer, invoice, setInvoice, deleteInvoice, createInvoice }
 }
 

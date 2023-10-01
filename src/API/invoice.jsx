@@ -46,3 +46,13 @@ export async function deleteInvoiceFromApi(invoiceId) {
         console.log(error)
     }
 }
+
+
+export async function createInvoiceFromApi(userId) {
+    try {
+        const { data } = await axios.post(`${API_URL}create`, { user: { id: userId } });
+        return data;
+    } catch (error) {
+        console.log(error)
+    }
+}

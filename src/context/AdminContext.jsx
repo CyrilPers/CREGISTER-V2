@@ -73,6 +73,7 @@ export default createContext({
     invoices: [],
     setInvoices: () => { },
     editInvoice: () => { },
+    createInvoice: () => { },
 
     invoice: {},
     setInvoice: () => { },
