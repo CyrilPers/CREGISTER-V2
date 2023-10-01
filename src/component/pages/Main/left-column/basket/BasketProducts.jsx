@@ -22,8 +22,6 @@ export default function BasketProducts() {
 
     useEffect(() => { }, [basket])
 
-    console.log("basket", basket)
-
     return (
         <TransitionGroup component={BasketProductsStyled}>
             {basket.map((basketProduct) =>

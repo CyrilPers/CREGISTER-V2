@@ -11,14 +11,6 @@ export async function getBasketFromApi(invoiceId) {
     }
 }
 
-// export async function getBasketProductByProductIdFromApi(productId) {
-//     try {
-//         const { data } = await axios.get(`${API_URL}productid=${productId}`);
-//         return data;
-//     } catch (error) {
-//         console.log(error)
-//     }
-// }
 
 export async function deleteBasketProductFromApi(productId) {
     try {
@@ -29,7 +21,6 @@ export async function deleteBasketProductFromApi(productId) {
 }
 
 export async function createBasketProductFromApi(newProduct, invoice) {
-    console.log("newProduct", newProduct)
     try {
         const { data } = await axios.post(`${API_URL}create`, { productName: newProduct.title, productPrice: newProduct.price, productId: newProduct.id, imageSource: newProduct.imageSource, quantity: newProduct.quantity, invoice: invoice });
         return data;

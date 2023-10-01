@@ -9,10 +9,7 @@ export const useBasket = () => {
     const addBasketProduct = async (productToAdd, invoice) => {
         let newBasketProductApi
 
-        console.log("addtobasket")
-
         const isProductAlreadyInBasket = isProductIdInBasket(productToAdd.id, basket)
-        console.log("isProductAlreadyInBasket", isProductAlreadyInBasket)
         if (!isProductAlreadyInBasket) {
             const newBasketProduct = {
                 ...productToAdd,

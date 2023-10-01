@@ -45,11 +45,7 @@ export default function Menu() {
   }
 
   const handleAddButton = (idProductToAdd) => {
-    console.log("idProductToAdd", idProductToAdd)
     const productToAdd = findInArray(idProductToAdd, products)
-    console.log("productToAdd", productToAdd)
-    console.log("productToAdd.isAvailable", productToAdd.isAvailable)
-    console.log("invoice", invoice)
     productToAdd.isAvailable && addBasketProduct(productToAdd, invoice)
   }
 
