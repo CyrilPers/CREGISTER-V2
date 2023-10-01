@@ -52,12 +52,10 @@ export default function OrderPage() {
     titleEditRef.current.focus()
   }
 
-
   useEffect(() => {
     initialiseUser(setUserId, username)
     initialiseCategories(userId, setCategories)
     initialiseCustomers(userId, setCustomers)
-    initialiseInvoices(userId, setInvoices)
     initialiseProducts(userId, setProducts)
   }, [userId])
 

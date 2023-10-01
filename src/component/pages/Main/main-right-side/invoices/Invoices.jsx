@@ -9,11 +9,10 @@ import { menuAnimation } from '../../../../../theme/animations';
 import { formatDate } from '../../../../../utils/maths';
 import HorizontalCard from '../../../../reusable-ui/HorizontalCard';
 import Button from '../../../../reusable-ui/Button';
+import { initialiseInvoices } from '../../../order/helpers/initialiseUserSession';
 
 export default function Invoices() {
-    const { invoices, isModeAdmin, setInvoiceId, setCurrentPage, deleteInvoice, createInvoice, userId } = useContext(AdminContext)
-
-    useEffect(() => { }, [invoices])
+    const { setInvoices, invoices, isModeAdmin, setInvoiceId, setCurrentPage, deleteInvoice, createInvoice, userId } = useContext(AdminContext)
 
     const title = "La liste de clients est vide"
     const description = "Cliquez ci-dessous pour la réinitialiser"
@@ -32,12 +31,13 @@ export default function Invoices() {
     }
 
     const handleCreateOrder = async () => {
-        await createInvoice(userId)
+        await createInvoice(userId, setInvoiceId)
         setCurrentPage("invoice")
     }
 
+    console.log("userId", userId)
 
-    useEffect(() => { }, [invoices])
+    useEffect(() => { initialiseInvoices(userId, setInvoices) }, [])
 
     // Affichage : 
 

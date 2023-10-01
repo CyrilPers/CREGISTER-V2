@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { addItemToArray, deepClone, getIndex, removeItemFromArray } from "../utils/arrays"
 import { EMPTY_CUSTOMER } from '../enum/customer.jsx'
-import { createCustomerFromApi, deleteCustomerFromApi } from "../API/customers"
+import { createCustomerFromApi, deleteCustomerFromApi, updateCustomerFromApi } from "../API/customers"
 
 export const useCustomers = () => {
     const [customers, setCustomers] = useState([])
