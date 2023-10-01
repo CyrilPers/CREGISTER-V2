@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { styled } from 'styled-components';
 import { theme } from '../../../../../theme';
 import BasketCard from './BasketCard';
@@ -21,6 +21,8 @@ export default function BasketProducts() {
     }
 
     useEffect(() => { }, [basket])
+
+    console.log("basket", basket)
 
     return (
         <TransitionGroup component={BasketProductsStyled}>

@@ -1,20 +1,24 @@
 import { useState } from 'react'
-import { deepClone, getIndex, removeItemFromArray } from '../utils/arrays'
-import { createBasketProductFromApi, deleteBasketProductFromApi, getBasketProductByProductIdFromApi, updateBasketProductFromApi } from '../API/basket'
+import { addItemToArray, deepClone, getIndex, isProductIdInBasket, removeItemFromArray } from '../utils/arrays'
+import { createBasketProductFromApi, deleteBasketProductFromApi, updateBasketProductFromApi } from '../API/basket'
 
 export const useBasket = () => {
     const [basket, setBasket] = useState([])
 
 
-    const addBasketProduct = async (productToAdd, invoiceId, userId) => {
+    const addBasketProduct = async (productToAdd, invoice) => {
         let newBasketProductApi
-        const isProductAlreadyInBasket = await getBasketProductByProductIdFromApi(productToAdd.id)
+
+        console.log("addtobasket")
+
+        const isProductAlreadyInBasket = isProductIdInBasket(productToAdd.id, basket)
+        console.log("isProductAlreadyInBasket", isProductAlreadyInBasket)
         if (!isProductAlreadyInBasket) {
             const newBasketProduct = {
                 ...productToAdd,
                 quantity: 1,
             }
-            await createBasketProductFromApi(newBasketProduct, invoiceId)
+            await createBasketProductFromApi(newBasketProduct, invoice)
                 .then(apiResponse => {
                     newBasketProductApi = apiResponse;
                 });
@@ -29,13 +33,10 @@ export const useBasket = () => {
             quantity: isProductAlreadyInBasket.quantity += 1
         }
         await updateBasketProductFromApi(updatedBasketProduct)
-            .then(apiResponse => {
-                basketProductBeingEditedApi = apiResponse;
-            });
 
         const basketCopy = deepClone(basket)
         const indexOfBasketProducToEdit = getIndex(updatedBasketProduct.id, basketCopy)
-        basketCopy[indexOfBasketProducToEdit] = basketProductBeingEdited
+        basketCopy[indexOfBasketProducToEdit] = updatedBasketProduct
         setBasket(basketCopy)
     }
 
