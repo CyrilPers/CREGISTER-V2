@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { styled, css } from 'styled-components';
 import { getCustomerInputTextsConfig, getInputSelectConfig, getInputTextsConfig } from './inputsConfig';
 import TextInput from '../../../../reusable-ui/TextInput.jsx'
@@ -6,7 +6,9 @@ import SelectInput from '../../../../reusable-ui/SelectInput';
 
 const FormInputs = React.forwardRef(({ onFocus, onBlur, element, onChange, currentPage }, ref) => {
 
+
     const isProduct = currentPage === "invoice"
+    console.log("isProduct", isProduct)
     const inputTexts = isProduct ? getInputTextsConfig(element) : getCustomerInputTextsConfig(element)
     const inputSelects = getInputSelectConfig(element)
 

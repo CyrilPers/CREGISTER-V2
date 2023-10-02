@@ -7,7 +7,7 @@ import { useSuccessMessage } from '../../../../../hooks/useSuccessMessage.jsx'
 
 export default function EditForm() {
 
-  const { selectedProduct, setSelectedProduct, editProduct, titleEditRef } = useContext(AdminContext)
+  const { selectedProduct, setSelectedProduct, editProduct, titleEditRef, currentPage } = useContext(AdminContext)
   const [valueOnFocus, setValueOnFocus] = useState()
   const { isSubmitted: isSaved, displaySuccessMessage } = useSuccessMessage()
 
@@ -35,6 +35,8 @@ export default function EditForm() {
 
   return (
     <Form
+      element={selectedProduct}
+      currentPage={currentPage}
       product={selectedProduct}
       onChange={handleChange}
       onFocus={handleOnFocus}

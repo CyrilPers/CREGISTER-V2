@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { styled } from 'styled-components';
 import AdminContext from '../../../../../context/AdminContext';
 import { getTabSelected, getTabsConfigProduct, getTabsConfigCustomer } from '../getTabsConfig';
@@ -19,6 +19,7 @@ export default function AdminPanel() {
   const tabsCustomer = getTabsConfigCustomer(hasAlreadyBeenClickedCustomer)
   const tabSelectedCustomer = getTabSelected(tabsCustomer, currentTabSelected)
 
+  useEffect(() => { }, [currentPage])
 
   return (
     <AdminPanelStyled>
