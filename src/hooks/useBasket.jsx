@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { addItemToArray, deepClone, getIndex, isProductIdInBasket, removeItemFromArray } from '../utils/arrays'
-import { deleteBasketProductFromApi, updateBasketProductFromApi } from '../API/basket'
+import { deleteBasketProductFromApi } from '../API/basket'
 import { editInvoiceFromApi } from '../API/invoice'
 
 export const useBasket = () => {
@@ -10,13 +10,17 @@ export const useBasket = () => {
     const addBasketProduct = async (productToAdd, invoice, userId) => {
         let newBasketProductApi
 
-        console.log("invoice", invoice)
+        console.log("addtobasket")
 
         const isProductAlreadyInBasket = isProductIdInBasket(productToAdd.id, basket)
         if (!isProductAlreadyInBasket) {
             const newBasketProduct = {
-                ...productToAdd,
+                productName: productToAdd.title,
+                productPrice: productToAdd.price,
+                productId: productToAdd.id,
+                imageSource: productToAdd.imageSource,
                 quantity: 1,
+                totalPrice: 0
             }
             await editInvoiceFromApi(invoice, invoice.customer, newBasketProduct)
                 .then(apiResponse => {
@@ -26,14 +30,15 @@ export const useBasket = () => {
             const basketCopy = deepClone(basket);
             const updatedBasket = addItemToArray(newBasketProductApi, basketCopy);
             setBasket(updatedBasket)
-            return
         }
 
         const updatedBasketProduct = {
             ...isProductAlreadyInBasket,
             quantity: isProductAlreadyInBasket.quantity += 1
         }
-        await updateBasketProductFromApi(updatedBasketProduct)
+
+        console.log("updatedBasketProduct", updatedBasketProduct)
+        await editInvoiceFromApi(invoice, invoice.customer, updatedBasketProduct)
 
         const basketCopy = deepClone(basket)
         const indexOfBasketProducToEdit = getIndex(updatedBasketProduct.id, basketCopy)

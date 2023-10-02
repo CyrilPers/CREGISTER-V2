@@ -49,9 +49,9 @@ export default function Menu() {
     idProductToDelete === selectedProduct.id && setSelectedProduct(EMPTY_PRODUCT)
   }
 
-  const handleAddButton = (idProductToAdd) => {
+  const handleAddButton = async (idProductToAdd) => {
     const productToAdd = findInArray(idProductToAdd, products)
-    productToAdd.isAvailable && addBasketProduct(productToAdd, invoice, userId)
+    productToAdd.isAvailable && await addBasketProduct(productToAdd, invoice, userId)
   }
 
   const handleClick = (id) => {

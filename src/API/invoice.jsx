@@ -27,12 +27,8 @@ export async function editInvoiceFromApi(invoice, newCustomer, newProduct) {
         if (newProduct) {
             requestData.invoiceLines = [
                 {
-                    productName: newProduct.title,
-                    productPrice: newProduct.price,
-                    productId: newProduct.id,
-                    imageSource: newProduct.imageSource,
-                    quantity: newProduct.quantity,
-                    totalPrice: 0
+                    ...newProduct,
+                    invoice: { id: invoice.id }
                 }
             ]
         }
