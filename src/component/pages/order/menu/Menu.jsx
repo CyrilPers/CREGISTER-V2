@@ -34,8 +34,6 @@ export default function Menu() {
     selectedCategory,
   } = useContext(AdminContext)
 
-  console.log("selectedCategory", selectedCategory)
-  console.log()
 
   useEffect(() => { }, [products, categories])
 

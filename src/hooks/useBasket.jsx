@@ -10,7 +10,6 @@ export const useBasket = () => {
     const addBasketProduct = async (productToAdd, invoice, userId) => {
         let newBasketProductApi
 
-        console.log("addtobasket")
 
         const isProductAlreadyInBasket = isProductIdInBasket(productToAdd.id, basket)
         if (!isProductAlreadyInBasket) {
@@ -26,7 +25,6 @@ export const useBasket = () => {
             await editInvoiceFromApi(invoice, invoice.customer, newBasketProduct)
                 .then(apiResponse => {
                     newBasketProductApi = apiResponse;
-                    console.log("newBasketProductApi", newBasketProductApi)
                 });
             const basketCopy = deepClone(basket);
             const updatedBasket = addItemToArray(newBasketProductApi, basketCopy);
@@ -38,7 +36,6 @@ export const useBasket = () => {
             quantity: isProductAlreadyInBasket.quantity += 1
         }
 
-        console.log("updatedBasketProduct", updatedBasketProduct)
         await editInvoiceFromApi(invoice, invoice.customer, updatedBasketProduct)
 
         const basketCopy = deepClone(basket)

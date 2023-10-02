@@ -8,7 +8,6 @@ const FormInputs = React.forwardRef(({ onFocus, onBlur, element, onChange, curre
 
 
     const isProduct = currentPage === "invoice"
-    console.log("isProduct", isProduct)
     const inputTexts = isProduct ? getInputTextsConfig(element) : getCustomerInputTextsConfig(element)
     const inputSelects = getInputSelectConfig(element)
 

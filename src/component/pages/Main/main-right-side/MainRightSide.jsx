@@ -15,8 +15,6 @@ export default function MainRightSide() {
 
     useEffect(() => { }, [currentPage])
 
-    console.log("currentPage", currentPage)
-
     return (
         <MainRightSideStyled>
             {/* CREER FICHIER CONFIG POUR TRAITER LE CONTENU A AFFICHER currentPage.content COMME POUR ADMIN */}
