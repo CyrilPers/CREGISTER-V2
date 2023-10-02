@@ -22,7 +22,7 @@ export default createContext({
     products: [],
     productSelected: [],
     setProductSelect: () => { },
-
+    resetCategoryAndProducts: () => { },
     setProducts: () => { },
     addProduct: () => { },
     deleteProduct: () => { },
@@ -68,6 +68,7 @@ export default createContext({
     setNewCustomer: () => { },
     addCustomer: () => { },
     editCustomer: () => { },
+    resetCustomers: () => { },
 
 
     invoices: [],

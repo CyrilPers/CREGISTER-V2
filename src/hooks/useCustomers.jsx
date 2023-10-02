@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { addItemToArray, deepClone, getIndex, removeItemFromArray } from "../utils/arrays"
 import { EMPTY_CUSTOMER } from '../enum/customer.jsx'
-import { createCustomerFromApi, deleteCustomerFromApi, updateCustomerFromApi } from "../API/customers"
+import { createCustomerFromApi, deleteCustomerFromApi, getCustomersFromApi, initialiseCustomersFromApi, updateCustomerFromApi } from "../API/customers"
 
 export const useCustomers = () => {
     const [customers, setCustomers] = useState([])
@@ -34,8 +34,13 @@ export const useCustomers = () => {
         updateCustomerFromApi(customerBeingEdited, userId)
     }
 
+    const resetCustomers = async (userId) => {
+        await initialiseCustomersFromApi(userId)
+        const updatedCustomers = await getCustomersFromApi(userId);
+        setCustomers(updatedCustomers)
+    }
 
 
-    return { customers, setCustomers, deleteCustomer, selectedCustomer, setSelectedCustomer, addCustomer, editCustomer, addCustomer }
+    return { resetCustomers, customers, setCustomers, deleteCustomer, selectedCustomer, setSelectedCustomer, addCustomer, editCustomer, addCustomer }
 }
 

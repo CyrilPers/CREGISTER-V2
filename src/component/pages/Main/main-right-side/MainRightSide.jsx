@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Admin from '../../order/admin/Admin';
 import Menu from '../../order/menu/Menu.jsx'
 import { styled } from 'styled-components';
@@ -13,6 +13,9 @@ export default function MainRightSide() {
 
     const { isModeAdmin, userId, currentPage } = useContext(AdminContext)
 
+    useEffect(() => { }, [currentPage])
+
+    console.log("currentPage", currentPage)
 
     return (
         <MainRightSideStyled>

@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { addItemToArray, deepClone, getIndex, removeItemFromArray, removeItemsCategoryFromArray } from "../utils/arrays"
 import { createProductFromApi, deleteProductFromApi, updateProductFromApi } from "../API/product"
+import { resetCategoriesAndProductsFromApi } from "../API/categories"
 
 export const useProducts = () => {
 
@@ -38,6 +39,14 @@ export const useProducts = () => {
         setProducts(updatedProducts)
     }
 
+    const resetCategoryAndProducts = async (userId, setCategories, setProducts) => {
+        await resetCategoriesAndProductsFromApi(userId)
+        const updatedCategories = await getCategoriesFromApi(userId);
+        setCategories(updatedCategories)
+        const updatedProducts = await getProductsFromApi(userId)
+        setProducts(updatedProducts)
+    }
 
-    return { products, setProducts, addProduct, deleteProduct, editProduct, deleteProductsFromCategory }
+
+    return { resetCategoryAndProducts, products, setProducts, addProduct, deleteProduct, editProduct, deleteProductsFromCategory }
 }

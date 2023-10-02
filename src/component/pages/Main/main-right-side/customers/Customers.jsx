@@ -12,7 +12,7 @@ import HorizontalCard from '../../../../reusable-ui/HorizontalCard.jsx';
 
 export default function Customers() {
 
-    const { customers, isModeAdmin, deleteCustomer, selectCustomer, selectedCustomer } = useContext(AdminContext)
+    const { resetCustomers, customers, isModeAdmin, deleteCustomer, selectCustomer, selectedCustomer, userId } = useContext(AdminContext)
 
     useEffect(() => { }, [customers])
 
@@ -20,7 +20,9 @@ export default function Customers() {
     const description = "Cliquez ci-dessous pour la réinitialiser"
     const label = "Générer de nouveaux clients"
 
-    const handleReset = () => { } // A CHANGER
+    const handleReset = () => {
+        resetCustomers(userId)
+    }
 
     const handleDelete = (event, id) => {
         event.stopPropagation()

@@ -12,8 +12,6 @@ import Empty from '../../../reusable-ui/Empty';
 
 export default function Menu() {
 
-  const [showBackButton, setShowBackButton] = useState(false)
-
 
   const {
     resetCategoryAndProducts,
@@ -36,11 +34,10 @@ export default function Menu() {
     selectedCategory,
   } = useContext(AdminContext)
 
+  console.log("selectedCategory", selectedCategory)
+  console.log()
 
   useEffect(() => { }, [products, categories])
-
-  console.log("invoice", invoice)
-  console.log("invoiceId", invoiceId)
 
 
   const handleCardDelete = (event, idProductToDelete) => {
@@ -62,13 +59,11 @@ export default function Menu() {
   const handleBackButtonClick = () => {
     // Mettre à jour l'état de la catégorie sélectionnée et cacher bouton retour
     setSelectedCategory(null)
-    setShowBackButton(false)
   }
 
   const handleCategoryClick = (id) => {
     // Mettre à jour l'état de la catégorie sélectionnée et faire apparaitre bouton retour
     setSelectedCategory(id)
-    setShowBackButton(true)
   }
 
   const handleCategoryDelete = async (event, categoryId) => {
@@ -98,7 +93,7 @@ export default function Menu() {
 
   return (
     <MenuStyled>
-      <CategoriesMap selectedCategory={selectedCategory} handleBackButtonClick={handleBackButtonClick} showBackButton={showBackButton} handleCategoryClick={handleCategoryClick} categories={categories} isModeAdmin={isModeAdmin} containerClassName="category" handleCategoryDelete={handleCategoryDelete} />
+      <CategoriesMap selectedCategory={selectedCategory} handleBackButtonClick={handleBackButtonClick} handleCategoryClick={handleCategoryClick} categories={categories} isModeAdmin={isModeAdmin} containerClassName="category" handleCategoryDelete={handleCategoryDelete} />
       <ProductsMap selectedCategory={selectedCategory} selectedProduct={selectedProduct} isModeAdmin={isModeAdmin} products={products} handleCardDelete={handleCardDelete} handleClick={handleClick} containerClassName={containerClassName} />
     </MenuStyled>
   )

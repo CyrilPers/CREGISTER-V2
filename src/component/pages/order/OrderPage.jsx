@@ -8,7 +8,7 @@ import { EMPTY_PRODUCT } from '../../../enum/product.jsx'
 import { useProducts } from '../../../hooks/useProducts'
 import { useBasket } from '../../../hooks/useBasket'
 import { useParams } from 'react-router-dom'
-import { initialiseBasket, initialiseInvoice, initialiseCategories, initialiseCustomers, initialiseInvoices, initialiseProducts, initialiseUser } from './helpers/initialiseUserSession'
+import { initialiseBasket, initialiseInvoice, initialiseCategories, initialiseCustomers, initialiseProducts, initialiseUser, } from './helpers/initialiseUserSession'
 import { findInArray } from '../../../utils/arrays'
 import { useCategories } from '../../../hooks/useCategories'
 import { useCustomers } from '../../../hooks/useCustomers'
@@ -28,10 +28,10 @@ export default function OrderPage() {
   const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT)
   const titleEditRef = useRef()
   const { invoices, setInvoices, editInvoice, customer, setCustomer, invoice, setInvoice, deleteInvoice, createInvoice } = useInvoices()
-  const { deleteProductsFromCategory, products, addProduct, deleteProduct, editProduct, setProducts } = useProducts()
+  const { deleteProductsFromCategory, products, addProduct, deleteProduct, editProduct, setProducts, resetCategoryAndProducts } = useProducts()
   const { basket, addBasketProduct, deleteBasketProduct, setBasket } = useBasket()
   const { categories, setCategories, selectedCategory, setSelectedCategory, newCategory, setNewCategory, deleteCategory, addCategory } = useCategories()
-  const { setCustomers, customers, deleteCustomer, selectedCustomer, setSelectedCustomer, addCustomer, editCustomer } = useCustomers()
+  const { setCustomers, customers, deleteCustomer, selectedCustomer, setSelectedCustomer, addCustomer, editCustomer, resetCustomers } = useCustomers()
   const { username } = useParams()
   const [userId, setUserId] = useState();
   const [invoiceId, setInvoiceId] = useState("1")
@@ -61,6 +61,8 @@ export default function OrderPage() {
 
 
   const adminContextValue = {
+    resetCustomers,
+    resetCategoryAndProducts,
     createInvoice,
     initialiseBasket,
     initialiseInvoice,

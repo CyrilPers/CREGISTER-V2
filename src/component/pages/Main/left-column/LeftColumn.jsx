@@ -20,6 +20,11 @@ export default function LeftColumn() {
 
     return (
         <LeftColumnStyled>
+
+
+            {/*!!!!!!!!!!!!!! A REFACTORISER !!!!!!!!!!!!!!!*/}
+
+
             {/* INVOICE */}
             {currentPage === "invoice" && <InvoiceCustomer customers={customers} customer={customer} setCustomer={setCustomer} editInvoice={editInvoice} invoice={invoice} />}
             {currentPage === "invoice" && (isEmpty(basket) ? <EmptyBasket isLoading={basket === undefined} /> : <BasketProducts />)}

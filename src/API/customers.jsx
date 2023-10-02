@@ -4,6 +4,8 @@ const API_URL = 'http://localhost:3001/cregister/api/customer/'
 
 
 export async function initialiseCustomersFromApi(userId) {
+    console.log("USERID CUSTOMERS", userId)
+    console.log("INITIALISE NEW CUSTOMERS")
     try {
         await axios.post(`${API_URL}initialise/${userId}`);
     } catch (error) {

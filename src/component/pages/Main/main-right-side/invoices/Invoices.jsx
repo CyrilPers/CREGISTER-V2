@@ -6,7 +6,7 @@ import Empty from '../../../../reusable-ui/Empty';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { theme } from '../../../../../theme';
 import { menuAnimation } from '../../../../../theme/animations';
-import { formatDate } from '../../../../../utils/maths';
+import { formatDate, formatPrice } from '../../../../../utils/maths';
 import HorizontalCard from '../../../../reusable-ui/HorizontalCard';
 import Button from '../../../../reusable-ui/Button';
 import { initialiseInvoices } from '../../../order/helpers/initialiseUserSession';
@@ -41,7 +41,7 @@ export default function Invoices() {
     // Affichage : 
 
     if (invoices === undefined) return <Loader />
-    if (isEmpty(invoices)) return <Empty description={description} title={title} label={label} onClick={handleReset} />
+    if (isEmpty(invoices)) return <Empty description="Cliquez ci-dessous pour créer une commandeé" title="Vous n'avez pas de commandes" label="Créer une commande" onClick={handleCreateOrder} />
 
 
     return (
@@ -62,7 +62,7 @@ export default function Invoices() {
                                 index={getIndex(id, invoices) + 1}
                                 surname={customer && customer.surname ? customer.surname : " "}
                                 name={customer && customer.name ? customer.name : " "}
-                                element1={total ? total + " €" : "0 €"}
+                                element1={total ? formatPrice(total) : "0 €"}
                                 element2={formatDate(createdAt)}
                                 showDeleteButton={isModeAdmin}
                                 onDelete={(event) => handleDelete(event, id)}
