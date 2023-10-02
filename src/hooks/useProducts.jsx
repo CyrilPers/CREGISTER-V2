@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { addItemToArray, deepClone, getIndex, removeItemFromArray, removeItemsCategoryFromArray } from "../utils/arrays"
-import { createProductFromApi, deleteProductFromApi, updateProductFromApi } from "../API/product"
-import { resetCategoriesAndProductsFromApi } from "../API/categories"
+import { createProductFromApi, deleteProductFromApi, getProductsFromApi, updateProductFromApi } from "../API/product"
+import { getCategoriesFromApi, resetCategoriesAndProductsFromApi } from "../API/categories"
 
 export const useProducts = () => {
 

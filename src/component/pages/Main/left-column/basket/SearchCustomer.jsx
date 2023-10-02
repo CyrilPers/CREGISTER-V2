@@ -37,6 +37,7 @@ const SearchCustomerStyled = styled.div`
     position: relative;
     flex-direction: column;
     padding-right: 50px;
+    z-index: 1;
 
 
     .inputSearch {
