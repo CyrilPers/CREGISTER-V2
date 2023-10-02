@@ -21,6 +21,7 @@ export const useBasket = () => {
             await editInvoiceFromApi(invoice, invoice.customer, newBasketProduct)
                 .then(apiResponse => {
                     newBasketProductApi = apiResponse;
+                    console.log("newBasketProductApi", newBasketProductApi)
                 });
             const basketCopy = deepClone(basket);
             const updatedBasket = addItemToArray(newBasketProductApi, basketCopy);
