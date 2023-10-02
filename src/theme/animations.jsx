@@ -138,7 +138,6 @@ export const casinoAnimation = css`
         transform: translateY(-100%);
     }
 }
-
 `
 
 export const menuAnimation = css`

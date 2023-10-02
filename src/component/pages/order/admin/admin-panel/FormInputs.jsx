@@ -8,6 +8,7 @@ const FormInputs = React.forwardRef(({ onFocus, onBlur, element, onChange, curre
 
 
     const isProduct = currentPage === "invoice"
+    console.log("isProduct", isProduct)
     const inputTexts = isProduct ? getInputTextsConfig(element) : getCustomerInputTextsConfig(element)
     const inputSelects = getInputSelectConfig(element)
 
@@ -42,35 +43,36 @@ const FormInputs = React.forwardRef(({ onFocus, onBlur, element, onChange, curre
 export default FormInputs;
 
 const FormInputsStyled = styled.div`
-${({ isProduct }) => isProduct && productStyle}
-${({ isProduct }) => !isProduct && customerStyle}
+    ${isProduct => isProduct && productStyle}
+    ${isProduct => isProduct && customerStyle}
 `
+
 const productStyle = css`
-    grid-area: 1 / 2 / 4 / 5;
-    display: grid;
-    grid-template-rows: repeat(3, 1fr);
-    grid-template-columns: repeat(2, 1fr);
-    row-gap: 8px;
-    column-gap: 8px;
-
-    .title {
-        grid-area: 1 / 1 / 2 / 4;
-    }
-    .imageSource{
-        grid-area: 2 / 1 / 3 / 4;
-    }   
-`
-const customerStyle = css`
-
     grid-area: 1 / 1 / 5 / 5;
     display: grid;
     grid-template-rows: repeat(3, 1fr);
     grid-template-columns: repeat(2, 1fr);
     row-gap: 8px;
-    column-gap: 8px;
+
+    .imageSource{
+        grid-area: 1 / 1 / 2 / 2;
+    }   
 
     .title {
-        grid-area: 1 / 1 / 2 / 2;
+        grid-area: 2 / 2 / 3 / 3;
+    }
+`
+
+const customerStyle = css`
+
+grid-area: 1 / 1 / 5 / 5;
+display: grid;
+grid-template-rows: repeat(3, 1fr);
+grid-template-columns: repeat(2, 1fr);
+row-gap: 8px;
+column-gap: 8px;
+    .title {
+    grid-area: 1 / 1 / 2 / 2;
     }
 `
     ;

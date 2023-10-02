@@ -1,7 +1,6 @@
 import React from 'react'
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { styled } from 'styled-components';
-import { casinoAnimation } from '../../theme/animations';
 import { theme } from '../../theme';
 
 export default function CasinoEffect({ count, className }) {
@@ -27,6 +26,4 @@ const CasinoEffectStyled = styled.div`
     span {
         display: inline-block;
     }
-
-    ${casinoAnimation}
 `;
