@@ -31,12 +31,17 @@ export default function Menu() {
     addBasketProduct,
     selectProduct,
     invoice,
+    invoiceId,
     setSelectedCategory,
     selectedCategory,
   } = useContext(AdminContext)
 
 
   useEffect(() => { }, [products, categories])
+
+  console.log("invoice", invoice)
+  console.log("invoiceId", invoiceId)
+
 
   const handleCardDelete = (event, idProductToDelete) => {
     event.stopPropagation()
@@ -46,7 +51,7 @@ export default function Menu() {
 
   const handleAddButton = (idProductToAdd) => {
     const productToAdd = findInArray(idProductToAdd, products)
-    productToAdd.isAvailable && addBasketProduct(productToAdd, invoice)
+    productToAdd.isAvailable && addBasketProduct(productToAdd, invoice, userId)
   }
 
   const handleClick = (id) => {

@@ -20,6 +20,8 @@ export default function BasketProducts() {
         deleteBasketProduct(id)
     }
 
+    console.log("basket", basket)
+
     useEffect(() => { }, [basket])
 
     return (

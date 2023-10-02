@@ -1,13 +1,16 @@
 import { useState } from 'react'
 import { addItemToArray, deepClone, getIndex, isProductIdInBasket, removeItemFromArray } from '../utils/arrays'
-import { createBasketProductFromApi, deleteBasketProductFromApi, updateBasketProductFromApi } from '../API/basket'
+import { deleteBasketProductFromApi, updateBasketProductFromApi } from '../API/basket'
+import { editInvoiceFromApi } from '../API/invoice'
 
 export const useBasket = () => {
     const [basket, setBasket] = useState([])
 
 
-    const addBasketProduct = async (productToAdd, invoice) => {
+    const addBasketProduct = async (productToAdd, invoice, userId) => {
         let newBasketProductApi
+
+        console.log("invoice", invoice)
 
         const isProductAlreadyInBasket = isProductIdInBasket(productToAdd.id, basket)
         if (!isProductAlreadyInBasket) {
@@ -15,7 +18,7 @@ export const useBasket = () => {
                 ...productToAdd,
                 quantity: 1,
             }
-            await createBasketProductFromApi(newBasketProduct, invoice)
+            await editInvoiceFromApi(invoice, invoice.customer, newBasketProduct)
                 .then(apiResponse => {
                     newBasketProductApi = apiResponse;
                 });
