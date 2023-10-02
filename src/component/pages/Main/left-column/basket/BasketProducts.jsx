@@ -12,12 +12,13 @@ import { basketCardAnimation } from '../../../../../theme/animations';
 export default function BasketProducts() {
 
     const {
+        invoice,
         basket,
         deleteBasketProduct,
     } = useContext(AdminContext)
 
     const handleOnDelete = (id) => {
-        deleteBasketProduct(id)
+        deleteBasketProduct(id, invoice)
     }
 
     console.log("basket", basket)
