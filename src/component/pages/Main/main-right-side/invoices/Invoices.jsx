@@ -49,7 +49,7 @@ export default function Invoices() {
             <div className='create-invoice'>
                 <Button onClick={handleCreateOrder} label="Créer une commande" />
             </div>
-            {invoices.slice().reverse().map(({ id, createdAt, total, customer }) => {
+            {invoices.slice().sort((a, b) => b.id - a.id).map(({ id, createdAt, total, customer }) => {
                 return (
                     <CSSTransition
                         classNames={"animation-card"}
