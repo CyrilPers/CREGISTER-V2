@@ -2,6 +2,7 @@ import axios from 'axios'
 
 const API_URL = 'http://localhost:3001/cregister/api/customer/'
 
+
 export async function initialiseCustomersFromApi(userId) {
     try {
         await axios.post(`${API_URL}initialise/${userId}`);
@@ -30,7 +31,9 @@ export async function deleteCustomerFromApi(customerId) {
 
 export async function createCustomerFromApi(newCustomer, userId) {
     try {
-        await axios.post(`${API_URL}create`, { name: newCustomer.name, surname: newCustomer.surname, phoneNumber: newCustomer.phoneNumber, user: { id: userId }, address: { id: newCustomer.address.id, city: newCustomer.address.city, street: newCustomer.address.street, streetNumber: newCustomer.address.streetNumber, country: newCustomer.address.country, zipCode: newCustomer.address.zipCode } });
+        const { data } = await axios.post(`${API_URL}create`, { name: newCustomer.name, surname: newCustomer.surname, phoneNumber: newCustomer.phoneNumber, user: { id: userId }, address: { id: newCustomer.address.id, city: newCustomer.address.city, street: newCustomer.address.street, streetNumber: newCustomer.address.streetNumber, country: newCustomer.address.country, zipCode: newCustomer.address.zipCode } });
+        console.log("data", data)
+        return data;
     } catch (error) {
         console.log(error)
     }
@@ -43,5 +46,4 @@ export async function updateCustomerFromApi(updatedCustomer, userId) {
         console.log(error)
     }
 }
-
 

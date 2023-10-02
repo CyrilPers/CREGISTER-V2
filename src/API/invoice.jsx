@@ -11,18 +11,32 @@ export async function getInvoiceFromApi(invoiceId) {
     }
 }
 
-export async function editInvoiceFromApi(invoice, newCustomer) {
+export async function editInvoiceFromApi(invoice, newCustomer, newProduct) {
+    console.log("newproduct", newProduct)
     try {
         const requestData = {
             createdAt: invoice.createdAt,
-            user: { id: invoice.user.id }
+            user: { id: invoice.user.id },
+            total: 12
         };
 
         if (newCustomer) {
             requestData.customer = { id: newCustomer.id };
         }
 
-        await axios.put(`${API_URL}update/${invoice.id}`, requestData);
+        if (newProduct) {
+            requestData.invoiceLines = [
+                {
+                    ...newProduct,
+                    invoice: { id: invoice.id }
+                }
+            ]
+        }
+
+        const { data } = await axios.put(`${API_URL}update/${invoice.id}`, requestData);
+        const basketProduct = data.invoiceLines[0]
+        console.log("data", data)
+        return basketProduct;
     } catch (error) {
         console.log(error)
     }
@@ -42,6 +56,16 @@ export async function getInvoicesFromApi(userId) {
 export async function deleteInvoiceFromApi(invoiceId) {
     try {
         await axios.delete(`${API_URL}delete/${invoiceId}`);
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+export async function createInvoiceFromApi(userId) {
+    try {
+        const { data } = await axios.post(`${API_URL}create`, { user: { id: userId } });
+        return data;
     } catch (error) {
         console.log(error)
     }

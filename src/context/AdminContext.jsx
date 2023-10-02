@@ -73,6 +73,7 @@ export default createContext({
     invoices: [],
     setInvoices: () => { },
     editInvoice: () => { },
+    createInvoice: () => { },
 
     invoice: {},
     setInvoice: () => { },
@@ -80,4 +81,8 @@ export default createContext({
 
     currentPage: {},
     setCurrentPage: () => { },
+
+    initialiseBasket: () => { },
+    initialiseInvoice: () => { },
+    initialiseCustomers: () => { },
 });

@@ -5,7 +5,6 @@ import Empty from '../../../../reusable-ui/Empty.jsx';
 import { getIndex, isEmpty } from '../../../../../utils/arrays.jsx';
 import Loader from '../../../order/menu/Loader.jsx';
 import { styled } from 'styled-components';
-import { initialiseCustomers } from '../../../order/helpers/initialiseUserSession.jsx';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { menuAnimation } from '../../../../../theme/animations.jsx';
 import { checkIfProductIsClicked } from '../../../order/menu/helper/helpers.jsx';
@@ -13,11 +12,9 @@ import HorizontalCard from '../../../../reusable-ui/HorizontalCard.jsx';
 
 export default function Customers() {
 
-    const { customers, setCustomers, userId, isModeAdmin, deleteCustomer, selectCustomer, selectedCustomer } = useContext(AdminContext)
+    const { customers, isModeAdmin, deleteCustomer, selectCustomer, selectedCustomer } = useContext(AdminContext)
 
-    useEffect(() => {
-        initialiseCustomers(userId, setCustomers)
-    }, [])
+    useEffect(() => { }, [customers])
 
     const title = "La liste de clients est vide"
     const description = "Cliquez ci-dessous pour la réinitialiser"
@@ -90,5 +87,6 @@ const CustomersStyled = styled.div`
             transition: ease-out ${theme.animation.speed.slow};
         }
     }
+
     ${menuAnimation}
 `;

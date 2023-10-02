@@ -5,8 +5,6 @@ import AdminContext from '../../../../context/AdminContext.jsx';
 import { EMPTY_PRODUCT } from '../../../../enum/product';
 import { findInArray } from '../../../../utils/arrays';
 import Loader from './Loader';
-import { menuAnimation } from '../../../../theme/animations';
-import { initialiseCategories, initialiseProducts, resetCategoryAndProducts } from '../helpers/initialiseUserSession'
 import ProductsMap from './ProductsMap';
 import CategoriesMap from './CategoriesMap';
 import { isEmpty } from '../../../../utils/arrays.jsx'
@@ -18,7 +16,7 @@ export default function Menu() {
 
 
   const {
-    currentPage,
+    resetCategoryAndProducts,
     deleteProductsFromCategory,
     deleteCategory,
     setCategories,
@@ -32,17 +30,17 @@ export default function Menu() {
     selectedProduct,
     addBasketProduct,
     selectProduct,
-    invoiceId,
     invoice,
+    invoiceId,
     setSelectedCategory,
     selectedCategory,
   } = useContext(AdminContext)
 
 
-  useEffect(() => {
-    initialiseProducts(userId, setProducts)
-    initialiseCategories(userId, setCategories)
-  }, [])
+  useEffect(() => { }, [products, categories])
+
+  console.log("invoice", invoice)
+  console.log("invoiceId", invoiceId)
 
 
   const handleCardDelete = (event, idProductToDelete) => {
@@ -51,9 +49,9 @@ export default function Menu() {
     idProductToDelete === selectedProduct.id && setSelectedProduct(EMPTY_PRODUCT)
   }
 
-  const handleAddButton = (idProductToAdd) => {
+  const handleAddButton = async (idProductToAdd) => {
     const productToAdd = findInArray(idProductToAdd, products)
-    productToAdd.isAvailable && addBasketProduct(productToAdd, invoice)
+    productToAdd.isAvailable && await addBasketProduct(productToAdd, invoice, userId)
   }
 
   const handleClick = (id) => {
@@ -91,7 +89,6 @@ export default function Menu() {
   const description = "Cliquez ci-dessous pour le réinitialiser"
   const label = "Générer de nouveaux produits"
 
-  console.log("currentPage", currentPage)
 
   // Affichage 
   if (products === undefined || categories === undefined) return <Loader />

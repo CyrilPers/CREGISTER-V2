@@ -8,7 +8,7 @@ export default function CasinoEffect({ count, className }) {
     return (
         <TransitionGroup component={CasinoEffectStyled}>
             <CSSTransition
-                classNames="count-animated"
+                className="count-animated"
                 timeout={300}
                 key={count}
             >

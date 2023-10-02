@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { styled } from 'styled-components';
 import { theme } from '../../../../../theme';
 import BasketCard from './BasketCard';
@@ -20,14 +20,18 @@ export default function BasketProducts() {
         deleteBasketProduct(id)
     }
 
+    console.log("basket", basket)
+
+    useEffect(() => { }, [basket])
+
     return (
         <TransitionGroup component={BasketProductsStyled}>
             {basket.map((basketProduct) =>
                 <CSSTransition
                     appear={true}
-                    classNames={"card-transition"}
+                    className={"card-transition"}
                     key={basketProduct.id}
-                    timeout={300} // {{ enter: 500, exit: 500 }}
+                    timeout={300}
                 >
                     <div className='basket-card'  >
                         <BasketCard

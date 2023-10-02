@@ -1,11 +1,12 @@
 import { getBasketFromApi } from "../../../../API/basket.jsx"
 import { getCategoriesFromApi, initialiseCategoriesAndProductsFromApi, resetCategoriesAndProductsFromApi } from "../../../../API/categories.jsx"
-import { getCustomersFromApi, initialiseCustomersFromApi } from "../../../../API/customers.jsx"
+import { getCustomersFromApi } from "../../../../API/customers.jsx"
 import { getInvoiceFromApi, getInvoicesFromApi } from "../../../../API/invoice.jsx"
-import { getProductsFromApi } from "../../../../API/products.jsx"
+import { getProductsFromApi } from "../../../../API/product.jsx"
 import { createUserFromApi, getUserIdFromApi } from "../../../../API/users.jsx"
 
-export const initialiseProducts = async (userId, setProducts) => {
+
+export async function initialiseProducts(userId, setProducts) {
 
   const productsExisting = await getProductsFromApi(userId)
   if (!productsExisting) {
@@ -15,7 +16,7 @@ export const initialiseProducts = async (userId, setProducts) => {
   setProducts(productsExisting)
 }
 
-export const initialiseInvoices = async (userId, setInvoices) => {
+export async function initialiseInvoices(userId, setInvoices) {
 
   const invoicesExisting = await getInvoicesFromApi(userId)
   if (!invoicesExisting) {
@@ -25,7 +26,7 @@ export const initialiseInvoices = async (userId, setInvoices) => {
   setInvoices(invoicesExisting)
 }
 
-export const initialiseCustomers = async (userId, setCustomers) => {
+export async function initialiseCustomers(userId, setCustomers) {
   const customersExisting = await getCustomersFromApi(userId)
   if (!customersExisting) {
     setCustomers([])
@@ -35,7 +36,7 @@ export const initialiseCustomers = async (userId, setCustomers) => {
 
 }
 
-export const initialiseCategories = async (userId, setCategories) => {
+export async function initialiseCategories(userId, setCategories) {
   const categoriesExisting = await getCategoriesFromApi(userId)
   if (!categoriesExisting) {
     setCategories([])
@@ -45,7 +46,7 @@ export const initialiseCategories = async (userId, setCategories) => {
 }
 
 
-export const initialiseBasket = async (invoiceId, setBasket) => {
+export async function initialiseBasket(invoiceId, setBasket) {
 
   const basketExisting = await getBasketFromApi(invoiceId)
   if (!basketExisting) {
@@ -55,7 +56,7 @@ export const initialiseBasket = async (invoiceId, setBasket) => {
   setBasket(basketExisting)
 }
 
-export const initialiseInvoice = async (invoiceId, setCustomer, setInvoice) => {
+export async function initialiseInvoice(invoiceId, setCustomer, setInvoice) {
 
   const invoiceExisting = await getInvoiceFromApi(invoiceId)
   setInvoice(invoiceExisting)
@@ -68,12 +69,12 @@ export const initialiseInvoice = async (invoiceId, setCustomer, setInvoice) => {
 }
 
 
-export const initialiseUser = async (setUserId, username) => {
+export async function initialiseUser(setUserId, username) {
   const newUserId = await getUserIdFromApi(username)
   setUserId(newUserId)
 }
 
-export const authentificateUser = async (username) => {
+export async function authentificateUser(username) {
   const existingUser = await getUserIdFromApi(username)
   if (!existingUser) {
     await initialiseNewUserFromApi(username)
@@ -81,7 +82,7 @@ export const authentificateUser = async (username) => {
   return existingUser
 }
 
-export const initialiseNewUserFromApi = async (username) => {
+export async function initialiseNewUserFromApi(username) {
   await createUserFromApi(username)
   const newUserId = await getUserIdFromApi(username)
   await initialiseCategoriesAndProductsFromApi(newUserId)
@@ -89,13 +90,10 @@ export const initialiseNewUserFromApi = async (username) => {
 }
 
 
-export const resetCategoryAndProducts = async (userId, setCategories, setProducts) => {
+export async function resetCategoryAndProducts(userId, setCategories, setProducts) {
   await resetCategoriesAndProductsFromApi(userId)
   const updatedCategories = await getCategoriesFromApi(userId);
   setCategories(updatedCategories);
   const updatedProducts = await getProductsFromApi(userId);
   setProducts(updatedProducts);
 }
-
-
-

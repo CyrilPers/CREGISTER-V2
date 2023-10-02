@@ -14,6 +14,9 @@ export const removeItemFromArray = (id, array) => {
     return array.filter((item) => item.id !== id)
 }
 
+export const isProductIdInBasket = (id, array) => {
+    return array.find(item => item.productId === id);
+}
 
 export const removeItemsCategoryFromArray = (categoryId, array) => {
     return array.filter((item) => item.category.id !== categoryId)
@@ -27,4 +30,8 @@ export const isEmpty = (array) => {
 export const findIdInArray = (name, array) => {
     const foundItem = array.find(item => item.name === name);
     return foundItem.id
+}
+
+export const addItemToArray = (newItem, array) => {
+    return [...array, newItem];
 }

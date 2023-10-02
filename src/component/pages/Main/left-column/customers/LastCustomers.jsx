@@ -14,9 +14,9 @@ export default function LastCustomers({ customers }) {
             {!isEmpty(customers) &&
                 customers.slice(0, 5).map(({ id, name, surname, address }) => (
                     <div key={id} className='customer'>
-                        <span>{name ? name : "Na"}</span>
-                        <span>{surname ? surname : "Na"}</span>
-                        <span>{address.city ? address.city : "Na"}</span>
+                        <span>{name ? name : "inc."}</span>
+                        <span>{surname ? surname : "inc."}</span>
+                        <span>{address.city ? address.city : "inc."}</span>
                     </div>
                 ))}
         </LastCustomersStyled>
@@ -36,12 +36,10 @@ const LastCustomersStyled = styled.div`
     }
 
     .titles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     width: 100%;
-    display: flex;
-
-    justify-content: space-between;
-    margin: 5px 5px;
-    padding: 0 10px;
+    margin: 5px 0px;
     }
 
     .customer{

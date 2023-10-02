@@ -8,13 +8,12 @@ import { EMPTY_PRODUCT } from '../../../enum/product.jsx'
 import { useProducts } from '../../../hooks/useProducts'
 import { useBasket } from '../../../hooks/useBasket'
 import { useParams } from 'react-router-dom'
-import { initialiseUser } from './helpers/initialiseUserSession'
+import { initialiseBasket, initialiseInvoice, initialiseCategories, initialiseCustomers, initialiseInvoices, initialiseProducts, initialiseUser } from './helpers/initialiseUserSession'
 import { findInArray } from '../../../utils/arrays'
 import { useCategories } from '../../../hooks/useCategories'
 import { useCustomers } from '../../../hooks/useCustomers'
 import { useInvoices } from '../../../hooks/useInvoices'
 import { EMPTY_CUSTOMER } from '../../../enum/customer'
-
 
 
 export default function OrderPage() {
@@ -28,7 +27,7 @@ export default function OrderPage() {
   const [newCustomer, setNewCustomer] = useState(EMPTY_CUSTOMER)
   const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT)
   const titleEditRef = useRef()
-  const { invoices, setInvoices, editInvoice, customer, setCustomer, invoice, setInvoice, deleteInvoice } = useInvoices()
+  const { invoices, setInvoices, editInvoice, customer, setCustomer, invoice, setInvoice, deleteInvoice, createInvoice } = useInvoices()
   const { deleteProductsFromCategory, products, addProduct, deleteProduct, editProduct, setProducts } = useProducts()
   const { basket, addBasketProduct, deleteBasketProduct, setBasket } = useBasket()
   const { categories, setCategories, selectedCategory, setSelectedCategory, newCategory, setNewCategory, deleteCategory, addCategory } = useCategories()
@@ -55,10 +54,17 @@ export default function OrderPage() {
 
   useEffect(() => {
     initialiseUser(setUserId, username)
-  }, [])
+    initialiseCategories(userId, setCategories)
+    initialiseCustomers(userId, setCustomers)
+    initialiseProducts(userId, setProducts)
+  }, [userId])
 
 
   const adminContextValue = {
+    createInvoice,
+    initialiseBasket,
+    initialiseInvoice,
+    initialiseCustomers,
     deleteInvoice,
     selectCustomer,
     editCustomer,
@@ -115,7 +121,6 @@ export default function OrderPage() {
     setSelectedCategory,
     addCategory,
   }
-
 
   return (
     <AdminContext.Provider value={adminContextValue}>
