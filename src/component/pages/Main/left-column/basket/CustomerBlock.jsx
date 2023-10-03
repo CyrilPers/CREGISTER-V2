@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components';
 import { theme } from '../../../../../theme';
 import { TiDelete } from 'react-icons/ti'

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import AdminContext from '../../../../../context/AdminContext.jsx';
 import { theme } from '../../../../../theme/index.jsx';
 import Empty from '../../../../reusable-ui/Empty.jsx';
