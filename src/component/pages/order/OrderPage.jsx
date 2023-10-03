@@ -4,7 +4,6 @@ import { theme } from '../../../theme'
 import Main from './Main'
 import Navbar from '../../navbar/Navbar'
 import AdminContext from "../../../context/AdminContext"
-import { EMPTY_PRODUCT } from '../../../enum/product.jsx'
 import { useProducts } from '../../../hooks/useProducts'
 import { useBasket } from '../../../hooks/useBasket'
 import { useParams } from 'react-router-dom'
@@ -13,7 +12,6 @@ import { findInArray } from '../../../utils/arrays'
 import { useCategories } from '../../../hooks/useCategories'
 import { useCustomers } from '../../../hooks/useCustomers'
 import { useInvoices } from '../../../hooks/useInvoices'
-import { EMPTY_CUSTOMER } from '../../../enum/customer'
 
 
 export default function OrderPage() {
@@ -23,15 +21,13 @@ export default function OrderPage() {
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [currentPage, setCurrentPage] = useState("invoices")
   const [currentTabSelected, setCurrentTabSelected] = useState("add")
-  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
-  const [newCustomer, setNewCustomer] = useState(EMPTY_CUSTOMER)
-  const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT)
+
   const titleEditRef = useRef()
   const { invoices, setInvoices, editInvoice, customer, setCustomer, invoice, setInvoice, deleteInvoice, createInvoice } = useInvoices()
-  const { deleteProductsFromCategory, products, addProduct, deleteProduct, editProduct, setProducts, resetCategoryAndProducts } = useProducts()
+  const { deleteProductsFromCategory, products, addProduct, deleteProduct, editProduct, setProducts, resetCategoryAndProducts, selectedProduct, setSelectedProduct, newProduct, setNewProduct } = useProducts()
   const { basket, addBasketProduct, deleteBasketProduct, setBasket } = useBasket()
   const { categories, setCategories, selectedCategory, setSelectedCategory, newCategory, setNewCategory, deleteCategory, addCategory } = useCategories()
-  const { setCustomers, customers, deleteCustomer, selectedCustomer, setSelectedCustomer, addCustomer, editCustomer, resetCustomers } = useCustomers()
+  const { setCustomers, customers, deleteCustomer, selectedCustomer, setSelectedCustomer, addCustomer, editCustomer, resetCustomers, newCustomer, setNewCustomer } = useCustomers()
   const { username } = useParams()
   const [userId, setUserId] = useState();
   const [invoiceId, setInvoiceId] = useState("1")

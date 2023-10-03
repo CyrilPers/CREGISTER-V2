@@ -14,8 +14,6 @@ export default function Customers() {
 
     const { resetCustomers, customers, isModeAdmin, deleteCustomer, selectCustomer, selectedCustomer, userId } = useContext(AdminContext)
 
-    useEffect(() => { }, [customers])
-
     const title = "La liste de clients est vide"
     const description = "Cliquez ci-dessous pour la réinitialiser"
     const label = "Générer de nouveaux clients"

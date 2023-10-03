@@ -6,6 +6,7 @@ import { createCustomerFromApi, deleteCustomerFromApi, getCustomersFromApi, init
 export const useCustomers = () => {
     const [customers, setCustomers] = useState([])
     const [selectedCustomer, setSelectedCustomer] = useState(EMPTY_CUSTOMER)
+    const [newCustomer, setNewCustomer] = useState(EMPTY_CUSTOMER)
 
 
     const deleteCustomer = async (id) => {
@@ -41,6 +42,6 @@ export const useCustomers = () => {
     }
 
 
-    return { resetCustomers, customers, setCustomers, deleteCustomer, selectedCustomer, setSelectedCustomer, addCustomer, editCustomer, addCustomer }
+    return { resetCustomers, customers, setCustomers, deleteCustomer, selectedCustomer, setSelectedCustomer, addCustomer, editCustomer, addCustomer, newCustomer, setNewCustomer }
 }
 

@@ -5,9 +5,6 @@ import { TiDelete } from 'react-icons/ti'
 
 export default function CustomerBlock({ customer, handleDelete }) {
 
-
-    useEffect(() => { }, [customer])
-
     return (
 
         <CustomerBlockStyled>

@@ -29,13 +29,9 @@ export default function Menu() {
     addBasketProduct,
     selectProduct,
     invoice,
-    invoiceId,
     setSelectedCategory,
     selectedCategory,
   } = useContext(AdminContext)
-
-
-  useEffect(() => { }, [products, categories])
 
 
   const handleCardDelete = (event, idProductToDelete) => {

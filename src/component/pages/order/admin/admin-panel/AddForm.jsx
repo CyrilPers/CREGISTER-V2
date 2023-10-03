@@ -11,7 +11,6 @@ export default function AddForm() {
     const { addProduct, setNewProduct, newProduct, userId, selectedCategory, categories, currentPage } = useContext(AdminContext)
     const { isSubmitted, displaySuccessMessage } = useSuccessMessage()
 
-
     const handleSubmit = (event) => {
         event.preventDefault()
         const id = crypto.randomUUID()

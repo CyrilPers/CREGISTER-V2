@@ -21,14 +21,12 @@ export default function BasketProducts() {
         deleteBasketProduct(id, invoice)
     }
 
-    useEffect(() => { }, [basket])
-
     return (
         <TransitionGroup component={BasketProductsStyled}>
             {basket.map((basketProduct) =>
                 <CSSTransition
                     appear={true}
-                    className={"card-transition"}
+                    classNames={"card-transition"}
                     key={basketProduct.id}
                     timeout={300}
                 >
@@ -56,6 +54,7 @@ const BasketProductsStyled = styled.div`
     overflow-x: hidden;
     scrollbar-color: transparent transparent;
     scrollbar-width: thin;
+    position: relative;
 
     &:hover {
         scrollbar-color: initial;

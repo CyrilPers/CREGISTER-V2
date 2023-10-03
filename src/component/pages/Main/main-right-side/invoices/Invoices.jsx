@@ -14,10 +14,9 @@ import { initialiseInvoices } from '../../../order/helpers/initialiseUserSession
 export default function Invoices() {
     const { setInvoices, invoices, isModeAdmin, setInvoiceId, setCurrentPage, deleteInvoice, createInvoice, userId } = useContext(AdminContext)
 
-    const title = "La liste de clients est vide"
-    const description = "Cliquez ci-dessous pour la réinitialiser"
-    const label = "Générer de nouveaux clients"
-    const handleReset = () => { } // A CHANGER
+    const title = "Vous n'avez pas de commandes"
+    const description = "Cliquez ci-dessous pour créer une commandeé"
+    const label = "Créer une commande"
 
     const handleDelete = (event, id) => {
         event.stopPropagation()
@@ -41,7 +40,7 @@ export default function Invoices() {
     // Affichage : 
 
     if (invoices === undefined) return <Loader />
-    if (isEmpty(invoices)) return <Empty description="Cliquez ci-dessous pour créer une commandeé" title="Vous n'avez pas de commandes" label="Créer une commande" onClick={handleCreateOrder} />
+    if (isEmpty(invoices)) return <Empty description={description} title={title} label={label} onClick={handleCreateOrder} />
 
 
     return (

@@ -1,15 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Card from '../../../reusable-ui/Card'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { convertStringToBoolean } from '../../../../utils/string'
 import { checkIfProductIsClicked } from './helper/helpers'
 import { formatPrice } from '../../../../utils/maths';
 import { IMAGE_COMING_SOON, IMAGE_NO_STOCK } from '../../../../enum/product';
-import { menuAnimation } from '../../../../theme/animations'
-import styled from 'styled-components'
 
 export default function ProductsMap({ selectedCategory, selectedProduct, isModeAdmin, products, handleCardDelete, handleClick, containerClassName }) {
 
+    useEffect(() => { filteredProducts }, [products])
 
     const filteredProducts = selectedCategory
         ? selectedCategory
@@ -18,12 +17,13 @@ export default function ProductsMap({ selectedCategory, selectedProduct, isModeA
         : products.filter((product) => product.category.name === "MAIN") || [];
 
 
+
     return (
         <>
             {filteredProducts.slice().reverse().map(({ id, title, imageSource, price, isAvailable }) => {
                 return (
                     <CSSTransition
-                        className={"animation-card"}
+                        classNames={"animation-card"}
                         key={id}
                         timeout={300}
                     >

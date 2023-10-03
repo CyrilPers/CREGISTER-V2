@@ -2,10 +2,13 @@ import { useState } from "react"
 import { addItemToArray, deepClone, getIndex, removeItemFromArray, removeItemsCategoryFromArray } from "../utils/arrays"
 import { createProductFromApi, deleteProductFromApi, getProductsFromApi, updateProductFromApi } from "../API/product"
 import { getCategoriesFromApi, resetCategoriesAndProductsFromApi } from "../API/categories"
+import { EMPTY_PRODUCT } from "../enum/product"
 
 export const useProducts = () => {
 
     const [products, setProducts] = useState()
+    const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT)
+    const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
 
     const addProduct = async (newProduct, userId, categoryId) => {
         let newProductApi;
@@ -48,5 +51,5 @@ export const useProducts = () => {
     }
 
 
-    return { resetCategoryAndProducts, products, setProducts, addProduct, deleteProduct, editProduct, deleteProductsFromCategory }
+    return { resetCategoryAndProducts, products, setProducts, addProduct, deleteProduct, editProduct, deleteProductsFromCategory, selectedProduct, setSelectedProduct, newProduct, setNewProduct }
 }
