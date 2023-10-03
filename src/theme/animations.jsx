@@ -160,3 +160,26 @@ export const menuAnimation = css`
         }
     } 
 `
+
+export const scaleXAnimation = css`
+.animation-card-enter {
+    opacity: 0.1;
+    transform: scaleX(0);
+    &.animation-card-enter-active {
+        opacity: 1;
+        transform: scaleX(100%);
+        transition: all ${theme.animation.speed.medium} ease-out;
+    }
+}
+.animation-card-exit {
+    opacity: 1;
+    transform: scaleX(100%);
+    &.animation-card-exit-active {
+        opacity: 0.1;
+        transform: scaleX(0);
+        transform: all ${theme.animation.speed.medium} ease-out;
+    }
+} 
+
+    
+`

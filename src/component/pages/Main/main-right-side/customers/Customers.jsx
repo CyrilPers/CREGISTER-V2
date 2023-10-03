@@ -6,7 +6,7 @@ import { getIndex, isEmpty } from '../../../../../utils/arrays.jsx';
 import Loader from '../../../order/menu/Loader.jsx';
 import { styled } from 'styled-components';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { menuAnimation } from '../../../../../theme/animations.jsx';
+import { scaleXAnimation } from '../../../../../theme/animations.jsx';
 import { checkIfProductIsClicked } from '../../../order/menu/helper/helpers.jsx';
 import HorizontalCard from '../../../../reusable-ui/HorizontalCard.jsx';
 
@@ -88,5 +88,5 @@ const CustomersStyled = styled.div`
         }
     }
 
-    ${menuAnimation}
+    ${scaleXAnimation}
 `;

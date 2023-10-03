@@ -55,8 +55,6 @@ const BasketCardStyled = styled.div`
   margin: 10px 15px;
   height: 85px;
   box-sizing: border-box;
-  
-
   position: relative;
 
   .image {

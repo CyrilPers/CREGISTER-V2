@@ -5,7 +5,7 @@ import { getIndex, isEmpty } from '../../../../../utils/arrays';
 import Empty from '../../../../reusable-ui/Empty';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { theme } from '../../../../../theme';
-import { menuAnimation } from '../../../../../theme/animations';
+import { scaleXAnimation } from '../../../../../theme/animations';
 import { formatDate, formatPrice } from '../../../../../utils/maths';
 import HorizontalCard from '../../../../reusable-ui/HorizontalCard';
 import Button from '../../../../reusable-ui/Button';
@@ -106,6 +106,6 @@ const InvoicesStyled = styled.div`
             transition: ease-out ${theme.animation.speed.slow};
         }
     }
-    ${menuAnimation}
+    ${scaleXAnimation}
 `;
 
