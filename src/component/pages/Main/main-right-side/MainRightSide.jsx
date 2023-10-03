@@ -17,7 +17,6 @@ export default function MainRightSide() {
 
     return (
         <MainRightSideStyled>
-            {/* CREER FICHIER CONFIG POUR TRAITER LE CONTENU A AFFICHER currentPage.content COMME POUR ADMIN */}
             {currentPage === "invoice" && userId && <Menu />}
             {currentPage === "customers" && userId && <Customers />}
             {currentPage === "invoices" && userId && <Invoices />}
