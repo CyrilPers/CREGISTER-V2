@@ -61,10 +61,15 @@ export const useBasket = () => {
             productPrice: 0
         }
         await editInvoiceFromApi(invoice, invoice.customer, basketproductToDelete)
+            .then(apiResponse => {
+                invoiceUpdated = apiResponse
+            });
+
         deleteBasketProductFromApi(basketProductId)
         const basketCopy = deepClone(basket)
         const basketUpdated = removeItemFromArray(basketProductId, basketCopy)
         setBasket(basketUpdated)
+        setTotalBasket(invoiceUpdated.total)
     }
 
 

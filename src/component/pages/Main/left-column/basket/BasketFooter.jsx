@@ -4,15 +4,13 @@ import Header from '../../../../reusable-ui/Header';
 import Button from '../../../../reusable-ui/Button.jsx'
 import { FaReceipt } from 'react-icons/fa'
 import CasinoEffect from '../../../../reusable-ui/CasinoEffect';
-import { calculateSumToPay } from './Helper';
 import { formatPrice } from '../../../../../utils/maths';
 import { theme } from '../../../../../theme';
 import AdminContext from '../../../../../context/AdminContext';
 
-export default function BasketFooter({ basket, totalBasket }) {
+export default function BasketFooter({ totalBasket }) {
 
     const initialiseCustomersFromApi = useContext(AdminContext)
-    const sumToPay = calculateSumToPay(basket)
 
     const handleClick = () => {
         initialiseCustomersFromApi("147")
