@@ -25,7 +25,7 @@ export default function OrderPage() {
   const titleEditRef = useRef()
   const { invoices, setInvoices, editInvoice, customer, setCustomer, invoice, setInvoice, deleteInvoice, createInvoice } = useInvoices()
   const { deleteProductsFromCategory, products, addProduct, deleteProduct, editProduct, setProducts, resetCategoryAndProducts, selectedProduct, setSelectedProduct, newProduct, setNewProduct } = useProducts()
-  const { basket, addBasketProduct, deleteBasketProduct, setBasket } = useBasket()
+  const { basket, addBasketProduct, deleteBasketProduct, setBasket, totalBasket, setTotalBasket } = useBasket()
   const { categories, setCategories, selectedCategory, setSelectedCategory, newCategory, setNewCategory, deleteCategory, addCategory } = useCategories()
   const { setCustomers, customers, deleteCustomer, selectedCustomer, setSelectedCustomer, addCustomer, editCustomer, resetCustomers, newCustomer, setNewCustomer } = useCustomers()
   const { username } = useParams()
@@ -57,6 +57,8 @@ export default function OrderPage() {
 
 
   const adminContextValue = {
+    setTotalBasket,
+    totalBasket,
     resetCustomers,
     resetCategoryAndProducts,
     createInvoice,

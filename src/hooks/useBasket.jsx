@@ -5,11 +5,14 @@ import { editInvoiceFromApi } from '../API/invoice'
 
 export const useBasket = () => {
     const [basket, setBasket] = useState([])
+    const [totalBasket, setTotalBasket] = useState(0)
 
 
     const addBasketProduct = async (productToAdd, invoice, userId) => {
         let newBasketProductApi
+        let invoiceUpdated
 
+        // !!!!!!!!!!!!!!!!!!  A REFACTORISER !!!!!!!!!!!!!!!!
 
         const isProductAlreadyInBasket = isProductIdInBasket(productToAdd.id, basket)
         if (!isProductAlreadyInBasket) {
@@ -24,11 +27,13 @@ export const useBasket = () => {
             }
             await editInvoiceFromApi(invoice, invoice.customer, newBasketProduct)
                 .then(apiResponse => {
-                    newBasketProductApi = apiResponse;
+                    invoiceUpdated = apiResponse
+                    newBasketProductApi = invoiceUpdated.invoiceLines[0];
                 });
             const basketCopy = deepClone(basket);
             const updatedBasket = addItemToArray(newBasketProductApi, basketCopy);
             setBasket(updatedBasket)
+            setTotalBasket(invoiceUpdated.total)
         }
 
         const updatedBasketProduct = {
@@ -37,13 +42,16 @@ export const useBasket = () => {
         }
 
         await editInvoiceFromApi(invoice, invoice.customer, updatedBasketProduct)
+            .then(apiResponse => {
+                invoiceUpdated = apiResponse
+            });
 
         const basketCopy = deepClone(basket)
         const indexOfBasketProducToEdit = getIndex(updatedBasketProduct.id, basketCopy)
         basketCopy[indexOfBasketProducToEdit] = updatedBasketProduct
         setBasket(basketCopy)
+        setTotalBasket(invoiceUpdated.total)
     }
-
 
 
     const deleteBasketProduct = async (basketProductId, invoice,) => {
@@ -60,5 +68,5 @@ export const useBasket = () => {
     }
 
 
-    return { basket, addBasketProduct, deleteBasketProduct, setBasket }
+    return { basket, addBasketProduct, deleteBasketProduct, setBasket, totalBasket, setTotalBasket }
 }

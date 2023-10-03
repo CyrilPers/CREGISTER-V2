@@ -58,7 +58,7 @@ const productStyle = css`
     }   
 
     .title {
-        grid-area: 2 / 2 / 3 / 3;
+        grid-area: 2 / 1 / 2 / 3;
     }
 `
 

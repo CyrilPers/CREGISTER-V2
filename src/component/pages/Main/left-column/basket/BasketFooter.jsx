@@ -9,7 +9,7 @@ import { formatPrice } from '../../../../../utils/maths';
 import { theme } from '../../../../../theme';
 import AdminContext from '../../../../../context/AdminContext';
 
-export default function BasketFooter({ basket }) {
+export default function BasketFooter({ basket, totalBasket }) {
 
     const initialiseCustomersFromApi = useContext(AdminContext)
     const sumToPay = calculateSumToPay(basket)
@@ -23,7 +23,7 @@ export default function BasketFooter({ basket }) {
         <Header>
             <BasketFooterStyled>
                 <span className='total'>Total</span>
-                <CasinoEffect count={formatPrice(sumToPay)} />
+                <CasinoEffect count={formatPrice(totalBasket)} />
                 <Button
                     className="invoice-button"
                     label="Ticket"

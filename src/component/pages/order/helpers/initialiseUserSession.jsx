@@ -56,10 +56,11 @@ export async function initialiseBasket(invoiceId, setBasket) {
   setBasket(basketExisting)
 }
 
-export async function initialiseInvoice(invoiceId, setCustomer, setInvoice) {
+export async function initialiseInvoice(invoiceId, setCustomer, setInvoice, setTotalBasket) {
 
   const invoiceExisting = await getInvoiceFromApi(invoiceId)
   setInvoice(invoiceExisting)
+  setTotalBasket(invoiceExisting.total)
   const customerExisting = invoiceExisting.customer
   if (!customerExisting) {
     setCustomer()

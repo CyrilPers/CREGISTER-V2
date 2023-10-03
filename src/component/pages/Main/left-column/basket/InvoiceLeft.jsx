@@ -5,7 +5,8 @@ import BasketFooter from './BasketFooter'
 import { isEmpty } from '../../../../../utils/arrays.jsx'
 import BasketProducts from './BasketProducts'
 
-export default function InvoiceLeft({ isLoading,
+export default function InvoiceLeft({
+    totalBasket,
     basket,
     customers,
     customer,
@@ -16,7 +17,7 @@ export default function InvoiceLeft({ isLoading,
         <>
             <InvoiceCustomer customers={customers} customer={customer} setCustomer={setCustomer} editInvoice={editInvoice} invoice={invoice} />
             {isEmpty(basket) ? <EmptyBasket isLoading={basket === undefined} /> : <BasketProducts />}
-            <BasketFooter basket={basket} />
+            <BasketFooter totalBasket={totalBasket} basket={basket} />
         </>
     )
 }

@@ -33,8 +33,7 @@ export async function editInvoiceFromApi(invoice, newCustomer, newProduct) {
         }
 
         const { data } = await axios.put(`${API_URL}update/${invoice.id}`, requestData);
-        const basketProduct = data.invoiceLines[0]
-        return basketProduct;
+        return data;
     } catch (error) {
         console.log(error)
     }

@@ -41,6 +41,8 @@ export default createContext({
     setBasket: () => { },
     addBasketProduct: () => { },
     deleteBasketProduct: () => { },
+    totalBasket: {},
+    setTotalBasket: () => { },
 
 
     setDisplayedCategories: () => { },
