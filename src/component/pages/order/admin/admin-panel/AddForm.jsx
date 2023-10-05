@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
-import AdminContext from '../../../../../context/AdminContext';
+import AdminContext from '../../../../../context/AdminContext.jsx';
 import { EMPTY_PRODUCT } from '../../../../../enum/product.jsx';
-import Form from './Form';
-import AddFormButton from './AddFormButton';
-import { useSuccessMessage } from '../../../../../hooks/useSuccessMessage';
-import { findIdInArray } from '../../../../../utils/arrays';
+import Form from './Form.jsx';
+import AddFormButton from './AddFormButton.jsx';
+import { useSuccessMessage } from '../../../../../hooks/useSuccessMessage.jsx';
+import { findIdInArray } from '../../../../../utils/arrays.jsx';
 
 export default function AddForm() {
 

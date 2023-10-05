@@ -21,8 +21,9 @@ export default Form
 
 const FormStyled = styled.form`
 ${isProduct => isProduct && productStyle}
-${isProduct => isProduct && customerStyle}
+${isProduct => !isProduct && customerStyle}
 `
+
 
 const productStyle = css`
 display: grid;
@@ -67,6 +68,7 @@ column-gap: 8px;
 row-gap: 8px;
 height: 100%;
 width: 70%;
+
 .submit {
     grid-area: 5 / 1 / 5 / 5;
     display: flex;

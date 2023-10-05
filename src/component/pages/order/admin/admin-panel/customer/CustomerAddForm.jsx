@@ -3,7 +3,6 @@ import AdminContext from '../../../../../../context/AdminContext.jsx';
 import Form from '../Form.jsx';
 import AddFormButton from '../AddFormButton.jsx';
 import { useSuccessMessage } from '../../../../../../hooks/useSuccessMessage.jsx';
-import { findIdInArray } from '../../../../../../utils/arrays.jsx';
 import { EMPTY_CUSTOMER } from '../../../../../../enum/customer.jsx';
 
 export default function CustomerAddForm() {

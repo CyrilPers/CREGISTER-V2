@@ -13,7 +13,8 @@ export async function getProductsFromApi(userId) {
 
 export async function deleteProductFromApi(productId) {
     try {
-        await axios.delete(`${API_URL}delete/${productId}`);
+        const { data } = await axios.delete(`${API_URL}delete/${productId}`);
+        console.log("data", data)
     } catch (error) {
         console.log(error)
     }

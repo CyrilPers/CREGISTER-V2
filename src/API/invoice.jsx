@@ -11,25 +11,21 @@ export async function getInvoiceFromApi(invoiceId) {
     }
 }
 
-export async function editInvoiceFromApi(invoice, newCustomer, newProduct) {
+export async function editInvoiceFromApi(invoice, newCustomer, basketUpdated) {
+    console.log("basketUpdated", basketUpdated)
     try {
         const requestData = {
             createdAt: invoice.createdAt,
             user: { id: invoice.user.id },
-            total: 12
+            total: 0
         };
 
         if (newCustomer) {
             requestData.customer = { id: newCustomer.id };
         }
 
-        if (newProduct) {
-            requestData.invoiceLines = [
-                {
-                    ...newProduct,
-                    invoice: { id: invoice.id }
-                }
-            ]
+        if (basketUpdated) {
+            requestData.invoiceLines = basketUpdated
         }
 
         const { data } = await axios.put(`${API_URL}update/${invoice.id}`, requestData);
