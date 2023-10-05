@@ -15,7 +15,7 @@ export default function InvoiceLeft({
     invoice }) {
     return (
         <>
-            <InvoiceCustomer customers={customers} customer={customer} setCustomer={setCustomer} editInvoice={editInvoice} invoice={invoice} />
+            <InvoiceCustomer basket={basket} customers={customers} customer={customer} setCustomer={setCustomer} editInvoice={editInvoice} invoice={invoice} />
             {isEmpty(basket) ? <EmptyBasket isLoading={basket === undefined} /> : <BasketProducts />}
             <BasketFooter totalBasket={totalBasket} basket={basket} />
         </>

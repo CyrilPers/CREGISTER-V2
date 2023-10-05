@@ -32,7 +32,6 @@ export const useBasket = () => {
             setTotalBasket(invoiceUpdated.total)
         }
 
-
         const updatedBasketProduct = {
             ...isProductAlreadyInBasket,
             quantity: isProductAlreadyInBasket.quantity += 1
