@@ -21,9 +21,11 @@ export default function SearchCustomer({ placeholder, data, handleClick, handleC
                         return element.name.toLowerCase().includes(value.toLowerCase()) ||
                             element.surname.toLowerCase().includes(value.toLowerCase()) ||
                             element.phoneNumber.toLowerCase().includes(value.toLowerCase());
-                    }).map((element) => (
-                        <li onClick={() => handleClick(element)} key={element.id}>{element.name} {element.surname} </li>
-                    ))}
+                    })
+                        .slice(0, 5)
+                        .map((element) => (
+                            <li onClick={() => handleClick(element)} key={element.id}>{element.name} {element.surname} </li>
+                        ))}
             </ul>
         </SearchCustomerStyled>
     )
