@@ -20,8 +20,7 @@ const Form = React.forwardRef(({ onSubmit, onChange, element, children, onFocus,
 export default Form
 
 const FormStyled = styled.form`
-${isProduct => isProduct && productStyle}
-${isProduct => !isProduct && customerStyle}
+${({ $isProduct }) => ($isProduct ? productStyle : customerStyle)}
 `
 
 
@@ -35,7 +34,7 @@ height: 100%;
 width: 70%;
 
     .submit {
-    grid-area: 5 / 1 / 5 / 5;
+    grid-area: 4 / 2 / 5 / 5;
     display: flex;
     align-items: center;
     position: relative;
@@ -49,7 +48,7 @@ width: 70%;
 @media(max-width: 767px) {
     width: 100%;
         .submit {
-        grid-area: 5 / 1 / 5 / 5;
+        grid-area: 4 / 2 / 5 / 5;
         display: flex;
         align-items: center;
         position: relative;

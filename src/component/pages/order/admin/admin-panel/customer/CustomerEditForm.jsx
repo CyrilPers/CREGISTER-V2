@@ -7,7 +7,7 @@ import EditInfoMessage from '../EditInfoMessage'
 
 export default function CustomerEditForm() {
 
-    const { selectedCustomer, setSelectedCustomer, editCustomer, titleEditRef, userId } = useContext(AdminContext)
+    const { selectedCustomer, setSelectedCustomer, editCustomer, titleEditRef, userId, currentPage } = useContext(AdminContext)
     const [valueOnFocus, setValueOnFocus] = useState()
     const { isSubmitted: isSaved, displaySuccessMessage } = useSuccessMessage()
 
@@ -39,6 +39,7 @@ export default function CustomerEditForm() {
 
     return (
         <Form
+            currentPage={currentPage}
             element={selectedCustomer}
             onChange={handleChange}
             onFocus={handleOnFocus}

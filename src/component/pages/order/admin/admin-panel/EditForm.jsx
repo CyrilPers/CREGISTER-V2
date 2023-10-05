@@ -42,6 +42,7 @@ export default function EditForm() {
       onFocus={handleOnFocus}
       onBlur={handleOnBlur}
       ref={titleEditRef}
+      isProduct={true}
     >
       {isSaved ? <SavingMessage /> : <EditInfoMessage />}
 

@@ -12,9 +12,7 @@ const FormInputs = React.forwardRef(({ onFocus, onBlur, element, onChange, curre
     const inputSelects = getInputSelectConfig(element)
 
     return (
-        <FormInputsStyled
-            $isProduct={isProduct}
-        >
+        <FormInputsStyled $isProduct={isProduct}>
             {inputTexts.map((input) => (
                 <TextInput
                     {...input}
@@ -39,26 +37,29 @@ const FormInputs = React.forwardRef(({ onFocus, onBlur, element, onChange, curre
     )
 });
 
-export default FormInputs;
+
+export default FormInputs
 
 const FormInputsStyled = styled.div`
-    ${isProduct => isProduct && productStyle}
-    ${isProduct => isProduct && customerStyle}
+
+${({ $isProduct }) => ($isProduct ? productStyle : customerStyle)}
+
 `
 
 const productStyle = css`
-    grid-area: 1 / 1 / 5 / 5;
+    grid-area: 1 / 2 / 4 / 4;
     display: grid;
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     grid-template-columns: repeat(2, 1fr);
-    row-gap: 8px;
+    row-gap: 10px;
+    column-gap: 10px;
 
     .imageSource{
         grid-area: 1 / 1 / 2 / 2;
     }   
 
     .title {
-        grid-area: 2 / 1 / 2 / 3;
+        grid-area: 2 / 2 / 3 / 3;
     }
 `
 
@@ -70,6 +71,7 @@ grid-template-rows: repeat(3, 1fr);
 grid-template-columns: repeat(2, 1fr);
 row-gap: 8px;
 column-gap: 8px;
+
     .title {
     grid-area: 1 / 1 / 2 / 2;
     }
