@@ -11,8 +11,6 @@ export const useBasket = () => {
         let updatedBasket
         let basketCopy = deepClone(basket)
 
-        // !!!!!!!!!!!!!!!!!!  A REFACTORISER !!!!!!!!!!!!!!!!
-
         const isProductAlreadyInBasket = isProductIdInBasket(productToAdd.id, basket)
         if (!isProductAlreadyInBasket) {
             const newBasketProduct = {
