@@ -54,12 +54,8 @@ const productStyle = css`
     row-gap: 10px;
     column-gap: 10px;
 
-    .imageSource{
-        grid-area: 1 / 1 / 2 / 2;
-    }   
-
     .title {
-        grid-area: 2 / 2 / 3 / 3;
+        grid-area: 1 / 1 / 2 / 2;
     }
 `
 

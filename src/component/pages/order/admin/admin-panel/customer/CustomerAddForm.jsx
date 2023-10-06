@@ -7,7 +7,7 @@ import { EMPTY_CUSTOMER } from '../../../../../../enum/customer.jsx';
 
 export default function CustomerAddForm() {
 
-    const { addCustomer, setNewCustomer, newCustomer, userId, currentPage } = useContext(AdminContext)
+    const { addCustomer, setNewCustomer, newCustomer, userId, currentPage, titleEditRef } = useContext(AdminContext)
     const { isSubmitted, displaySuccessMessage } = useSuccessMessage()
 
     const handleSubmit = (event) => {
