@@ -58,7 +58,7 @@ export default function Invoices() {
                         <div className='invoice'>
                             <HorizontalCard
                                 key={id}
-                                index={getIndex(id, invoices) + 1}
+                                index={id}
                                 surname={customer && customer.surname ? customer.surname : " "}
                                 name={customer && customer.name ? customer.name : " "}
                                 element1={total ? formatPrice(total) : "0 €"}
