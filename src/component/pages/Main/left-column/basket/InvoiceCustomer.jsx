@@ -12,7 +12,6 @@ export default function InvoiceCustomer({ basket, invoice, customers, customer, 
     }
 
     const handleClick = (element) => {
-        console.log(basket)
         setValue(element.name)
         editInvoice(invoice, element, basket)
     }

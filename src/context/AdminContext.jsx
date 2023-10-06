@@ -27,6 +27,8 @@ export default createContext({
     addProduct: () => { },
     deleteProduct: () => { },
     editProduct: () => { },
+    filteredProducts: [],
+    setFilteredProducts: () => { },
 
     selectProduct: () => { },
     selectedProduct: {},

@@ -9,13 +9,17 @@ export const useProducts = () => {
     const [products, setProducts] = useState()
     const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT)
     const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
+    const [filteredProducts, setFilteredProducts] = useState([])
 
     const addProduct = async (newProduct, userId, categoryId) => {
         let newProductApi;
+
         await createProductFromApi(newProduct, userId, categoryId)
             .then(apiResponse => {
                 newProductApi = apiResponse;
             });
+
+        console.log("newProductApi", newProductApi)
         const productsCopy = deepClone(products);
         const updatedProducts = addItemToArray(newProductApi, productsCopy);
         setProducts(updatedProducts);
@@ -51,5 +55,7 @@ export const useProducts = () => {
     }
 
 
-    return { resetCategoryAndProducts, products, setProducts, addProduct, deleteProduct, editProduct, deleteProductsFromCategory, selectedProduct, setSelectedProduct, newProduct, setNewProduct }
+
+
+    return { resetCategoryAndProducts, products, setProducts, addProduct, deleteProduct, editProduct, deleteProductsFromCategory, selectedProduct, setSelectedProduct, newProduct, setNewProduct, filteredProducts, setFilteredProducts }
 }

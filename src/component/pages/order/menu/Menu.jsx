@@ -3,7 +3,7 @@ import { styled } from 'styled-components';
 import { theme } from '../../../../theme';
 import AdminContext from '../../../../context/AdminContext.jsx';
 import { EMPTY_PRODUCT } from '../../../../enum/product';
-import { findInArray } from '../../../../utils/arrays';
+import { findIdInArray, findInArray } from '../../../../utils/arrays';
 import Loader from './Loader';
 import ProductsMap from './ProductsMap';
 import CategoriesMap from './CategoriesMap';
@@ -31,9 +31,12 @@ export default function Menu() {
     invoice,
     setSelectedCategory,
     selectedCategory,
+    filteredProducts,
+    setFilteredProducts,
   } = useContext(AdminContext)
 
 
+  console.log("categories", categories)
   const handleCardDelete = (event, idProductToDelete) => {
     event.stopPropagation()
     deleteProduct(idProductToDelete)
@@ -70,6 +73,16 @@ export default function Menu() {
     resetCategoryAndProducts(userId, setCategories, setProducts)
   }
 
+  const initialiseFilteredProducts = () => {
+    let productsFiltered
+    let mainId = findIdInArray("MAIN", categories)
+
+    selectedCategory
+      ? productsFiltered = products.filter((product) => product.category.id === selectedCategory) || []
+      : productsFiltered = products.filter((product) => product.category.id === mainId) || []
+    setFilteredProducts(productsFiltered)
+  }
+
   let containerClassName = isModeAdmin ? "card-container is-hoverable" : 'card-container'
 
   const displayedCategories = categories ? categories.filter((category) => category.name !== "MAIN") : null
@@ -77,6 +90,9 @@ export default function Menu() {
   const title = "Le menu est vide"
   const description = "Cliquez ci-dessous pour le réinitialiser"
   const label = "Générer de nouveaux produits"
+
+  useEffect(() => { initialiseFilteredProducts() }, [selectedCategory, products])
+
 
 
   // Affichage 
@@ -88,7 +104,7 @@ export default function Menu() {
   return (
     <MenuStyled>
       <CategoriesMap selectedCategory={selectedCategory} handleBackButtonClick={handleBackButtonClick} handleCategoryClick={handleCategoryClick} categories={categories} isModeAdmin={isModeAdmin} containerClassName="category" handleCategoryDelete={handleCategoryDelete} />
-      <ProductsMap selectedCategory={selectedCategory} selectedProduct={selectedProduct} isModeAdmin={isModeAdmin} products={products} handleCardDelete={handleCardDelete} handleClick={handleClick} containerClassName={containerClassName} />
+      <ProductsMap filteredProducts={filteredProducts} selectedCategory={selectedCategory} selectedProduct={selectedProduct} isModeAdmin={isModeAdmin} products={products} handleCardDelete={handleCardDelete} handleClick={handleClick} containerClassName={containerClassName} />
     </MenuStyled>
   )
 }

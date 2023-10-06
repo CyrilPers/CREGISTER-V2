@@ -19,7 +19,6 @@ export default function LeftColumn() {
         initialiseInvoice(invoiceId, setCustomer, setInvoice, setTotalBasket)
     }, [invoiceId])
 
-    console.log("basket", basket)
     return (
         <LeftColumnStyled>
             {currentPage === "invoice" && <InvoiceLeft totalBasket={totalBasket} basket={basket} customers={customers} customer={customer} setCustomer={setCustomer} editInvoice={editInvoice} invoice={invoice} />}
