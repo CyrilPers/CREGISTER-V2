@@ -6,7 +6,7 @@ export const useBasket = () => {
     const [basket, setBasket] = useState([])
     const [totalBasket, setTotalBasket] = useState(0)
 
-    const addBasketProduct = async (productToAdd, invoice, userId) => {
+    const addBasketProduct = async (productToAdd, invoice) => {
         let invoiceUpdated
         let updatedBasket
         let basketCopy = deepClone(basket)
@@ -28,23 +28,23 @@ export const useBasket = () => {
                 .then(apiResponse => {
                     invoiceUpdated = apiResponse
                 });
-            setBasket(invoiceUpdated.invoiceLines)
-            setTotalBasket(invoiceUpdated.total)
+
+        } else {
+
+            const updatedBasketProduct = {
+                ...isProductAlreadyInBasket,
+                quantity: isProductAlreadyInBasket.quantity += 1
+            }
+
+            const indexOfProducToEdit = getIndex(updatedBasketProduct.id, basketCopy)
+            basketCopy[indexOfProducToEdit] = updatedBasketProduct
+            updatedBasket = basketCopy
+
+            await editInvoiceFromApi(invoice, invoice.customer, updatedBasket)
+                .then(apiResponse => {
+                    invoiceUpdated = apiResponse
+                });
         }
-
-        const updatedBasketProduct = {
-            ...isProductAlreadyInBasket,
-            quantity: isProductAlreadyInBasket.quantity += 1
-        }
-
-        const indexOfProducToEdit = getIndex(updatedBasketProduct.id, basketCopy)
-        basketCopy[indexOfProducToEdit] = updatedBasketProduct
-        updatedBasket = basketCopy
-
-        await editInvoiceFromApi(invoice, invoice.customer, updatedBasket)
-            .then(apiResponse => {
-                invoiceUpdated = apiResponse
-            });
         setBasket(invoiceUpdated.invoiceLines)
         setTotalBasket(invoiceUpdated.total)
     }
