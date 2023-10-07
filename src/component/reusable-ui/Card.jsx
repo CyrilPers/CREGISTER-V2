@@ -60,8 +60,8 @@ const CardStyled = styled.div`
     height: 330px;
     background: ${theme.colors.background_dark};
     box-sizing: border-box;
-    width: 240px;
-    height: 330px;
+    width: 210px;
+    height: 300px;
     display: flex; 
     padding: 20px;
     box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
@@ -125,8 +125,8 @@ const CardStyled = styled.div`
     height: 330px;
     background: ${theme.colors.white};
     box-sizing: border-box;
-    width: 240px;
-    height: 330px;
+    width: 210px;
+    height: 300px;
     display: grid;
     grid-template-rows: 65% 1fr;
     padding: 20px;

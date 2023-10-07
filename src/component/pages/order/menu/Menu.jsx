@@ -113,8 +113,8 @@ const MenuStyled = styled.div`
   
   background: ${theme.colors.background_white};
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-row-gap: 60px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-row-gap: 20px;
   padding: 50px 50px 50px;
   justify-items: center;
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
@@ -129,7 +129,7 @@ const MenuStyled = styled.div`
 
   .card-container {
     position: relative; 
-    height: 330px;
+    height: 300px;
     border-radius: ${theme.borderRadius.extraRound};
     &.is-hoverable {
       &:hover{
@@ -143,7 +143,8 @@ const MenuStyled = styled.div`
   }
   
   @media(max-width: 767px) {
-    grid-auto-rows: 90px;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 10px 10px;
     max-width: 100%;
     overflow-x: hidden;
     padding: 10px 0;
@@ -153,8 +154,8 @@ const MenuStyled = styled.div`
   }
 
   @media(min-width: 768px) and (max-width: 1388px) { 
+    grid-template-columns: repeat(3, 1fr);
     padding: 10px 10px;
-    grid-auto-rows: 140px;
     max-width: 100%;
     overflow-x: hidden;
     .card-container {
