@@ -33,6 +33,5 @@ export const findIdInArray = (name, array) => {
 }
 
 export const addItemToArray = (newItem, array) => {
-    console.log("addproduct")
     return [...array, newItem];
 }

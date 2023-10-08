@@ -5,13 +5,8 @@ import { convertStringToBoolean } from '../../../../utils/string'
 import { checkIfProductIsClicked } from './helper/helpers'
 import { formatPrice } from '../../../../utils/maths';
 import { IMAGE_COMING_SOON, IMAGE_NO_STOCK } from '../../../../enum/product';
-import styled from 'styled-components'
-import { theme } from '../../../../theme'
-import { menuAnimation } from '../../../../theme/animations'
 
 export default function ProductsMap({ selectedProduct, isModeAdmin, handleCardDelete, handleClick, containerClassName, filteredProducts }) {
-
-
 
 
   return (

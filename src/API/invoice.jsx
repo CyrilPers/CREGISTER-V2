@@ -12,7 +12,6 @@ export async function getInvoiceFromApi(invoiceId) {
 }
 
 export async function editInvoiceFromApi(invoice, newCustomer, basketUpdated) {
-    console.log("basketUpdated", basketUpdated)
     try {
         const requestData = {
             createdAt: invoice.createdAt,

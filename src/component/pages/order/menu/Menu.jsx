@@ -36,7 +36,6 @@ export default function Menu() {
   } = useContext(AdminContext)
 
 
-  console.log("categories", categories)
   const handleCardDelete = (event, idProductToDelete) => {
     event.stopPropagation()
     deleteProduct(idProductToDelete)
@@ -72,6 +71,7 @@ export default function Menu() {
   const handleReset = () => {
     resetCategoryAndProducts(userId, setCategories, setProducts)
   }
+
 
   const initialiseFilteredProducts = () => {
     let productsFiltered

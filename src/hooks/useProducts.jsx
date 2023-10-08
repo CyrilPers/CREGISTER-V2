@@ -19,7 +19,6 @@ export const useProducts = () => {
                 newProductApi = apiResponse;
             });
 
-        console.log("newProductApi", newProductApi)
         const productsCopy = deepClone(products);
         const updatedProducts = addItemToArray(newProductApi, productsCopy);
         setProducts(updatedProducts);
