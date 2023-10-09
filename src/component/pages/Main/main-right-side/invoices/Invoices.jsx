@@ -106,6 +106,7 @@ const InvoicesStyled = styled.div`
             transition: ease-out ${theme.animation.speed.slow};
         }
     }
+  
     ${scaleXAnimation}
 `;
 

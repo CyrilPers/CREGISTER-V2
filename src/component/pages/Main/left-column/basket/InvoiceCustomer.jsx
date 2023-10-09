@@ -48,4 +48,7 @@ const CustomerStyled = styled.div`
     height: 65px;
     justify-content: center;
     align-items: center;
+    @media(max-width: 767px) { 
+        height: 50px;
+    }
 `;

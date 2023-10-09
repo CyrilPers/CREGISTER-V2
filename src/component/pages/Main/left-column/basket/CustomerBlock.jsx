@@ -69,4 +69,7 @@ const CustomerBlockStyled = styled.div`
             }
         }
     }
+    @media(min-width: 768px) and (max-width: 1388px) { 
+        width: 220px;
+    }
 `;

@@ -96,6 +96,15 @@ const HorizontalCardStyled = styled.div`
         color: ${theme.colors.primary}
       }
     }
+    @media(max-width: 1388px) { 
+      .cards{
+      padding-right: 50px;
+      font-size: ${theme.fonts.size.SM};
+      font-weight: ${theme.fonts.weights.bold};
+
+      }
+    }
+
     ${({ $isSelected }) => $isSelected && selectedStyle}
 
 `

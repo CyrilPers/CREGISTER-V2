@@ -53,4 +53,7 @@ const BestInvoicesMapStyled = styled.div`
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         margin: 5px 0px;}
+    @media(max-width: 767px) { 
+        font-size: ${theme.fonts.size.SM};
+    }
 `;
