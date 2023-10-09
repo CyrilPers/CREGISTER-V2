@@ -23,7 +23,7 @@ export default function OrderPage() {
   const [currentTabSelected, setCurrentTabSelected] = useState("add")
 
   const titleEditRef = useRef()
-  const { invoices, setInvoices, editInvoice, customer, setCustomer, invoice, setInvoice, deleteInvoice, createInvoice } = useInvoices()
+  const { invoices, setInvoices, editInvoice, customer, setCustomer, invoice, setInvoice, deleteInvoice, createInvoice, getPdf } = useInvoices()
   const { deleteProductsFromCategory, products, addProduct, deleteProduct, editProduct, setProducts, resetCategoryAndProducts, selectedProduct, setSelectedProduct, newProduct, setNewProduct, filteredProducts, setFilteredProducts } = useProducts()
   const { basket, addBasketProduct, deleteBasketProduct, setBasket, totalBasket, setTotalBasket } = useBasket()
   const { categories, setCategories, selectedCategory, setSelectedCategory, newCategory, setNewCategory, deleteCategory, addCategory } = useCategories()
@@ -122,6 +122,7 @@ export default function OrderPage() {
     selectedCategory,
     setSelectedCategory,
     addCategory,
+    getPdf,
   }
 
   return (

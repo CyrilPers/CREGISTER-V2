@@ -11,6 +11,15 @@ export async function getInvoiceFromApi(invoiceId) {
     }
 }
 
+export async function createPdfFromApi(invoiceId) {
+    try {
+        const { data } = await axios.get(`${API_URL}createPdf/${invoiceId}`);
+        return data;
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export async function editInvoiceFromApi(invoice, newCustomer, basketUpdated) {
     try {
         const requestData = {

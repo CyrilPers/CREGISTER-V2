@@ -79,6 +79,7 @@ export default createContext({
     setInvoices: () => { },
     editInvoice: () => { },
     createInvoice: () => { },
+    getPdf: () => { },
 
     invoice: {},
     setInvoice: () => { },

@@ -1,18 +1,13 @@
 import React, { useContext, useEffect } from 'react'
 import { styled } from 'styled-components';
 import AdminContext from '../../../../context/AdminContext.jsx'
-import BasketFooter from './basket/BasketFooter.jsx';
-import BasketProducts from './basket/BasketProducts.jsx';
-import EmptyBasket from './basket/EmptyBasket.jsx'
 import { theme } from '../../../../theme/index.jsx';
-import { isEmpty } from '../../../../utils/arrays.jsx';
-import InvoiceCustomer from './basket/InvoiceCustomer.jsx';
 import InvoicesLeft from './invoices/InvoicesLeft.jsx';
 import CustomersLeft from './customers/CustomersLeft.jsx';
 import InvoiceLeft from './basket/InvoiceLeft.jsx';
 
 export default function LeftColumn() {
-    const { setTotalBasket, totalBasket, initialiseBasket, initialiseInvoice, editInvoice, basket, setBasket, invoices, invoiceId, invoice, customers, setCustomer, setCustomers, customer, setInvoice, currentPage } = useContext(AdminContext)
+    const { getPdf, setTotalBasket, totalBasket, initialiseBasket, initialiseInvoice, editInvoice, basket, setBasket, invoices, invoiceId, invoice, customers, setCustomer, setCustomers, customer, setInvoice, currentPage } = useContext(AdminContext)
 
     useEffect(() => {
         initialiseBasket(invoiceId, setBasket)
@@ -21,7 +16,7 @@ export default function LeftColumn() {
 
     return (
         <LeftColumnStyled>
-            {currentPage === "invoice" && <InvoiceLeft totalBasket={totalBasket} basket={basket} customers={customers} customer={customer} setCustomer={setCustomer} editInvoice={editInvoice} invoice={invoice} />}
+            {currentPage === "invoice" && <InvoiceLeft invoiceId={invoiceId} getPdf={getPdf} totalBasket={totalBasket} basket={basket} customers={customers} customer={customer} setCustomer={setCustomer} editInvoice={editInvoice} invoice={invoice} />}
             {currentPage === "invoices" && <InvoicesLeft invoices={invoices} />}
             {currentPage === "customers" && <CustomersLeft customers={customers} />}
         </LeftColumnStyled>
