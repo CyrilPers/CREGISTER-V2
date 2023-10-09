@@ -24,7 +24,7 @@ export default function BasketFooter({ totalBasket }) {
                 <CasinoEffect count={formatPrice(totalBasket)} />
                 <Button
                     className="invoice-button"
-                    label="Ticket"
+                    label="Facture"
                     Icon={<FaReceipt />}
                     onClick={handleClick}
                 />
