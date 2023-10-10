@@ -20,19 +20,18 @@ const Form = React.forwardRef(({ onSubmit, onChange, element, children, onFocus,
 export default Form
 
 const FormStyled = styled.form`
-${({ isProduct }) => isProduct && productStyle}
-${({ isProduct }) => !isProduct && customerStyle}
+${({ $isProduct }) => ($isProduct ? productStyle : customerStyle)}
 `
+
 
 const productStyle = css`
 display: grid;
-grid-template-columns: 1fr 3fr;
+grid-template-columns: 1fr 2fr;
 grid-template-rows: repeat(4, 1fr);
 column-gap: 8px;
 row-gap: 8px;
 height: 100%;
 width: 70%;
-
 
     .submit {
     grid-area: 4 / 2 / 5 / 5;
@@ -68,6 +67,7 @@ column-gap: 8px;
 row-gap: 8px;
 height: 100%;
 width: 70%;
+
 .submit {
     grid-area: 5 / 1 / 5 / 5;
     display: flex;

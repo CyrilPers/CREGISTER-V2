@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Header from '../../../../reusable-ui/Header';
 import SearchCustomer from './SearchCustomer';
 import CustomerBlock from './CustomerBlock';
-export default function InvoiceCustomer({ invoice, customers, customer, editInvoice }) {
+export default function InvoiceCustomer({ basket, invoice, customers, customer, editInvoice }) {
 
     const [value, setValue] = useState();
 
@@ -13,12 +13,12 @@ export default function InvoiceCustomer({ invoice, customers, customer, editInvo
 
     const handleClick = (element) => {
         setValue(element.name)
-        editInvoice(invoice, element)
+        editInvoice(invoice, element, basket)
     }
 
     const handleDelete = () => {
         setValue()
-        editInvoice(invoice, null)
+        editInvoice(invoice, null, basket)
     }
 
     return (
@@ -48,4 +48,7 @@ const CustomerStyled = styled.div`
     height: 65px;
     justify-content: center;
     align-items: center;
+    @media(max-width: 767px) { 
+        height: 50px;
+    }
 `;

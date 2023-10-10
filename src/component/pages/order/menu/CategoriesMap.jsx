@@ -3,7 +3,7 @@ import Card from '../../../reusable-ui/Card'
 
 
 
-export default function CategoriesMap({ handleCategoryDelete, selectedCategory, showBackButton, isModeAdmin, handleBackButtonClick, categories, handleCategoryClick }) {
+export default function CategoriesMap({ handleCategoryDelete, selectedCategory, isModeAdmin, handleBackButtonClick, categories, handleCategoryClick }) {
 
     const filteredCategories =
         selectedCategory === null
@@ -12,7 +12,7 @@ export default function CategoriesMap({ handleCategoryDelete, selectedCategory, 
 
     return (
 
-        <>{showBackButton && <Card
+        <>{selectedCategory && <Card
             key="back"
             title="RETOUR"
             className="minimize"

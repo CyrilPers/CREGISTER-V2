@@ -5,8 +5,8 @@ import { getIndex, isEmpty } from '../../../../../utils/arrays';
 import Empty from '../../../../reusable-ui/Empty';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { theme } from '../../../../../theme';
-import { menuAnimation } from '../../../../../theme/animations';
-import { formatDate } from '../../../../../utils/maths';
+import { scaleXAnimation } from '../../../../../theme/animations';
+import { formatDate, formatPrice } from '../../../../../utils/maths';
 import HorizontalCard from '../../../../reusable-ui/HorizontalCard';
 import Button from '../../../../reusable-ui/Button';
 import { initialiseInvoices } from '../../../order/helpers/initialiseUserSession';
@@ -14,10 +14,9 @@ import { initialiseInvoices } from '../../../order/helpers/initialiseUserSession
 export default function Invoices() {
     const { setInvoices, invoices, isModeAdmin, setInvoiceId, setCurrentPage, deleteInvoice, createInvoice, userId } = useContext(AdminContext)
 
-    const title = "La liste de clients est vide"
-    const description = "Cliquez ci-dessous pour la réinitialiser"
-    const label = "Générer de nouveaux clients"
-    const handleReset = () => { } // A CHANGER
+    const title = "Vous n'avez pas de commandes"
+    const description = "Cliquez ci-dessous pour créer une commandeé"
+    const label = "Créer une commande"
 
     const handleDelete = (event, id) => {
         event.stopPropagation()
@@ -41,7 +40,7 @@ export default function Invoices() {
     // Affichage : 
 
     if (invoices === undefined) return <Loader />
-    if (isEmpty(invoices)) return <Empty description={description} title={title} label={label} onClick={handleReset} />
+    if (isEmpty(invoices)) return <Empty description={description} title={title} label={label} onClick={handleCreateOrder} />
 
 
     return (
@@ -49,7 +48,7 @@ export default function Invoices() {
             <div className='create-invoice'>
                 <Button onClick={handleCreateOrder} label="Créer une commande" />
             </div>
-            {invoices.slice().reverse().map(({ id, createdAt, total, customer }) => {
+            {invoices.slice().sort((a, b) => b.id - a.id).map(({ id, createdAt, total, customer }) => {
                 return (
                     <CSSTransition
                         classNames={"animation-card"}
@@ -59,10 +58,10 @@ export default function Invoices() {
                         <div className='invoice'>
                             <HorizontalCard
                                 key={id}
-                                index={getIndex(id, invoices) + 1}
+                                index={id}
                                 surname={customer && customer.surname ? customer.surname : " "}
                                 name={customer && customer.name ? customer.name : " "}
-                                element1={total ? total + " €" : "0 €"}
+                                element1={total ? formatPrice(total) : "0 €"}
                                 element2={formatDate(createdAt)}
                                 showDeleteButton={isModeAdmin}
                                 onDelete={(event) => handleDelete(event, id)}
@@ -107,6 +106,7 @@ const InvoicesStyled = styled.div`
             transition: ease-out ${theme.animation.speed.slow};
         }
     }
-    ${menuAnimation}
+  
+    ${scaleXAnimation}
 `;
 

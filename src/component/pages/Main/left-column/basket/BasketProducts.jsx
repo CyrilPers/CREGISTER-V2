@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { styled } from 'styled-components';
 import { theme } from '../../../../../theme';
 import BasketCard from './BasketCard';
@@ -12,24 +12,21 @@ import { basketCardAnimation } from '../../../../../theme/animations';
 export default function BasketProducts() {
 
     const {
+        invoice,
         basket,
         deleteBasketProduct,
     } = useContext(AdminContext)
 
     const handleOnDelete = (id) => {
-        deleteBasketProduct(id)
+        deleteBasketProduct(id, invoice)
     }
-
-    console.log("basket", basket)
-
-    useEffect(() => { }, [basket])
 
     return (
         <TransitionGroup component={BasketProductsStyled}>
             {basket.map((basketProduct) =>
                 <CSSTransition
                     appear={true}
-                    className={"card-transition"}
+                    classNames={"card-transition"}
                     key={basketProduct.id}
                     timeout={300}
                 >
@@ -54,9 +51,10 @@ const BasketProductsStyled = styled.div`
     flex-direction: column;
     box-shadow: ${theme.shadows.leftColumn};
     overflow-y: scroll;
-    overflow-x: hidden; // don't show scroll-x while basketcard animation
+    overflow-x: hidden;
     scrollbar-color: transparent transparent;
     scrollbar-width: thin;
+    position: relative;
 
     &:hover {
         scrollbar-color: initial;

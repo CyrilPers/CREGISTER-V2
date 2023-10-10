@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { createInvoiceFromApi, deleteInvoiceFromApi, editInvoiceFromApi } from "../API/invoice"
+import { createInvoiceFromApi, createPdfFromApi, deleteInvoiceFromApi, editInvoiceFromApi } from "../API/invoice"
 import { deepClone, removeItemFromArray } from "../utils/arrays"
 
 export const useInvoices = () => {
@@ -7,9 +7,9 @@ export const useInvoices = () => {
     const [customer, setCustomer] = useState()
     const [invoice, setInvoice] = useState()
 
-    const editInvoice = (invoice, newCustomer) => {
+    const editInvoice = (invoice, newCustomer, basket) => {
         setCustomer(newCustomer)
-        editInvoiceFromApi(invoice, newCustomer)
+        editInvoiceFromApi(invoice, newCustomer, basket)
     }
 
 
@@ -22,6 +22,12 @@ export const useInvoices = () => {
         setInvoiceId(newInvoiceApi.id);
     }
 
+    const getPdf = async (invoiceId) => {
+        await createPdfFromApi(invoiceId)
+        window.open(`/pdfInvoices/${invoiceId}.pdf`, '_blank');
+    }
+
+
 
     const deleteInvoice = async (invoiceId) => {
         await deleteInvoiceFromApi(invoiceId)
@@ -31,6 +37,5 @@ export const useInvoices = () => {
     }
 
 
-    return { invoices, setInvoices, editInvoice, customer, setCustomer, invoice, setInvoice, deleteInvoice, createInvoice }
+    return { getPdf, invoices, setInvoices, editInvoice, customer, setCustomer, invoice, setInvoice, deleteInvoice, createInvoice }
 }
-

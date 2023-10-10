@@ -6,7 +6,6 @@ import { theme } from "../../../../../theme"
 import CasinoEffect from "../../../../reusable-ui/CasinoEffect"
 
 
-
 export default function BasketCard({
   productName,
   productPrice,
@@ -39,8 +38,6 @@ export default function BasketCard({
 }
 
 const BasketCardStyled = styled.div`
-
-
   box-sizing: border-box;
   height: 86px;
   padding: 5px 16px;
@@ -54,8 +51,6 @@ const BasketCardStyled = styled.div`
   margin: 10px 15px;
   height: 85px;
   box-sizing: border-box;
-  
-
   position: relative;
 
   .image {

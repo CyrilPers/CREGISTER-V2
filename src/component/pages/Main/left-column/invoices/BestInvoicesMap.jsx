@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { theme } from '../../../../../theme';
 import { isEmpty } from '../../../../../utils/arrays.jsx';
 import { getIndex } from '../../../../../utils/arrays';
+import { formatPrice } from '../../../../../utils/maths';
 
 export default function BestInvoicesMap({ invoices }) {
     const invoicesSorted = invoices.sort((a, b) => b.total - a.total);
@@ -20,7 +21,7 @@ export default function BestInvoicesMap({ invoices }) {
                         <span>{getIndex(id, invoicesSorted) + 1}</span>
                         <span>{id}</span>
                         <span>{customer ? customer.name : "Na"}</span>
-                        <span>{total} €</span>
+                        <span>{formatPrice(total)}</span>
                     </div>
                 ))}
         </BestInvoicesMapStyled>
@@ -52,4 +53,7 @@ const BestInvoicesMapStyled = styled.div`
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         margin: 5px 0px;}
+    @media(max-width: 767px) { 
+        font-size: ${theme.fonts.size.SM};
+    }
 `;

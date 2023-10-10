@@ -3,12 +3,11 @@ import AdminContext from '../../../../../../context/AdminContext.jsx';
 import Form from '../Form.jsx';
 import AddFormButton from '../AddFormButton.jsx';
 import { useSuccessMessage } from '../../../../../../hooks/useSuccessMessage.jsx';
-import { findIdInArray } from '../../../../../../utils/arrays.jsx';
 import { EMPTY_CUSTOMER } from '../../../../../../enum/customer.jsx';
 
 export default function CustomerAddForm() {
 
-    const { addCustomer, setNewCustomer, newCustomer, userId, currentPage } = useContext(AdminContext)
+    const { addCustomer, setNewCustomer, newCustomer, userId, currentPage, titleEditRef } = useContext(AdminContext)
     const { isSubmitted, displaySuccessMessage } = useSuccessMessage()
 
     const handleSubmit = (event) => {
@@ -44,7 +43,6 @@ export default function CustomerAddForm() {
             onChange={handleChange}
             element={newCustomer}
             isSubmitted={isSubmitted}
-            isProduct={false}
         >
             <AddFormButton isSubmitted={isSubmitted} label={"Ajouter le client"} />
         </Form>

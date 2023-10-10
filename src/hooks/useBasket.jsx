@@ -1,16 +1,15 @@
 import { useState } from 'react'
-import { addItemToArray, deepClone, getIndex, isProductIdInBasket, removeItemFromArray } from '../utils/arrays'
-import { deleteBasketProductFromApi } from '../API/basket'
+import { addItemToArray, deepClone, getIndex, isProductIdInBasket } from '../utils/arrays'
 import { editInvoiceFromApi } from '../API/invoice'
 
 export const useBasket = () => {
     const [basket, setBasket] = useState([])
+    const [totalBasket, setTotalBasket] = useState(0)
 
-
-    const addBasketProduct = async (productToAdd, invoice, userId) => {
-        let newBasketProductApi
-
-        console.log("addtobasket")
+    const addBasketProduct = async (productToAdd, invoice) => {
+        let invoiceUpdated
+        let updatedBasket
+        let basketCopy = deepClone(basket)
 
         const isProductAlreadyInBasket = isProductIdInBasket(productToAdd.id, basket)
         if (!isProductAlreadyInBasket) {
@@ -20,41 +19,58 @@ export const useBasket = () => {
                 productId: productToAdd.id,
                 imageSource: productToAdd.imageSource,
                 quantity: 1,
-                totalPrice: 0
             }
-            await editInvoiceFromApi(invoice, invoice.customer, newBasketProduct)
+
+            updatedBasket = addItemToArray(newBasketProduct, basketCopy)
+            await editInvoiceFromApi(invoice, invoice.customer, updatedBasket)
                 .then(apiResponse => {
-                    newBasketProductApi = apiResponse;
-                    console.log("newBasketProductApi", newBasketProductApi)
+                    invoiceUpdated = apiResponse
                 });
-            const basketCopy = deepClone(basket);
-            const updatedBasket = addItemToArray(newBasketProductApi, basketCopy);
-            setBasket(updatedBasket)
+
+        } else {
+
+            const updatedBasketProduct = {
+                ...isProductAlreadyInBasket,
+                quantity: isProductAlreadyInBasket.quantity += 1
+            }
+
+            const indexOfProducToEdit = getIndex(updatedBasketProduct.id, basketCopy)
+            basketCopy[indexOfProducToEdit] = updatedBasketProduct
+            updatedBasket = basketCopy
+
+            await editInvoiceFromApi(invoice, invoice.customer, updatedBasket)
+                .then(apiResponse => {
+                    invoiceUpdated = apiResponse
+                });
         }
-
-        const updatedBasketProduct = {
-            ...isProductAlreadyInBasket,
-            quantity: isProductAlreadyInBasket.quantity += 1
-        }
-
-        console.log("updatedBasketProduct", updatedBasketProduct)
-        await editInvoiceFromApi(invoice, invoice.customer, updatedBasketProduct)
-
-        const basketCopy = deepClone(basket)
-        const indexOfBasketProducToEdit = getIndex(updatedBasketProduct.id, basketCopy)
-        basketCopy[indexOfBasketProducToEdit] = updatedBasketProduct
-        setBasket(basketCopy)
+        setBasket(invoiceUpdated.invoiceLines)
+        setTotalBasket(invoiceUpdated.total)
     }
 
 
+    const deleteBasketProduct = async (basketProductId, invoice,) => {
+        let invoiceUpdated
 
-    const deleteBasketProduct = (basketProductId) => {
-        deleteBasketProductFromApi(basketProductId)
+        const basketproductToDelete =
+        {
+            id: basketProductId,
+            quantity: 0,
+            productPrice: 0
+        }
+
         const basketCopy = deepClone(basket)
-        const basketUpdated = removeItemFromArray(basketProductId, basketCopy)
-        setBasket(basketUpdated)
+        const indexOfProducToEdit = getIndex(basketProductId, basketCopy)
+        basketCopy[indexOfProducToEdit] = basketproductToDelete
+
+        await editInvoiceFromApi(invoice, invoice.customer, basketCopy)
+            .then(apiResponse => {
+                invoiceUpdated = apiResponse
+            });
+
+        setBasket(invoiceUpdated.invoiceLines)
+        setTotalBasket(invoiceUpdated.total)
     }
 
 
-    return { basket, addBasketProduct, deleteBasketProduct, setBasket }
+    return { basket, addBasketProduct, deleteBasketProduct, setBasket, totalBasket, setTotalBasket }
 }

@@ -20,5 +20,10 @@ const LeftHeadStyled = styled.div`
     align-items: center;
     font-size: ${theme.fonts.size.P4};
     font-family: ${theme.fonts.family.stylish};
-    color: ${theme.colors.primary}
+    color: ${theme.colors.primary};
+    @media(max-width: 767px) {
+        height: 50px;
+    }
+    @media(min-width: 768px) and (max-width: 1388px) { 
+    }
 `;

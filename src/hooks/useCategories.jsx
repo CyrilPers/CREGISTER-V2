@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { createCategoryFromApi, deleteCategoryFromApi, getCategoriesFromApi, resetCategoriesAndProductsFromApi } from '../API/categories'
+import { createCategoryFromApi, deleteCategoryFromApi } from '../API/categories'
 import { EMPTY_CATEGORY } from '../enum/category'
-import { deepClone, removeItemFromArray } from '../utils/arrays'
+import { addItemToArray, deepClone, removeItemFromArray } from '../utils/arrays'
 
 export const useCategories = () => {
     const [categories, setCategories] = useState()

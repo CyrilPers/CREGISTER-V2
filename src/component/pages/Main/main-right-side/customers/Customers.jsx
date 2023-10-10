@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import AdminContext from '../../../../../context/AdminContext.jsx';
 import { theme } from '../../../../../theme/index.jsx';
 import Empty from '../../../../reusable-ui/Empty.jsx';
@@ -6,21 +6,21 @@ import { getIndex, isEmpty } from '../../../../../utils/arrays.jsx';
 import Loader from '../../../order/menu/Loader.jsx';
 import { styled } from 'styled-components';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { menuAnimation } from '../../../../../theme/animations.jsx';
+import { scaleXAnimation } from '../../../../../theme/animations.jsx';
 import { checkIfProductIsClicked } from '../../../order/menu/helper/helpers.jsx';
 import HorizontalCard from '../../../../reusable-ui/HorizontalCard.jsx';
 
 export default function Customers() {
 
-    const { customers, isModeAdmin, deleteCustomer, selectCustomer, selectedCustomer } = useContext(AdminContext)
-
-    useEffect(() => { }, [customers])
+    const { resetCustomers, customers, isModeAdmin, deleteCustomer, selectCustomer, selectedCustomer, userId } = useContext(AdminContext)
 
     const title = "La liste de clients est vide"
     const description = "Cliquez ci-dessous pour la réinitialiser"
     const label = "Générer de nouveaux clients"
 
-    const handleReset = () => { } // A CHANGER
+    const handleReset = () => {
+        resetCustomers(userId)
+    }
 
     const handleDelete = (event, id) => {
         event.stopPropagation()
@@ -88,5 +88,5 @@ const CustomersStyled = styled.div`
         }
     }
 
-    ${menuAnimation}
+    ${scaleXAnimation}
 `;

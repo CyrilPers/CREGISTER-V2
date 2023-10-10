@@ -13,7 +13,7 @@ export default function CustomersMap({ customers, isModeAdmin, handleDelete }) {
             {customers.map(({ id, name, surname, index, phoneNumber, address }) => {
                 return (
                     <CSSTransition
-                        className={"animation-card"}
+                        classNames={"animation-card"}
                         key={id}
                         timeout={300}
                     >

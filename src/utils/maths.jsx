@@ -5,6 +5,8 @@ export function formatPrice(priceToFormat) {
   if (!price) return "0,00 €"
   price = replaceFrenchCommaWithDot(price)
 
+
+
   const formattedPrice = new Intl.NumberFormat("fr-FR", {
     style: "currency",
     currency: "EUR",

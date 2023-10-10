@@ -1,12 +1,9 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components';
 import { theme } from '../../../../../theme';
 import { TiDelete } from 'react-icons/ti'
 
 export default function CustomerBlock({ customer, handleDelete }) {
-
-
-    useEffect(() => { }, [customer])
 
     return (
 
@@ -71,5 +68,8 @@ const CustomerBlockStyled = styled.div`
                 color: ${theme.colors.primary}
             }
         }
+    }
+    @media(min-width: 768px) and (max-width: 1388px) { 
+        width: 220px;
     }
 `;

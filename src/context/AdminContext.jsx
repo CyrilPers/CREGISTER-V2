@@ -22,11 +22,13 @@ export default createContext({
     products: [],
     productSelected: [],
     setProductSelect: () => { },
-
+    resetCategoryAndProducts: () => { },
     setProducts: () => { },
     addProduct: () => { },
     deleteProduct: () => { },
     editProduct: () => { },
+    filteredProducts: [],
+    setFilteredProducts: () => { },
 
     selectProduct: () => { },
     selectedProduct: {},
@@ -41,6 +43,8 @@ export default createContext({
     setBasket: () => { },
     addBasketProduct: () => { },
     deleteBasketProduct: () => { },
+    totalBasket: {},
+    setTotalBasket: () => { },
 
 
     setDisplayedCategories: () => { },
@@ -68,12 +72,14 @@ export default createContext({
     setNewCustomer: () => { },
     addCustomer: () => { },
     editCustomer: () => { },
+    resetCustomers: () => { },
 
 
     invoices: [],
     setInvoices: () => { },
     editInvoice: () => { },
     createInvoice: () => { },
+    getPdf: () => { },
 
     invoice: {},
     setInvoice: () => { },

@@ -21,9 +21,11 @@ export default function SearchCustomer({ placeholder, data, handleClick, handleC
                         return element.name.toLowerCase().includes(value.toLowerCase()) ||
                             element.surname.toLowerCase().includes(value.toLowerCase()) ||
                             element.phoneNumber.toLowerCase().includes(value.toLowerCase());
-                    }).map((element) => (
-                        <li onClick={() => handleClick(element)} key={element.id}>{element.name} {element.surname} </li>
-                    ))}
+                    })
+                        .slice(0, 5)
+                        .map((element) => (
+                            <li onClick={() => handleClick(element)} key={element.id}>{element.name} {element.surname} </li>
+                        ))}
             </ul>
         </SearchCustomerStyled>
     )
@@ -37,6 +39,7 @@ const SearchCustomerStyled = styled.div`
     position: relative;
     flex-direction: column;
     padding-right: 50px;
+    z-index: 1;
 
 
     .inputSearch {
@@ -72,7 +75,7 @@ const SearchCustomerStyled = styled.div`
     }
 
     ul li {
-        padding-left: 10px;
+    padding-left: 10px;
     cursor: pointer;
     height: 30px;
     align-items: center;
@@ -83,5 +86,12 @@ const SearchCustomerStyled = styled.div`
     font-size: ${theme.fonts.size.P3};
     font-family: ${theme.fonts.family.stylish};
     }
-     
+    @media(min-width: 768px) and (max-width: 1388px) { 
+        .inputSearch{
+            width: 90%;
+        }
+        ul{
+            width: 180px;
+        }
+    }
 `;

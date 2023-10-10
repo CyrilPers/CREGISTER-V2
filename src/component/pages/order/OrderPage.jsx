@@ -4,16 +4,14 @@ import { theme } from '../../../theme'
 import Main from './Main'
 import Navbar from '../../navbar/Navbar'
 import AdminContext from "../../../context/AdminContext"
-import { EMPTY_PRODUCT } from '../../../enum/product.jsx'
 import { useProducts } from '../../../hooks/useProducts'
 import { useBasket } from '../../../hooks/useBasket'
 import { useParams } from 'react-router-dom'
-import { initialiseBasket, initialiseInvoice, initialiseCategories, initialiseCustomers, initialiseInvoices, initialiseProducts, initialiseUser } from './helpers/initialiseUserSession'
+import { initialiseBasket, initialiseInvoice, initialiseCategories, initialiseCustomers, initialiseProducts, initialiseUser, } from './helpers/initialiseUserSession'
 import { findInArray } from '../../../utils/arrays'
 import { useCategories } from '../../../hooks/useCategories'
 import { useCustomers } from '../../../hooks/useCustomers'
 import { useInvoices } from '../../../hooks/useInvoices'
-import { EMPTY_CUSTOMER } from '../../../enum/customer'
 
 
 export default function OrderPage() {
@@ -23,15 +21,13 @@ export default function OrderPage() {
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [currentPage, setCurrentPage] = useState("invoices")
   const [currentTabSelected, setCurrentTabSelected] = useState("add")
-  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
-  const [newCustomer, setNewCustomer] = useState(EMPTY_CUSTOMER)
-  const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT)
+
   const titleEditRef = useRef()
-  const { invoices, setInvoices, editInvoice, customer, setCustomer, invoice, setInvoice, deleteInvoice, createInvoice } = useInvoices()
-  const { deleteProductsFromCategory, products, addProduct, deleteProduct, editProduct, setProducts } = useProducts()
-  const { basket, addBasketProduct, deleteBasketProduct, setBasket } = useBasket()
+  const { invoices, setInvoices, editInvoice, customer, setCustomer, invoice, setInvoice, deleteInvoice, createInvoice, getPdf } = useInvoices()
+  const { deleteProductsFromCategory, products, addProduct, deleteProduct, editProduct, setProducts, resetCategoryAndProducts, selectedProduct, setSelectedProduct, newProduct, setNewProduct, filteredProducts, setFilteredProducts } = useProducts()
+  const { basket, addBasketProduct, deleteBasketProduct, setBasket, totalBasket, setTotalBasket } = useBasket()
   const { categories, setCategories, selectedCategory, setSelectedCategory, newCategory, setNewCategory, deleteCategory, addCategory } = useCategories()
-  const { setCustomers, customers, deleteCustomer, selectedCustomer, setSelectedCustomer, addCustomer, editCustomer } = useCustomers()
+  const { setCustomers, customers, deleteCustomer, selectedCustomer, setSelectedCustomer, addCustomer, editCustomer, resetCustomers, newCustomer, setNewCustomer } = useCustomers()
   const { username } = useParams()
   const [userId, setUserId] = useState();
   const [invoiceId, setInvoiceId] = useState("1")
@@ -61,6 +57,12 @@ export default function OrderPage() {
 
 
   const adminContextValue = {
+    filteredProducts,
+    setFilteredProducts,
+    setTotalBasket,
+    totalBasket,
+    resetCustomers,
+    resetCategoryAndProducts,
     createInvoice,
     initialiseBasket,
     initialiseInvoice,
@@ -120,6 +122,7 @@ export default function OrderPage() {
     selectedCategory,
     setSelectedCategory,
     addCategory,
+    getPdf,
   }
 
   return (

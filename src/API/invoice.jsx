@@ -11,32 +11,33 @@ export async function getInvoiceFromApi(invoiceId) {
     }
 }
 
-export async function editInvoiceFromApi(invoice, newCustomer, newProduct) {
-    console.log("newproduct", newProduct)
+export async function createPdfFromApi(invoiceId) {
+    try {
+        const { data } = await axios.get(`${API_URL}createPdf/${invoiceId}`);
+        return data;
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export async function editInvoiceFromApi(invoice, newCustomer, basketUpdated) {
     try {
         const requestData = {
             createdAt: invoice.createdAt,
             user: { id: invoice.user.id },
-            total: 12
+            total: 0
         };
 
         if (newCustomer) {
             requestData.customer = { id: newCustomer.id };
         }
 
-        if (newProduct) {
-            requestData.invoiceLines = [
-                {
-                    ...newProduct,
-                    invoice: { id: invoice.id }
-                }
-            ]
+        if (basketUpdated) {
+            requestData.invoiceLines = basketUpdated
         }
 
         const { data } = await axios.put(`${API_URL}update/${invoice.id}`, requestData);
-        const basketProduct = data.invoiceLines[0]
-        console.log("data", data)
-        return basketProduct;
+        return data;
     } catch (error) {
         console.log(error)
     }

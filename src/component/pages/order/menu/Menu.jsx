@@ -3,7 +3,7 @@ import { styled } from 'styled-components';
 import { theme } from '../../../../theme';
 import AdminContext from '../../../../context/AdminContext.jsx';
 import { EMPTY_PRODUCT } from '../../../../enum/product';
-import { findInArray } from '../../../../utils/arrays';
+import { findIdInArray, findInArray } from '../../../../utils/arrays';
 import Loader from './Loader';
 import ProductsMap from './ProductsMap';
 import CategoriesMap from './CategoriesMap';
@@ -11,8 +11,6 @@ import { isEmpty } from '../../../../utils/arrays.jsx'
 import Empty from '../../../reusable-ui/Empty';
 
 export default function Menu() {
-
-  const [showBackButton, setShowBackButton] = useState(false)
 
 
   const {
@@ -31,16 +29,11 @@ export default function Menu() {
     addBasketProduct,
     selectProduct,
     invoice,
-    invoiceId,
     setSelectedCategory,
     selectedCategory,
+    filteredProducts,
+    setFilteredProducts,
   } = useContext(AdminContext)
-
-
-  useEffect(() => { }, [products, categories])
-
-  console.log("invoice", invoice)
-  console.log("invoiceId", invoiceId)
 
 
   const handleCardDelete = (event, idProductToDelete) => {
@@ -62,13 +55,11 @@ export default function Menu() {
   const handleBackButtonClick = () => {
     // Mettre à jour l'état de la catégorie sélectionnée et cacher bouton retour
     setSelectedCategory(null)
-    setShowBackButton(false)
   }
 
   const handleCategoryClick = (id) => {
     // Mettre à jour l'état de la catégorie sélectionnée et faire apparaitre bouton retour
     setSelectedCategory(id)
-    setShowBackButton(true)
   }
 
   const handleCategoryDelete = async (event, categoryId) => {
@@ -81,6 +72,17 @@ export default function Menu() {
     resetCategoryAndProducts(userId, setCategories, setProducts)
   }
 
+
+  const initialiseFilteredProducts = () => {
+    let productsFiltered
+    let mainId = findIdInArray("MAIN", categories)
+
+    selectedCategory
+      ? productsFiltered = products.filter((product) => product.category.id === selectedCategory) || []
+      : productsFiltered = products.filter((product) => product.category.id === mainId) || []
+    setFilteredProducts(productsFiltered)
+  }
+
   let containerClassName = isModeAdmin ? "card-container is-hoverable" : 'card-container'
 
   const displayedCategories = categories ? categories.filter((category) => category.name !== "MAIN") : null
@@ -88,6 +90,9 @@ export default function Menu() {
   const title = "Le menu est vide"
   const description = "Cliquez ci-dessous pour le réinitialiser"
   const label = "Générer de nouveaux produits"
+
+  useEffect(() => { initialiseFilteredProducts() }, [selectedCategory, products])
+
 
 
   // Affichage 
@@ -98,8 +103,8 @@ export default function Menu() {
 
   return (
     <MenuStyled>
-      <CategoriesMap selectedCategory={selectedCategory} handleBackButtonClick={handleBackButtonClick} showBackButton={showBackButton} handleCategoryClick={handleCategoryClick} categories={categories} isModeAdmin={isModeAdmin} containerClassName="category" handleCategoryDelete={handleCategoryDelete} />
-      <ProductsMap selectedCategory={selectedCategory} selectedProduct={selectedProduct} isModeAdmin={isModeAdmin} products={products} handleCardDelete={handleCardDelete} handleClick={handleClick} containerClassName={containerClassName} />
+      <CategoriesMap selectedCategory={selectedCategory} handleBackButtonClick={handleBackButtonClick} handleCategoryClick={handleCategoryClick} categories={categories} isModeAdmin={isModeAdmin} containerClassName="category" handleCategoryDelete={handleCategoryDelete} />
+      <ProductsMap filteredProducts={filteredProducts} selectedCategory={selectedCategory} selectedProduct={selectedProduct} isModeAdmin={isModeAdmin} products={products} handleCardDelete={handleCardDelete} handleClick={handleClick} containerClassName={containerClassName} />
     </MenuStyled>
   )
 }
@@ -108,8 +113,8 @@ const MenuStyled = styled.div`
   
   background: ${theme.colors.background_white};
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-row-gap: 60px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-row-gap: 20px;
   padding: 50px 50px 50px;
   justify-items: center;
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
@@ -124,7 +129,7 @@ const MenuStyled = styled.div`
 
   .card-container {
     position: relative; 
-    height: 330px;
+    height: 300px;
     border-radius: ${theme.borderRadius.extraRound};
     &.is-hoverable {
       &:hover{
@@ -138,7 +143,8 @@ const MenuStyled = styled.div`
   }
   
   @media(max-width: 767px) {
-    grid-auto-rows: 90px;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 10px 10px;
     max-width: 100%;
     overflow-x: hidden;
     padding: 10px 0;
@@ -148,8 +154,8 @@ const MenuStyled = styled.div`
   }
 
   @media(min-width: 768px) and (max-width: 1388px) { 
+    grid-template-columns: repeat(3, 1fr);
     padding: 10px 10px;
-    grid-auto-rows: 140px;
     max-width: 100%;
     overflow-x: hidden;
     .card-container {

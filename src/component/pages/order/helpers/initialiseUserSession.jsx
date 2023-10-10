@@ -1,6 +1,6 @@
 import { getBasketFromApi } from "../../../../API/basket.jsx"
-import { getCategoriesFromApi, initialiseCategoriesAndProductsFromApi, resetCategoriesAndProductsFromApi } from "../../../../API/categories.jsx"
-import { getCustomersFromApi } from "../../../../API/customers.jsx"
+import { getCategoriesFromApi, initialiseCategoriesAndProductsFromApi } from "../../../../API/categories.jsx"
+import { getCustomersFromApi, initialiseCustomersFromApi } from "../../../../API/customers.jsx"
 import { getInvoiceFromApi, getInvoicesFromApi } from "../../../../API/invoice.jsx"
 import { getProductsFromApi } from "../../../../API/product.jsx"
 import { createUserFromApi, getUserIdFromApi } from "../../../../API/users.jsx"
@@ -56,10 +56,11 @@ export async function initialiseBasket(invoiceId, setBasket) {
   setBasket(basketExisting)
 }
 
-export async function initialiseInvoice(invoiceId, setCustomer, setInvoice) {
+export async function initialiseInvoice(invoiceId, setCustomer, setInvoice, setTotalBasket) {
 
   const invoiceExisting = await getInvoiceFromApi(invoiceId)
   setInvoice(invoiceExisting)
+  setTotalBasket(invoiceExisting.total)
   const customerExisting = invoiceExisting.customer
   if (!customerExisting) {
     setCustomer()
@@ -90,10 +91,3 @@ export async function initialiseNewUserFromApi(username) {
 }
 
 
-export async function resetCategoryAndProducts(userId, setCategories, setProducts) {
-  await resetCategoriesAndProductsFromApi(userId)
-  const updatedCategories = await getCategoriesFromApi(userId);
-  setCategories(updatedCategories);
-  const updatedProducts = await getProductsFromApi(userId);
-  setProducts(updatedProducts);
-}

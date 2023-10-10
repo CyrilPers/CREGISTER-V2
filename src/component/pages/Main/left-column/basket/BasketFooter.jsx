@@ -1,32 +1,26 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { styled } from 'styled-components';
 import Header from '../../../../reusable-ui/Header';
 import Button from '../../../../reusable-ui/Button.jsx'
 import { FaReceipt } from 'react-icons/fa'
 import CasinoEffect from '../../../../reusable-ui/CasinoEffect';
-import { calculateSumToPay } from './Helper';
 import { formatPrice } from '../../../../../utils/maths';
 import { theme } from '../../../../../theme';
-import AdminContext from '../../../../../context/AdminContext';
 
-export default function BasketFooter({ basket }) {
-
-    const initialiseCustomersFromApi = useContext(AdminContext)
-    const sumToPay = calculateSumToPay(basket)
+export default function BasketFooter({ totalBasket, getPdf, invoiceId }) {
 
     const handleClick = () => {
-        initialiseCustomersFromApi("147")
+        getPdf(invoiceId)
     }
-
 
     return (
         <Header>
             <BasketFooterStyled>
                 <span className='total'>Total</span>
-                <CasinoEffect count={formatPrice(sumToPay)} />
+                <CasinoEffect count={formatPrice(totalBasket)} />
                 <Button
                     className="invoice-button"
-                    label="Ticket"
+                    label="Facture"
                     Icon={<FaReceipt />}
                     onClick={handleClick}
                 />
