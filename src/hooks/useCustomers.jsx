@@ -42,6 +42,6 @@ export const useCustomers = () => {
     }
 
 
-    return { resetCustomers, customers, setCustomers, deleteCustomer, selectedCustomer, setSelectedCustomer, addCustomer, editCustomer, addCustomer, newCustomer, setNewCustomer }
+    return { resetCustomers, customers, setCustomers, deleteCustomer, selectedCustomer, setSelectedCustomer, addCustomer, editCustomer, newCustomer, setNewCustomer }
 }
 

@@ -38,7 +38,7 @@ export const getInputTextsConfig = (product) => [
 export const getCustomerInputTextsConfig = (customer) => [
     {
         id: "0",
-        name: "title",
+        name: "name",
         value: customer.name && customer.name,
         placeholder: 'Prénom',
         Icon: <MdTitle />,

@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_URL = 'http://localhost:3001/cregister/api/user/'
+const API_URL = 'http://pos-rh30.onrender.com/cregister/api/user/'
 
 
 export async function getUserIdFromApi(username) {

@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_URL = 'http://localhost:3001/cregister/api/product/'
+const API_URL = 'http://pos-rh30.onrender.com/cregister/api/product/'
 
 export async function getProductsFromApi(userId) {
     try {

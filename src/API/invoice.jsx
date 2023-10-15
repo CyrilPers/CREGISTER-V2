@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_URL = 'http://localhost:3001/cregister/api/invoice/'
+const API_URL = 'http://pos-rh30.onrender.com/cregister/api/invoice/'
 
 export async function getInvoiceFromApi(invoiceId) {
     try {

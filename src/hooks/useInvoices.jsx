@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { createInvoiceFromApi, createPdfFromApi, deleteInvoiceFromApi, editInvoiceFromApi } from "../API/invoice"
 import { deepClone, removeItemFromArray } from "../utils/arrays"
+import { decodePdfToLink } from '../utils/decoder.jsx'
 
 export const useInvoices = () => {
     const [invoices, setInvoices] = useState([])
@@ -23,8 +24,14 @@ export const useInvoices = () => {
     }
 
     const getPdf = async (invoiceId) => {
+        let pdfEncoded
         await createPdfFromApi(invoiceId)
-        window.open(`/pdfInvoices/${invoiceId}.pdf`, '_blank');
+            .then(apiResponse => {
+                pdfEncoded = apiResponse;
+            })
+
+        const pdfLink = await decodePdfToLink(pdfEncoded)
+        window.open(pdfLink, '_blank');
     }
 
 

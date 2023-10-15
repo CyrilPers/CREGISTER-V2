@@ -19,7 +19,7 @@ const FormInputs = React.forwardRef(({ onFocus, onBlur, element, onChange, curre
                     key={input.id}
                     onChange={onChange}
                     version="minimalist"
-                    ref={ref && input.name === "title" ? ref : null}
+                    ref={ref && input.id === "0" ? ref : null}
                     onFocus={onFocus}
                     onBlur={onBlur}
                 />

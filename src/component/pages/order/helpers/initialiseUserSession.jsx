@@ -87,7 +87,7 @@ export async function initialiseNewUserFromApi(username) {
   await createUserFromApi(username)
   const newUserId = await getUserIdFromApi(username)
   await initialiseCategoriesAndProductsFromApi(newUserId)
-  initialiseCustomersFromApi(newUserId)
+  await initialiseCustomersFromApi(newUserId)
 }
 
 

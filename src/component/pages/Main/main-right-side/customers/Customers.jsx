@@ -9,6 +9,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { scaleXAnimation } from '../../../../../theme/animations.jsx';
 import { checkIfProductIsClicked } from '../../../order/menu/helper/helpers.jsx';
 import HorizontalCard from '../../../../reusable-ui/HorizontalCard.jsx';
+import { initialiseCustomers } from '../../../order/helpers/initialiseUserSession.jsx';
 
 export default function Customers() {
 
@@ -31,6 +32,7 @@ export default function Customers() {
         { isModeAdmin && selectCustomer(id) }
     }
 
+    console.log("customers", customers)
 
     // Affichage:
     if (customers === undefined) return <Loader />

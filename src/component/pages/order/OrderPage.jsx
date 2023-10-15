@@ -48,12 +48,13 @@ export default function OrderPage() {
     titleEditRef.current.focus()
   }
 
-  useEffect(() => {
-    initialiseUser(setUserId, username)
+  const init = async () => {
+    await initialiseUser(setUserId, username)
     initialiseCategories(userId, setCategories)
     initialiseCustomers(userId, setCustomers)
     initialiseProducts(userId, setProducts)
-  }, [userId])
+  }
+  useEffect(() => { init() }, [userId])
 
 
   const adminContextValue = {
