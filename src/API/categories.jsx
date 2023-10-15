@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_URL = 'http://pos-rh30.onrender.com/cregister/api/category/'
+const API_URL = 'https://pos-rh30.onrender.com/cregister/api/category/'
 
 export async function getCategoriesFromApi(userId) {
     try {
