@@ -25,7 +25,8 @@ export default function Invoices() {
 
     const handleClick = async (id) => {
         {
-            !isModeAdmin && (await setInvoiceId(id), setCurrentPage("invoice"))
+            await setInvoiceId(id)
+            setCurrentPage("invoice")
         }
     }
 
@@ -64,6 +65,7 @@ export default function Invoices() {
                                 element1={total ? formatPrice(total) : "0 €"}
                                 element2={formatDate(createdAt)}
                                 showDeleteButton={isModeAdmin}
+                                isInvoice={true}
                                 onDelete={(event) => handleDelete(event, id)}
                                 onClick={() => handleClick(id)}
                             />

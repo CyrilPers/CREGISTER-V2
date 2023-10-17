@@ -49,11 +49,13 @@ export default function OrderPage() {
   }
 
   const init = async () => {
-    await initialiseUser(setUserId, username)
-    initialiseCategories(userId, setCategories)
-    initialiseCustomers(userId, setCustomers)
-    initialiseProducts(userId, setProducts)
+    const initUserId = await initialiseUser(setUserId, username)
+    await initialiseCategories(initUserId, setCategories);
+    await initialiseCustomers(initUserId, setCustomers);
+    await initialiseProducts(initUserId, setProducts);
   }
+
+
   useEffect(() => { init() }, [userId])
 
 

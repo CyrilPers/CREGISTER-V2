@@ -15,12 +15,15 @@ export default function HorizontalCard({
   element2,
   isSelected,
   index,
+  isInvoice
 }) {
 
   return (
     <HorizontalCardStyled
       onClick={onClick}
       $isSelected={isSelected}
+      $isModeAdmin={showDeleteButton}
+      $isInvoice={isInvoice}
     >
       <div className='cards'>
         {showDeleteButton && <button className="delete-button" aria-label="delete-button" onClick={onDelete}>
@@ -37,7 +40,6 @@ export default function HorizontalCard({
 }
 
 const HorizontalCardStyled = styled.div`
-    
 
     .cards {
     overflow : hidden;
@@ -59,19 +61,9 @@ const HorizontalCardStyled = styled.div`
     overflow-x: hidden;
     text-overflow: ellipsis;
     position: relative;
-    
     padding: 0 20px;
     position: relative;
-
-    &:hover {
-      cursor: pointer;
-      box-shadow: ${theme.shadows.orangeHighlight};
     }
-    &:active {
-    background-color: ${theme.colors.primary};
-    color: ${theme.colors.dark};
-    }
-  }
 
     .delete-button {
       position: absolute;
@@ -89,12 +81,6 @@ const HorizontalCardStyled = styled.div`
         height: 35px;
         cursor: pointer;
       }
-      :hover {
-        color: ${theme.colors.red}
-      }
-      :active{
-        color: ${theme.colors.primary}
-      }
     }
     @media(max-width: 1388px) { 
       .cards{
@@ -104,24 +90,27 @@ const HorizontalCardStyled = styled.div`
 
       }
     }
-
-    ${({ $isSelected }) => $isSelected && selectedStyle}
-
+    ${({ $isSelected, $isModeAdmin }) => $isSelected && $isModeAdmin && selectedStyle}
+    ${({ $isModeAdmin, $isInvoice }) => $isModeAdmin && !$isInvoice && adminStyle}
+    ${({ $isInvoice, $isModeAdmin }) => $isInvoice && !$isModeAdmin && adminStyle}
 `
 
 const selectedStyle = css`
-
     .cards {
       background: ${theme.colors.primary};
- 
-   
-    &:hover {
-      cursor: pointer;
-      box-shadow: ${theme.shadows.orangeHighlight};
-    }
+  
     &:active {
     background-color: ${theme.colors.primary};
     color: ${theme.colors.dark};
     }
   }
 `
+const adminStyle = css`
+    .cards {
+      &:hover {
+      cursor: pointer;
+      box-shadow: ${theme.shadows.orangeHighlight};
+      }
+    }
+`
+

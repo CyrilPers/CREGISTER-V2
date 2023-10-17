@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_URL = 'https://pos-rh30.onrender.com/cregister/api/category/'
+const API_URL = ''
 
 export async function getCategoriesFromApi(userId) {
     try {
@@ -43,6 +43,7 @@ export async function createCategoryFromApi(newCategory, userId) {
 
 
 export async function initialiseCategoriesAndProductsFromApi(userId) {
+    console.log("initialiseCatandProd")
     try {
         await axios.post(`${API_URL}initialise/${userId}`, {
             headers: {

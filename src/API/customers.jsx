@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_URL = 'https://pos-rh30.onrender.com/cregister/api/customer/'
+const API_URL = ''
 
 
 export async function initialiseCustomersFromApi(userId) {
