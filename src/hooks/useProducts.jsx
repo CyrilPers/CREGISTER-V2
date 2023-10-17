@@ -20,7 +20,7 @@ export const useProducts = () => {
             });
 
         const productsCopy = deepClone(products);
-        const updatedProducts = addItemToArray(newProduct, productsCopy);
+        const updatedProducts = addItemToArray(newProductApi, productsCopy);
         setProducts(updatedProducts);
     }
 
