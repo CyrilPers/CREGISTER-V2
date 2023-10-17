@@ -13,7 +13,8 @@ export default function AddForm() {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        const id = crypto.randomUUID()
+        const now = new Date()
+        const id = BigInt(now)
         const mainCat = findIdInArray("MAIN", categories)
         const categoryId = selectedCategory ? selectedCategory : mainCat
         const newProductToAdd = {

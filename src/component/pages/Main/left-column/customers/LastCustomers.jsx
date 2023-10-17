@@ -12,7 +12,7 @@ export default function LastCustomers({ customers }) {
                 <span>Ville</span>
             </div>
             {!isEmpty(customers) &&
-                customers.slice(0, 5).map(({ id, name, surname, address }) => (
+                customers.slice(-5).reverse().map(({ id, name, surname, address }) => (
                     <div key={id} className='customer'>
                         <span>{name ? name : "inc."}</span>
                         <span>{surname ? surname : "inc."}</span>

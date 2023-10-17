@@ -17,7 +17,6 @@ export async function initialiseProducts(userId, setProducts) {
 }
 
 export async function initialiseInvoices(userId, setInvoices) {
-
   const invoicesExisting = await getInvoicesFromApi(userId)
   if (!invoicesExisting) {
     setInvoices([])
@@ -73,6 +72,7 @@ export async function initialiseInvoice(invoiceId, setCustomer, setInvoice, setT
 export async function initialiseUser(setUserId, username) {
   const newUserId = await getUserIdFromApi(username)
   setUserId(newUserId)
+  return newUserId
 }
 
 export async function authentificateUser(username) {

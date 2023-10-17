@@ -12,7 +12,8 @@ export default function CustomerAddForm() {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        const id = crypto.randomUUID()
+        const now = new Date()
+        const id = BigInt(now)
         const newCustomerToAdd = {
             ...newCustomer,
             id

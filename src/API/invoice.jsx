@@ -1,10 +1,14 @@
 import axios from 'axios'
 
-const API_URL = 'https://pos-rh30.onrender.com/cregister/api/invoice/'
+const API_URL = ''
 
 export async function getInvoiceFromApi(invoiceId) {
     try {
-        const { data } = await axios.get(`${API_URL}id=${invoiceId}`);
+        const { data } = await axios.get(`${API_URL}id=${invoiceId}`, {
+            headers: {
+                'Access-Control-Allow-Origin': 'http://mypos.cyrilpersonne.website'
+            }
+        });
         return data;
     } catch (error) {
         console.log(error)
@@ -13,7 +17,11 @@ export async function getInvoiceFromApi(invoiceId) {
 
 export async function createPdfFromApi(invoiceId) {
     try {
-        const { data } = await axios.get(`${API_URL}createPdf/${invoiceId}`);
+        const { data } = await axios.get(`${API_URL}createPdf/${invoiceId}`, {
+            headers: {
+                'Access-Control-Allow-Origin': 'http://mypos.cyrilpersonne.website'
+            }
+        });
         return data;
     } catch (error) {
         console.log(error)
@@ -36,7 +44,11 @@ export async function editInvoiceFromApi(invoice, newCustomer, basketUpdated) {
             requestData.invoiceLines = basketUpdated
         }
 
-        const { data } = await axios.put(`${API_URL}update/${invoice.id}`, requestData);
+        const { data } = await axios.put(`${API_URL}update/${invoice.id}`, requestData, {
+            headers: {
+                'Access-Control-Allow-Origin': 'http://mypos.cyrilpersonne.website'
+            }
+        });
         return data;
     } catch (error) {
         console.log(error)
@@ -46,7 +58,11 @@ export async function editInvoiceFromApi(invoice, newCustomer, basketUpdated) {
 
 export async function getInvoicesFromApi(userId) {
     try {
-        const { data } = await axios.get(`${API_URL}user=${userId}`);
+        const { data } = await axios.get(`${API_URL}user=${userId}`, {
+            headers: {
+                'Access-Control-Allow-Origin': 'http://mypos.cyrilpersonne.website'
+            }
+        });
         return data;
     } catch (error) {
         console.log(error)
@@ -56,7 +72,11 @@ export async function getInvoicesFromApi(userId) {
 
 export async function deleteInvoiceFromApi(invoiceId) {
     try {
-        await axios.delete(`${API_URL}delete/${invoiceId}`);
+        await axios.delete(`${API_URL}delete/${invoiceId}`, {
+            headers: {
+                'Access-Control-Allow-Origin': 'http://mypos.cyrilpersonne.website'
+            }
+        });
     } catch (error) {
         console.log(error)
     }
@@ -65,7 +85,11 @@ export async function deleteInvoiceFromApi(invoiceId) {
 
 export async function createInvoiceFromApi(userId) {
     try {
-        const { data } = await axios.post(`${API_URL}create`, { user: { id: userId } });
+        const { data } = await axios.post(`${API_URL}create`, { user: { id: userId } }, {
+            headers: {
+                'Access-Control-Allow-Origin': 'http://mypos.cyrilpersonne.website'
+            }
+        });
         return data;
     } catch (error) {
         console.log(error)

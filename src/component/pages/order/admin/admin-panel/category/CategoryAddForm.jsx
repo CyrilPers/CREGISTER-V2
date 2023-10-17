@@ -13,7 +13,8 @@ export default function CategoryAddForm() {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        const id = crypto.randomUUID()
+        const now = new Date()
+        const id = BigInt(now)
 
         const newCategoryToAdd = {
             name: newCategory,
