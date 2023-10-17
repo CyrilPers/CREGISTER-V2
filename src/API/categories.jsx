@@ -43,7 +43,6 @@ export async function createCategoryFromApi(newCategory, userId) {
 
 
 export async function initialiseCategoriesAndProductsFromApi(userId) {
-    console.log("initialiseCatandProd")
     try {
         await axios.post(`${API_URL}initialise/${userId}`, {
             headers: {
