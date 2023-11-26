@@ -10,8 +10,6 @@ import AdminContext from '../../../../../context/AdminContext';
 
 export default function BasketFooter({ totalBasket, getPdf, invoiceId }) {
 
-    const { userId } = useContext(AdminContext)
-
     const handleClick = () => {
         getPdf(invoiceId)
     }

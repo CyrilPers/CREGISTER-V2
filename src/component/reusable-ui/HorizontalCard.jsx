@@ -29,7 +29,7 @@ export default function HorizontalCard({
         {showDeleteButton && <button className="delete-button" aria-label="delete-button" onClick={onDelete}>
           <TiDelete className="delete-icon" />
         </button>}
-        <div className='index'>{index}</div>
+        <div className='index'>#{index}</div>
         <div className='name'>{name}</div>
         <div className='surname'>{surname}</div>
         <div className='element1'>{element1}</div>
@@ -44,13 +44,13 @@ const HorizontalCardStyled = styled.div`
     .cards {
     overflow : hidden;
     border-radius: ${theme.borderRadius.round};
-    background: ${theme.colors.greyLight};
+    background: ${theme.colors.background_dark};
     height: 40px;
     box-sizing: border-box;
     width: auto;
     display: flex;
     box-shadow: -2px 2px 2px 0px rgb(0 0 0 / 20%);
-    margin: 0px;
+    margin: 0;
     margin-top: 10px;
     align-items: center;
     display: grid;
@@ -61,8 +61,8 @@ const HorizontalCardStyled = styled.div`
     overflow-x: hidden;
     text-overflow: ellipsis;
     position: relative;
-    padding: 0 20px;
-    position: relative;
+    padding: 0 30px;
+    color: ${theme.colors.primary};
     }
 
     .delete-button {
@@ -98,14 +98,16 @@ const HorizontalCardStyled = styled.div`
 const selectedStyle = css`
     .cards {
       background: ${theme.colors.primary};
+      color: ${theme.colors.dark};
   
     &:active {
     background-color: ${theme.colors.primary};
-    color: ${theme.colors.dark};
     }
   }
 `
 const adminStyle = css`
+    box-sizing: border-box;
+    padding: 0 5px;
     .cards {
       &:hover {
       cursor: pointer;

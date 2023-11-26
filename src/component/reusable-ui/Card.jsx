@@ -15,6 +15,7 @@ export default function Card({
   overlapImageSource,
   isOverlapImageVisible,
   className,
+  icon,
 }) {
 
   return (
@@ -41,9 +42,7 @@ export default function Card({
 
         <div className="text-info">
           <div className="title">{title}</div>
-          <div className="description">
-            <div className="left-description">{leftDescription}</div>
-          </div>
+          <div className="left-description">{leftDescription}</div>
         </div>
       </div>
     </CardStyled >
@@ -119,6 +118,10 @@ const CardStyled = styled.div`
     }
 
 
+  }
+
+  .back{
+    background-color: ${theme.colors.primary};
   }
   
   .card {
@@ -208,8 +211,9 @@ const CardStyled = styled.div`
     }
 
     .text-info {
-      display: grid;
-      grid-template-rows: 30% 70%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       padding: 5px;
 
       .title {
@@ -222,75 +226,89 @@ const CardStyled = styled.div`
         text-align: left;
         white-space: nowrap;
         overflow: hidden;
-        width: 100%;
+        width: 70%;
         text-overflow: ellipsis;
         font-family: ${theme.fonts.family.stylish};
       }
 
-      .description {
-        display: flex;
 
-        .left-description {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          font-weight: ${theme.fonts.weights.medium};
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          font-weight: ${theme.fonts.weights.medium};
-          color: ${theme.colors.primary};
-        }
+      .left-description {
+        width: 30%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: ${theme.fonts.weights.medium};
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-weight: ${theme.fonts.weights.medium};
+        color: ${theme.colors.primary};
       }
     }
     ${({ $isHoverable, $isSelected }) => $isHoverable && $isSelected && selectedStyle}  
   }
 
   @media(max-width: 767px) {
-    height: 140px;
-    padding: 0;
+      height: 140px;
+      padding: 0;
 
+    .card {
+    box-sizing: border-box;
+    width: 100px;
+    height: 141px;
+    padding: 5px;
+    padding-bottom: 30px;
+      
+      .image {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      }
+      .delete-button {
+        top: 5px;
+        right: 5px;
+      }
+
+      .text-info {
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: 0;
+
+          .title {
+          font-size: ${theme.fonts.size.P3};
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          margin-top: 10px;
+        }
+        .left-description {
+          margin-top: -10px;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+        }
+      }
+      
+    }
     .minimize {
     width: 100px;
     height: 140px;
     padding: 5px;
-    padding-bottom: 10px;
+    padding-bottom: 5px;
 
     .title {
-          font-size: ${theme.fonts.size.P3};
+      font-size: ${theme.fonts.size.P2};
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
     }
   }
 
-    .card {
-    width: 100px;
-    height: 140px;
-    padding: 5px;
-    padding-bottom: 10px;
-
-    .delete-button {
-      top: 5px;
-      right: 5px;
-    }
-
-    .text-info {
-      display: grid;
-      grid-template-rows: 30% 70%;
-      padding: 5px;
-
-        .title {
-          margin: auto 0;
-          font-size: ${theme.fonts.size.P3};
-        }
-
-        .description {
-          display: flex;
-
-          .left-description {
-          }
-        }
-      }
-    }
-  }
+    
   @media(min-width: 768px) and (max-width: 1388px) {
     height: 160px;
     padding: 0;
@@ -322,24 +340,11 @@ const CardStyled = styled.div`
       display: grid;
       grid-template-rows: 30% 70%;
       padding: 5px;
-
-        .title {
-          margin: auto 0;
-          font-size: ${theme.fonts.size.P3};
-        }
-
-        .description {
-          display: flex;
-
-          .left-description {
-          }
-        }
       }
     }
-
   }
-
 `
+
 const hoverableStyle = css`
   &:hover {
     box-shadow: ${theme.shadows.orangeHighlight};
@@ -396,10 +401,8 @@ background: ${theme.colors.primary};
 }
 
   .text-info {
-    .description {
-      .left-description {
+    .left-description {
       color: ${theme.colors.white};
     }
-  }
 }
 `

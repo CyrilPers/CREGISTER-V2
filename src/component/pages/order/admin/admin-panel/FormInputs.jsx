@@ -49,7 +49,7 @@ ${({ $isProduct }) => ($isProduct ? productStyle : customerStyle)}
 const productStyle = css`
     grid-area: 1 / 2 / 4 / 4;
     display: grid;
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     grid-template-columns: repeat(2, 1fr);
     row-gap: 10px;
     column-gap: 10px;

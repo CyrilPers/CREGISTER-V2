@@ -14,10 +14,12 @@ export default function InvoiceLeft({
     editInvoice,
     getPdf,
     invoice,
-    invoiceId }) {
+    invoiceId,
+    setCurrentPage,
+    setIsModeAdmin }) {
     return (
         <>
-            <InvoiceCustomer basket={basket} customers={customers} customer={customer} setCustomer={setCustomer} editInvoice={editInvoice} invoice={invoice} />
+            <InvoiceCustomer setCurrentPage={setCurrentPage} setIsModeAdmin={setIsModeAdmin} basket={basket} customers={customers} customer={customer} setCustomer={setCustomer} editInvoice={editInvoice} invoice={invoice} />
             {isEmpty(basket) ? <EmptyBasket isLoading={basket === undefined} /> : <BasketProducts />}
             <BasketFooter invoiceId={invoiceId} getPdf={getPdf} totalBasket={totalBasket} basket={basket} />
         </>

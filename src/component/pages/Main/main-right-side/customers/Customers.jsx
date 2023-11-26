@@ -7,7 +7,7 @@ import Loader from '../../../order/menu/Loader.jsx';
 import { styled } from 'styled-components';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { scaleXAnimation } from '../../../../../theme/animations.jsx';
-import { checkIfProductIsClicked } from '../../../order/menu/helper/helpers.jsx';
+import { checkIfIsClicked } from '../../../order/menu/helper/helpers.jsx';
 import HorizontalCard from '../../../../reusable-ui/HorizontalCard.jsx';
 
 export default function Customers() {
@@ -55,7 +55,7 @@ export default function Customers() {
                                 showDeleteButton={isModeAdmin}
                                 onDelete={(event) => handleDelete(event, id)}
                                 onClick={() => handleClick(id)}
-                                isSelected={checkIfProductIsClicked(id, selectedCustomer.id)}
+                                isSelected={checkIfIsClicked(id, selectedCustomer.id)}
                             />
                         </div>
                     </CSSTransition>
@@ -88,4 +88,8 @@ const CustomersStyled = styled.div`
     }
 
     ${scaleXAnimation}
+
+    @media(max-width: 767px) { 
+    padding: 0 5px;
+    }
 `;

@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import Header from '../../../../reusable-ui/Header';
 import SearchCustomer from './SearchCustomer';
 import CustomerBlock from './CustomerBlock';
-export default function InvoiceCustomer({ basket, invoice, customers, customer, editInvoice }) {
+import { FaSearch } from "react-icons/fa";
+
+export default function InvoiceCustomer({ basket, invoice, customers, customer, editInvoice, setCurrentPage, setIsModeAdmin }) {
 
     const [value, setValue] = useState();
 
@@ -31,7 +33,9 @@ export default function InvoiceCustomer({ basket, invoice, customers, customer, 
                     />
                 ) : (
                     <SearchCustomer
-                        placeholder={"Nom, prénom, numéro..."}
+                        setCurrentPage={setCurrentPage}
+                        setIsModeAdmin={setIsModeAdmin}
+                        placeholder="Nom, prénom, tel.."
                         data={customers}
                         value={value}
                         handleClick={handleClick}

@@ -22,7 +22,6 @@ const extraPrimaryStyle = css`
   justify-content: center;
   align-items: center;
   position: relative; 
-  white-space: nowrap; 
   text-decoration: none;
   line-height: 1;
 
@@ -32,12 +31,12 @@ const extraPrimaryStyle = css`
   font-weight: 800;
   color: white;
   background-color: ${theme.colors.primary};
-  border: 1px solid ${theme.colors.primary};
+  border: 1px solid ${theme.colors.black};
 
   &:hover {
     color: ${theme.colors.primary};
     background-color: ${theme.colors.white};
-    border: 1px solid ${theme.colors.primary};
+    border: 1px solid ${theme.colors.black};
     transition: all 200ms ease-out;
   }
   &:active {

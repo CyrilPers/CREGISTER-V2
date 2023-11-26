@@ -1,6 +1,6 @@
 import React from 'react'
 import Card from '../../../reusable-ui/Card'
-
+import { IoChevronBack } from "react-icons/io5";
 
 
 export default function CategoriesMap({ handleCategoryDelete, selectedCategory, isModeAdmin, handleBackButtonClick, categories, handleCategoryClick }) {
@@ -11,11 +11,10 @@ export default function CategoriesMap({ handleCategoryDelete, selectedCategory, 
             : []
 
     return (
-
         <>{selectedCategory && <Card
             key="back"
             title="RETOUR"
-            className="minimize"
+            className="minimize back"
             onClick={handleBackButtonClick}
         />}
             {filteredCategories.slice().reverse().map(({ id, name }) => {

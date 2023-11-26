@@ -7,7 +7,7 @@ import CustomersLeft from './customers/CustomersLeft.jsx';
 import InvoiceLeft from './basket/InvoiceLeft.jsx';
 
 export default function LeftColumn() {
-    const { getPdf, setTotalBasket, totalBasket, initialiseBasket, initialiseInvoice, editInvoice, basket, setBasket, invoices, invoiceId, invoice, customers, setCustomer, setCustomers, customer, setInvoice, currentPage } = useContext(AdminContext)
+    const { setCurrentPage, setIsModeAdmin, getPdf, setTotalBasket, totalBasket, initialiseBasket, initialiseInvoice, editInvoice, basket, setBasket, invoices, invoiceId, invoice, customers, setCustomer, customer, setInvoice, currentPage } = useContext(AdminContext)
 
     useEffect(() => {
         initialiseBasket(invoiceId, setBasket)
@@ -16,7 +16,7 @@ export default function LeftColumn() {
 
     return (
         <LeftColumnStyled>
-            {currentPage === "invoice" && <InvoiceLeft invoiceId={invoiceId} getPdf={getPdf} totalBasket={totalBasket} basket={basket} customers={customers} customer={customer} setCustomer={setCustomer} editInvoice={editInvoice} invoice={invoice} />}
+            {currentPage === "invoice" && <InvoiceLeft setCurrentPage={setCurrentPage} setIsModeAdmin={setIsModeAdmin} invoiceId={invoiceId} getPdf={getPdf} totalBasket={totalBasket} basket={basket} customers={customers} customer={customer} setCustomer={setCustomer} editInvoice={editInvoice} invoice={invoice} />}
             {currentPage === "invoices" && <InvoicesLeft invoices={invoices} />}
             {currentPage === "customers" && <CustomersLeft customers={customers} />}
         </LeftColumnStyled>

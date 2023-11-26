@@ -63,6 +63,44 @@ export const fadeInFromBottomLog = keyframes`
     }
 `
 
+export const fadeInFromTopLog = keyframes`
+    0% {
+        opacity: 0;
+        transform: translateY(-50%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        transition: all ${theme.animation.speed.verySlow}
+    }
+`
+
+export const basketAnimation = css`
+    /* MOUNTING */
+    .count-animated-enter {
+    transform: translateY(100%);
+  }
+  .count-animated-enter-active {
+    transform: translateY(0%);
+    transition: 300ms;
+  }
+  .count-animated-enter-done {
+  }
+
+  /* UNMOUNTING */
+  .count-animated-exit {
+    transform: translateY(0%);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+  .count-animated-exit-active {
+    transform: translateY(-100%);
+    transition: 300ms;
+  }
+`
+
+
 export const fadeIn = keyframes`
     0% {
         opacity: 0;

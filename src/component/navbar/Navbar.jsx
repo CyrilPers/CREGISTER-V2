@@ -22,6 +22,7 @@ export default function Navbar() {
 }
 
 const NavbarStyled = styled.div`
+    user-select: none;
     border: solid 2px ${theme.colors.primary} ;
     background-color: ${theme.colors.white};
     height: 10vh;

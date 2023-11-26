@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Card from '../../../reusable-ui/Card'
-import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { convertStringToBoolean } from '../../../../utils/string'
-import { checkIfProductIsClicked } from './helper/helpers'
+import { checkIfIsClicked } from './helper/helpers'
 import { formatPrice } from '../../../../utils/maths';
 import { IMAGE_COMING_SOON, IMAGE_NO_STOCK } from '../../../../enum/product';
 
@@ -23,7 +22,7 @@ export default function ProductsMap({ selectedProduct, isModeAdmin, handleCardDe
               onDelete={(event) => handleCardDelete(event, id)}
               onClick={() => handleClick(id)}
               isHoverable={isModeAdmin}
-              isSelected={checkIfProductIsClicked(id, selectedProduct.id)}
+              isSelected={checkIfIsClicked(id, selectedProduct.id)}
               overlapImageSource={IMAGE_NO_STOCK}
               isOverlapImageVisible={convertStringToBoolean(isAvailable) === false}
               className="card"

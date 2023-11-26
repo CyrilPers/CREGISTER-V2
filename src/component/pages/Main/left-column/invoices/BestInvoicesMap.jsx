@@ -29,7 +29,6 @@ export default function BestInvoicesMap({ invoices }) {
 };
 
 const BestInvoicesMapStyled = styled.div`
-    padding-top: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -45,6 +44,7 @@ const BestInvoicesMapStyled = styled.div`
     grid-template-columns: repeat(4, 1fr);
     width: 100%;
     margin: 5px 0px;
+    font-weight: ${theme.fonts.weights.bold};
     }
 
     .invoice{

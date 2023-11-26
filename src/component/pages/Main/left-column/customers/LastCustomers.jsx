@@ -24,7 +24,6 @@ export default function LastCustomers({ customers }) {
 }
 
 const LastCustomersStyled = styled.div`
-    padding-top: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,6 +39,7 @@ const LastCustomersStyled = styled.div`
     grid-template-columns: repeat(3, 1fr);
     width: 100%;
     margin: 5px 0px;
+    font-weight: ${theme.fonts.weights.bold};
     }
 
     .customer{

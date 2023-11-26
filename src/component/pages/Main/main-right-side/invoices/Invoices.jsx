@@ -15,7 +15,7 @@ export default function Invoices() {
     const { setInvoices, invoices, isModeAdmin, setInvoiceId, setCurrentPage, deleteInvoice, createInvoice, userId } = useContext(AdminContext)
 
     const title = "Vous n'avez pas de commandes"
-    const description = "Cliquez ci-dessous pour créer une commandeé"
+    const description = "Cliquez ci-dessous pour créer une commande"
     const label = "Créer une commande"
 
     const handleDelete = (event, id) => {
@@ -110,5 +110,9 @@ const InvoicesStyled = styled.div`
     }
   
     ${scaleXAnimation}
+
+    @media(max-width: 767px) { 
+    padding: 0 5px;
+    }
 `;
 

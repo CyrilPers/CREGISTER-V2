@@ -1,8 +1,16 @@
 import React from 'react'
 import styled from 'styled-components';
 import { theme } from '../../../../../theme/index.jsx';
+import { IoPersonAdd } from "react-icons/io5";
+import { FaSearch } from "react-icons/fa";
 
-export default function SearchCustomer({ placeholder, data, handleClick, handleChange, value }) {
+export default function SearchCustomer({ placeholder, data, handleClick, handleChange, value, setCurrentPage, setIsModeAdmin }) {
+
+    const handleAdd = () => {
+        setIsModeAdmin(true)
+        setCurrentPage("customers")
+    }
+
     return (
         <SearchCustomerStyled>
             <div className='inputSearch'>
@@ -27,18 +35,21 @@ export default function SearchCustomer({ placeholder, data, handleClick, handleC
                             <li onClick={() => handleClick(element)} key={element.id}>{element.name} {element.surname} </li>
                         ))}
             </ul>
-        </SearchCustomerStyled>
+            <div className='buttons'>
+                <button className="add-button" onClick={handleAdd}>
+                    <IoPersonAdd className='add-icon' />
+                </button>
+            </div>
+
+        </SearchCustomerStyled >
     )
 }
 
 const SearchCustomerStyled = styled.div`
-    padding-top: 25px;
     height: 65px;
     display: flex;
     align-items: center;
     position: relative;
-    flex-direction: column;
-    padding-right: 50px;
     z-index: 1;
 
 
@@ -66,13 +77,16 @@ const SearchCustomerStyled = styled.div`
         }
     }
     ul {
-    margin-top: 40px;
     padding-left: 0px;
     list-style: none;
     overflow: hidden;
     position: absolute;
     width: 200px;
-    }
+    display: flex;
+    flex-direction: column-reverse;
+    margin-top: 50px;
+    top: 0;
+   }
 
     ul li {
     padding-left: 10px;
@@ -86,6 +100,35 @@ const SearchCustomerStyled = styled.div`
     font-size: ${theme.fonts.size.P3};
     font-family: ${theme.fonts.family.stylish};
     }
+
+    .buttons {
+        display: flex;
+        height:50px;
+        width:auto;
+        align-items: center;
+
+        .add-button {
+        top: 15px;
+        right: 15px;
+        cursor: pointer;
+        color: ${theme.colors.primary};
+        border: none;
+        background: none;
+
+            .add-icon{
+                width: 25px;
+                height: 25px;
+                cursor: pointer;
+            }
+            &:hover {
+                color: ${theme.colors.red}
+            }
+            &:active{
+                color: ${theme.colors.primary}
+            }
+        }
+    }
+
     @media(min-width: 768px) and (max-width: 1388px) { 
         .inputSearch{
             width: 90%;
