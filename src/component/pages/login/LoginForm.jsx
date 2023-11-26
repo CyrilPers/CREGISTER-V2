@@ -33,20 +33,21 @@ export default function LoginForm() {
   return (
     <LoginFormStyled action="submit" onSubmit={handleSubmit}>
       <div>
-        <h1>GÉREZ VOS COMMANDES !</h1>
+        <h1 className='title'>GÉREZ VOS COMMANDES !</h1>
         <hr />
-        <h2>Connectez vous</h2>
+        <h2 className='title'>Connectez vous</h2>
       </div>
       <TextInput
         value={username}
         onChange={handleChange}
-        placeholder={"Entrez votre prénom"}
+        placeholder={"Entrez votre nom d'employé"}
         required
         Icon={<BsPersonCircle />}
         className="input-login"
         version="default"
       />
       <Button
+        className="button-login"
         label={"Accéder à mon espace"}
         Icon={<IoChevronForward />}
         version="default"
@@ -56,11 +57,11 @@ export default function LoginForm() {
 }
 
 const LoginFormStyled = styled.form`
-  text-align: center;
-  max-width: 500px;
-  min-width: 400px;
-  margin: 0px auto;
-  padding: 40px 32px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   border-radius: ${theme.borderRadius.round};
   font-family: ${theme.fonts.family.stylish};
   animation: ${fadeInFromBottomLog} ease-out ${theme.animation.speed.verySlow};
@@ -73,33 +74,43 @@ const LoginFormStyled = styled.form`
   }
 
   h1{
-    font-size: ${theme.fonts.P5};
-    color: ${theme.colors.white};
+    font-size: ${theme.fonts.size.P5};
   }
 
   h2{
     font-size: ${theme.fonts.size.P4};
+
+  }
+
+  .title {
     color: ${theme.colors.white};
+    text-align: center;
+  }
 
-
-  }  
 
   .input-login {
+    width: 300px;
     margin: 18px 0;
 
+  }
+  .button-login{
+    width: 360px;
   }
 
   @media(max-width: 767px) {
       max-width: 100%;
       min-width: 300px;
-      h1{
-    font-size: ${theme.fonts.P4};
-    color: ${theme.colors.white};
+    h1{
+      font-size: ${theme.fonts.size.P4};
     }
 
     h2{
-    font-size: ${theme.fonts.size.P3};
+      font-size: ${theme.fonts.size.P3};
+    }
+    
+    .title {
     color: ${theme.colors.white};
-    }  
+    text-align: center;
+  }
   }
 `;

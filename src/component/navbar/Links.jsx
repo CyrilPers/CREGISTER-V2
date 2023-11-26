@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'
 import AdminContext from '../../context/AdminContext.jsx'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { theme } from '../../theme/index.jsx'
 
 export default function Links() {
 
-    const { setCurrentPage } = useContext(AdminContext)
+    const { setCurrentPage, currentPage } = useContext(AdminContext)
 
     const goToInvoices = () => {
         setCurrentPage("invoices")
@@ -17,8 +17,8 @@ export default function Links() {
 
     return (
         <LinksStyled>
-            <span className="link" onClick={goToInvoices}>Commandes</span>
-            <span className="link" onClick={goToCustomers}>Clients</span>
+            <span className={`link ${currentPage === "invoices" && "activeLink"}`} id="invoices" onClick={goToInvoices}>Commandes</span>
+            <span className={`link ${currentPage === "customers" && "activeLink"}`} id="customers" onClick={goToCustomers}>Clients</span>
         </LinksStyled>
     )
 }
@@ -36,10 +36,18 @@ const LinksStyled = styled.div`
         padding: 0 10px;
         &:hover {
             cursor: pointer;
-            color: ${theme.colors.primary};
+            color: ${theme.colors.background_dark};
             font-size: ${theme.fonts.size.P5};
             font-weight: ${theme.fonts.weights.bold};
         }
+        &:active {
+            color: ${theme.colors.primary};
+
+        }
+
+    }
+    .activeLink{
+        color: ${theme.colors.primary};
     }
 
     @media(max-width: 767px) {

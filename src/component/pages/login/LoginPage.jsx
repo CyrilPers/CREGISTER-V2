@@ -1,14 +1,14 @@
 import React from 'react'
 import LoginForm from './LoginForm'
 import { styled } from 'styled-components'
-import Logo from '../../reusable-ui/Logo'
+import LoginLeft from './Left/LoginLeft'
 
 
 export default function LoginPage() {
 
   return (
     <LoginPageStyled>
-      <Logo className={"logo-login-page"} />
+      <LoginLeft />
       <LoginForm />
     </LoginPageStyled>
 
@@ -18,19 +18,20 @@ export default function LoginPage() {
 const LoginPageStyled = styled.div`
     height: 100vh;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 10%;
+    justify-content: space-around;
     align-items: center;
 
     background: 
         linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
         url('/images/background.png') fixed center/cover;
-    
-    .logo-login-page {
-      transform: scale(2.5);
-    }
 
     @media(max-width: 767px) {
-      max-width: 100%
+      max-width: 100%;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 `;

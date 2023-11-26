@@ -14,16 +14,16 @@ export default function Profil() {
         <p>
           Hey, <b>{username}</b>
         </p>
-        <Link to="/">
+        <Link className="link" to="/">
           <div className="description">
-            <small>Se déconnecter</small>
+            <small>Déconnexion</small>
           </div>
         </Link>
       </div>
       <div className="picture">
         <BsPersonCircle />
       </div>
-    </ProfileStyled>
+    </ProfileStyled >
   )
 }
 
@@ -32,13 +32,11 @@ const ProfileStyled = styled.div`
   align-items: center;
   justify-content: space-between;
   min-width: 100px;
-  padding-right: 50px;
-  padding-left: 50px;
+  margin-left: 50px;
 
   .info {
-    text-align: right;
     margin-right: 10px;
-
+    display: column;
     p {
       margin: 0;
       color: ${theme.colors.greyBlue};
@@ -50,7 +48,6 @@ const ProfileStyled = styled.div`
 
     a {
       text-decoration: none;
-
       .description {
         &:hover {
           text-decoration: underline;
@@ -62,28 +59,35 @@ const ProfileStyled = styled.div`
           color: ${theme.colors.greyBlue};
           font-weight: ${theme.fonts.weights.medium};
           text-decoration: none;
-          position: relative;
-          bottom: 2px;
         }
       }
     }
   }
 
+  .description{
+    display: flex;
+  }
+
+
   .picture {
     height: auto;
     display: flex;
     height: 100%;
+    width: 100%;
     font-size: ${theme.fonts.size.P4};
     color: ${theme.colors.greyBlue};
   }
 
   @media (max-width: 767px) {
     padding: 0;
+    margin-left: 0;
+
     
     .info {
     text-align: left;
     margin-right: 5px;
     margin-left: 20px;
+    align-items: center;
 
     a {
       .description {
