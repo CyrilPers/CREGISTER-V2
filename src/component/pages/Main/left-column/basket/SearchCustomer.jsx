@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components';
 import { theme } from '../../../../../theme/index.jsx';
 import { IoPersonAdd } from "react-icons/io5";
-import { FaSearch } from "react-icons/fa";
 
 export default function SearchCustomer({ placeholder, data, handleClick, handleChange, value, setCurrentPage, setIsModeAdmin }) {
 
@@ -10,6 +9,14 @@ export default function SearchCustomer({ placeholder, data, handleClick, handleC
         setIsModeAdmin(true)
         setCurrentPage("customers")
     }
+
+    const filterData = () => {
+        return data.filter((element) => (
+            element.name.toLowerCase().includes(value.toLowerCase()) ||
+            element.surname.toLowerCase().includes(value.toLowerCase()) ||
+            element.phoneNumber.toLowerCase().includes(value.toLowerCase())
+        ));
+    };
 
     return (
         <SearchCustomerStyled>
@@ -24,16 +31,14 @@ export default function SearchCustomer({ placeholder, data, handleClick, handleC
                 />
             </div>
             <ul>
-                {value &&
-                    data.filter((element) => {
-                        return element.name.toLowerCase().includes(value.toLowerCase()) ||
-                            element.surname.toLowerCase().includes(value.toLowerCase()) ||
-                            element.phoneNumber.toLowerCase().includes(value.toLowerCase());
-                    })
-                        .slice(0, 5)
-                        .map((element) => (
-                            <li onClick={() => handleClick(element)} key={element.id}>{element.name} {element.surname} </li>
-                        ))}
+                {value && filterData().slice(0, 5).map((element) => (
+                    <li onClick={() => handleClick(element)} key={element.id}>
+                        {element.name} {element.surname}
+                    </li>
+                ))}
+                {value && filterData().length === 0 && (
+                    <li className='not-found'>Client introuvable</li>
+                )}
             </ul>
             <div className='buttons'>
                 <button className="add-button" onClick={handleAdd}>
@@ -52,6 +57,9 @@ const SearchCustomerStyled = styled.div`
     position: relative;
     z-index: 1;
 
+    .not-found {
+        font-weight: ${theme.fonts.weights.heavy};
+    }
 
     .inputSearch {
         box-sizing: border-box;
