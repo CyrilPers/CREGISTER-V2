@@ -5,14 +5,16 @@ import { theme } from '../../theme/index.jsx'
 
 export default function Links() {
 
-    const { setCurrentPage, currentPage } = useContext(AdminContext)
+    const { setCurrentPage, currentPage, setIsModeAdmin } = useContext(AdminContext)
 
     const goToInvoices = () => {
         setCurrentPage("invoices")
+        setIsModeAdmin(false)
     }
 
     const goToCustomers = () => {
         setCurrentPage("customers")
+        setIsModeAdmin(false)
     }
 
     return (

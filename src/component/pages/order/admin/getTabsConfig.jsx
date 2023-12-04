@@ -39,7 +39,7 @@ export const getTabsConfigCustomer = (hasAlreadyBeenClicked) => [
     index: "edit",
     label: "Modifier un client",
     Icon: <MdModeEditOutline />,
-    content: hasAlreadyBeenClicked ? <CustomerEditForm /> : <HintMessage element="produit" />,
+    content: hasAlreadyBeenClicked ? <CustomerEditForm /> : <HintMessage element="client" />,
   },
 ]
 
