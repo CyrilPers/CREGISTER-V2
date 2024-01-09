@@ -16,13 +16,18 @@ export default function LoginForm() {
 
   const [username, setUsername] = useState("")
   const navigate = useNavigate()
+  const [warningMessage, setWarningMessage] = useState("")
 
   // Comportement
   const handleSubmit = async (event) => {
     event.preventDefault()
     await authentificateUser(username)
     setUsername("")
-    navigate(`/order/${username}`)
+    if (username.toLowerCase() !== "test") {
+      navigate(`/order/${username}`)
+    } else {
+      setWarningMessage("Veuillez saisir un nom")
+    }
   }
 
   const handleChange = (event) => {
@@ -36,6 +41,7 @@ export default function LoginForm() {
         <h1 className='title'>GÉREZ VOS COMMANDES !</h1>
         <hr />
         <h2 className='title'>Connectez vous</h2>
+        <span className='warning'>{warningMessage}</span>
       </div>
       <TextInput
         value={username}
@@ -53,6 +59,7 @@ export default function LoginForm() {
         version="default"
       />
     </LoginFormStyled>
+
   )
 }
 
@@ -66,6 +73,11 @@ const LoginFormStyled = styled.form`
   font-family: ${theme.fonts.family.stylish};
   animation: ${fadeInFromBottomLog} ease-out ${theme.animation.speed.verySlow};
 
+  .warning {
+    color: red;
+    font-size: ${theme.fonts.size.P3};
+    font-weight: ${theme.fonts.weights.heavy};
+  }
 
   hr{
     border: 1.5px solid ${theme.colors.loginLine};
